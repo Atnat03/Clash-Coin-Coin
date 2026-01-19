@@ -6,6 +6,7 @@ public abstract class Item : MonoBehaviour
     public string name;
     public float PV;
     public float maxPV;
+    public bool playerOneProperty;
 
     
     public Item()

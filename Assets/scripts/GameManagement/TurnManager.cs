@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
+    public static TurnManager instance;
+    
+    
     enum GameSate
     {
         StartGame,
@@ -15,6 +18,14 @@ public class TurnManager : MonoBehaviour
     
     StateMachine<GameSate> stateMachine =  new StateMachine<GameSate>();
     private State currentState;
+
+
+    void Awake()
+    {
+        if(instance == null)instance = this;
+        else Destroy(gameObject);
+    }
+    
     
     void Start()
     {
