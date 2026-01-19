@@ -14,7 +14,8 @@ public class SpawnPlayer : MonoBehaviour
     [SerializeField] private PlacementSystem[] placementSystems;
     public PlayerInput playerPrefab;
     public PlayerInputManager playerInputManager;
-
+    public Camera mainCamera;
+    
     private void Start()
     {
         ActivateInfos(0, true);
@@ -28,9 +29,8 @@ public class SpawnPlayer : MonoBehaviour
         playerInput.transform.position = spawnPoints[id].position;
         
         playerInput.transform.name = "Player " + id;
-
-        Rect r = id == 0 ? new Rect(0f, 0f, 0.5f, 1f) : new Rect(0.5f, 0f, 0.5f, 1f);
-        playerInput.GetComponentInChildren<Camera>().rect = r;
+        
+        playerInput.camera = mainCamera;
 
         if (placementSystems.Length > id)
             placementSystems[id].Starting(playerInput.GetComponent<PlayerInputing>());
