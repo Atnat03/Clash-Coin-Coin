@@ -9,7 +9,5 @@ public class MashIngManager : MonoBehaviour
     
     public float P2JaugeFillAmout = 1f;
     public Image P2Jauge;
-    
-    
-    public IEnumerator 
+
 }
