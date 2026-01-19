@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class ItemData : MonoBehaviour
+public class ItemData
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [HideInInspector] public int id;
+    public string name;
+    public Vector2 position;
+    public Vector2 scale;
+    public float PV;
+    public float maxPV;
+    public GameObject prefab;
 }
