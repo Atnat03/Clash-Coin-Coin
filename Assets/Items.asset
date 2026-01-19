@@ -17,15 +17,23 @@ MonoBehaviour:
     Name: 
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 9006adafbf887b5459ef1eaa14e60c9f, type: 3}
+    PV: 0
+    maxPV: 100
   - Id: 1
     Name: 
     Size: {x: 1, y: 1}
     Prefab: {fileID: 9126037231046463410, guid: 5e8b158fad565ed4ca6b069af261e226, type: 3}
+    PV: 0
+    maxPV: 100
   - Id: 2
     Name: 
     Size: {x: 1, y: 1}
     Prefab: {fileID: 9126037231046463410, guid: c23ccefdde608d74a86f89e735c03a5c, type: 3}
+    PV: 0
+    maxPV: 0
   - Id: 3
     Name: 
     Size: {x: 1, y: 1}
     Prefab: {fileID: 9126037231046463410, guid: 8c8c974a65207004c997fb102913f969, type: 3}
+    PV: 0
+    maxPV: 0

@@ -66,8 +66,11 @@ public class PlacementSystem : MonoBehaviour
             placedObjects.Count - 1);
 
         Item itemPlaced = go.GetComponentInChildren<Item>();
+        ItemsData data = database.itemsData[selectedObjectIndex];
         itemPlaced.enabled = true;
         itemPlaced.GetComponent<ITargetable>().playerOneProperty = playerInputing.isPlayerOne;
+        itemPlaced.maxPV = data.maxPV;
+        itemPlaced.PV = data.maxPV;
         
         previewSystem.UpdatePosition(gridPosition, false);
     }

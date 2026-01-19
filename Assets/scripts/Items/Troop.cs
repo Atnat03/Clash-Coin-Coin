@@ -1,10 +1,14 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
-public class Troop : Item, ITargetable
+public class Troop : Item
 {
     public float Speed;
     public float RaduisAttack;
+    public bool isAttaking = false;
+    public float Damage = 10;
     
     public Troop(int  id, string name, float maxPV, float speed, float raduisAttack)
     {
@@ -31,6 +35,10 @@ public class Troop : Item, ITargetable
 	void Update()
 	{
 		if (target == null) return;
+
+		if (isAttaking) return;
+		
+		currentHP.fillAmount = PV / maxPV;
 		
 		FindPath(transform.position, target.position);
 		
@@ -43,7 +51,28 @@ public class Troop : Item, ITargetable
 		{
 			t -= Time.deltaTime;
 		}
+
+		if (Vector3.Distance(transform.position, target.position) < RaduisAttack)
+		{
+			StartCoroutine(Attack());
+		}else
+		{
+			Chase();
+		}
+	}
+
+	IEnumerator Attack()
+	{
+		isAttaking = true;
+		yield return new WaitForSeconds(1);
 		
+		target.GetComponent<ITargetable>().TakeDamage(Damage);
+		
+		isAttaking = false;
+	}
+	
+	public void Chase()
+	{
 		if (gridManager.path != null)
 		{
 			if (gridManager.path.Count > 0)
@@ -80,8 +109,6 @@ public class Troop : Item, ITargetable
 
 		return closestTarget;
 	}
-
-
 
 	void FindPath(Vector3 startPos, Vector3 endPos)
 	{
@@ -175,9 +202,9 @@ public class Troop : Item, ITargetable
 		return bestNode;
 	}
 
-	public bool playerOneProperty { get; set; }
-	public void TakeDamage(float damage)
+	public void OnDrawGizmos()
 	{
-		throw new System.NotImplementedException();
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, RaduisAttack);
 	}
 }
