@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlacementSystem : MonoBehaviour
 {
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerInputing playerInputing = null;
     [SerializeField] private Grid grid;
 
     [SerializeField] private ItemSO database;
@@ -19,8 +20,12 @@ public class PlacementSystem : MonoBehaviour
     
     private Vector3Int lastDetectedPosition = Vector3Int.zero;
     
-    private void Start()
+    public void Starting(PlayerInputing playerInpute)
     {
+        if (playerInputing != null)
+            return;
+        
+        playerInputing = playerInpute;
         StopPlacement();
         floorData = new();
         furnitureData = new();
@@ -34,15 +39,16 @@ public class PlacementSystem : MonoBehaviour
         previewSystem.StartShowingPlacementPreview(
             database.itemsData[selectedObjectIndex].Prefab, 
             database.itemsData[selectedObjectIndex].Size);
-        playerInput.OnClicked += PlaceStructure;
-        playerInput.OnExit += StopPlacement;
+        
+        playerInputing.OnClicked += PlaceStructure;
+        playerInputing.OnExit += StopPlacement;
     }
 
     private void PlaceStructure()
     {
-        if (playerInput.IsPointerOverUI()) return;
+        if (playerInputing.IsPointerOverUI()) return;
         
-        Vector3 mousePosition = playerInput.GetWorldAimPosition();
+        Vector3 mousePosition = playerInputing.GetWorldAimPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
         
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
@@ -75,20 +81,23 @@ public class PlacementSystem : MonoBehaviour
         selectedObjectIndex = -1;
         gridVisualisation.SetActive(false);
         previewSystem.StopShowingPreview();
-        playerInput.OnClicked -= PlaceStructure;
-        playerInput.OnExit -= StopPlacement;
-        lastDetectedPosition = Vector3Int.back;
+        playerInputing.OnClicked -= PlaceStructure;
+        playerInputing.OnExit -= StopPlacement;
+        lastDetectedPosition = Vector3Int.zero;
     }
 
     private void Update()
     {
         if (selectedObjectIndex < 0) return;
         
-        Vector3 mousePosition = playerInput.GetWorldAimPosition();
+        Vector3 mousePosition = playerInputing.GetWorldAimPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
+        print(playerInputing.transform.name);
+        
         if (lastDetectedPosition != gridPosition)
         {
+            print("Is in");
             bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
             previewSystem.UpdatePosition(gridPosition, placementValidity);
             

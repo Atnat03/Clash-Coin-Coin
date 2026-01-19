@@ -1,5 +1,8 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class SpawnPlayer : MonoBehaviour
 {
@@ -8,19 +11,31 @@ public class SpawnPlayer : MonoBehaviour
 
     [SerializeField] private GameObject[] P1infos;
     [SerializeField] private GameObject[] P2infos;
+    [SerializeField] private PlacementSystem[] placementSystems;
+    public PlayerInput playerPrefab;
+    public PlayerInputManager playerInputManager;
 
     private void Start()
     {
-        ActivateInfos(0, true);
-        ActivateInfos(1, true);
+        ActivateInfos(0, false);
+        ActivateInfos(1, false);
     }
-
-    public void OnPlayerJoined(PlayerInput player)
+    
+    public void OnPlayerJoined(PlayerInput playerInput)
     {
-        player.transform.position = spawnPoints[id].transform.position;
-        ActivateInfos(id, false);
+        if (id >= spawnPoints.Length) return;
+        
+        playerInput.transform.name = "Player " + id;
+
+        Rect r = id == 0 ? new Rect(0f, 0f, 0.5f, 1f) : new Rect(0.5f, 0f, 0.5f, 1f);
+        playerInput.GetComponentInChildren<Camera>().rect = r;
+
+        if (placementSystems.Length > id)
+            placementSystems[id].Starting(playerInput.GetComponent<PlayerInputing>());
+
         id++;
     }
+
 
     public void ActivateInfos(int id, bool state)
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInputing : MonoBehaviour
 {
     [Header("References")]
     public Camera playerCamera;
@@ -57,10 +57,8 @@ public class PlayerInput : MonoBehaviour
             worldAimPosition = ray.GetPoint(enter);
 
             Debug.DrawLine(ray.origin, worldAimPosition, Color.green);
-            Debug.Log(worldAimPosition);
         }
     }
-
 
     public Vector3 GetWorldAimPosition()
     {
