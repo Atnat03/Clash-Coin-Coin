@@ -57,6 +57,8 @@ public class PlacementSystem : MonoBehaviour
             database.itemsData[selectedObjectIndex].Size, 
             database.itemsData[selectedObjectIndex].Id, 
             placedObjects.Count - 1);
+
+        go.GetComponentInChildren<Item>().enabled = true;
         
         previewSystem.UpdatePosition(gridPosition, false);
     }

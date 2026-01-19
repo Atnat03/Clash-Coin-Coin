@@ -1,15 +1,24 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Asta : MonoBehaviour
 {
-	[SerializeField] Transform target;
+	Transform target;
 
-	[SerializeField] GridManager gridManager;
+	GridManager gridManager;
 	[SerializeField] private Seeker player;
+
+	private float t = 1;
+
 
 	void Update()
 	{
+		if (t >= 0)
+		{
+			t = 1;
+		}
+		
 		FindPath(transform.position, target.position);
 	}
 
@@ -47,8 +56,6 @@ public class Asta : MonoBehaviour
 
 				if (newCost < neighbour.gCost || !openNodes.Contains(neighbour))
 				{
-					newCost = currentNode.type.ApplyCost(newCost, player.playerType);
-					
 					neighbour.gCost  = newCost;
 					
 					neighbour.hCost  = GetDistance(neighbour, endNode);

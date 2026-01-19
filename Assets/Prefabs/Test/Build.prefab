@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2836111633469754108}
   - component: {fileID: 3827453361192938628}
   - component: {fileID: 6647360746933230783}
+  - component: {fileID: 4853873200165793284}
   m_Layer: 0
   m_Name: Tourelle
   m_TagString: Untagged
@@ -112,6 +113,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4853873200165793284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991685822548658073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bdaee5261f16834994873d765bcf074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::testBuild
+  id: 0
+  name: 
+  PV: 0
+  maxPV: 0
+  playerOneProperty: 0
 --- !u!1 &9126037231046463410
 GameObject:
   m_ObjectHideFlags: 0

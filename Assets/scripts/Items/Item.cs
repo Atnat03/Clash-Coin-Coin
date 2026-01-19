@@ -7,7 +7,6 @@ public abstract class Item : MonoBehaviour
     public float PV;
     public float maxPV;
     public bool playerOneProperty;
-
     
     public Item()
     {

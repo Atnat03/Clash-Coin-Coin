@@ -22,6 +22,10 @@ public class PreviewSystem : MonoBehaviour
     public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
     {
         previewObject = Instantiate(prefab);
+        
+        if(previewObject.GetComponentInChildren<Item>() != null)
+            previewObject.GetComponentInChildren<Item>().enabled = false;
+        
         PreparePreavie(previewObject);
         PrepareCursor(size);
         cellIndicator.gameObject.SetActive(true);

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Node
 {
     public bool walkable;
-    public TerrainType type;
     public Vector3 worldPosition;
     public int gridX, gridY;
     public int gCost;
@@ -14,20 +13,20 @@ public class Node
     
     public int fCost => gCost + hCost;
     
-    public Node(bool _wakable, Vector3 worldPos, int X, int Y, TerrainType type)
+    public Node(bool _wakable, Vector3 worldPos, int X, int Y)
     {
         walkable = _wakable;
         worldPosition = worldPos;
         gridX = X;
         gridY = Y;
-        this.type = type;
     }
 }
 
 public class GridManager : MonoBehaviour
 {
+	public static GridManager instance;
+	
 	[SerializeField] LayerMask unWalkableMask;
-	[SerializeField] LayerMask waterMask;
 	[SerializeField] Vector2   gridWorldSize;
 	[SerializeField] float     nodeRadius;
 	Node[,]                    grid;
@@ -38,6 +37,8 @@ public class GridManager : MonoBehaviour
 
 	void Awake()
 	{
+		instance = this;
+		
 		nodeDiameter = nodeRadius * 2f;
 
 		gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
@@ -45,44 +46,7 @@ public class GridManager : MonoBehaviour
 
 		CreateGrid();
 	}
-
-	void OnDrawGizmos()
-	{
-		Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
-
-		if (grid != null)
-		{
-			foreach (Node node in grid)
-			{
-				Gizmos.color = node.walkable ? Color.white : Color.red;
-
-				switch (node.type)
-				{
-					case Water:
-						Gizmos.color = Color.cyan;
-						break;
-					case Route:
-						Gizmos.color = Color.grey;
-						break;
-					case Boue:
-						Gizmos.color = Color.black;
-						break;
-					case Herbe:
-						Gizmos.color = Color.green;
-						break;
-					
-				}
-				
-				if (path != null && path.Contains(node))
-				{
-					Gizmos.color = Color.blue;
-				}
-
-				Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - 0.1f));
-			}
-		}
-	}
-
+	
 	void CreateGrid()
 	{
 		grid = new Node[gridSizeX, gridSizeY];
@@ -99,16 +63,10 @@ public class GridManager : MonoBehaviour
 
 				bool walkable = !Physics.CheckSphere(worldPoint, nodeRadius, unWalkableMask);
 
-				TerrainType type = new Herbe();
 				
 				RaycastHit hit;
-
-				if (Physics.Raycast(worldPoint + Vector3.up*2, Vector3.down, out hit, 1000))
-				{
-					type = hit.collider.gameObject.GetComponent<TerrainType>();
-				}
 				
-				grid[x, y] = new Node(walkable, worldPoint, x, y, type);
+				grid[x, y] = new Node(walkable, worldPoint, x, y);
 			}
 		}
 	}

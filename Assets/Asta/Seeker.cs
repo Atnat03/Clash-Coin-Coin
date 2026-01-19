@@ -1,18 +1,10 @@
 using System;
 using UnityEngine;
 
-public enum PlayerType
-{
-    Human,
-    FisherMan,
-}
-
-
 public class Seeker : MonoBehaviour
 {
     [SerializeField] GridManager gridManager;
     [SerializeField] float speed = 1;
-    [SerializeField] public PlayerType playerType;
 
     void Update()
     {
@@ -25,14 +17,4 @@ public class Seeker : MonoBehaviour
         }
     }
 
-    public bool CheckPlayerType(PlayerType playerType)
-    {
-        foreach (PlayerType t in Enum.GetValues(typeof(PlayerType)))
-        {
-            if(t == playerType)
-                return true;
-        }
-        
-        return false;
-    }
 }
