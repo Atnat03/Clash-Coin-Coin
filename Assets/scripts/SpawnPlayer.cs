@@ -17,13 +17,15 @@ public class SpawnPlayer : MonoBehaviour
 
     private void Start()
     {
-        ActivateInfos(0, false);
-        ActivateInfos(1, false);
+        ActivateInfos(0, true);
+        ActivateInfos(1, true);
     }
     
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         if (id >= spawnPoints.Length) return;
+        
+        playerInput.transform.position = spawnPoints[id].position;
         
         playerInput.transform.name = "Player " + id;
 
@@ -33,6 +35,10 @@ public class SpawnPlayer : MonoBehaviour
         if (placementSystems.Length > id)
             placementSystems[id].Starting(playerInput.GetComponent<PlayerInputing>());
 
+        playerInput.GetComponent<PlayerInputing>().isPlayerOne = id == 0;
+        
+        ActivateInfos(id, false);
+        
         id++;
     }
 

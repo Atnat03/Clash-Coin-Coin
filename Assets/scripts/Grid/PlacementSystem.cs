@@ -55,16 +55,19 @@ public class PlacementSystem : MonoBehaviour
         if (placementValidity == false) return;
         
         GameObject go = Instantiate(database.itemsData[selectedObjectIndex].Prefab);
-        go.transform.position = gridPosition;
+        Vector3 worldPosition = grid.GetCellCenterWorld(gridPosition);
+        go.transform.position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
         
         placedObjects.Add(go);
         GridData selectedData = database.itemsData[selectedObjectIndex].Id == 0 ? floorData : furnitureData;
         selectedData.AddObjectAt(gridPosition, 
-            database.itemsData[selectedObjectIndex].Size, 
-            database.itemsData[selectedObjectIndex].Id, 
+            database.itemsData[selectedObjectIndex].Size,
+            database.itemsData[selectedObjectIndex].Id,
             placedObjects.Count - 1);
 
-        go.GetComponentInChildren<Item>().enabled = true;
+        Item itemPlaced = go.GetComponentInChildren<Item>();
+        itemPlaced.enabled = true;
+        itemPlaced.GetComponent<ITargetable>().playerOneProperty = playerInputing.isPlayerOne;
         
         previewSystem.UpdatePosition(gridPosition, false);
     }
@@ -92,6 +95,8 @@ public class PlacementSystem : MonoBehaviour
         
         Vector3 mousePosition = playerInputing.GetWorldAimPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+        
+        Vector3 worldPosition = grid.GetCellCenterWorld(gridPosition);
 
         print(playerInputing.transform.name);
         
@@ -99,7 +104,7 @@ public class PlacementSystem : MonoBehaviour
         {
             print("Is in");
             bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-            previewSystem.UpdatePosition(gridPosition, placementValidity);
+            previewSystem.UpdatePosition(new Vector3(worldPosition.x, 0.05f, worldPosition.z), placementValidity);
             
             lastDetectedPosition = gridPosition;
         }

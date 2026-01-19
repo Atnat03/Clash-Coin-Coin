@@ -19,6 +19,8 @@ public class PlayerInputing : MonoBehaviour
 
     public Action OnClicked, OnExit;
 
+    public bool isPlayerOne;
+
     void Start()
     {
         screenCursor = new Vector2(Screen.width / 2f, Screen.height / 2f);

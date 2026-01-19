@@ -7,6 +7,8 @@ public class testBuild : Build, ITargetable
     {
     }
 
+    public bool playerOneProperty { get; set; }
+
     public void TakeDamage(float damage)
     {
         Debug.Log("Take Damage");

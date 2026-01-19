@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Troop : Item
+public class Troop : Item, ITargetable
 {
     public float Speed;
     public float RaduisAttack;
@@ -63,6 +63,9 @@ public class Troop : Item
 		foreach (Collider hit in hits)
 		{
 			if (!hit.TryGetComponent<ITargetable>(out _))
+				continue;
+			
+			if(hit.GetComponent<ITargetable>().playerOneProperty == playerOneProperty)
 				continue;
 
 			Vector3 delta = hit.transform.position - transform.position;
@@ -171,5 +174,10 @@ public class Troop : Item
 
 		return bestNode;
 	}
-	
+
+	public bool playerOneProperty { get; set; }
+	public void TakeDamage(float damage)
+	{
+		throw new System.NotImplementedException();
+	}
 }
