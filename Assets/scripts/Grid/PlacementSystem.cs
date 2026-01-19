@@ -92,7 +92,6 @@ public class PlacementSystem : MonoBehaviour
             
             lastDetectedPosition = gridPosition;
         }
-        
     }
     
 }
