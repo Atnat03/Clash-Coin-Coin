@@ -12,6 +12,7 @@ public class MashingGameManager : MonoBehaviour
 
     [Tooltip("le max de la jauge c'est 1")] public float amountPerClic;
     
+    
     public TextMeshProUGUI mainTextMesh;
     public Image cooldownBar;
 
