@@ -15,6 +15,9 @@ public class MetronomeGameManager : MonoBehaviour
     public TextMeshProUGUI mainText;
     
     public Action BeginGame;
+
+    [SerializeField] private MetronomePlayerScript P1;
+    [SerializeField] private MetronomePlayerScript P2;
     
     void Awake()
     {
@@ -23,12 +26,39 @@ public class MetronomeGameManager : MonoBehaviour
 
     void Start()
     {
+        mainText.text = "";
         StartCoroutine(GameCoroutine());
     }
 
     IEnumerator GameCoroutine()
     {
+        float elapsedTime = 3;
+        while (elapsedTime > 0)
+        {
+            elapsedTime -= Time.deltaTime;
+            mainText.text = (Mathf.CeilToInt(elapsedTime)).ToString();
+            yield return null;
+        }
+        mainText.text = "go !";
+        
         yield return new WaitForSeconds(1f);
         BeginGame?.Invoke();
+
+        elapsedTime = gameLength;
+        while (elapsedTime > 0)
+        {
+            elapsedTime -= Time.deltaTime;
+            mainText.text = elapsedTime.ToString("F2");
+            yield return null;
+        }
+        
+        mainText.text = "terminé !";
+        yield return new WaitForSeconds(1f);
+
+        if (P1 != null && P2 != null)
+        {
+            if (P1.points >= P2.points) mainText.text = "joueur 1 a gagné !";
+            else mainText.text = "joueur 2 a gagné !";
+        }
     }
 }
