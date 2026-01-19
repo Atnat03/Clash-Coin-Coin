@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
@@ -15,6 +17,8 @@ public class PlayerInput : MonoBehaviour
     Vector2 screenCursor;
     Vector3 worldAimPosition;
 
+    public Action OnClicked, OnExit;
+
     void Start()
     {
         screenCursor = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -25,6 +29,18 @@ public class PlayerInput : MonoBehaviour
         aimInput = context.ReadValue<Vector2>();
     }
 
+    public void OnPressedInput(InputAction.CallbackContext context)
+    {
+        OnClicked?.Invoke();
+    }
+    
+    public void OnExitInput(InputAction.CallbackContext context)
+    {
+        OnExit?.Invoke();
+    }
+
+    public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
+    
     void Update()
     {
         screenCursor += aimInput * cursorSpeed * Time.deltaTime;
