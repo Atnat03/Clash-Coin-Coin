@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MashIngGamePlayerScript : MonoBehaviour
 {
-    public float P1JaugeFillAmout = 1f;
+    public float P1JaugeFillAmout;
     public Image P1Jauge;
     
     public bool ingame;
@@ -31,8 +31,6 @@ public class MashIngGamePlayerScript : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             
-            P1JaugeFillAmout -= Time.deltaTime/2;
-            
             P1Jauge.fillAmount = P1JaugeFillAmout;
             
             yield return null;
@@ -42,6 +40,6 @@ public class MashIngGamePlayerScript : MonoBehaviour
 
     public void PlayerPressedA(InputAction.CallbackContext context)
     {
-        if(ingame)P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + .06f,0 , 1);
+        if(ingame)P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic,0 , 1);
     }
 }

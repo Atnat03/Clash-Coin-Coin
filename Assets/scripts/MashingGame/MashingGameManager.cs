@@ -2,13 +2,18 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MashingGameManager : MonoBehaviour
 {
     public static MashingGameManager instance;
     
     public float GameLength = 10f;
-    public TextMeshProUGUI maintextMesh;
+
+    [Tooltip("le max de la jauge c'est 1")] public float amountPerClic;
+    
+    public TextMeshProUGUI mainTextMesh;
+    public Image cooldownBar;
 
     public Action StartGame;
 
@@ -22,6 +27,7 @@ public class MashingGameManager : MonoBehaviour
 
     void Start()
     {
+        cooldownBar.gameObject.SetActive(false);
         StartCoroutine(StartGameCoroutine());
     }
 
@@ -31,26 +37,36 @@ public class MashingGameManager : MonoBehaviour
         while (timeCounter > 0)
         {
             timeCounter -= Time.deltaTime;
-            maintextMesh.text = Mathf.CeilToInt(timeCounter).ToString("F0");
+            mainTextMesh.text = Mathf.CeilToInt(timeCounter).ToString("F0");
             yield return null;
         }
 
-        maintextMesh.text = "go !!!";
+        mainTextMesh.text = "Mashez !!!";
         yield return new WaitForSeconds(1);
         
-        maintextMesh.text = "";
+        mainTextMesh.text = "";
+        cooldownBar.gameObject.SetActive(true);
+        cooldownBar.fillAmount = 1;
         StartGame?.Invoke();
+
+        timeCounter = GameLength;
+        while (timeCounter > 0)
+        {
+            timeCounter -= Time.deltaTime;
+            mainTextMesh.text = timeCounter.ToString("F2");
+            cooldownBar.fillAmount = timeCounter / GameLength;
+            yield return null;
+        }
         
-        yield return new WaitForSeconds(GameLength);
-        
-        maintextMesh.text = "game Finished !";
+        cooldownBar.gameObject.SetActive(false);
+        mainTextMesh.text = "Fini !";
 
         yield return new WaitForSeconds(2f);
 
         if (P1 != null && P2 != null)
         {
-            if (P1.P1JaugeFillAmout > P2.P1JaugeFillAmout) maintextMesh.text = "player 1 wins";
-            else maintextMesh.text = "player 2 wins";
+            if (P1.P1JaugeFillAmout > P2.P1JaugeFillAmout) mainTextMesh.text = "Le joueur 1 a gagné";
+            else mainTextMesh.text = "Le joueur 2 a gagné";
         }
     }
 }
