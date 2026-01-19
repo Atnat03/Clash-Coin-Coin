@@ -6,7 +6,7 @@ public class PlayerSpawn : MonoBehaviour
     public Transform[] spawnPoints;
     private int playerCount;
 
-    public void OnPlayerJoined(PlayerInput playerInput)
+    public void OnPlayerJoined(UnityEngine.InputSystem.PlayerInput playerInput)
     {
         playerInput.transform.position = spawnPoints[playerCount].transform.position;
         playerCount++;

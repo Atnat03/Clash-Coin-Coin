@@ -7,7 +7,7 @@
             "id": "28b7f2fb-20cf-436c-8b4b-7b6ee6f1e773",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "Aim",
                     "type": "Value",
                     "id": "e2dac709-3c1c-480b-9b4d-d6aee675b39b",
                     "expectedControlType": "Vector2",
@@ -24,7 +24,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -35,7 +35,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Aim",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -46,7 +46,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -57,7 +57,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -68,7 +68,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -79,7 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
