@@ -6,7 +6,18 @@ public abstract class Item : MonoBehaviour
     public string name;
     public float PV;
     public float maxPV;
+    public bool playerOneProperty;
 
+    
+    public Item()
+    {
+        id = 0;
+        name = "";
+        maxPV = 0;
+        PV = 0;
+        Debug.LogWarning("Item created without parameters");
+    }
+    
     public Item(int  id, string name, float maxPV)
     {
         this.id = id;
