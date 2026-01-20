@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public StateMachine<GameSate> stateMachine =  new StateMachine<GameSate>();
     
     public List<Item> placedItems = new List<Item>();
+    public List<ItemData> itemPlacedData = new List<ItemData>();
 
     public string[] miniGames;
     public int player_1_Score = -1;
@@ -34,6 +35,17 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
         
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void AddItemInList(Item item, Vector2 position)
+    {
+        ItemData itemData = new ItemData();
+        itemData.id = item.id;
+        itemData.name = item.name;
+        itemData.position = position;
+        itemData.playerOneProperty = itemData.playerOneProperty;
+        itemData.PV = item.PV;
+        itemData.maxPV = item.maxPV;
     }
 
     public void ReturnToMainScene()
@@ -261,8 +273,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter Prepare");
         
-        //SpawnPlayer.instance.placementSystems[1].PlaceItem();
-        //SpawnPlayer.instance.placementSystems[0].PlaceItem();
+        SpawnPlayer.instance.placementSystems[1].PlaceItem();
+        SpawnPlayer.instance.placementSystems[0].PlaceItem();
         
         SetAllPlacedItems(true);
     }
