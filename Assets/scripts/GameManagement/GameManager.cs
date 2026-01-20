@@ -34,6 +34,20 @@ public class GameManager : MonoBehaviour
     {
         if(instance == null)instance = this;
         else Destroy(gameObject);
+        
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void OnEnable()
+    {
+        if (player_1_Score == -1 && player_2_Score == -1)
+        {
+            stateMachine.ChangeState(GameSate.Reward);
+        }
+        else
+        {
+            stateMachine.ChangeState(GameSate.StartGame);
+        }
     }
     
     void Start()

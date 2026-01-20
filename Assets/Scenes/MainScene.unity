@@ -3815,7 +3815,7 @@ MonoBehaviour:
   placedItems: []
   players: []
   miniGames:
-  - MashingGamerrr
+  - MashingGame
   player_1_Score: -1
   player_2_Score: -1
   CombatDuration: 20

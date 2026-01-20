@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,13 @@ public class MashIngGamePlayerScript : MonoBehaviour
     public Image P1Jauge;
     
     public bool ingame;
+
+    PlayerInput playerInput;
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     void Start()
     {
@@ -40,6 +48,12 @@ public class MashIngGamePlayerScript : MonoBehaviour
 
     public void PlayerPressedA(InputAction.CallbackContext context)
     {
-        if(ingame)P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic,0 , 1);
+        Debug.Log($"{gameObject.name} a reçu input ! Phase: {context.phase} | Value: {context.ReadValueAsButton()}");
+
+        if (ingame && context.performed)
+        {
+            P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
+            Debug.Log($"{gameObject.name} jauge mise à jour : {P1JaugeFillAmout}");
+        }
     }
 }
