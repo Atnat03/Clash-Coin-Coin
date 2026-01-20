@@ -8,6 +8,7 @@ public class QTEPlayerScript : MonoBehaviour
     public int score = 0;
     public Image imageNextInput;
     public Image jauge;
+    public int scoreMax = 20;
 
     public Queue<QTEGameManager.ButtonDirection> inputList = new Queue<QTEGameManager.ButtonDirection>();
 
@@ -36,7 +37,18 @@ public class QTEPlayerScript : MonoBehaviour
             inputList.Dequeue();
             score++;
             imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
-            jauge.fillAmount = score / 20f;
+            jauge.fillAmount = (float)score / scoreMax;
+            if (score == scoreMax)
+            {
+                QTEGameManager.instance.finished = true;
+            }
+        }
+        else
+        {
+            inputList.Dequeue();
+            score--;
+            imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
+            jauge.fillAmount = (float)score / scoreMax;
         }
     }
 
