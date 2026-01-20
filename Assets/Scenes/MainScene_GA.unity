@@ -1022,8 +1022,7 @@ MonoBehaviour:
   placementSystems:
   - {fileID: 1647906339}
   - {fileID: 1896602225}
-  playerPrefab: {fileID: 4053804592908859806, guid: 6e305bfabdb10d4468c43cf728b8a18c, type: 3}
-  playerInputManager: {fileID: 322163871}
+  players: []
   mainCamera: {fileID: 0}
 --- !u!1 &357036395
 GameObject:
@@ -3981,6 +3980,10 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
   gridVisualisation: {fileID: 843314747}
   previewSystem: {fileID: 1148004584}
+  gridSize: {x: 20, y: 20}
+  gridOrigin: {x: 0, y: 0, z: 0}
+  uiReady: {fileID: 0}
+  currentItemToPlace: -1
 --- !u!4 &1647906340
 Transform:
   m_ObjectHideFlags: 0
@@ -4664,6 +4667,10 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
   gridVisualisation: {fileID: 2023556235}
   previewSystem: {fileID: 1474993245}
+  gridSize: {x: 20, y: 20}
+  gridOrigin: {x: 0, y: 0, z: 0}
+  uiReady: {fileID: 0}
+  currentItemToPlace: -1
 --- !u!4 &1896602226
 Transform:
   m_ObjectHideFlags: 0

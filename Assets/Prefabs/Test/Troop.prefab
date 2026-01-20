@@ -53,16 +53,11 @@ MonoBehaviour:
   PV: 100
   maxPV: 100
   currentHP: {fileID: 8103242198617991682}
-  poisonDamageTakenBySeconds: 0
-  poisonDuration: 0
-  timer: 0
-  Speed: 5
-  RaduisAttack: 2
-  isAttaking: 0
+  Speed: 2.5
+  RadiusAttack: 1.5
   Damage: 10
-  attackCooldow: 0
-  poisonDamageInflicted: 30
-  poisonDurationInflicted: 10
+  attackCooldown: 1
+  target: {fileID: 0}
 --- !u!65 &4411826439638955582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -82,8 +77,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.4302298, z: 1}
-  m_Center: {x: 0, y: 0.21511495, z: 0}
+  m_Size: {x: 1, y: 1.4, z: 1}
+  m_Center: {x: 0, y: 0.28, z: 0}
 --- !u!1 &4173297060032470032
 GameObject:
   m_ObjectHideFlags: 0
