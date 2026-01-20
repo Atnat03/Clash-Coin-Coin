@@ -20,6 +20,7 @@ public class MetronomePlayerScript : MonoBehaviour
     {
         jaugePoints.fillAmount = 0;
         ingame = false;
+        cursorSpeed = MetronomeGameManager.instance.cursorDefaultSpeed;
         MetronomeGameManager.instance.BeginGame += BeginGame;
     }
 
@@ -67,7 +68,7 @@ public class MetronomePlayerScript : MonoBehaviour
         
         float phase = elapsedTime * cursorSpeed;
         
-        cursorSpeed *= 1.2f;
+        cursorSpeed *= MetronomeGameManager.instance.cursorAccelerationFactor;
         
         elapsedTime = phase / cursorSpeed;
     }
