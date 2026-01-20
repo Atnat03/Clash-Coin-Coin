@@ -57,6 +57,7 @@ MonoBehaviour:
   RaduisAttack: 2
   isAttaking: 0
   Damage: 10
+  attackCooldow: 0
 --- !u!65 &4411826439638955582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 86a2c9f1bc149a54c894e2f0ef5744c7, type: 2}
+  - {fileID: 2100000, guid: eb530689946987f4d83a687b848e0b1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -407,7 +408,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d7a16d105a39bf14ea39a0c5bee1031f, type: 2}
+  - {fileID: 2100000, guid: af5d4ed78663fd1429bcd1ec7c9146e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -568,4 +569,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d06545c76e6a8944a0db9e36c344670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlwaysInFrontOfCam
-  target: {fileID: 0}
