@@ -20,6 +20,7 @@ public class MetronomePlayerScript : MonoBehaviour
     {
         jaugePoints.fillAmount = 0;
         ingame = false;
+        cursorSpeed = MetronomeGameManager.instance.cursorDefaultSpeed;
         MetronomeGameManager.instance.BeginGame += BeginGame;
     }
 
@@ -28,10 +29,12 @@ public class MetronomePlayerScript : MonoBehaviour
         ingame = true;
         StartCoroutine(PlayGame());
     }
+
+    private float elapsedTime = 0f;
     
     public IEnumerator PlayGame()
     {
-        float elapsedTime = 0f;
+        elapsedTime = 0f;
         while (elapsedTime < MetronomeGameManager.instance.gameLength)
         {
             elapsedTime += Time.deltaTime;
@@ -59,8 +62,15 @@ public class MetronomePlayerScript : MonoBehaviour
     {
         points++;
         points = Mathf.Clamp(points, 0, MetronomeGameManager.instance.pointsToScore);
+
         text.text = "points : " + points;
         jaugePoints.fillAmount = (float)points / MetronomeGameManager.instance.pointsToScore;
+        
+        float phase = elapsedTime * cursorSpeed;
+        
         cursorSpeed *= MetronomeGameManager.instance.cursorAccelerationFactor;
+        
+        elapsedTime = phase / cursorSpeed;
     }
+
 }
