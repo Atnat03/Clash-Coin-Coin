@@ -47,19 +47,12 @@ public class PlacementSystem : MonoBehaviour
 
         gridBounds = new Bounds(center, size);
     }
-    
-    public void Starting(PlayerInputing playerInpute)
+
+    private void Start()
     {
-        if (playerInputing != null)
-            return;
-        
-        playerInputing = playerInpute;
         StopPlacement();
         floorData = new();
         furnitureData = new();
-
-        playerInpute.OnSelectBuild += StartPlacement;
-        playerInpute.OnSelectTroop += StartPlacement;
     }
 
     public void PlaceItem()

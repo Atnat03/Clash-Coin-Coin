@@ -27,7 +27,6 @@ public class PlayerInputing : MonoBehaviour
     private bool hasBounds = false;
 
     public bool IsReady = false;
-    public bool HasReward = false;
     
     void Start()
     {

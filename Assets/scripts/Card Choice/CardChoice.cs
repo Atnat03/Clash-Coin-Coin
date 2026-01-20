@@ -27,7 +27,7 @@ public class CardChoice : MonoBehaviour
    public int cardSelected1;
    public int cardSelected2;
 
-   public bool inSelection1, inSelection2;
+   public bool inSelection1, inSelection2 = false;
 
    float lastAimX1;
    float lastAimX2;
@@ -45,13 +45,11 @@ public class CardChoice : MonoBehaviour
 
    private void Player1Click()
    {
-      Debug.Log("mmh");
       ChoseCard(cardSelected1);
    }
    
    private void Player2Click()
    {
-      Debug.Log("mmh2");
       ChoseCard(cardSelected2+3);
    }
    public void Update()
@@ -163,7 +161,7 @@ public class CardChoice : MonoBehaviour
          if(ID ==4) animatorCards2.SetTrigger("2");
          if(ID ==5) animatorCards2.SetTrigger("3");
          
-         placementPlayer1.currentItemToPlace = cardsID2[ID-3];
+         placementPlayer2.currentItemToPlace = cardsID2[ID-3];
       }
    }
 }
