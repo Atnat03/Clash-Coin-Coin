@@ -16,6 +16,8 @@ public class ItemsData
     public GameObject Prefab;
     [HideInInspector] public float PV;
     public float maxPV;
+    
     public Sprite carte;
     public Sprite dosCarte;
+    public int rarity;
 }

@@ -2,15 +2,9 @@ using UnityEngine;
 
 public class CardChoice : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+   public Animator animatorCards
+   public int playerID;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   public ItemSO itemPool;
+
 }
