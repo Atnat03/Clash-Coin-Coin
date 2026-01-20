@@ -24,6 +24,7 @@ public class CurplingPlayerScript : MonoBehaviour
     {
         if(CurlingGameManager.instance.inGame)
         {
+            Debug.Log("button press");
             ButtonPressed = true;
             StartCoroutine(ButtonPressedCoroutine());
         }
@@ -31,6 +32,7 @@ public class CurplingPlayerScript : MonoBehaviour
 
     public void ButtonRelease(InputAction.CallbackContext context)
     {
+        Debug.Log("button release");
         ButtonPressed = false;
     }
 
