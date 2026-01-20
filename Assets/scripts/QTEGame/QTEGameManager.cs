@@ -45,16 +45,8 @@ public class QTEGameManager : MonoBehaviour
     IEnumerator GameCoroutine()
     {
         float elapsedTime = 3;
-        while (elapsedTime > 0)
-        {
-            elapsedTime -= Time.deltaTime;
-            mainText.text = (Mathf.CeilToInt(elapsedTime)).ToString();
-            yield return null;
-        }
 
-        mainText.text = "go !";
-
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3.5f);
 
         mainText.text = "";
         inGame = true;
