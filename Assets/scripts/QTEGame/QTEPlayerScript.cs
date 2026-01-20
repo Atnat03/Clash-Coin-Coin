@@ -7,7 +7,7 @@ public class QTEPlayerScript : MonoBehaviour
 {
     public int score = 0;
     public Image imageNextInput;
-    
+    public Image jauge;
 
     public Queue<QTEGameManager.ButtonDirection> inputList = new Queue<QTEGameManager.ButtonDirection>();
 
@@ -36,6 +36,7 @@ public class QTEPlayerScript : MonoBehaviour
             inputList.Dequeue();
             score++;
             imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
+            jauge.fillAmount = score / 20f;
         }
     }
 
