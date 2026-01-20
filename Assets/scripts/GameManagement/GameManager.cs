@@ -281,11 +281,20 @@ public class GameManager : MonoBehaviour
         Debug.Log("Enter Reward");
 
         CardChoice.instance.ResolveMiniGameResults(player_1_Score, player_2_Score);
+        UIManager.instance.HideStartText(false);
     }
     
     void RewardUpdate()
     {
+        if (AllPlayerAreChoosed())
+        {
+            stateMachine.ChangeState(GameSate.Prepare);
+        }
+    }
 
+    bool AllPlayerAreChoosed()
+    {
+        return !CardChoice.instance.inSelection1 &&  !CardChoice.instance.inSelection2;
     }
     
     #endregion

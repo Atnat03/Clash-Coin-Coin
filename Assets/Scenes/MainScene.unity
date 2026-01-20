@@ -435,37 +435,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &99796261
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 99796262}
-  m_Layer: 0
-  m_Name: SpawnPosP2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &99796262
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99796261}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.08, y: 11, z: -13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131886888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,9 +1518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbcc0a6ec28e59e41bb2efa224d8a824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  spawnPoints:
-  - {fileID: 1561874423}
-  - {fileID: 99796262}
+  spawnPoints: []
   P1infos:
   - {fileID: 433156027}
   P2infos:
@@ -2143,6 +2110,7 @@ GameObject:
   - component: {fileID: 413460513}
   - component: {fileID: 413460512}
   - component: {fileID: 413460511}
+  - component: {fileID: 413460515}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2238,6 +2206,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &413460515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413460510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfdd8bf142380346a2be1e07c3e1d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  timerCombat: {fileID: 433156029}
+  StartTextP1: {fileID: 433156027}
+  StartTextP2: {fileID: 1048367852}
 --- !u!1 &433156027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,7 +2238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &433156028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4215,7 +4198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1048367853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6280,7 +6263,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1553409299}
   - component: {fileID: 1553409300}
-  - component: {fileID: 1553409301}
   m_Layer: 0
   m_Name: "\u2699\uFE0FGameManager"
   m_TagString: Untagged
@@ -6321,50 +6303,6 @@ MonoBehaviour:
   player_1_Score: -1
   player_2_Score: -1
   CombatDuration: 20
---- !u!114 &1553409301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553409298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfdd8bf142380346a2be1e07c3e1d08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  timerCombat: {fileID: 1310670045}
---- !u!1 &1561874422
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1561874423}
-  m_Layer: 0
-  m_Name: SpawnPosP1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1561874423
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561874422}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.77, y: 11, z: -13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569649508
 GameObject:
   m_ObjectHideFlags: 0
@@ -6927,7 +6865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f177e1c28b9d408ef64952d55dcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlacementSystem
-  playerInputing: {fileID: 0}
+  playerInputing: {fileID: 13937452}
   grid: {fileID: 1476923932}
   database: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
   gridVisualisation: {fileID: 843314747}
@@ -6935,6 +6873,7 @@ MonoBehaviour:
   gridSize: {x: 10, y: 10}
   gridOrigin: {x: -5, y: 0, z: 2}
   uiReady: {fileID: 1604622127}
+  currentItemToPlace: -1
 --- !u!4 &1647906340
 Transform:
   m_ObjectHideFlags: 0
@@ -7951,7 +7890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f177e1c28b9d408ef64952d55dcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlacementSystem
-  playerInputing: {fileID: 0}
+  playerInputing: {fileID: 1866679516}
   grid: {fileID: 276427236}
   database: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
   gridVisualisation: {fileID: 2023556235}
@@ -7959,6 +7898,7 @@ MonoBehaviour:
   gridSize: {x: 10, y: 10}
   gridOrigin: {x: -5, y: 0, z: 2}
   uiReady: {fileID: 2061138033}
+  currentItemToPlace: -1
 --- !u!4 &1896602226
 Transform:
   m_ObjectHideFlags: 0
@@ -8549,8 +8489,6 @@ SceneRoots:
   - {fileID: 1647906340}
   - {fileID: 1896602226}
   - {fileID: 413460514}
-  - {fileID: 1561874423}
-  - {fileID: 99796262}
   - {fileID: 131886892}
   - {fileID: 496770107}
   - {fileID: 1553409299}
