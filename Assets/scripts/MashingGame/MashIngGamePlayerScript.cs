@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,13 @@ public class MashIngGamePlayerScript : MonoBehaviour
     public Image P1Jauge;
     
     public bool ingame;
+
+    PlayerInput playerInput;
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     void Start()
     {
@@ -27,11 +35,15 @@ public class MashIngGamePlayerScript : MonoBehaviour
     {
         ingame = true;
         float elapsedTime = 0f;
-        while (elapsedTime < MashingGameManager.instance.GameLength)
+        while (elapsedTime < MashingGameManager.instance.GameLength && !MashingGameManager.instance.someoneWon)
         {
             elapsedTime += Time.deltaTime;
             
             P1Jauge.fillAmount = P1JaugeFillAmout;
+            if (P1JaugeFillAmout >= 0.98)
+            {
+                MashingGameManager.instance.someoneWon = true;
+            }
             
             yield return null;
         }
@@ -40,6 +52,9 @@ public class MashIngGamePlayerScript : MonoBehaviour
 
     public void PlayerPressedA(InputAction.CallbackContext context)
     {
-        if(ingame)P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic,0 , 1);
+        if (ingame && context.performed)
+        {
+            P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
+        }
     }
 }

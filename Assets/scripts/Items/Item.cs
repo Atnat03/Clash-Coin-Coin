@@ -46,4 +46,14 @@ public abstract class Item : MonoBehaviour, ITargetable
             Die();
         }    
     }
+
+    public void GetPoisoned(float duration, float damage)
+    {
+        
+    }
+
+    public virtual void SetActive(bool state)
+    {
+        enabled = state;
+    }
 }

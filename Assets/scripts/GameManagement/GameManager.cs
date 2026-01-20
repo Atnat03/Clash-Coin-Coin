@@ -1,34 +1,77 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     
-    enum GameSate
+    public enum GameSate
     {
         StartGame,
         Loading,
         Transition,
+        Reward,
         Prepare,
         Combat,
         MiniGame,
         EndGame
     }
     
-    StateMachine<GameSate> stateMachine =  new StateMachine<GameSate>();
-    public State currentState;
+    public StateMachine<GameSate> stateMachine =  new StateMachine<GameSate>();
     
     public List<Item> placedItems = new List<Item>();
-    public List<PlacementSystem> placementSystems = new List<PlacementSystem>();
-    public List<PlayerInputing> players =  new List<PlayerInputing>();
+    public List<ItemData> itemPlacedData = new List<ItemData>();
+
+    public string[] miniGames;
+    public int player_1_Score = -1;
+    public int player_2_Score = -1;
     
     void Awake()
     {
         if(instance == null)instance = this;
         else Destroy(gameObject);
+        
+        DontDestroyOnLoad(gameObject);
     }
+
+    public void AddItemInList(Item item, Vector2 position)
+    {
+        ItemData itemData = new ItemData();
+        itemData.id = item.id;
+        itemData.name = item.name;
+        itemData.position = position;
+        itemData.playerOneProperty = itemData.playerOneProperty;
+        itemData.PV = item.PV;
+        itemData.maxPV = item.maxPV;
+    }
+
+    public void ReturnToMainScene()
+    {
+        StartCoroutine(LoadMainSceneAndCheck());
+    }
+    
+    private IEnumerator LoadMainSceneAndCheck()
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync("MainScene");
+
+        while (!op.isDone)
+        {
+            yield return null;
+        }
+
+        if (player_1_Score == -1 && player_2_Score == -1)
+        {
+            stateMachine.ChangeState(GameSate.StartGame);
+        }
+        else
+        {
+            stateMachine.ChangeState(GameSate.Reward);
+        }
+    }
+
     
     void Start()
     {
@@ -51,6 +94,13 @@ public class GameManager : MonoBehaviour
             onEnter:()=> Debug.Log("Enter  Transition")
         ));
         
+        //Reward
+        stateMachine.Add(new State<GameSate>(
+            GameSate.Reward,
+            onEnter:RewardEnter,
+            onUpdate:RewardUpdate
+        ));
+        
         //Prepare
         stateMachine.Add(new State<GameSate>(
             GameSate.Prepare,
@@ -62,13 +112,15 @@ public class GameManager : MonoBehaviour
         stateMachine.Add(new State<GameSate>(
             GameSate.Combat,
             onEnter: CombatEnter,
-            onUpdate: CombatUpdate
+            onUpdate: CombatUpdate,
+            onExit: CombatExit
         ));
         
         //MiniGame
         stateMachine.Add(new State<GameSate>(
             GameSate.MiniGame,
-            onEnter:()=> Debug.Log("Enter  MiniGame")
+            onEnter:StartMiniGame,
+            onUpdate:UpdateMiniGame
         ));
         
         //EndGame
@@ -84,9 +136,10 @@ public class GameManager : MonoBehaviour
     {
         foreach (Item item in placedItems)
         {
-            item.enabled = state;
+            item.SetActive(state);
         }
     }
+    
     public void RemovePlacedItem(Item item)
     {
         if (placedItems.Contains(item))
@@ -97,7 +150,7 @@ public class GameManager : MonoBehaviour
 
     public bool isAllPlayerReadyToFight()
     {
-        foreach (PlayerInputing player in players)
+        foreach (PlayerInputing player in SpawnPlayer.instance.players)
         {
             if (!player.IsReady) return false;
         }
@@ -119,18 +172,40 @@ public class GameManager : MonoBehaviour
     
     #endregion
     
-    #region CombatState
+    #region StartState
 
     void StartEnter()
     {
+        UIManager.instance.HideStartText(true);
+        
         Debug.Log("Enter Start");
     }
     
     void StartUpdate()
     {
-        if (players.Count == 2)
+        if (SpawnPlayer.instance.players.Length == 2)
         {
-            stateMachine.ChangeState(GameSate.Prepare);
+            stateMachine.ChangeState(GameSate.MiniGame);
+        }
+    }
+    
+    #endregion
+    
+    #region MiniGamesState
+
+    void StartMiniGame()
+    {
+        Debug.Log("Enter MiniGames");
+
+        string sceneName = miniGames[Random.Range(0, miniGames.Length - 1)];
+        SceneManager.LoadScene(sceneName);
+    }
+    
+    void UpdateMiniGame()
+    {
+        if (isAllPlayerReadyToFight())
+        {
+            stateMachine.ChangeState(GameSate.Combat);
         }
     }
     
@@ -143,17 +218,51 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter Combat");
 
-        foreach (PlacementSystem p in placementSystems)
+        foreach (PlacementSystem p in SpawnPlayer.instance.placementSystems)
         {
             p.StartCombat();
         }
+
+        UIManager.instance.HideCombatUI(true);
+
+        StartCoroutine(DecompteCombat(1));
         
         SetAllPlacedItems(true);
+    }
+
+    public float CombatDuration = 20;
+
+    IEnumerator DecompteCombat(float intervale)
+    {
+        yield return new WaitForSeconds(intervale);
+        CombatDuration -= intervale;
+      
+        if (CombatDuration > 0)
+        {
+            UIManager.instance.UpdateCombatUI((int)CombatDuration);
+            StartCoroutine(DecompteCombat(intervale));
+        }
+        else
+        {
+            SetAllPlacedItems(false);
+
+            yield return new WaitForSeconds(5f);
+
+            CombatDuration = 20;
+            
+            stateMachine.ChangeState(GameSate.MiniGame);
+        }
+
     }
     
     void CombatUpdate()
     {
         
+    }
+
+    void CombatExit()
+    {
+        UIManager.instance.HideCombatUI(false);
     }
     
     #endregion
@@ -163,7 +272,10 @@ public class GameManager : MonoBehaviour
     void PrepareEnter()
     {
         Debug.Log("Enter Prepare");
-
+        
+        SpawnPlayer.instance.placementSystems[1].PlaceItem();
+        SpawnPlayer.instance.placementSystems[0].PlaceItem();
+        
         SetAllPlacedItems(true);
     }
     
@@ -173,6 +285,32 @@ public class GameManager : MonoBehaviour
         {
             stateMachine.ChangeState(GameSate.Combat);
         }
+    }
+    
+    #endregion
+    
+    #region RewardState
+
+    void RewardEnter()
+    {
+        Debug.Log("Enter Reward");
+
+        CardChoice.instance.ResolveMiniGameResults(player_1_Score, player_2_Score);
+        UIManager.instance.HideStartText(false);
+    }
+    
+    void RewardUpdate()
+    {
+        if (AllPlayerAreChoosed())
+        {
+            CardChoice.instance.ResetCardSolves();
+            stateMachine.ChangeState(GameSate.Prepare);
+        }
+    }
+
+    bool AllPlayerAreChoosed()
+    {
+        return !CardChoice.instance.inSelection1 && !CardChoice.instance.inSelection2;
     }
     
     #endregion

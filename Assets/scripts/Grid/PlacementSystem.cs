@@ -25,6 +25,8 @@ public class PlacementSystem : MonoBehaviour
     private Bounds gridBounds;
     
     [SerializeField] private GameObject uiReady;
+
+    public int currentItemToPlace = -1;
     
     private void Awake()
     {
@@ -45,21 +47,24 @@ public class PlacementSystem : MonoBehaviour
 
         gridBounds = new Bounds(center, size);
     }
-    
-    public void Starting(PlayerInputing playerInpute)
+
+    private void Start()
     {
-        if (playerInputing != null)
-            return;
-        
-        playerInputing = playerInpute;
         StopPlacement();
         floorData = new();
         furnitureData = new();
-
-        playerInpute.OnSelectBuild += StartPlacement;
-        playerInpute.OnSelectTroop += StartPlacement;
+        
+        playerInputing.OnSelectTroop += StartPlacement;
     }
 
+    public void PlaceItem()
+    {
+        if(currentItemToPlace == -1)
+            return;
+
+        StartPlacement(currentItemToPlace);
+    }
+    
     public void StartPlacement(int ID)
     {
         StopPlacement();
@@ -113,15 +118,14 @@ public class PlacementSystem : MonoBehaviour
 
         Item itemPlaced = go.GetComponentInChildren<Item>();
         ItemsData data = database.itemsData[selectedObjectIndex];
-        itemPlaced.enabled = true;
-        itemPlaced.GetComponent<ITargetable>().playerOneProperty = playerInputing.isPlayerOne;
+        itemPlaced.enabled = false;
+        itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
         itemPlaced.maxPV = data.maxPV;
         itemPlaced.PV = data.maxPV;
-
-
-        itemPlaced.enabled = false;
         
         GameManager.instance.placedItems.Add(itemPlaced);
+        
+        currentItemToPlace = -1;
         
         previewSystem.UpdatePosition(gridPosition, false);
     }
