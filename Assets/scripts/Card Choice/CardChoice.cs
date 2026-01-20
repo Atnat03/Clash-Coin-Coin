@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CardChoice : MonoBehaviour
 {
+   public static CardChoice instance;
+   
    public Animator animatorCards1, animatorCards2;
 
    public ItemSO itemPool;
@@ -29,15 +31,16 @@ public class CardChoice : MonoBehaviour
 
    float lastAimX1;
    float lastAimX2;
-   
-   
-   public PlayerInputing playerInput;
-   
+
+   private void Awake()
+   {
+      instance = this;
+   }
 
    private void OnDisable()
    {
-      GameManager.instance.players[0].OnClicked -= Player1Click;
-      GameManager.instance.players[1].OnClicked -= Player2Click;
+      SpawnPlayer.instance.players[0].OnClicked -= Player1Click;
+      SpawnPlayer.instance.players[1].OnClicked -= Player2Click;
    }
 
    private void Player1Click()
@@ -55,7 +58,7 @@ public class CardChoice : MonoBehaviour
    {
       if (inSelection1)
       {
-         float x = GameManager.instance.players[0].aimInput.x;
+         float x = SpawnPlayer.instance.players[0].aimInput.x;
 
          if (x > 0.9f && lastAimX1 <= 0.9f)
             cardSelected1++;
@@ -70,7 +73,7 @@ public class CardChoice : MonoBehaviour
 
       if (inSelection2)
       {
-         float x = GameManager.instance.players[1].aimInput.x;
+         float x = SpawnPlayer.instance.players[1].aimInput.x;
 
          if (x > 0.9f && lastAimX2 <= 0.9f)
             cardSelected2++;
@@ -96,19 +99,13 @@ public class CardChoice : MonoBehaviour
       if(cardSelected2 != -1)cardsUI2[cardSelected2].face.color = new Color(0.3f, 0.3f, 0.3f);
    }
    
-
-   public void Launchmamere()
-   {
-      ResolveMiniGameResults(2, 2);
-   }
-   
    public void ResolveMiniGameResults(int miniGame1, int miniGame2)
    {
       inSelection1 = true;
       inSelection2 = true;
       
-      GameManager.instance.players[0].OnClicked += Player1Click;
-      GameManager.instance.players[1].OnClicked += Player2Click;
+      SpawnPlayer.instance.players[0].OnClicked += Player1Click;
+      SpawnPlayer.instance.players[1].OnClicked += Player2Click;
 
       cardSelected1 = 0;
       cardSelected2 = 0;
@@ -123,7 +120,6 @@ public class CardChoice : MonoBehaviour
       if (result <= 0) { playerFail = true; return; }
       playerFail = false;
 
-      // Définition des raretés à tirer
       int[] raritiesToPick = result switch
       {
          1 => new[] { 0, 0, 0 }, 
@@ -158,7 +154,7 @@ public class CardChoice : MonoBehaviour
          if(ID ==1) animatorCards1.SetTrigger("2");
          if(ID ==2) animatorCards1.SetTrigger("3");
          inSelection1 = false;
-         placementPlayer1.StartPlacement(cardsID1[ID]);
+         placementPlayer1.currentItemToPlace = cardsID2[ID];
       }
       else
       {
@@ -167,7 +163,7 @@ public class CardChoice : MonoBehaviour
          if(ID ==4) animatorCards2.SetTrigger("2");
          if(ID ==5) animatorCards2.SetTrigger("3");
          
-         placementPlayer2.StartPlacement(cardsID2[ID-3]);
+         placementPlayer1.currentItemToPlace = cardsID2[ID-3];
       }
    }
 }

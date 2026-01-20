@@ -43,8 +43,6 @@ public class PlayerInputing : MonoBehaviour
     public void OnAim(InputAction.CallbackContext context) => aimInput = context.ReadValue<Vector2>();
     public void OnPressedInput(InputAction.CallbackContext context) => OnClicked?.Invoke();
     public void OnExitInput(InputAction.CallbackContext context) => OnExit?.Invoke();
-    public void OnSelectTroopInput(InputAction.CallbackContext context) => OnSelectTroop?.Invoke(0);
-    public void OnSelectBuildInput(InputAction.CallbackContext context)=> OnSelectBuild?.Invoke(1);
 
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
     

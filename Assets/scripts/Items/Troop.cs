@@ -9,6 +9,7 @@ public class Troop : Item
     public float RaduisAttack;
     public bool isAttaking = false;
     public float Damage = 10;
+    public float attackCooldow = 1f;
     
     public Troop(int  id, string name, float maxPV, float speed, float raduisAttack)
     {
@@ -65,7 +66,7 @@ public class Troop : Item
 	IEnumerator Attack()
 	{
 		isAttaking = true;
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(attackCooldow);
 		
 		target.GetComponent<ITargetable>().TakeDamage(Damage);
 		

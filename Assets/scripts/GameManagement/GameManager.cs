@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     
-    enum GameSate
+    public enum GameSate
     {
         StartGame,
         Loading,
@@ -20,15 +20,13 @@ public class GameManager : MonoBehaviour
         EndGame
     }
     
-    StateMachine<GameSate> stateMachine =  new StateMachine<GameSate>();
-    public State currentState;
+    public StateMachine<GameSate> stateMachine =  new StateMachine<GameSate>();
     
     public List<Item> placedItems = new List<Item>();
-    public List<PlayerInputing> players =  new List<PlayerInputing>();
 
     public string[] miniGames;
-    public float player_1_Score = -1;
-    public float player_2_Score = -1;
+    public int player_1_Score = -1;
+    public int player_2_Score = -1;
     
     void Awake()
     {
@@ -38,17 +36,30 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void OnEnable()
+    public void ReturnToMainScene()
     {
-        if (player_1_Score == -1 && player_2_Score == -1)
+        StartCoroutine(LoadMainSceneAndCheck());
+    }
+    
+    private IEnumerator LoadMainSceneAndCheck()
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync("MainScene");
+
+        while (!op.isDone)
         {
-            stateMachine.ChangeState(GameSate.Reward);
+            yield return null;
         }
-        else
+
+        if (player_1_Score == -1 && player_2_Score == -1)
         {
             stateMachine.ChangeState(GameSate.StartGame);
         }
+        else
+        {
+            stateMachine.ChangeState(GameSate.Reward);
+        }
     }
+
     
     void Start()
     {
@@ -126,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public bool isAllPlayerReadyToFight()
     {
-        foreach (PlayerInputing player in players)
+        foreach (PlayerInputing player in SpawnPlayer.instance.players)
         {
             if (!player.IsReady) return false;
         }
@@ -152,12 +163,14 @@ public class GameManager : MonoBehaviour
 
     void StartEnter()
     {
+        UIManager.instance.HideStartText(true);
+        
         Debug.Log("Enter Start");
     }
     
     void StartUpdate()
     {
-        if (players.Count == 2)
+        if (SpawnPlayer.instance.players.Length == 2)
         {
             stateMachine.ChangeState(GameSate.MiniGame);
         }
@@ -244,7 +257,10 @@ public class GameManager : MonoBehaviour
     void PrepareEnter()
     {
         Debug.Log("Enter Prepare");
-
+        
+        SpawnPlayer.instance.placementSystems[0].PlaceItem();
+        SpawnPlayer.instance.placementSystems[1].PlaceItem();
+        
         SetAllPlacedItems(true);
     }
     
@@ -264,7 +280,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter Reward");
 
-        UIManager.instance.ShowReward();
+        CardChoice.instance.ResolveMiniGameResults(player_1_Score, player_2_Score);
     }
     
     void RewardUpdate()

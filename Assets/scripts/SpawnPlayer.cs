@@ -14,8 +14,7 @@ public class SpawnPlayer : MonoBehaviour
     [SerializeField] private GameObject[] P1infos;
     [SerializeField] private GameObject[] P2infos;
     [SerializeField] public PlacementSystem[] placementSystems;
-    public PlayerInput playerPrefab;
-    public PlayerInputManager playerInputManager;
+    public PlayerInputing[] players;
     public Camera mainCamera;
 
     private void Awake()
@@ -29,7 +28,7 @@ public class SpawnPlayer : MonoBehaviour
         ActivateInfos(1, true);
     }
     
-    public void OnPlayerJoined(PlayerInput playerInput)
+    /*public void OnPlayerJoined(PlayerInput playerInput)
     {
         if (id >= spawnPoints.Length) return;
         
@@ -37,8 +36,6 @@ public class SpawnPlayer : MonoBehaviour
         
         playerInput.transform.name = "Player " + id;
         
-        playerInput.camera = mainCamera;
-
         if (placementSystems.Length > id)
             placementSystems[id].Starting(playerInput.GetComponent<PlayerInputing>());
 
@@ -49,7 +46,7 @@ public class SpawnPlayer : MonoBehaviour
         GameManager.instance.players.Add(playerInput.GetComponent<PlayerInputing>());
         
         id++;
-    }
+    }*/
 
 
     public void ActivateInfos(int id, bool state)
