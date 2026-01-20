@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class QTEPlayerScript : MonoBehaviour
 {
     public int score = 0;
+    public Image imageNextInput;
     
 
     public Queue<QTEGameManager.ButtonDirection> inputList = new Queue<QTEGameManager.ButtonDirection>();
@@ -22,6 +25,8 @@ public class QTEPlayerScript : MonoBehaviour
             rnd = Random.Range(0, 4);
             inputList.Enqueue((QTEGameManager.ButtonDirection)rnd);
         }
+
+        imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
     }
 
     public void RegisterInput(QTEGameManager.ButtonDirection input)
@@ -30,7 +35,28 @@ public class QTEPlayerScript : MonoBehaviour
         {
             inputList.Dequeue();
             score++;
+            imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
         }
     }
+
+    public void NorthButtonPressed(InputAction.CallbackContext context)
+    {
+        if(QTEGameManager.instance.inGame && context.performed)RegisterInput(QTEGameManager.ButtonDirection.north);
+    }
+    
+    public void SouthButtonPressed(InputAction.CallbackContext context)
+    {
+        if(QTEGameManager.instance.inGame && context.performed)RegisterInput(QTEGameManager.ButtonDirection.south);
+    }
+    public void EastButtonPressed(InputAction.CallbackContext context)
+    {
+        if(QTEGameManager.instance.inGame && context.performed)RegisterInput(QTEGameManager.ButtonDirection.east);
+    }
+    public void WestButtonPressed(InputAction.CallbackContext context)
+    {
+        if(QTEGameManager.instance.inGame && context.performed)RegisterInput(QTEGameManager.ButtonDirection.west);
+    }
+    
+    
     
 }

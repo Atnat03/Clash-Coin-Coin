@@ -15,6 +15,9 @@ public class QTEGameManager : MonoBehaviour
     public Sprite eastButtonSprite;
     public Sprite westButtonSprite;
 
+    [SerializeField]private QTEPlayerScript P1;
+    [SerializeField]private QTEPlayerScript P2;
+
     public enum ButtonDirection
     {
         south,
@@ -32,6 +35,11 @@ public class QTEGameManager : MonoBehaviour
         buttonSprites.Add(ButtonDirection.south, southButtonSprite);
         buttonSprites.Add(ButtonDirection.east, eastButtonSprite);
         buttonSprites.Add(ButtonDirection.west, westButtonSprite);
+    }
+
+    void Start()
+    {
+        StartCoroutine(GameCoroutine());
     }
 
     IEnumerator GameCoroutine()
@@ -58,6 +66,14 @@ public class QTEGameManager : MonoBehaviour
             mainText.text = elapsedTime.ToString("F2");
             yield return null;
         }
+
+        inGame = false;
+        
+        mainText.text = "partie terminée !";
+        yield return new WaitForSeconds(1);
+        if(P1.score == P2.score)mainText.text = "égalité !";
+        else if (P1.score > P2.score) mainText.text = "Joueur 1 a gagné !";
+        else mainText.text = "Joueur 2 a gagné !";
     }
 
 }
