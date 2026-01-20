@@ -11,6 +11,7 @@ public class MetronomeGameManager : MonoBehaviour
     [Tooltip("le slider va de -1 a 1")]public float SliderTolerence = .1f;
     public int pointsToScore;
     public float cursorAccelerationFactor = 1.2f;
+    public float cursorDefaultSpeed = 1;
     
     public TextMeshProUGUI mainText;
     

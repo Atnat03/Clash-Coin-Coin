@@ -40,7 +40,7 @@ public class MashIngGamePlayerScript : MonoBehaviour
             elapsedTime += Time.deltaTime;
             
             P1Jauge.fillAmount = P1JaugeFillAmout;
-            if (P1JaugeFillAmout >= 0.98)
+            if (P1JaugeFillAmout >= 0.95f)
             {
                 MashingGameManager.instance.someoneWon = true;
             }
