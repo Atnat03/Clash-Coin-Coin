@@ -1,16 +1,16 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TurnManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static TurnManager instance;
-    
+    public static GameManager instance;
     
     enum GameSate
     {
         StartGame,
         Loading,
         Transition,
+        Prepare,
         Combat,
         MiniGame,
         EndGame
@@ -18,8 +18,7 @@ public class TurnManager : MonoBehaviour
     
     StateMachine<GameSate> stateMachine =  new StateMachine<GameSate>();
     private State currentState;
-
-
+    
     void Awake()
     {
         if(instance == null)instance = this;
@@ -42,6 +41,12 @@ public class TurnManager : MonoBehaviour
         stateMachine.Add(new State<GameSate>(
             GameSate.Transition,
             onEnter:()=> Debug.Log("Enter  Transition")
+        ));
+        
+        stateMachine.Add(new State<GameSate>(
+            GameSate.Prepare,
+            onEnter:()=> Debug.Log("Enter  Preparation"),
+            onUpdate: CombatUpdate
         ));
         
         stateMachine.Add(new State<GameSate>(

@@ -34,13 +34,9 @@ public class Troop : Item
 
 	void Update()
 	{
-		if (target == null) return;
-
 		if (isAttaking) return;
 		
 		currentHP.fillAmount = PV / maxPV;
-		
-		FindPath(transform.position, target.position);
 		
 		if (t <= 0)
 		{
@@ -51,9 +47,14 @@ public class Troop : Item
 		{
 			t -= Time.deltaTime;
 		}
+		
+		if(target == null) return;
+			
+		FindPath(transform.position, target.position);
 
 		if (Vector3.Distance(transform.position, target.position) < RaduisAttack)
 		{
+			StopAllCoroutines();
 			StartCoroutine(Attack());
 		}else
 		{
@@ -84,6 +85,8 @@ public class Troop : Item
 
 	private Transform Rescan()
 	{
+		print("Rescan");
+		
 		Collider[] hits = Physics.OverlapSphere(transform.position, 1000000);
 
 		Transform closestTarget = null;
@@ -91,10 +94,13 @@ public class Troop : Item
 
 		foreach (Collider hit in hits)
 		{
-			if (!hit.TryGetComponent<ITargetable>(out _))
+			if (!hit.TryGetComponent<ITargetable>(out var targetable))
 				continue;
-			
-			if(hit.GetComponent<ITargetable>().playerOneProperty == playerOneProperty)
+
+			if (targetable is MonoBehaviour mb && !mb.isActiveAndEnabled)
+				continue;
+
+			if (targetable.playerOneProperty == playerOneProperty)
 				continue;
 
 			Vector3 delta = hit.transform.position - transform.position;
