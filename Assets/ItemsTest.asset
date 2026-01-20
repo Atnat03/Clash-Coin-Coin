@@ -75,7 +75,7 @@ MonoBehaviour:
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
     dosCarte: {fileID: 21300000, guid: 7261c2b57745ddb449b4581b88ecc18d, type: 3}
-    rarity: 0
+    rarity: 2
   - Id: 5
     Name: 
     Size: {x: 1, y: 1}
@@ -84,7 +84,7 @@ MonoBehaviour:
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
     dosCarte: {fileID: 21300000, guid: 7261c2b57745ddb449b4581b88ecc18d, type: 3}
-    rarity: 0
+    rarity: 2
   - Id: 5
     Name: 
     Size: {x: 1, y: 1}
@@ -93,4 +93,4 @@ MonoBehaviour:
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
     dosCarte: {fileID: 21300000, guid: 7261c2b57745ddb449b4581b88ecc18d, type: 3}
-    rarity: 0
+    rarity: 2
