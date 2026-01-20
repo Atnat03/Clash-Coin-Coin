@@ -164,4 +164,10 @@ public class CardChoice : MonoBehaviour
          placementPlayer2.currentItemToPlace = cardsID2[ID-3];
       }
    }
+
+   public void ResetCardSolves()
+   {
+      inSelection1 = true;
+      inSelection2 = true;
+   }
 }

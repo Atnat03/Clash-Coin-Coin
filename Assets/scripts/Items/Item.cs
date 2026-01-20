@@ -46,4 +46,9 @@ public abstract class Item : MonoBehaviour, ITargetable
             Die();
         }    
     }
+
+    public virtual void SetActive(bool state)
+    {
+        enabled = state;
+    }
 }

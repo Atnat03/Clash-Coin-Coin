@@ -53,6 +53,8 @@ public class PlacementSystem : MonoBehaviour
         StopPlacement();
         floorData = new();
         furnitureData = new();
+        
+        playerInputing.OnSelectTroop += StartPlacement;
     }
 
     public void PlaceItem()
@@ -116,15 +118,14 @@ public class PlacementSystem : MonoBehaviour
 
         Item itemPlaced = go.GetComponentInChildren<Item>();
         ItemsData data = database.itemsData[selectedObjectIndex];
-        itemPlaced.enabled = true;
-        itemPlaced.GetComponent<ITargetable>().playerOneProperty = playerInputing.isPlayerOne;
+        itemPlaced.enabled = false;
+        itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
         itemPlaced.maxPV = data.maxPV;
         itemPlaced.PV = data.maxPV;
-
-
-        itemPlaced.enabled = false;
         
         GameManager.instance.placedItems.Add(itemPlaced);
+        
+        currentItemToPlace = -1;
         
         previewSystem.UpdatePosition(gridPosition, false);
     }

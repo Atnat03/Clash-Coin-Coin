@@ -117,16 +117,17 @@ public class GameManager : MonoBehaviour
             onEnter:()=> Debug.Log("Enter  EndGame")
         ));
         
-        stateMachine.ChangeState(GameSate.StartGame);
+        stateMachine.ChangeState(GameSate.Reward);
     }
     
     void SetAllPlacedItems(bool state)
     {
         foreach (Item item in placedItems)
         {
-            item.enabled = state;
+            item.SetActive(state);
         }
     }
+    
     public void RemovePlacedItem(Item item)
     {
         if (placedItems.Contains(item))
@@ -234,6 +235,8 @@ public class GameManager : MonoBehaviour
             SetAllPlacedItems(false);
 
             yield return new WaitForSeconds(5f);
+
+            CombatDuration = 20;
             
             stateMachine.ChangeState(GameSate.MiniGame);
         }
@@ -258,8 +261,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter Prepare");
         
-        SpawnPlayer.instance.placementSystems[0].PlaceItem();
-        SpawnPlayer.instance.placementSystems[1].PlaceItem();
+        //SpawnPlayer.instance.placementSystems[1].PlaceItem();
+        //SpawnPlayer.instance.placementSystems[0].PlaceItem();
         
         SetAllPlacedItems(true);
     }
@@ -288,13 +291,14 @@ public class GameManager : MonoBehaviour
     {
         if (AllPlayerAreChoosed())
         {
+            CardChoice.instance.ResetCardSolves();
             stateMachine.ChangeState(GameSate.Prepare);
         }
     }
 
     bool AllPlayerAreChoosed()
     {
-        return !CardChoice.instance.inSelection1 &&  !CardChoice.instance.inSelection2;
+        return !CardChoice.instance.inSelection1 && !CardChoice.instance.inSelection2;
     }
     
     #endregion

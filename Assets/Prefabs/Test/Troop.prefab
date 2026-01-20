@@ -54,9 +54,9 @@ MonoBehaviour:
   maxPV: 100
   currentHP: {fileID: 8103242198617991682}
   Speed: 5
-  RaduisAttack: 2
-  isAttaking: 0
+  RadiusAttack: 1.5
   Damage: 10
+  attackCooldown: 1
 --- !u!65 &4411826439638955582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -76,8 +76,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.4302298, z: 1}
-  m_Center: {x: 0, y: 0.21511495, z: 0}
+  m_Size: {x: 1, y: 1.4, z: 1}
+  m_Center: {x: 0, y: 0.28, z: 0}
 --- !u!1 &4173297060032470032
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,4 +568,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d06545c76e6a8944a0db9e36c344670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlwaysInFrontOfCam
-  target: {fileID: 0}
