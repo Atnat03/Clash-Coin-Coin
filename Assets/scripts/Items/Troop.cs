@@ -43,19 +43,22 @@ public class Troop : Item
 
     void Update()
     {
-        if (!enabled)
-        {
-            Debug.LogWarning($"{name} Update appelé mais enabled=false!");
-            return;
-        }
-        
-        // Sécurité
-        if (!gridManager)
+        if (!enabled || !gridManager)
             return;
 
         // Recherche de cible
         if (!target)
+        {
             target = Rescan();
+            print(target.name);
+
+            if (target && path.Count == 0)
+            {
+                FindPath(transform.position, target.position);
+                lastTarget = target;
+                pathRefreshTimer = PATH_REFRESH_TIME;
+            }
+        }
 
         if (!target)
             return;
@@ -68,13 +71,11 @@ public class Troop : Item
             lastTarget = target;
             pathRefreshTimer = PATH_REFRESH_TIME;
         }
-
-        float dist = Vector3.Distance(transform.position, target.position);
-
-        // Attaque ou déplacement
-        if (dist >= RadiusAttack)
+        
+        if (path.Count == 0)
         {
-            if (!isAttacking)
+            float dist = Vector3.Distance(transform.position, target.position);
+            if (dist <= RadiusAttack && !isAttacking)
                 StartCoroutine(Attack());
         }
         else
@@ -82,9 +83,11 @@ public class Troop : Item
             Chase();
         }
 
+
         // UI PV
         currentHP.fillAmount = PV / maxPV;
     }
+
 
     // -------------------- COMBAT --------------------
 
@@ -125,26 +128,32 @@ public class Troop : Item
 
     Transform Rescan()
     {
-        ITargetable[] allTargets = FindObjectsOfType<MonoBehaviour>()
+        ITargetable[] targets = FindObjectsOfType<MonoBehaviour>()
             .OfType<ITargetable>()
+            .Where(t =>
+            {
+                MonoBehaviour mb = (MonoBehaviour)t;
+                return mb.gameObject.activeInHierarchy 
+                       && mb != this; // <-- ignore soi-même
+            })
             .ToArray();
 
-        if (allTargets.Length == 0)
-            return null; 
+        if (targets.Length == 0)
+            return null;
 
         Transform closest = null;
         float minDistance = Mathf.Infinity;
+        Vector3 myPos = transform.position;
 
-        foreach (ITargetable target in allTargets)
+        foreach (ITargetable t in targets)
         {
-            Transform targetTransform = ((MonoBehaviour)target).transform;
+            Transform tTransform = ((MonoBehaviour)t).transform;
+            float dist = Vector3.SqrMagnitude(tTransform.position - myPos);
 
-            float distance = Vector3.Distance(transform.position, targetTransform.position);
-
-            if (distance < minDistance)
+            if (dist < minDistance)
             {
-                minDistance = distance;
-                closest = targetTransform;
+                minDistance = dist;
+                closest = tTransform;
             }
         }
 
@@ -220,7 +229,13 @@ public class Troop : Item
         }
 
         path.Reverse();
+
+        while (path.Count > 0 && Vector3.Distance(path[path.Count - 1].worldPosition, target.position) <= RadiusAttack)
+        {
+            path.RemoveAt(path.Count - 1);
+        }
     }
+
 
     Node GetLowestFCostNode(List<Node> nodes)
     {
