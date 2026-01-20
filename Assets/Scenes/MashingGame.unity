@@ -2199,7 +2199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MashingGameManager
   GameLength: 10
-  amountPerClic: 0.008
+  amountPerClic: 0.01
   mainTextMesh: {fileID: 2002243988}
   timerText: {fileID: 686604184}
   cooldownBar: {fileID: 1653073541}
