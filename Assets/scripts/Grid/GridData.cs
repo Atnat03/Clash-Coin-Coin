@@ -43,6 +43,40 @@ public class GridData
         }
         return true;
     }
+    
+    public Vector3Int? GetItemPosition(Item item)
+    {
+        // Get the index of this item in the placed objects list
+        int itemIndex = -1;
+        
+        if (GameManager.instance.placedItemsP1.Contains(item))
+        {
+            itemIndex = GameManager.instance.placedItemsP1.IndexOf(item);
+        }
+        else if (GameManager.instance.placedItemsP2.Contains(item))
+        {
+            itemIndex = GameManager.instance.placedItemsP2.IndexOf(item);
+        }
+        
+        if (itemIndex == -1)
+            return null;
+
+        foreach (PlacementData data in placedObjects.Values)
+        {
+            if (data.PlacedObjectIndex == itemIndex)
+            {
+                if (data.occupiedPosition.Count > 0)
+                    return data.occupiedPosition[0];
+            }
+        }
+
+        return null;
+    }
+    
+    public void ClearGrid()
+    {
+        placedObjects.Clear();
+    }
 }
 
 public class PlacementData

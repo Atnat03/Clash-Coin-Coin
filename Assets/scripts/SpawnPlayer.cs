@@ -21,12 +21,6 @@ public class SpawnPlayer : MonoBehaviour
     {
         instance = this;
     }
-
-    private void Start()
-    {
-        ActivateInfos(0, true);
-        ActivateInfos(1, true);
-    }
     
     /*public void OnPlayerJoined(PlayerInput playerInput)
     {
@@ -47,15 +41,5 @@ public class SpawnPlayer : MonoBehaviour
         
         id++;
     }*/
-
-
-    public void ActivateInfos(int id, bool state)
-    {
-        GameObject[] infos = id == 0 ? P1infos : P2infos;
-        
-        foreach (GameObject info in infos)
-        {
-            info.SetActive(state);
-        }
-    }
+    
 }

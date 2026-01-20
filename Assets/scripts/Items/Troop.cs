@@ -43,14 +43,14 @@ public class Troop : Item
 
     void Update()
     {
+        print(playerOneProperty);
+        
         if (!enabled || !gridManager)
             return;
 
-        // Recherche de cible
         if (!target)
         {
             target = Rescan();
-            print(target.name);
 
             if (target && path.Count == 0)
             {
@@ -63,7 +63,6 @@ public class Troop : Item
         if (!target)
             return;
 
-        // Rafraîchissement du path
         pathRefreshTimer -= Time.deltaTime;
         if (pathRefreshTimer <= 0f || target != lastTarget || path.Count == 0)
         {
@@ -84,13 +83,10 @@ public class Troop : Item
         }
 
 
-        // UI PV
         currentHP.fillAmount = PV / maxPV;
     }
 
-
-    // -------------------- COMBAT --------------------
-
+    
     IEnumerator Attack()
     {
         isAttacking = true;
@@ -133,8 +129,8 @@ public class Troop : Item
             .Where(t =>
             {
                 MonoBehaviour mb = (MonoBehaviour)t;
-                return mb.gameObject.activeInHierarchy 
-                       && mb != this; // <-- ignore soi-même
+                return mb.gameObject.activeInHierarchy
+                       && mb != this;
             })
             .ToArray();
 
@@ -147,6 +143,9 @@ public class Troop : Item
 
         foreach (ITargetable t in targets)
         {
+            if (t.playerOneProperty == playerOneProperty)
+                continue;
+            
             Transform tTransform = ((MonoBehaviour)t).transform;
             float dist = Vector3.SqrMagnitude(tTransform.position - myPos);
 
