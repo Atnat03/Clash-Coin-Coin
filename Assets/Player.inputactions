@@ -21,7 +21,7 @@
                     "id": "6ee81ec4-449d-4cbe-bddb-7f6ef3f48f26",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Press(pressPoint=0.2)",
                     "initialStateCheck": false
                 },
                 {
@@ -30,7 +30,7 @@
                     "id": "98859e88-cb5e-46ad-a75e-4869ccf75e55",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Press(pressPoint=0.2)",
                     "initialStateCheck": false
                 },
                 {
@@ -39,7 +39,7 @@
                     "id": "f961b4fe-234b-4796-b274-cffa5ac3ab7a",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=0.2)",
                     "initialStateCheck": false
                 },
                 {
@@ -48,7 +48,7 @@
                     "id": "4b3f9389-b4a0-4aef-8ff4-834e4b9439f0",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=0.2)",
                     "initialStateCheck": false
                 },
                 {
