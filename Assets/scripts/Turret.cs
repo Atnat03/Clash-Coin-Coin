@@ -17,22 +17,28 @@ public class Turret : Build
 
     private void Update()
     {
-        if (t < shootRange)
+        if (t < shootRate)
         {
             t += Time.deltaTime;
         }
         else
         {
-            RaycastHit hit;
+            print("Shoot");
+            
+            Collider[] hits = Physics.OverlapSphere(transform.position, shootRange);
 
-            if (Physics.SphereCast(shootPos.position, shootRange, transform.forward, out hit, 10))
+            foreach (Collider hit in hits)
             {
-                if (hit.transform.GetComponent<Troop>() != null)
+                Troop troop = hit.GetComponent<Troop>();
+                if (troop != null)
                 {
-                    headTurret.transform.LookAt(hit.transform);
-                
-                    Bullet b = Instantiate(bulletPrefab, shootPos.transform.position, Quaternion.identity);
-                    b.SetUp(hit.transform);
+                    print("touché une troupe");
+
+                    headTurret.transform.LookAt(troop.transform);
+
+                    Bullet b = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
+                    b.SetUp(troop.transform, GetComponent<Collider>());
+                    break;
                 }
             }
 

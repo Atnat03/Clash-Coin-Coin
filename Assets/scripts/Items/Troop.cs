@@ -245,16 +245,23 @@ public class Troop : Item
             t.CanBeAttacked &&
             !t.IsMovementTarget;
 
-
-        if (stopAtAttackRange)
+        if (stopAtAttackRange && path.Count > 1)
         {
-            while (path.Count > 0 &&
-                   Vector3.Distance(path[path.Count - 1].worldPosition, target.position) <= RadiusAttack)
+            while (path.Count > 1)
             {
-                path.RemoveAt(path.Count - 1);
+                Vector3 lastNodePos = path[path.Count - 1].worldPosition;
+                float distToTarget = Vector3.Distance(lastNodePos, target.position);
+
+                if (distToTarget <= RadiusAttack)
+                {
+                    path.RemoveAt(path.Count - 1);
+                }
+                else
+                {
+                    break;
+                }
             }
         }
-
     }
 
 
