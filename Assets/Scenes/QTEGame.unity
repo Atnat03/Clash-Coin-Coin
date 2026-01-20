@@ -233,8 +233,8 @@ MonoBehaviour:
   mainText: {fileID: 1711771190}
   southButtonSprite: {fileID: 21300000, guid: b744b28b75eb52c4296a8f397f0031df, type: 3}
   northButtonSprite: {fileID: 21300000, guid: a0475ff89540c4641bda8e6568ca2850, type: 3}
-  eastButtonSprite: {fileID: 21300000, guid: 6fc5f3bdc88c165439646864aea3dc71, type: 3}
-  westButtonSprite: {fileID: 21300000, guid: b66807d9d605b504b8f0adedbe41217d, type: 3}
+  eastButtonSprite: {fileID: 21300000, guid: b66807d9d605b504b8f0adedbe41217d, type: 3}
+  westButtonSprite: {fileID: 21300000, guid: 6fc5f3bdc88c165439646864aea3dc71, type: 3}
   P1: {fileID: 444157665}
   P2: {fileID: 360170869}
 --- !u!4 &351888996
@@ -396,10 +396,10 @@ MonoBehaviour:
     m_ActionId: 100797c3-934e-4d06-8009-9149e4de9126
     m_ActionName: 'GamePlay/Areleased[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultControlScheme: Gamepad
+  m_DefaultActionMap: GamePlay
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 2087210386}
 --- !u!4 &360170871
 Transform:
   m_ObjectHideFlags: 0
@@ -620,10 +620,10 @@ MonoBehaviour:
     m_ActionId: 100797c3-934e-4d06-8009-9149e4de9126
     m_ActionName: 'GamePlay/Areleased[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultControlScheme: Gamepad
+  m_DefaultActionMap: 28b7f2fb-20cf-436c-8b4b-7b6ee6f1e773
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 2087210386}
 --- !u!4 &444157667
 Transform:
   m_ObjectHideFlags: 0
