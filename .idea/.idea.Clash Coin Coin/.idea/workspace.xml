@@ -6,10 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b8a5146e-343f-4223-bd43-7e9bd2bba73b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asta/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asta/GridManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asta/ITargetable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asta/ITargetable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CurlingGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CurlingGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MashingGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MashingGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QTEGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/QTEGame.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scripts/GameManagement/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/GameManagement/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Grid/GridData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Grid/GridData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scripts/Grid/PlacementSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Grid/PlacementSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/QTEGame/QTEPlayerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/QTEGame/QTEPlayerScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/Troop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/Troop.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

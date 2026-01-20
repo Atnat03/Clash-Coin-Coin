@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71323b0111b1ca84ca2735f8294eadcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QTEGameManager
-  gameLength: 15
+  gameLength: 10
   inGame: 0
   mainText: {fileID: 1711771190}
   southButtonSprite: {fileID: 21300000, guid: b744b28b75eb52c4296a8f397f0031df, type: 3}

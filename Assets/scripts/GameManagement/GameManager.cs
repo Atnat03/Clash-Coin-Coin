@@ -4,21 +4,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameSate
+{
+    StartGame,
+    Loading,
+    Transition,
+    Reward,
+    Prepare,
+    Combat,
+    MiniGame,
+    EndGame
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    
-    public enum GameSate
-    {
-        StartGame,
-        Loading,
-        Transition,
-        Reward,
-        Prepare,
-        Combat,
-        MiniGame,
-        EndGame
-    }
     
     public StateMachine<GameSate> stateMachine =  new StateMachine<GameSate>();
     

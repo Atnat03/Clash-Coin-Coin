@@ -110,4 +110,24 @@ public class GridManager : MonoBehaviour
 
 		return grid[x, y];
 	}
+	
+	void OnDrawGizmos()
+	{
+		if (grid == null) return;
+
+		foreach (Node n in grid)
+		{
+			Gizmos.color = n.walkable ? new Color(0f, 1f, 0f, 0.3f) : new Color(1f, 0f, 0f, 0.3f);
+			Gizmos.DrawCube(n.worldPosition + Vector3.up * 0.05f, Vector3.one * (nodeDiameter * 0.9f));
+		}
+
+		if (path != null)
+		{
+			Gizmos.color = Color.cyan;
+			foreach (Node n in path)
+			{
+				Gizmos.DrawWireCube(n.worldPosition + Vector3.up * 0.1f, Vector3.one * (nodeDiameter * 0.5f));
+			}
+		}
+	}
 }

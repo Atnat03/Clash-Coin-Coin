@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -65,8 +66,16 @@ public class PlacementSystem : MonoBehaviour
         StartPlacement(currentItemToPlace);
     }
     
+    
+    IEnumerator WaitALittle()
+    {
+        yield return new WaitForSeconds(0.3f);
+    }
+    
     public void StartPlacement(int ID)
     {
+        StartCoroutine(WaitALittle());
+
         StopPlacement();
         selectedObjectIndex = database.itemsData.FindIndex(x => x.Id == ID);
 
