@@ -53,10 +53,16 @@ MonoBehaviour:
   PV: 100
   maxPV: 100
   currentHP: {fileID: 8103242198617991682}
+  poisonDamageTakenBySeconds: 0
+  poisonDuration: 0
+  timer: 0
   Speed: 5
   RaduisAttack: 2
   isAttaking: 0
   Damage: 10
+  attackCooldow: 0
+  poisonDamageInflicted: 30
+  poisonDurationInflicted: 10
 --- !u!65 &4411826439638955582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -568,4 +574,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d06545c76e6a8944a0db9e36c344670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlwaysInFrontOfCam
-  target: {fileID: 0}

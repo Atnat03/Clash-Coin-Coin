@@ -11,6 +11,7 @@ public class Troop : Item
     public float Damage = 10;
     public float attackCooldow = 1f;
     
+    
     public Troop(int  id, string name, float maxPV, float speed, float raduisAttack)
     {
         this.id = id;
@@ -62,6 +63,9 @@ public class Troop : Item
 			Chase();
 		}
 	}
+	
+	public float poisonDamageInflicted;
+	public float poisonDurationInflicted;
 
 	IEnumerator Attack()
 	{
@@ -69,6 +73,11 @@ public class Troop : Item
 		yield return new WaitForSeconds(attackCooldow);
 		
 		target.GetComponent<ITargetable>().TakeDamage(Damage);
+
+		if (poisonDamageInflicted > 0)
+		{
+			target.GetComponent<ITargetable>().GetPoisoned(poisonDurationInflicted,poisonDamageInflicted);
+		}
 		
 		isAttaking = false;
 	}

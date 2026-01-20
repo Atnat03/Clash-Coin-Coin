@@ -34,6 +34,34 @@ public abstract class Item : MonoBehaviour, ITargetable
     }
 
     public bool playerOneProperty { get; set; }
+    
+    public float poisonDamageTakenBySeconds;
+    public float poisonDuration;
+    
+    
+
+    public float timer;
+
+    public void Update()
+    {
+        if (poisonDuration > 0)
+        {
+            currentHP.color = Color.purple;
+            poisonDuration -= Time.deltaTime;
+            timer -= Time.deltaTime;
+
+            if (timer <= 0)
+            {
+                TakeDamage(poisonDamageTakenBySeconds);
+                timer = 1;
+            }
+        }
+        else
+        {
+            currentHP.color = Color.red;
+        }
+    }
+    
     public void TakeDamage(float damage)
     {
         PV -= damage;
@@ -45,5 +73,12 @@ public abstract class Item : MonoBehaviour, ITargetable
         { 
             Die();
         }    
+    }
+
+    public void GetPoisoned(float duration, float damage)
+    {
+        poisonDuration = duration;
+        poisonDamageTakenBySeconds = damage;
+        timer = 1f;
     }
 }
