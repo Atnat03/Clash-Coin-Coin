@@ -40,23 +40,13 @@ public class MashingGameManager : MonoBehaviour
     public IEnumerator StartGameCoroutine()
     {
         someoneWon = false;
-        float timeCounter = 3;
-        while (timeCounter > 0)
-        {
-            timeCounter -= Time.deltaTime*1.5f;
-            mainTextMesh.text = Mathf.CeilToInt(timeCounter).ToString("F0");
-            yield return null;
-        }
-
-        mainTextMesh.text = "Mashez !";
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(3.3f);
         
-        mainTextMesh.text = "";
         cooldownBar.gameObject.SetActive(true);
         cooldownBar.fillAmount = 1;
         StartGame?.Invoke();
 
-        timeCounter = GameLength;
+        float timeCounter = GameLength;
         while (timeCounter > 0 && !someoneWon)
         {
             timeCounter -= Time.deltaTime;
@@ -69,18 +59,14 @@ public class MashingGameManager : MonoBehaviour
         }
         
         
-        mainTextMesh.text = "Fini !";
+        animUI.SetTrigger("Over");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         EndGame();
-
-        if (P1 != null && P2 != null)
-        {
-            if (P1.P1JaugeFillAmout > P2.P1JaugeFillAmout) mainTextMesh.text = "Le joueur 1 a gagné";
-            else mainTextMesh.text = "Le joueur 2 a gagné";
-        }
     }
+
+    public Animator animUI;
 
     private void EndGame()
     {
