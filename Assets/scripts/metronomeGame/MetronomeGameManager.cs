@@ -60,5 +60,12 @@ public class MetronomeGameManager : MonoBehaviour
             if (P1.points >= P2.points) mainText.text = "joueur 1 a gagné !";
             else mainText.text = "joueur 2 a gagné !";
         }
+        
+        yield return new WaitForSeconds(2f);
+
+        GameManager.instance.player_1_Score = 1;
+        GameManager.instance.player_2_Score = 1;
+        
+        GameManager.instance.ReturnToMainScene();
     }
 }
