@@ -23,9 +23,9 @@ MonoBehaviour:
     dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
     rarity: 1
   - Id: 1
-    Name: 
+    Name: Tourelle
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: 5e8b158fad565ed4ca6b069af261e226, type: 3}
+    Prefab: {fileID: 7136807689920212623, guid: c79cdb73ee751ef4baa1853d73af77e0, type: 3}
     PV: 0
     maxPV: 100
     carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
