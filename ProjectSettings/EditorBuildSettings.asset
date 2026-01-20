@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: fd9709e3251f2b8459b243b28630c9ba
+  - enabled: 1
+    path: Assets/Scenes/MashingGame.unity
+    guid: 1546df49f7564ce44924bac4f7cdc6c2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 235a8076421dba241a94f99c1c5479a5, type: 3}
   m_UseUCBPForAssetBundles: 0
