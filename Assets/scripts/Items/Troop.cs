@@ -13,13 +13,15 @@ public class Troop : Item
 
     [Header("Runtime")]
     bool isAttacking;
-    public Transform target;
+    Transform target;
 
     GridManager gridManager;
 
     List<Node> path = new();
     Transform lastTarget;
     float pathRefreshTimer;
+
+    public bool alreadyTakeTP = false;
 
     const float PATH_REFRESH_TIME = 0.5f;
     
@@ -50,17 +52,15 @@ public class Troop : Item
         
         if (!enabled || !gridManager)
             return;
+        
+        target = Rescan();
+        print("Target : " + target.name);
 
-        if (!target)
+        if (target && path.Count == 0)
         {
-            target = Rescan();
-
-            if (target && path.Count == 0)
-            {
-                FindPath(transform.position, target.position);
-                lastTarget = target;
-                pathRefreshTimer = PATH_REFRESH_TIME;
-            }
+            FindPath(transform.position, target.position);
+            lastTarget = target;
+            pathRefreshTimer = PATH_REFRESH_TIME;
         }
 
         if (!target)
@@ -152,6 +152,10 @@ public class Troop : Item
         {
             if (t.playerOneProperty == playerOneProperty)
                 continue;
+            
+            if(alreadyTakeTP)
+                if(t is TP_Troop)
+                    continue;
             
             Transform tTransform = ((MonoBehaviour)t).transform;
             float dist = Vector3.SqrMagnitude(tTransform.position - myPos);

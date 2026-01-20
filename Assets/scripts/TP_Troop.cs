@@ -55,6 +55,7 @@ public class TP_Troop : MonoBehaviour, ITargetable
         currentTroop.transform.localScale = Vector3.one;
         
         currentTroop.isFrozen = false;
+        currentTroop.alreadyTakeTP = true;
         currentTroop.ForceRecalculatePath();
     }
 
