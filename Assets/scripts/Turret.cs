@@ -30,7 +30,7 @@ public class Turret : Build
             foreach (Collider hit in hits)
             {
                 Troop troop = hit.GetComponent<Troop>();
-                if (troop != null)
+                if (troop != null && playerOneProperty != troop.playerOneProperty)
                 {
                     print("touché une troupe");
 
