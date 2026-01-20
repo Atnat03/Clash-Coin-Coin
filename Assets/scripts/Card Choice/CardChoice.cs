@@ -9,7 +9,7 @@ public class CardChoice : MonoBehaviour
    
    public Animator animatorCards1, animatorCards2;
 
-   public ItemSO itemPool;
+   public ItemSO itemPool1, itemPool2;
    
    public PlacementSystem placementPlayer1, placementPlayer2;
 
@@ -107,13 +107,13 @@ public class CardChoice : MonoBehaviour
 
       cardSelected1 = 0;
       cardSelected2 = 0;
-      ResolvePlayer(miniGame1, ref player1Fail, ref cardsID1, cardsUI1);
-      ResolvePlayer(miniGame2, ref player2Fail, ref cardsID2, cardsUI2);
+      ResolvePlayer(miniGame1, ref player1Fail, ref cardsID1, ref itemPool1, cardsUI1);
+      ResolvePlayer(miniGame2, ref player2Fail, ref cardsID2, ref itemPool2, cardsUI2);
       
       if(!player1Fail) animatorCards1.SetTrigger("Start");
       if(!player2Fail) animatorCards2.SetTrigger("Start");
    }
-   void ResolvePlayer(int result, ref bool playerFail, ref int[] cardsID, CardsPNG[] cardsUI)
+   void ResolvePlayer(int result, ref bool playerFail, ref int[] cardsID, ref ItemSO itemPool, CardsPNG[] cardsUI)
    {
       if (result <= 0) { playerFail = true; return; }
       playerFail = false;

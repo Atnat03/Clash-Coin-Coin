@@ -5629,7 +5629,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardChoice
   animatorCards1: {fileID: 207124632}
   animatorCards2: {fileID: 1084807754}
-  itemPool: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
+  itemPool1: {fileID: 11400000, guid: e736fc46b12a86c438d4f87eaed92157, type: 2}
+  itemPool2: {fileID: 11400000, guid: 62ee383d7bdac254284954c27fc178f5, type: 2}
   placementPlayer1: {fileID: 1647906339}
   placementPlayer2: {fileID: 1896602225}
   cardsUI1:
