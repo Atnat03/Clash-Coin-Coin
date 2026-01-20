@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridData
 {
     private Dictionary<Vector3Int, PlacementData> placedObjects = new();
+    private Dictionary<int, Vector3Int> itemPositions = new(); // ← NOUVEAU: Map instance ID vers position
 
     public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex)
     {
@@ -18,6 +19,12 @@ public class GridData
             }
             placedObjects[position] = data;
         }
+    }
+    
+    // ← NOUVELLE MÉTHODE pour enregistrer la position d'un item
+    public void RegisterItemPosition(Item item, Vector3Int position)
+    {
+        itemPositions[item.GetInstanceID()] = position;
     }
 
     private List<Vector3Int> CalculatePositions(Vector3Int gridPosition, Vector2Int objectSize)
@@ -46,36 +53,21 @@ public class GridData
     
     public Vector3Int? GetItemPosition(Item item)
     {
-        // Get the index of this item in the placed objects list
-        int itemIndex = -1;
+        if (item == null) return null;
         
-        if (GameManager.instance.placedItemsP1.Contains(item))
+        int instanceID = item.GetInstanceID();
+        if (itemPositions.ContainsKey(instanceID))
         {
-            itemIndex = GameManager.instance.placedItemsP1.IndexOf(item);
-        }
-        else if (GameManager.instance.placedItemsP2.Contains(item))
-        {
-            itemIndex = GameManager.instance.placedItemsP2.IndexOf(item);
+            return itemPositions[instanceID];
         }
         
-        if (itemIndex == -1)
-            return null;
-
-        foreach (PlacementData data in placedObjects.Values)
-        {
-            if (data.PlacedObjectIndex == itemIndex)
-            {
-                if (data.occupiedPosition.Count > 0)
-                    return data.occupiedPosition[0];
-            }
-        }
-
         return null;
     }
     
     public void ClearGrid()
     {
         placedObjects.Clear();
+        itemPositions.Clear();
     }
 }
 

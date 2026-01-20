@@ -8,10 +8,8 @@ public class QTEPlayerScript : MonoBehaviour
     public int score = 0;
     public Image imageNextInput;
     
-
     public Queue<QTEGameManager.ButtonDirection> inputList = new Queue<QTEGameManager.ButtonDirection>();
-
-
+    
     void Start()
     {
         InitInpuList();

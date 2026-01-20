@@ -60,11 +60,17 @@ public class GameManager : MonoBehaviour
 
         if (itemData.playerOneProperty)
         {
-            itemPlacedDataP1.Add(itemData);
+            if (!itemPlacedDataP1.Exists(x => x.prefab == itemData.prefab))
+            {
+                itemPlacedDataP1.Add(itemData);
+            }
         }
         else
         {
-            itemPlacedDataP2.Add(itemData);
+            if (!itemPlacedDataP2.Exists(x => x.prefab == itemData.prefab))
+            {
+                itemPlacedDataP2.Add(itemData);
+            }
         }
     }
 
@@ -95,11 +101,13 @@ public class GameManager : MonoBehaviour
         placedItemsP1.Clear();
         placedItemsP2.Clear();
         
-        SpawnPlayer.instance.placementSystems[1].ReloadData(itemPlacedDataP1);
-        SpawnPlayer.instance.placementSystems[0].ReloadData(itemPlacedDataP2);
+        SpawnPlayer.instance.placementSystems[0].ReloadData(itemPlacedDataP1);
+        SpawnPlayer.instance.placementSystems[1].ReloadData(itemPlacedDataP2);
         
         itemPlacedDataP1.Clear();
         itemPlacedDataP2.Clear();
+
+        SetAllPlacedItems(false);
     }
 
     
@@ -162,7 +170,7 @@ public class GameManager : MonoBehaviour
         stateMachine.ChangeState(GameSate.StartGame);
     }
     
-    void SetAllPlacedItems(bool state)
+    public void SetAllPlacedItems(bool state)
     {
         foreach (Item item in placedItemsP1)
         {
