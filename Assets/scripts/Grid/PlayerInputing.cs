@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerInputing : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class PlayerInputing : MonoBehaviour
     private Bounds aimBounds;
     private bool hasBounds = false;
 
-    public bool hasValidate = false;
+    public bool IsReady = false;
     
     void Start()
     {
