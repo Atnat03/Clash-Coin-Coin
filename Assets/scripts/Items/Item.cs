@@ -10,6 +10,8 @@ public abstract class Item : MonoBehaviour, ITargetable
     [HideInInspector]public float maxPV;
     public Image currentHP;
     
+    public bool IsMovementTarget => false;
+    
     public Item()
     {
         id = 0;
@@ -26,6 +28,8 @@ public abstract class Item : MonoBehaviour, ITargetable
         this.maxPV = maxPV;
         this.PV = maxPV;
     }
+    
+    public bool CanBeAttacked => true;
     
     public void Die()
     {

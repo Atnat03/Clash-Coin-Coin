@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -65,8 +66,16 @@ public class PlacementSystem : MonoBehaviour
         StartPlacement(currentItemToPlace);
     }
     
+    
+    IEnumerator WaitALittle()
+    {
+        yield return new WaitForSeconds(0.3f);
+    }
+    
     public void StartPlacement(int ID)
     {
+        StartCoroutine(WaitALittle());
+
         StopPlacement();
         selectedObjectIndex = database.itemsData.FindIndex(x => x.Id == ID);
 
@@ -123,6 +132,8 @@ public class PlacementSystem : MonoBehaviour
         itemPlaced.maxPV = data.maxPV;
         itemPlaced.PV = data.maxPV;
 
+        selectedData.RegisterItemPosition(itemPlaced, gridPosition);
+        
         if (itemPlaced.playerOneProperty)
         {
             GameManager.instance.placedItemsP1.Add(itemPlaced);
@@ -159,9 +170,14 @@ public class PlacementSystem : MonoBehaviour
         Item itemPlaced = go.GetComponentInChildren<Item>();
         ItemData data = itemData;
         itemPlaced.enabled = false;
-        itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
+        
+        
+        itemPlaced.playerOneProperty = itemData.playerOneProperty;
+        
         itemPlaced.maxPV = data.maxPV;
-        itemPlaced.PV = data.maxPV;
+        itemPlaced.PV = data.PV;
+        
+        selectedData.RegisterItemPosition(itemPlaced, itemData.position);
         
         if (itemPlaced.playerOneProperty)
         {
