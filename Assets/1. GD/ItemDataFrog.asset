@@ -10,40 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d4733d63fef6e24096ea31968dd347c, type: 3}
-  m_Name: ItemDataDuck
+  m_Name: ItemDataFrog
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemsData:
   - Id: 0
     Name: Tank
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 4a6ae935fc275fa4883018674135fab8, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: cb1a9fa5c9415184db2311182434317d, type: 3}
     PV: 0
     maxPV: 100
     carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
     dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
     rarity: 0
-  - Id: 1
-    Name: Tank
-    Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 4a6ae935fc275fa4883018674135fab8, type: 3}
-    PV: 0
-    maxPV: 100
-    carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
-    dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
-    rarity: 1
   - Id: 2
     Name: Tank
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 4a6ae935fc275fa4883018674135fab8, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: cb1a9fa5c9415184db2311182434317d, type: 3}
     PV: 0
     maxPV: 0
     carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
     dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
     rarity: 2
+  - Id: 1
+    Name: Tank
+    Size: {x: 1, y: 1}
+    Prefab: {fileID: 2564806622089340945, guid: cb1a9fa5c9415184db2311182434317d, type: 3}
+    PV: 0
+    maxPV: 100
+    carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
+    rarity: 1
   - Id: 3
     Name: Guerrier
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: a1bb413a99e05624180d8ca98fa861de, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
     PV: 0
     maxPV: 0
     carte: {fileID: 21300000, guid: f33e74e6593cffe488c3a3be38225a44, type: 3}
@@ -52,7 +52,7 @@ MonoBehaviour:
   - Id: 4
     Name: Guerrier
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: a1bb413a99e05624180d8ca98fa861de, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
     PV: 0
     maxPV: 0
     carte: {fileID: 21300000, guid: f33e74e6593cffe488c3a3be38225a44, type: 3}
@@ -61,7 +61,7 @@ MonoBehaviour:
   - Id: 5
     Name: Guerrier
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: a1bb413a99e05624180d8ca98fa861de, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
     PV: 0
     maxPV: 0
     carte: {fileID: 21300000, guid: f33e74e6593cffe488c3a3be38225a44, type: 3}
@@ -70,7 +70,7 @@ MonoBehaviour:
   - Id: 6
     Name: Bouliste
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: eee119877613c01428187258f3c1ffa2, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: cb00315ccd742fe46bed9f76d6a863ec, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -79,7 +79,7 @@ MonoBehaviour:
   - Id: 7
     Name: Bouliste
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: eee119877613c01428187258f3c1ffa2, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: cb00315ccd742fe46bed9f76d6a863ec, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -88,7 +88,7 @@ MonoBehaviour:
   - Id: 8
     Name: Bouliste
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: eee119877613c01428187258f3c1ffa2, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: cb00315ccd742fe46bed9f76d6a863ec, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -97,7 +97,7 @@ MonoBehaviour:
   - Id: 9
     Name: Lobber
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 5784e50134b1a384394330c49bf4501a, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 8e3a878f56cd6a3409a3748f166526d4, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -106,7 +106,7 @@ MonoBehaviour:
   - Id: 10
     Name: Lobber
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 5784e50134b1a384394330c49bf4501a, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 8e3a878f56cd6a3409a3748f166526d4, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -115,7 +115,7 @@ MonoBehaviour:
   - Id: 11
     Name: Lobber
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 5784e50134b1a384394330c49bf4501a, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 8e3a878f56cd6a3409a3748f166526d4, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -124,7 +124,7 @@ MonoBehaviour:
   - Id: 11
     Name: "Pav\xE9coliers (3)"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 5dc945c54406a0d429022c0a3c8b7391, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 04589aa9109a33742a804a520cc1e4a0, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -133,7 +133,7 @@ MonoBehaviour:
   - Id: 11
     Name: "Pav\xE9coliers (3)"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 5dc945c54406a0d429022c0a3c8b7391, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 04589aa9109a33742a804a520cc1e4a0, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -142,7 +142,7 @@ MonoBehaviour:
   - Id: 11
     Name: "Pav\xE9coliers (3)"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 5dc945c54406a0d429022c0a3c8b7391, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 04589aa9109a33742a804a520cc1e4a0, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -151,7 +151,7 @@ MonoBehaviour:
   - Id: 15
     Name: "Pav\xE9coliers (5)"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 075bbd35a9ea3b8468670df243ce8400, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 5d01623674d2a154bb63dddebc704163, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -160,7 +160,7 @@ MonoBehaviour:
   - Id: 16
     Name: "Pav\xE9coliers (5)"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 075bbd35a9ea3b8468670df243ce8400, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 5d01623674d2a154bb63dddebc704163, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -169,7 +169,7 @@ MonoBehaviour:
   - Id: 17
     Name: "Pav\xE9coliers (5)"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 075bbd35a9ea3b8468670df243ce8400, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 5d01623674d2a154bb63dddebc704163, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -178,7 +178,7 @@ MonoBehaviour:
   - Id: 18
     Name: Glaceur
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: d8769bbedbb67e049acfbfd346c197ed, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: b059d98aa5540a14d8da0a5d57c165ec, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -187,7 +187,7 @@ MonoBehaviour:
   - Id: 19
     Name: Glaceur
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: d8769bbedbb67e049acfbfd346c197ed, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: b059d98aa5540a14d8da0a5d57c165ec, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -196,7 +196,7 @@ MonoBehaviour:
   - Id: 20
     Name: Glaceur
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: d8769bbedbb67e049acfbfd346c197ed, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: b059d98aa5540a14d8da0a5d57c165ec, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -205,7 +205,7 @@ MonoBehaviour:
   - Id: 21
     Name: Empoisonneur
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: f2be251d227ab0241af4fd1a367db544, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 4d0c0419c04c445479fd3dff2e42437d, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -214,7 +214,7 @@ MonoBehaviour:
   - Id: 22
     Name: Empoisonneur
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: f2be251d227ab0241af4fd1a367db544, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 4d0c0419c04c445479fd3dff2e42437d, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
@@ -223,7 +223,7 @@ MonoBehaviour:
   - Id: 23
     Name: Empoisonneur
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: f2be251d227ab0241af4fd1a367db544, type: 3}
+    Prefab: {fileID: 2564806622089340945, guid: 4d0c0419c04c445479fd3dff2e42437d, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
