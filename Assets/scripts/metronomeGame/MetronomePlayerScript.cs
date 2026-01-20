@@ -39,6 +39,15 @@ public class MetronomePlayerScript : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             slider.value = Mathf.Sin(elapsedTime * cursorSpeed);
+            
+            if (slider.value > 0.99f)
+            {
+                float phase = elapsedTime * cursorSpeed;
+        
+                cursorSpeed *= MetronomeGameManager.instance.cursorAccelerationFactor;
+        
+                elapsedTime = phase / cursorSpeed;
+            }
             yield return null;
         }
     }
@@ -50,8 +59,7 @@ public class MetronomePlayerScript : MonoBehaviour
         
         if (ingame)
         {
-            if (Mathf.Abs(slider.value) <= MetronomeGameManager.instance.SliderTolerence
-                && points < MetronomeGameManager.instance.pointsToScore)
+            if (Mathf.Abs(slider.value) <= MetronomeGameManager.instance.SliderTolerence && points < MetronomeGameManager.instance.pointsToScore)
             {
                 ScorePoint();
             }
@@ -66,11 +74,13 @@ public class MetronomePlayerScript : MonoBehaviour
         text.text = "points : " + points;
         jaugePoints.fillAmount = (float)points / MetronomeGameManager.instance.pointsToScore;
         
+        /*
         float phase = elapsedTime * cursorSpeed;
         
         cursorSpeed *= MetronomeGameManager.instance.cursorAccelerationFactor;
         
         elapsedTime = phase / cursorSpeed;
+        */
     }
 
 }

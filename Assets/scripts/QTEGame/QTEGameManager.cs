@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QTEGameManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class QTEGameManager : MonoBehaviour
     [SerializeField]private QTEPlayerScript P1;
     [SerializeField]private QTEPlayerScript P2;
 
+    public Image timerImage;
+    public bool finished;
+
     public enum ButtonDirection
     {
         south,
@@ -27,7 +31,7 @@ public class QTEGameManager : MonoBehaviour
     }
     
     public Dictionary<ButtonDirection, Sprite> buttonSprites = new Dictionary<ButtonDirection, Sprite>();
-
+    public Animator animUI;
     void Awake()
     {
         if(instance == null)instance = this;
@@ -45,35 +49,27 @@ public class QTEGameManager : MonoBehaviour
     IEnumerator GameCoroutine()
     {
         float elapsedTime = 3;
-        while (elapsedTime > 0)
-        {
-            elapsedTime -= Time.deltaTime;
-            mainText.text = (Mathf.CeilToInt(elapsedTime)).ToString();
-            yield return null;
-        }
 
-        mainText.text = "go !";
-
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3.5f);
 
         mainText.text = "";
         inGame = true;
 
         elapsedTime = gameLength;
-        while (elapsedTime > 0)
+        while (elapsedTime > 0 && !finished)
         {
             elapsedTime -= Time.deltaTime;
+            timerImage.fillAmount = elapsedTime / gameLength;
+            timerImage.color = Color.Lerp(new Color(1f,0.3f,0.3f), new Color(0.3f,1f,0.3f), elapsedTime / gameLength);
             mainText.text = elapsedTime.ToString("F2");
             yield return null;
         }
 
+        if (elapsedTime < 0) mainText.text = "0";
+
         inGame = false;
         
-        mainText.text = "partie terminée !";
-        yield return new WaitForSeconds(1);
-        if(P1.score == P2.score)mainText.text = "égalité !";
-        else if (P1.score > P2.score) mainText.text = "Joueur 1 a gagné !";
-        else mainText.text = "Joueur 2 a gagné !";
+        animUI.SetTrigger("Over");
         
         yield return new WaitForSeconds(2f);
 

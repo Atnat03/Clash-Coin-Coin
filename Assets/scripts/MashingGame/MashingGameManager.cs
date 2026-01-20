@@ -57,6 +57,8 @@ public class MashingGameManager : MonoBehaviour
 
             yield return null;
         }
+
+        if (timeCounter < 0) timerText.text = "0:00";
         
         
         animUI.SetTrigger("Over");
