@@ -22,8 +22,10 @@ public class GameManager : MonoBehaviour
     
     public StateMachine<GameSate> stateMachine =  new StateMachine<GameSate>();
     
-    public List<Item> placedItems = new List<Item>();
-    public List<ItemData> itemPlacedData = new List<ItemData>();
+    public List<Item> placedItemsP1 = new List<Item>();
+    public List<Item> placedItemsP2 = new List<Item>();
+    public List<ItemData> itemPlacedDataP1 = new List<ItemData>();
+    public List<ItemData> itemPlacedDataP2 = new List<ItemData>();
 
     public string[] miniGames;
     public int player_1_Score = -1;
@@ -37,19 +39,37 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void AddItemInList(Item item, Vector2 position)
+    public void AddItemInList(Item item, Vector3Int position)
     {
         ItemData itemData = new ItemData();
         itemData.id = item.id;
         itemData.name = item.name;
         itemData.position = position;
-        itemData.playerOneProperty = itemData.playerOneProperty;
+        itemData.playerOneProperty = item.playerOneProperty;
         itemData.PV = item.PV;
         itemData.maxPV = item.maxPV;
+        itemData.prefab = item.gameObject;
+    
+        ItemSO database = itemData.playerOneProperty ? SpawnPlayer.instance.placementSystems[0].database : SpawnPlayer.instance.placementSystems[1].database;
+        var itemInfo = database.itemsData.Find(x => x.Id == item.id);
+        if (itemInfo != null)
+        {
+            itemData.scale = itemInfo.Size;
+        }
+
+        if (itemData.playerOneProperty)
+        {
+            itemPlacedDataP1.Add(itemData);
+        }
+        else
+        {
+            itemPlacedDataP2.Add(itemData);
+        }
     }
 
     public void ReturnToMainScene()
     {
+        print("bz ta mere");
         StartCoroutine(LoadMainSceneAndCheck());
     }
     
@@ -70,6 +90,16 @@ public class GameManager : MonoBehaviour
         {
             stateMachine.ChangeState(GameSate.Reward);
         }
+        
+        placedItemsP1.Clear();
+        placedItemsP2.Clear();
+        
+        
+        SpawnPlayer.instance.placementSystems[1].ReloadData(itemPlacedDataP1);
+        SpawnPlayer.instance.placementSystems[0].ReloadData(itemPlacedDataP2);
+        
+        itemPlacedDataP1.Clear();
+        itemPlacedDataP2.Clear();
     }
 
     
@@ -134,7 +164,11 @@ public class GameManager : MonoBehaviour
     
     void SetAllPlacedItems(bool state)
     {
-        foreach (Item item in placedItems)
+        foreach (Item item in placedItemsP1)
+        {
+            item.SetActive(state);
+        }
+        foreach (Item item in placedItemsP2)
         {
             item.SetActive(state);
         }
@@ -142,11 +176,35 @@ public class GameManager : MonoBehaviour
     
     public void RemovePlacedItem(Item item)
     {
-        if (placedItems.Contains(item))
+        if (placedItemsP1.Contains(item))
         {
-            placedItems.Remove(item);
+            placedItemsP1.Remove(item);
+        }
+        else
+        {
+            if (placedItemsP2.Contains(item))
+            {
+                placedItemsP2.Remove(item);
+            }
         }
     }
+    
+    public void RemovePlacedDataItem(Item item)
+    {
+        ItemData dataP1 = itemPlacedDataP1.Find(x => x.id == item.id && x.prefab.GetInstanceID() == item.GetInstanceID());
+        if (dataP1 != null)
+        {
+            itemPlacedDataP1.Remove(dataP1);
+            return;
+        }
+
+        ItemData dataP2 = itemPlacedDataP2.Find(x => x.id == item.id && x.prefab.GetInstanceID() == item.GetInstanceID());
+        if (dataP2 != null)
+        {
+            itemPlacedDataP2.Remove(dataP2);
+        }
+    }
+
 
     public bool isAllPlayerReadyToFight()
     {
@@ -176,8 +234,6 @@ public class GameManager : MonoBehaviour
 
     void StartEnter()
     {
-        UIManager.instance.HideStartText(true);
-        
         Debug.Log("Enter Start");
     }
     
@@ -196,6 +252,11 @@ public class GameManager : MonoBehaviour
     void StartMiniGame()
     {
         Debug.Log("Enter MiniGames");
+        
+        foreach (var placementSystem in SpawnPlayer.instance.placementSystems)
+        {
+            placementSystem.SaveGrid();
+        }
 
         string sceneName = miniGames[Random.Range(0, miniGames.Length - 1)];
         SceneManager.LoadScene(sceneName);
@@ -296,7 +357,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Enter Reward");
 
         CardChoice.instance.ResolveMiniGameResults(player_1_Score, player_2_Score);
-        UIManager.instance.HideStartText(false);
     }
     
     void RewardUpdate()

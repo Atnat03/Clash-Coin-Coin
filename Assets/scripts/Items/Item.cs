@@ -30,6 +30,7 @@ public abstract class Item : MonoBehaviour, ITargetable
     public void Die()
     {
         GameManager.instance.RemovePlacedItem(this);
+        GameManager.instance.RemovePlacedDataItem(this);
         Destroy(gameObject);
     }
 

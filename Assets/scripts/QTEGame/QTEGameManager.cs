@@ -74,6 +74,13 @@ public class QTEGameManager : MonoBehaviour
         if(P1.score == P2.score)mainText.text = "égalité !";
         else if (P1.score > P2.score) mainText.text = "Joueur 1 a gagné !";
         else mainText.text = "Joueur 2 a gagné !";
+        
+        yield return new WaitForSeconds(2f);
+
+        GameManager.instance.player_1_Score = 1;
+        GameManager.instance.player_2_Score = 1;
+        
+        GameManager.instance.ReturnToMainScene();
     }
 
 }
