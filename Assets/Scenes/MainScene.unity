@@ -1541,7 +1541,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Appuis sur A
+  m_Text: Appuies sur A
 --- !u!222 &433156030
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2765,7 +2765,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Appuis sur A
+  m_Text: Appuies sur A
 --- !u!222 &1048367855
 CanvasRenderer:
   m_ObjectHideFlags: 0
