@@ -48,12 +48,9 @@ public class MashIngGamePlayerScript : MonoBehaviour
 
     public void PlayerPressedA(InputAction.CallbackContext context)
     {
-        Debug.Log($"{gameObject.name} a reçu input ! Phase: {context.phase} | Value: {context.ReadValueAsButton()}");
-
         if (ingame && context.performed)
         {
             P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
-            Debug.Log($"{gameObject.name} jauge mise à jour : {P1JaugeFillAmout}");
         }
     }
 }

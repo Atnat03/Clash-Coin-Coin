@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Areleased",
+                    "type": "Button",
+                    "id": "100797c3-934e-4d06-8009-9149e4de9126",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -178,7 +187,7 @@
                     "name": "",
                     "id": "d53f8ea3-067a-425e-af0b-b37b018b2bd8",
                     "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "APressed",
@@ -189,7 +198,7 @@
                     "name": "",
                     "id": "57fdf66c-dccc-4093-9f9a-a04745650ff4",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "APressed",
@@ -237,6 +246,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "XPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d977207-c4eb-4f27-810b-fd3d7b0c089d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Areleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba47f2fe-ef19-40c4-8044-d871a75ef334",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Areleased",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

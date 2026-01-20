@@ -25,6 +25,8 @@ public class PlacementSystem : MonoBehaviour
     private Bounds gridBounds;
     
     [SerializeField] private GameObject uiReady;
+
+    public int currentItemToPlace = -1;
     
     private void Awake()
     {
@@ -60,6 +62,14 @@ public class PlacementSystem : MonoBehaviour
         playerInpute.OnSelectTroop += StartPlacement;
     }
 
+    public void PlaceItem()
+    {
+        if(currentItemToPlace == -1)
+            return;
+
+        StartPlacement(currentItemToPlace);
+    }
+    
     public void StartPlacement(int ID)
     {
         StopPlacement();

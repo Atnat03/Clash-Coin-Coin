@@ -83,10 +83,10 @@ public class MashingGameManager : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            GameManager.instance.player_1_Score = 1;
+            GameManager.instance.player_1_Score = 2;
             GameManager.instance.player_2_Score = 1;
 
-            SceneManager.LoadScene("MainScene");
+            GameManager.instance.ReturnToMainScene();
         }
     }
 }
