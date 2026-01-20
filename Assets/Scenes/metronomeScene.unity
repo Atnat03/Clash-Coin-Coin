@@ -2397,7 +2397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79faa635f838a054c8a4217aa2af8597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  gameLength: 1
+  gameLength: 15
   SliderTolerence: 0.3
   pointsToScore: 15
   cursorAccelerationFactor: 1.01
