@@ -6012,9 +6012,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   placedItems: []
   miniGames:
-  - MashingGameee
-  player_1_Score: 1
-  player_2_Score: 1
+  - MashingGame
+  - CurlingGame
+  - MetronomeScene
+  - QTEGame
+  player_1_Score: -1
+  player_2_Score: -1
   CombatDuration: 20
 --- !u!1 &1569649508
 GameObject:
