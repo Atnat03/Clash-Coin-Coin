@@ -152,7 +152,7 @@ public class CardChoice : MonoBehaviour
          if(ID ==1) animatorCards1.SetTrigger("2");
          if(ID ==2) animatorCards1.SetTrigger("3");
          inSelection1 = false;
-         placementPlayer1.currentItemToPlace = cardsID2[ID];
+         placementPlayer1.currentItemToPlace = cardsID1[ID];
       }
       else
       {
