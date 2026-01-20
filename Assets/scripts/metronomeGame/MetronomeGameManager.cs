@@ -31,18 +31,13 @@ public class MetronomeGameManager : MonoBehaviour
         StartCoroutine(GameCoroutine());
     }
 
+    public Animator animUI;
+
     IEnumerator GameCoroutine()
     {
         float elapsedTime = 3;
-        while (elapsedTime > 0)
-        {
-            elapsedTime -= Time.deltaTime;
-            mainText.text = (Mathf.CeilToInt(elapsedTime)).ToString();
-            yield return null;
-        }
-        mainText.text = "go !";
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3.5f);
         BeginGame?.Invoke();
 
         elapsedTime = gameLength;
@@ -53,16 +48,9 @@ public class MetronomeGameManager : MonoBehaviour
             yield return null;
         }
         
-        mainText.text = "terminé !";
-        yield return new WaitForSeconds(1f);
-
-        if (P1 != null && P2 != null)
-        {
-            if (P1.points >= P2.points) mainText.text = "joueur 1 a gagné !";
-            else mainText.text = "joueur 2 a gagné !";
-        }
+        animUI.SetTrigger("Over");
         
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         GameManager.instance.player_1_Score = 1;
         GameManager.instance.player_2_Score = 1;
