@@ -6,16 +6,23 @@ using UnityEngine.Serialization;
 
 public class SpawnPlayer : MonoBehaviour
 {
+    public static SpawnPlayer instance;
+    
     public Transform[] spawnPoints;
     private int id = 0;
 
     [SerializeField] private GameObject[] P1infos;
     [SerializeField] private GameObject[] P2infos;
-    [SerializeField] private PlacementSystem[] placementSystems;
+    [SerializeField] public PlacementSystem[] placementSystems;
     public PlayerInput playerPrefab;
     public PlayerInputManager playerInputManager;
     public Camera mainCamera;
-    
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         ActivateInfos(0, true);

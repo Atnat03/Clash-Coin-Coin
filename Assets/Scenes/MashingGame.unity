@@ -686,6 +686,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 98859e88-cb5e-46ad-a75e-4869ccf75e55
     m_ActionName: 'GamePlay/BPressed[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f961b4fe-234b-4796-b274-cffa5ac3ab7a
+    m_ActionName: 'GamePlay/YPressed[/XInputControllerWindows1/buttonNorth,/XInputControllerWindows/buttonNorth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4b3f9389-b4a0-4aef-8ff4-834e4b9439f0
+    m_ActionName: 'GamePlay/XPressed[/XInputControllerWindows1/buttonWest,/XInputControllerWindows/buttonWest]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlay
