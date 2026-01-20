@@ -19,21 +19,78 @@ MonoBehaviour:
     Prefab: {fileID: 2564806622089340945, guid: 9006adafbf887b5459ef1eaa14e60c9f, type: 3}
     PV: 0
     maxPV: 100
+    carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
+    rarity: 1
   - Id: 1
     Name: 
     Size: {x: 1, y: 1}
     Prefab: {fileID: 9126037231046463410, guid: 5e8b158fad565ed4ca6b069af261e226, type: 3}
     PV: 0
     maxPV: 100
+    carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
+    rarity: 1
   - Id: 2
     Name: 
     Size: {x: 1, y: 1}
     Prefab: {fileID: 9126037231046463410, guid: c23ccefdde608d74a86f89e735c03a5c, type: 3}
     PV: 0
     maxPV: 0
+    carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
+    rarity: 1
   - Id: 3
     Name: 
     Size: {x: 1, y: 1}
     Prefab: {fileID: 9126037231046463410, guid: 8c8c974a65207004c997fb102913f969, type: 3}
     PV: 0
     maxPV: 0
+    carte: {fileID: 21300000, guid: f33e74e6593cffe488c3a3be38225a44, type: 3}
+    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    rarity: 0
+  - Id: 3
+    Name: 
+    Size: {x: 1, y: 1}
+    Prefab: {fileID: 9126037231046463410, guid: 8c8c974a65207004c997fb102913f969, type: 3}
+    PV: 0
+    maxPV: 0
+    carte: {fileID: 21300000, guid: f33e74e6593cffe488c3a3be38225a44, type: 3}
+    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    rarity: 0
+  - Id: 5
+    Name: 
+    Size: {x: 1, y: 1}
+    Prefab: {fileID: 9126037231046463410, guid: 8c8c974a65207004c997fb102913f969, type: 3}
+    PV: 0
+    maxPV: 0
+    carte: {fileID: 21300000, guid: f33e74e6593cffe488c3a3be38225a44, type: 3}
+    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    rarity: 0
+  - Id: 6
+    Name: 
+    Size: {x: 1, y: 1}
+    Prefab: {fileID: 9126037231046463410, guid: 8c8c974a65207004c997fb102913f969, type: 3}
+    PV: 0
+    maxPV: 2
+    carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 7261c2b57745ddb449b4581b88ecc18d, type: 3}
+    rarity: 0
+  - Id: 5
+    Name: 
+    Size: {x: 1, y: 1}
+    Prefab: {fileID: 9126037231046463410, guid: 8c8c974a65207004c997fb102913f969, type: 3}
+    PV: 0
+    maxPV: 2
+    carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 7261c2b57745ddb449b4581b88ecc18d, type: 3}
+    rarity: 0
+  - Id: 5
+    Name: 
+    Size: {x: 1, y: 1}
+    Prefab: {fileID: 9126037231046463410, guid: 8c8c974a65207004c997fb102913f969, type: 3}
+    PV: 0
+    maxPV: 2
+    carte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 7261c2b57745ddb449b4581b88ecc18d, type: 3}
+    rarity: 0
