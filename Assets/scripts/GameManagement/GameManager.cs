@@ -48,13 +48,14 @@ public class GameManager : MonoBehaviour
         itemData.playerOneProperty = item.playerOneProperty;
         itemData.PV = item.PV;
         itemData.maxPV = item.maxPV;
-        itemData.prefab = item.gameObject;
     
         ItemSO database = itemData.playerOneProperty ? SpawnPlayer.instance.placementSystems[0].database : SpawnPlayer.instance.placementSystems[1].database;
         var itemInfo = database.itemsData.Find(x => x.Id == item.id);
+        
         if (itemInfo != null)
         {
             itemData.scale = itemInfo.Size;
+            itemData.prefab = itemInfo.Prefab;
         }
 
         if (itemData.playerOneProperty)
@@ -93,7 +94,6 @@ public class GameManager : MonoBehaviour
         
         placedItemsP1.Clear();
         placedItemsP2.Clear();
-        
         
         SpawnPlayer.instance.placementSystems[1].ReloadData(itemPlacedDataP1);
         SpawnPlayer.instance.placementSystems[0].ReloadData(itemPlacedDataP2);
