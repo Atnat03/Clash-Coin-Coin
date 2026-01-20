@@ -299,7 +299,7 @@ public class GameManager : MonoBehaviour
         SetAllPlacedItems(true);
     }
 
-    public float CombatDuration = 20;
+    public float CombatDuration = 10;
 
     IEnumerator DecompteCombat(float intervale)
     {
