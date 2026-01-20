@@ -78,5 +78,12 @@ public class CurlingGameManager : MonoBehaviour
             mainText.text = "joueur 1 a gagné";
         }
         
+        yield return new WaitForSeconds(2f);
+
+        GameManager.instance.player_1_Score = 1;
+        GameManager.instance.player_2_Score = 1;
+        
+        GameManager.instance.ReturnToMainScene();
+        
     }
 }

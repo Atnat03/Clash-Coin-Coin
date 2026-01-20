@@ -29,7 +29,7 @@ public class GridManager : MonoBehaviour
 	[SerializeField] LayerMask unWalkableMask;
 	[SerializeField] Vector2   gridWorldSize;
 	[SerializeField] float     nodeRadius;
-	Node[,]                    grid;
+	public Node[,]                    grid;
 	int                        gridSizeX, gridSizeY;
 	float                      nodeDiameter;
 

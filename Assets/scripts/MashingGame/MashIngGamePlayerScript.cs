@@ -35,11 +35,15 @@ public class MashIngGamePlayerScript : MonoBehaviour
     {
         ingame = true;
         float elapsedTime = 0f;
-        while (elapsedTime < MashingGameManager.instance.GameLength)
+        while (elapsedTime < MashingGameManager.instance.GameLength && !MashingGameManager.instance.someoneWon)
         {
             elapsedTime += Time.deltaTime;
             
             P1Jauge.fillAmount = P1JaugeFillAmout;
+            if (P1JaugeFillAmout >= 0.95f)
+            {
+                MashingGameManager.instance.someoneWon = true;
+            }
             
             yield return null;
         }

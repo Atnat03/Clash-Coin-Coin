@@ -11,6 +11,7 @@ public class MetronomeGameManager : MonoBehaviour
     [Tooltip("le slider va de -1 a 1")]public float SliderTolerence = .1f;
     public int pointsToScore;
     public float cursorAccelerationFactor = 1.2f;
+    public float cursorDefaultSpeed = 1;
     
     public TextMeshProUGUI mainText;
     
@@ -60,5 +61,12 @@ public class MetronomeGameManager : MonoBehaviour
             if (P1.points >= P2.points) mainText.text = "joueur 1 a gagné !";
             else mainText.text = "joueur 2 a gagné !";
         }
+        
+        yield return new WaitForSeconds(2f);
+
+        GameManager.instance.player_1_Score = 1;
+        GameManager.instance.player_2_Score = 1;
+        
+        GameManager.instance.ReturnToMainScene();
     }
 }

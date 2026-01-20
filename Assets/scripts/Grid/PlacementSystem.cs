@@ -8,7 +8,7 @@ public class PlacementSystem : MonoBehaviour
     [SerializeField] private PlayerInputing playerInputing = null;
     [SerializeField] private Grid grid;
 
-    [SerializeField] private ItemSO database;
+    [SerializeField] public ItemSO database;
     private int selectedObjectIndex = -1;
     
     [SerializeField] private GameObject gridVisualisation;
@@ -53,6 +53,8 @@ public class PlacementSystem : MonoBehaviour
         StopPlacement();
         floorData = new();
         furnitureData = new();
+        
+        playerInputing.OnSelectTroop += StartPlacement;
     }
 
     public void PlaceItem()
@@ -116,19 +118,61 @@ public class PlacementSystem : MonoBehaviour
 
         Item itemPlaced = go.GetComponentInChildren<Item>();
         ItemsData data = database.itemsData[selectedObjectIndex];
-        itemPlaced.enabled = true;
-        itemPlaced.GetComponent<ITargetable>().playerOneProperty = playerInputing.isPlayerOne;
+        itemPlaced.enabled = false;
+        itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
         itemPlaced.maxPV = data.maxPV;
         itemPlaced.PV = data.maxPV;
 
-
-        itemPlaced.enabled = false;
+        if (itemPlaced.playerOneProperty)
+        {
+            GameManager.instance.placedItemsP1.Add(itemPlaced);
+        }
+        else
+        {
+            GameManager.instance.placedItemsP2.Add(itemPlaced);
+        }
         
-        GameManager.instance.placedItems.Add(itemPlaced);
+        GameManager.instance.AddItemInList(itemPlaced, gridPosition);
+        
+        currentItemToPlace = -1;
         
         previewSystem.UpdatePosition(gridPosition, false);
+
+        Validate();
     }
 
+    public void PlaceStructureAt(ItemData itemData)
+    {
+        if (playerInputing.IsPointerOverUI()) return;
+        
+        GameObject go = Instantiate(itemData.prefab);
+        Vector3 worldPosition = grid.GetCellCenterWorld(itemData.position);
+        go.transform.position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
+        
+        placedObjects.Add(go);
+        GridData selectedData = itemData.id == 0 ? floorData : furnitureData;
+        selectedData.AddObjectAt(itemData.position, 
+            itemData.scale,
+            itemData.id,
+            placedObjects.Count - 1);
+
+        Item itemPlaced = go.GetComponentInChildren<Item>();
+        ItemData data = itemData;
+        itemPlaced.enabled = false;
+        itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
+        itemPlaced.maxPV = data.maxPV;
+        itemPlaced.PV = data.maxPV;
+        
+        if (itemPlaced.playerOneProperty)
+        {
+            GameManager.instance.placedItemsP1.Add(itemPlaced);
+        }
+        else
+        {
+            GameManager.instance.placedItemsP2.Add(itemPlaced);
+        }
+    }
+    
     private bool CheckPlacementValidity(Vector3Int gridPosition, int i)
     {
         if (!IsInsideGrid(gridPosition))
@@ -216,4 +260,55 @@ public class PlacementSystem : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(center, size);
     }
+
+    public void ReloadData(List<ItemData> list)
+    {
+        Debug.Log($"Reloading {list.Count} items for {playerInputing.name}");
+    
+        foreach (ItemData item in list)
+        {
+            if (item.prefab != null)
+            {
+                PlaceStructureAt(item);
+            }
+            else
+            {
+                Debug.LogWarning($"ItemData avec ID {item.id} a un prefab null");
+            }
+        }
+    
+        list.Clear();
+    }
+    
+    public void SaveGrid()
+    {
+        // Nettoyer les listes avant de sauvegarder
+        GameManager.instance.itemPlacedDataP1.Clear();
+        GameManager.instance.itemPlacedDataP2.Clear();
+    
+        foreach (Item item in GameManager.instance.placedItemsP1)
+        {
+            Vector3Int? pos = furnitureData.GetItemPosition(item);
+            if (pos == null)
+                pos = floorData.GetItemPosition(item);
+    
+            if (pos != null)
+            {
+                GameManager.instance.AddItemInList(item, pos.Value);
+            }
+        }
+
+        foreach (Item item in GameManager.instance.placedItemsP2)
+        {
+            Vector3Int? pos = furnitureData.GetItemPosition(item);
+            if (pos == null)
+                pos = floorData.GetItemPosition(item);
+    
+            if (pos != null)
+            {
+                GameManager.instance.AddItemInList(item, pos.Value);
+            }
+        }
+    }
+
 }

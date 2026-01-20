@@ -30,6 +30,7 @@ public abstract class Item : MonoBehaviour, ITargetable
     public void Die()
     {
         GameManager.instance.RemovePlacedItem(this);
+        GameManager.instance.RemovePlacedDataItem(this);
         Destroy(gameObject);
     }
 
@@ -45,5 +46,15 @@ public abstract class Item : MonoBehaviour, ITargetable
         { 
             Die();
         }    
+    }
+
+    public void GetPoisoned(float duration, float damage)
+    {
+        
+    }
+
+    public virtual void SetActive(bool state)
+    {
+        enabled = state;
     }
 }
