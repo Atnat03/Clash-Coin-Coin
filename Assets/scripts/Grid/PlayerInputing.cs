@@ -25,6 +25,8 @@ public class PlayerInputing : MonoBehaviour
     private Bounds aimBounds;
     private bool hasBounds = false;
 
+    public bool hasValidate = false;
+    
     void Start()
     {
         screenCursor = new Vector2(Screen.width / 2f, Screen.height / 2f);

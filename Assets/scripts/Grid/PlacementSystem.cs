@@ -24,6 +24,8 @@ public class PlacementSystem : MonoBehaviour
     [SerializeField] private Vector3Int gridOrigin = Vector3Int.zero;
     private Bounds gridBounds;
     
+    [SerializeField] private GameObject uiReady;
+    
     private void Awake()
     {
         if (grid == null) return;
@@ -81,8 +83,10 @@ public class PlacementSystem : MonoBehaviour
         
         playerInputing.SetAimBounds(gridBounds);
 
+        playerInputing.hasValidate = false;
+        
         playerInputing.OnClicked += PlaceStructure;
-        playerInputing.OnExit += StopPlacement;
+        playerInputing.OnExit += Validate;
     }
 
 
@@ -140,6 +144,13 @@ public class PlacementSystem : MonoBehaviour
         playerInputing.OnExit -= StopPlacement;
         playerInputing.SetAimBounds(default);
         lastDetectedPosition = Vector3Int.zero;
+    }
+
+    void Validate()
+    {
+        StopPlacement();
+        playerInputing.hasValidate = true;
+        uiReady.SetActive(true);
     }
 
     private void Update()
