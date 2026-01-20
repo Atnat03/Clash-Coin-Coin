@@ -69,7 +69,6 @@ public class MashingGameManager : MonoBehaviour
         }
         
         
-        cooldownBar.gameObject.SetActive(false);
         mainTextMesh.text = "Fini !";
 
         yield return new WaitForSeconds(2f);
