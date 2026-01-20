@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   gameLength: 15
-  SliderTolerence: 0.2
+  SliderTolerence: 0.3
   pointsToScore: 15
   cursorAccelerationFactor: 1.01
   cursorDefaultSpeed: 1
