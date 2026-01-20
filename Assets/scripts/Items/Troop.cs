@@ -247,12 +247,12 @@ public class Troop : Item
 
         if (stopAtAttackRange && path.Count > 1)
         {
-            while (path.Count > 1)
+            while (path.Count > 0)
             {
                 Vector3 lastNodePos = path[path.Count - 1].worldPosition;
                 float distToTarget = Vector3.Distance(lastNodePos, target.position);
 
-                if (distToTarget <= RadiusAttack)
+                if (distToTarget <= RadiusAttack * 0.9)
                 {
                     path.RemoveAt(path.Count - 1);
                 }
