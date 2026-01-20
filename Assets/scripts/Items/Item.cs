@@ -47,6 +47,11 @@ public abstract class Item : MonoBehaviour, ITargetable
         }    
     }
 
+    public void GetPoisoned(float duration, float damage)
+    {
+        throw new NotImplementedException();
+    }
+
     public virtual void SetActive(bool state)
     {
         enabled = state;
