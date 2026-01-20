@@ -38,7 +38,6 @@ public class Troop : Item
         target = null;
         lastTarget = null;
         pathRefreshTimer = 0f;
-        Debug.Log($"{name} ENABLED");
     }
 
     void Update()

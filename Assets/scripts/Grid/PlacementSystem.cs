@@ -145,9 +145,6 @@ public class PlacementSystem : MonoBehaviour
     {
         if (playerInputing.IsPointerOverUI()) return;
         
-        bool placementValidity = CheckPlacementValidity(itemData.position, selectedObjectIndex);
-        if (placementValidity == false) return;
-        
         GameObject go = Instantiate(itemData.prefab);
         Vector3 worldPosition = grid.GetCellCenterWorld(itemData.position);
         go.transform.position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
@@ -266,22 +263,35 @@ public class PlacementSystem : MonoBehaviour
 
     public void ReloadData(List<ItemData> list)
     {
+        Debug.Log($"Reloading {list.Count} items for {playerInputing.name}");
+    
         foreach (ItemData item in list)
         {
-            PlaceStructureAt(item);
+            if (item.prefab != null)
+            {
+                PlaceStructureAt(item);
+            }
+            else
+            {
+                Debug.LogWarning($"ItemData avec ID {item.id} a un prefab null");
+            }
         }
-        
+    
         list.Clear();
     }
     
     public void SaveGrid()
     {
+        // Nettoyer les listes avant de sauvegarder
+        GameManager.instance.itemPlacedDataP1.Clear();
+        GameManager.instance.itemPlacedDataP2.Clear();
+    
         foreach (Item item in GameManager.instance.placedItemsP1)
         {
             Vector3Int? pos = furnitureData.GetItemPosition(item);
             if (pos == null)
                 pos = floorData.GetItemPosition(item);
-        
+    
             if (pos != null)
             {
                 GameManager.instance.AddItemInList(item, pos.Value);
@@ -293,7 +303,7 @@ public class PlacementSystem : MonoBehaviour
             Vector3Int? pos = furnitureData.GetItemPosition(item);
             if (pos == null)
                 pos = floorData.GetItemPosition(item);
-        
+    
             if (pos != null)
             {
                 GameManager.instance.AddItemInList(item, pos.Value);
