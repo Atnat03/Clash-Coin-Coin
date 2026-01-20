@@ -6,23 +6,29 @@ using UnityEngine.Serialization;
 
 public class SpawnPlayer : MonoBehaviour
 {
+    public static SpawnPlayer instance;
+    
     public Transform[] spawnPoints;
     private int id = 0;
 
     [SerializeField] private GameObject[] P1infos;
     [SerializeField] private GameObject[] P2infos;
-    [SerializeField] private PlacementSystem[] placementSystems;
-    public PlayerInput playerPrefab;
-    public PlayerInputManager playerInputManager;
+    [SerializeField] public PlacementSystem[] placementSystems;
+    public PlayerInputing[] players;
     public Camera mainCamera;
-    
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         ActivateInfos(0, true);
         ActivateInfos(1, true);
     }
     
-    public void OnPlayerJoined(PlayerInput playerInput)
+    /*public void OnPlayerJoined(PlayerInput playerInput)
     {
         if (id >= spawnPoints.Length) return;
         
@@ -30,8 +36,6 @@ public class SpawnPlayer : MonoBehaviour
         
         playerInput.transform.name = "Player " + id;
         
-        playerInput.camera = mainCamera;
-
         if (placementSystems.Length > id)
             placementSystems[id].Starting(playerInput.GetComponent<PlayerInputing>());
 
@@ -39,8 +43,10 @@ public class SpawnPlayer : MonoBehaviour
         
         ActivateInfos(id, false);
         
+        GameManager.instance.players.Add(playerInput.GetComponent<PlayerInputing>());
+        
         id++;
-    }
+    }*/
 
 
     public void ActivateInfos(int id, bool state)

@@ -119,6 +119,116 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &44543024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 44543026}
+  - component: {fileID: 44543025}
+  - component: {fileID: 44543027}
+  m_Layer: 0
+  m_Name: Player2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &44543025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44543024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe7ab6714695704dbd359a03fa84d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MashIngManager
+  P1JaugeFillAmout: 0
+  P1Jauge: {fileID: 378328347}
+  ingame: 0
+--- !u!4 &44543026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44543024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1087.801, y: -0.00003, z: 2160.7822}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &44543027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44543024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 235a8076421dba241a94f99c1c5479a5, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e2dac709-3c1c-480b-9b4d-d6aee675b39b
+    m_ActionName: 'GamePlay/Aim[/XInputControllerWindows1/leftStick,/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows1/dpad/up,/XInputControllerWindows/dpad/up,/XInputControllerWindows1/dpad/down,/XInputControllerWindows/dpad/down,/XInputControllerWindows1/dpad/left,/XInputControllerWindows/dpad/left,/XInputControllerWindows1/dpad/right,/XInputControllerWindows/dpad/right]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 44543025}
+        m_TargetAssemblyTypeName: MashIngGamePlayerScript, Assembly-CSharp
+        m_MethodName: PlayerPressedA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6ee81ec4-449d-4cbe-bddb-7f6ef3f48f26
+    m_ActionName: 'GamePlay/APressed[/XInputControllerWindows1/buttonSouth,/XInputControllerWindows/buttonSouth,/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98859e88-cb5e-46ad-a75e-4869ccf75e55
+    m_ActionName: 'GamePlay/BPressed[/XInputControllerWindows1/buttonEast,/XInputControllerWindows/buttonEast,/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f961b4fe-234b-4796-b274-cffa5ac3ab7a
+    m_ActionName: 'GamePlay/YPressed[/XInputControllerWindows1/buttonNorth,/XInputControllerWindows/buttonNorth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4b3f9389-b4a0-4aef-8ff4-834e4b9439f0
+    m_ActionName: 'GamePlay/XPressed[/XInputControllerWindows1/buttonWest,/XInputControllerWindows/buttonWest]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: GamePlay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 2026810060}
 --- !u!1 &378328345
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +304,116 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378328345}
   m_CullTransparentMesh: 1
+--- !u!1 &409549549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409549551}
+  - component: {fileID: 409549550}
+  - component: {fileID: 409549552}
+  m_Layer: 0
+  m_Name: Player1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &409549550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409549549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe7ab6714695704dbd359a03fa84d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MashIngManager
+  P1JaugeFillAmout: 0
+  P1Jauge: {fileID: 677833352}
+  ingame: 0
+--- !u!4 &409549551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409549549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1087.801, y: -0.00003, z: 2160.7822}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &409549552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409549549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 235a8076421dba241a94f99c1c5479a5, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e2dac709-3c1c-480b-9b4d-d6aee675b39b
+    m_ActionName: 'GamePlay/Aim[/XInputControllerWindows1/leftStick,/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows1/dpad/up,/XInputControllerWindows/dpad/up,/XInputControllerWindows1/dpad/down,/XInputControllerWindows/dpad/down,/XInputControllerWindows1/dpad/left,/XInputControllerWindows/dpad/left,/XInputControllerWindows1/dpad/right,/XInputControllerWindows/dpad/right]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 409549550}
+        m_TargetAssemblyTypeName: MashIngGamePlayerScript, Assembly-CSharp
+        m_MethodName: PlayerPressedA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6ee81ec4-449d-4cbe-bddb-7f6ef3f48f26
+    m_ActionName: 'GamePlay/APressed[/XInputControllerWindows1/buttonSouth,/XInputControllerWindows/buttonSouth,/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98859e88-cb5e-46ad-a75e-4869ccf75e55
+    m_ActionName: 'GamePlay/BPressed[/XInputControllerWindows1/buttonEast,/XInputControllerWindows/buttonEast,/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f961b4fe-234b-4796-b274-cffa5ac3ab7a
+    m_ActionName: 'GamePlay/YPressed[/XInputControllerWindows1/buttonNorth,/XInputControllerWindows/buttonNorth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4b3f9389-b4a0-4aef-8ff4-834e4b9439f0
+    m_ActionName: 'GamePlay/XPressed[/XInputControllerWindows1/buttonWest,/XInputControllerWindows/buttonWest]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: GamePlay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 2026810060}
 --- !u!1 &556820602
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,8 +818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1137490989}
   - component: {fileID: 1137490991}
-  - component: {fileID: 1137490988}
-  - component: {fileID: 1137490990}
+  - component: {fileID: 1137490992}
   m_Layer: 0
   m_Name: MashingGameManager
   m_TagString: Untagged
@@ -607,21 +826,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1137490988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137490987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe7ab6714695704dbd359a03fa84d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MashIngManager
-  P1JaugeFillAmout: 0
-  P1Jauge: {fileID: 677833352}
-  ingame: 0
 --- !u!4 &1137490989
 Transform:
   m_ObjectHideFlags: 0
@@ -637,60 +841,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1137490990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137490987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 235a8076421dba241a94f99c1c5479a5, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e2dac709-3c1c-480b-9b4d-d6aee675b39b
-    m_ActionName: 'GamePlay/Aim[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1137490988}
-        m_TargetAssemblyTypeName: MashIngManager, Assembly-CSharp
-        m_MethodName: PlayerPressedA
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 6ee81ec4-449d-4cbe-bddb-7f6ef3f48f26
-    m_ActionName: 'GamePlay/APressed[/Keyboard/space]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 98859e88-cb5e-46ad-a75e-4869ccf75e55
-    m_ActionName: 'GamePlay/BPressed[/Keyboard/escape]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: GamePlay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1137490991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,11 +854,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MashingGameManager
   GameLength: 10
-  amountPerClic: 0.005
+  amountPerClic: 0.01
   mainTextMesh: {fileID: 686604184}
   cooldownBar: {fileID: 1653073541}
-  P1: {fileID: 1137490988}
-  P2: {fileID: 1137490988}
+  P1: {fileID: 409549550}
+  P2: {fileID: 44543025}
+--- !u!114 &1137490992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137490987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a18cb4bf9d75540b1ce963969c2bda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnableInputs
+  player1: {fileID: 409549549}
+  player2: {fileID: 44543024}
 --- !u!1 &1351866883
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +1132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: fc897c658c77a1e47988d981210e0831, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1211,3 +1375,5 @@ SceneRoots:
   - {fileID: 1137490989}
   - {fileID: 1134924532}
   - {fileID: 1804601910}
+  - {fileID: 409549551}
+  - {fileID: 44543026}

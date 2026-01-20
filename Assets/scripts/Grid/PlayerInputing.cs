@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerInputing : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerInputing : MonoBehaviour
     public float maxDistance = 100f;
     public LayerMask hitMask;
 
-    Vector2 aimInput;
+    public Vector2 aimInput;
     Vector2 screenCursor;
     Vector3 worldAimPosition;
 
@@ -25,7 +26,8 @@ public class PlayerInputing : MonoBehaviour
     private Bounds aimBounds;
     private bool hasBounds = false;
 
-    public bool hasValidate = false;
+    public bool IsReady = false;
+    public bool HasReward = false;
     
     void Start()
     {
@@ -39,11 +41,8 @@ public class PlayerInputing : MonoBehaviour
     }
 
     public void OnAim(InputAction.CallbackContext context) => aimInput = context.ReadValue<Vector2>();
-
     public void OnPressedInput(InputAction.CallbackContext context) => OnClicked?.Invoke();
     public void OnExitInput(InputAction.CallbackContext context) => OnExit?.Invoke();
-    public void OnSelectTroopInput(InputAction.CallbackContext context) => OnSelectTroop?.Invoke(0);
-    public void OnSelectBuildInput(InputAction.CallbackContext context)=> OnSelectBuild?.Invoke(1);
 
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
     
