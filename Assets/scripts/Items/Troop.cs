@@ -13,7 +13,7 @@ public class Troop : Item
 
     [Header("Runtime")]
     bool isAttacking;
-    public Transform target;
+    Transform target;
 
     GridManager gridManager;
 
@@ -21,10 +21,15 @@ public class Troop : Item
     Transform lastTarget;
     float pathRefreshTimer;
 
+    public bool alreadyTakeTP = false;
+
     const float PATH_REFRESH_TIME = 0.5f;
-
-    // -------------------- UNITY --------------------
-
+    
+    public bool isFrozen;
+    
+    public new bool IsMovementTarget => true;
+    public new bool CanBeAttacked => true;
+    
     void OnEnable()
     {
         gridManager = GridManager.instance;
@@ -34,29 +39,28 @@ public class Troop : Item
             return;
         }
     
-        path.Clear();
-        target = null;
+        gridManager = GridManager.instance;
+
         lastTarget = null;
         pathRefreshTimer = 0f;
     }
 
     void Update()
     {
-        print(playerOneProperty);
+        if (isFrozen)
+            return;
         
         if (!enabled || !gridManager)
             return;
+        
+        target = Rescan();
+        print("Target : " + target.name);
 
-        if (!target)
+        if (target && path.Count == 0)
         {
-            target = Rescan();
-
-            if (target && path.Count == 0)
-            {
-                FindPath(transform.position, target.position);
-                lastTarget = target;
-                pathRefreshTimer = PATH_REFRESH_TIME;
-            }
+            FindPath(transform.position, target.position);
+            lastTarget = target;
+            pathRefreshTimer = PATH_REFRESH_TIME;
         }
 
         if (!target)
@@ -72,9 +76,12 @@ public class Troop : Item
         
         if (path.Count == 0)
         {
-            float dist = Vector3.Distance(transform.position, target.position);
-            if (dist <= RadiusAttack && !isAttacking)
-                StartCoroutine(Attack());
+            if (target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+            {
+                float dist = Vector3.Distance(transform.position, target.position);
+                if (dist <= RadiusAttack && !isAttacking)
+                    StartCoroutine(Attack());
+            }
         }
         else
         {
@@ -82,9 +89,9 @@ public class Troop : Item
         }
 
 
+
         currentHP.fillAmount = PV / maxPV;
     }
-
     
     IEnumerator Attack()
     {
@@ -92,13 +99,16 @@ public class Troop : Item
 
         yield return new WaitForSeconds(attackCooldown);
 
-        if (target && target.TryGetComponent<ITargetable>(out var t))
+        if (target &&
+            target.TryGetComponent<ITargetable>(out var t) &&
+            t.CanBeAttacked)
         {
             t.TakeDamage(Damage);
         }
 
         isAttacking = false;
     }
+
 
     void Chase()
     {
@@ -118,10 +128,8 @@ public class Troop : Item
             path.RemoveAt(0);
         }
     }
-
-    // -------------------- TARGET SCAN --------------------
-
-    Transform Rescan()
+    
+    public Transform Rescan()
     {
         ITargetable[] targets = FindObjectsOfType<MonoBehaviour>()
             .OfType<ITargetable>()
@@ -145,6 +153,10 @@ public class Troop : Item
             if (t.playerOneProperty == playerOneProperty)
                 continue;
             
+            if(alreadyTakeTP)
+                if(t is TP_Troop)
+                    continue;
+            
             Transform tTransform = ((MonoBehaviour)t).transform;
             float dist = Vector3.SqrMagnitude(tTransform.position - myPos);
 
@@ -158,7 +170,7 @@ public class Troop : Item
         return closest;
     }
 
-    void FindPath(Vector3 startPos, Vector3 endPos)
+    public void FindPath(Vector3 startPos, Vector3 endPos)
     {
         Node startNode = gridManager.NodeFromWorldPosition(startPos);
         Node endNode = gridManager.NodeFromWorldPosition(endPos);
@@ -228,10 +240,21 @@ public class Troop : Item
 
         path.Reverse();
 
-        while (path.Count > 0 && Vector3.Distance(path[path.Count - 1].worldPosition, target.position) <= RadiusAttack)
+        bool stopAtAttackRange =
+            target.TryGetComponent<ITargetable>(out var t) &&
+            t.CanBeAttacked &&
+            !t.IsMovementTarget;
+
+
+        if (stopAtAttackRange)
         {
-            path.RemoveAt(path.Count - 1);
+            while (path.Count > 0 &&
+                   Vector3.Distance(path[path.Count - 1].worldPosition, target.position) <= RadiusAttack)
+            {
+                path.RemoveAt(path.Count - 1);
+            }
         }
+
     }
 
 
@@ -269,20 +292,41 @@ public class Troop : Item
         base.SetActive(state);
         enabled = state;
     }
+    
+    public void ForceRecalculatePath()
+    {
+        StopAllCoroutines();
+        isAttacking = false;
 
-    // -------------------- DEBUG --------------------
+        path.Clear();
+        lastTarget = null;
+        pathRefreshTimer = -1f;
 
+        target = Rescan();
+
+        if (target != null)
+        {
+            FindPath(transform.position, target.position);
+            lastTarget = target;
+        }
+    }
+
+
+
+    
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, RadiusAttack);
 
-        if (path == null) return;
-
-        Gizmos.color = Color.cyan;
-        foreach (Node n in path)
+        if (path != null)
         {
-            Gizmos.DrawCube(n.worldPosition, Vector3.one * 0.2f);
+            Gizmos.color = Color.cyan;
+            foreach (Node n in path)
+            {
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * 0.2f);
+            }
         }
     }
+
 }

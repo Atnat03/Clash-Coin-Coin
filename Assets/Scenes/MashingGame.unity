@@ -2224,7 +2224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5dddff2ee65fa4ab41c754cbeaea6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MashingGameManager
-  GameLength: 10
+  GameLength: 1
   amountPerClic: 0.015
   mainTextMesh: {fileID: 2002243988}
   timerText: {fileID: 686604184}
