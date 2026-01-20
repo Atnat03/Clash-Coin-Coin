@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
 public class State<T>
 {
     public T iD;

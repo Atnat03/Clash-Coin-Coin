@@ -39,6 +39,8 @@ public class SpawnPlayer : MonoBehaviour
         
         ActivateInfos(id, false);
         
+        GameManager.instance.players.Add(playerInput.GetComponent<PlayerInputing>());
+        
         id++;
     }
 
