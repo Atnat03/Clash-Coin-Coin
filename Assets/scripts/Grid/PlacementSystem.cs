@@ -83,7 +83,7 @@ public class PlacementSystem : MonoBehaviour
         
         playerInputing.SetAimBounds(gridBounds);
 
-        playerInputing.hasValidate = false;
+        playerInputing.IsReady = false;
         
         playerInputing.OnClicked += PlaceStructure;
         playerInputing.OnExit += Validate;
@@ -117,6 +117,11 @@ public class PlacementSystem : MonoBehaviour
         itemPlaced.GetComponent<ITargetable>().playerOneProperty = playerInputing.isPlayerOne;
         itemPlaced.maxPV = data.maxPV;
         itemPlaced.PV = data.maxPV;
+
+
+        itemPlaced.enabled = false;
+        
+        GameManager.instance.placedItems.Add(itemPlaced);
         
         previewSystem.UpdatePosition(gridPosition, false);
     }
@@ -149,8 +154,13 @@ public class PlacementSystem : MonoBehaviour
     void Validate()
     {
         StopPlacement();
-        playerInputing.hasValidate = true;
+        playerInputing.IsReady = true;
         uiReady.SetActive(true);
+    }
+
+    public void StartCombat()
+    {
+        uiReady.SetActive(false);
     }
 
     private void Update()
