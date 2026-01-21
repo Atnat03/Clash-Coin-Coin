@@ -12,14 +12,11 @@ public class MetronomePlayerScript : MonoBehaviour
     public float cursorSpeed;
     public int points;
     
-    public TextMeshProUGUI text;
-    public Image jaugePoints;
     public bool ingame;
     public int playerID;
 
     public void Start()
     {
-        jaugePoints.fillAmount = 0;
         ingame = false;
         cursorSpeed = MetronomeGameManager.instance.cursorDefaultSpeed;
         MetronomeGameManager.instance.BeginGame += BeginGame;
@@ -51,10 +48,6 @@ public class MetronomePlayerScript : MonoBehaviour
             }
             yield return null;
         }
-
-
-        if (playerID == 1) MetronomeGameManager.instance.score1 = points;
-        if (playerID == 2) MetronomeGameManager.instance.score2 = points;
     }
     
     public void PlayerPressedA(InputAction.CallbackContext context)
@@ -73,11 +66,8 @@ public class MetronomePlayerScript : MonoBehaviour
 
     public void ScorePoint()
     {
-        points++;
-        points = Mathf.Clamp(points, 0, MetronomeGameManager.instance.pointsToScore);
-
-        text.text = "points : " + points;
-        jaugePoints.fillAmount = (float)points / MetronomeGameManager.instance.pointsToScore;
+        if (playerID == 1) MetronomeGameManager.instance.cursorPosition--;
+        if (playerID == 2) MetronomeGameManager.instance.cursorPosition++;
     }
 
 }

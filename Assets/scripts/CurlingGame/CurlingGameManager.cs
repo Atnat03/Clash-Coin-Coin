@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CurlingGameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class CurlingGameManager : MonoBehaviour
 
     public CurplingPlayerScript P1;
     public CurplingPlayerScript P2;
+    
+    public Image cooldownBar;
     
     void Awake()
     {
@@ -49,6 +52,9 @@ public class CurlingGameManager : MonoBehaviour
         {
             elapsedTime -= Time.deltaTime;
             chronoText.text = elapsedTime.ToString("F2");
+            float fill = elapsedTime / gameLength;
+            cooldownBar.fillAmount = fill;
+            cooldownBar.color = Color.Lerp(new Color(1f,0.3f,0.3f), new Color(0.3f,1f,0.3f), fill);
             yield return null;
         }
         
