@@ -14,8 +14,6 @@ public class AudioManager : MonoBehaviour
     [Header("SFX Audio clips")]
     public AudioClip startSound;
     public AudioClip endSound;
-    public AudioClip coin;
-    public AudioClip croa;
     void Awake()
     {
         if (instance == null) 
