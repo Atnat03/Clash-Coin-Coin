@@ -244,7 +244,7 @@ MonoBehaviour:
   PV: 0
   maxPV: 0
   currentHP: {fileID: 7453980253436979852}
-  damage: 113
+  damage: 450
   detectionZone: 1.5
   explosionZone: 2
   modelRenderer: {fileID: 4957528276006046352}
