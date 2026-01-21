@@ -440,10 +440,10 @@ MonoBehaviour:
   gameLength: 10
   inGame: 0
   mainText: {fileID: 619560714}
-  southButtonSprite: {fileID: 21300000, guid: f26aede7788c62f4aa2df2b1c5d41b45, type: 3}
-  northButtonSprite: {fileID: 21300000, guid: ea037983d29c75f46a42241c0392b61c, type: 3}
-  eastButtonSprite: {fileID: 21300000, guid: 588b9d212c06a9f42aec1b9a8a6a518a, type: 3}
-  westButtonSprite: {fileID: 21300000, guid: 99d5a0e46e7a40e468dc62048b3379e3, type: 3}
+  southButtonSprite: {fileID: 21300000, guid: cf2785038860b9944b3798f9e3152f39, type: 3}
+  northButtonSprite: {fileID: 21300000, guid: ac82f708dd0073a44b07de55ecaad4a6, type: 3}
+  eastButtonSprite: {fileID: 21300000, guid: 670b403f3db5ad64699aad1d51d1e2fb, type: 3}
+  westButtonSprite: {fileID: 21300000, guid: b530fbb3a34971741a384e05046d18d7, type: 3}
   P1: {fileID: 444157665}
   P2: {fileID: 360170869}
   timerImage: {fileID: 310897484}
@@ -510,8 +510,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QTEPlayerScript
   score: 0
   imageNextInput: {fileID: 1042702125}
-  jauge: {fileID: 1725539678}
-  scoreMax: 20
 --- !u!114 &360170870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,8 +734,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QTEPlayerScript
   score: 0
   imageNextInput: {fileID: 440236553}
-  jauge: {fileID: 440236553}
-  scoreMax: 20
 --- !u!114 &444157666
 MonoBehaviour:
   m_ObjectHideFlags: 0
