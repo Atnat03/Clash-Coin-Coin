@@ -1,14 +1,17 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class PlacementSystem : MonoBehaviour
 {
+    public bool isDuckPlayer = false;
+    
     [SerializeField] private PlayerInputing playerInputing = null;
-    [SerializeField] private Grid grid;
+    [SerializeField] public Grid grid;
 
-    [SerializeField] private ItemSO database;
+    [HideInInspector] public ItemSO database;
     private int selectedObjectIndex = -1;
     
     [SerializeField] private GameObject gridVisualisation;
@@ -25,6 +28,8 @@ public class PlacementSystem : MonoBehaviour
     private Bounds gridBounds;
     
     [SerializeField] private GameObject uiReady;
+
+    public int currentItemToPlace = -1;
     
     private void Awake()
     {
@@ -44,27 +49,46 @@ public class PlacementSystem : MonoBehaviour
         Vector3 size = max - min + grid.cellSize;
 
         gridBounds = new Bounds(center, size);
+
+        database = isDuckPlayer
+            ? VariablesManager.instance.duckItemDatabase
+            : VariablesManager.instance.frogItemDatabase;
     }
-    
-    public void Starting(PlayerInputing playerInpute)
+
+    private void Start()
     {
-        if (playerInputing != null)
-            return;
-        
-        playerInputing = playerInpute;
         StopPlacement();
         floorData = new();
         furnitureData = new();
-
-        playerInpute.OnSelectBuild += StartPlacement;
-        playerInpute.OnSelectTroop += StartPlacement;
+        
+        playerInputing.OnSelectTroop += StartPlacement;
     }
 
+    public void PlaceItem()
+    {
+        if(currentItemToPlace == -1)
+            return;
+
+        StartPlacement(currentItemToPlace);
+    }
+    
+    
+    IEnumerator WaitALittle()
+    {
+        yield return new WaitForSeconds(0.3f);
+    }
+    
     public void StartPlacement(int ID)
     {
+        print(ID);
+        
+        StartCoroutine(WaitALittle());
+
         StopPlacement();
         selectedObjectIndex = database.itemsData.FindIndex(x => x.Id == ID);
 
+        print(database.itemsData[selectedObjectIndex].Name);
+        
         gridVisualisation.SetActive(true);
 
         previewSystem.StartShowingPlacementPreview(
@@ -113,19 +137,89 @@ public class PlacementSystem : MonoBehaviour
 
         Item itemPlaced = go.GetComponentInChildren<Item>();
         ItemsData data = database.itemsData[selectedObjectIndex];
-        itemPlaced.enabled = true;
-        itemPlaced.GetComponent<ITargetable>().playerOneProperty = playerInputing.isPlayerOne;
+        itemPlaced.id = data.Id;
+        itemPlaced.enabled = false;
+        itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
         itemPlaced.maxPV = data.maxPV;
         itemPlaced.PV = data.maxPV;
 
-
-        itemPlaced.enabled = false;
+        selectedData.RegisterItemPosition(itemPlaced, gridPosition);
         
-        GameManager.instance.placedItems.Add(itemPlaced);
+        if (itemPlaced.playerOneProperty)
+        {
+            GameManager.instance.placedItemsP1.Add(itemPlaced);
+        }
+        else
+        {
+            GameManager.instance.placedItemsP2.Add(itemPlaced);
+        }
+        
+        GameManager.instance.AddItemInList(itemPlaced, gridPosition);
+        
+        currentItemToPlace = -1;
         
         previewSystem.UpdatePosition(gridPosition, false);
+
+        Validate();
     }
 
+    public void PlaceStructureAt(ItemData itemData)
+    {
+        if (itemData == null || itemData.prefab == null)
+        {
+            Debug.LogError("ItemData ou prefab invalide");
+            return;
+        }
+    
+        if (!IsInsideGrid(itemData.position))
+        {
+            Debug.LogWarning($"Position {itemData.position} en dehors de la grille");
+            return;
+        }
+    
+        GameObject go = Instantiate(itemData.prefab);
+        Vector3 worldPosition = grid.GetCellCenterWorld(itemData.position);
+        go.transform.position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
+    
+        placedObjects.Add(go);
+    
+        GridData selectedData = itemData.id == 0 ? floorData : furnitureData;
+        selectedData.AddObjectAt(
+            itemData.position, 
+            itemData.scale,
+            itemData.id,
+            placedObjects.Count - 1
+        );
+
+        Item itemPlaced = go.GetComponentInChildren<Item>();
+    
+        if (itemPlaced == null)
+        {
+            Debug.LogError($"Item component non trouvé sur {go.name}");
+            return;
+        }
+    
+        itemPlaced.id = itemData.id;
+        itemPlaced.name = itemData.name;
+        itemPlaced.playerOneProperty = itemData.playerOneProperty;
+        itemPlaced.maxPV = itemData.maxPV;
+        itemPlaced.PV = itemData.PV;
+        itemPlaced.enabled = false;
+    
+        selectedData.RegisterItemPosition(itemPlaced, itemData.position);
+    
+        if (itemPlaced.playerOneProperty)
+        {
+            GameManager.instance.placedItemsP1.Add(itemPlaced);
+        }
+        else
+        {
+            GameManager.instance.placedItemsP2.Add(itemPlaced);
+        }
+    
+        Debug.Log($"Item restauré: {itemData.name} à la position {itemData.position} avec {itemData.PV}/{itemData.maxPV} PV");
+    }
+    
     private bool CheckPlacementValidity(Vector3Int gridPosition, int i)
     {
         if (!IsInsideGrid(gridPosition))
@@ -144,7 +238,7 @@ public class PlacementSystem : MonoBehaviour
     {
         selectedObjectIndex = -1;
         gridVisualisation.SetActive(false);
-        previewSystem.StopShowingPreview();
+        previewSystem.StopShowingPreview(); 
         playerInputing.OnClicked -= PlaceStructure;
         playerInputing.OnExit -= StopPlacement;
         playerInputing.SetAimBounds(default);

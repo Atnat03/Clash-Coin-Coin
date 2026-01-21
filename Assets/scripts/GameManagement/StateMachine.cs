@@ -16,6 +16,8 @@ public class StateMachine<T> where T : Enum
     {
         return states.TryGetValue(stateID, out State<T> state)? state : null;
     }
+    
+    public State<T> GetCurrentState() => currentState;
 
     public void ChangeState(T stateID)
     {

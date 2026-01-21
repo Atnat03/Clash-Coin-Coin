@@ -17,13 +17,17 @@ public class MashingGameManager : MonoBehaviour
     [Tooltip("le max de la jauge c'est 1")] public float amountPerClic;
     
     
-    public TextMeshProUGUI mainTextMesh;
+    public TextMeshProUGUI mainTextMesh, timerText;
     public Image cooldownBar;
 
     public Action StartGame;
 
     [SerializeField] private MashIngGamePlayerScript P1;
     [SerializeField] private MashIngGamePlayerScript P2;
+
+    public bool someoneWon;
+
+    public int pallierJoueur1, pallierJoueur2;
     
     void Awake()
     {
@@ -32,61 +36,50 @@ public class MashingGameManager : MonoBehaviour
     
     void Start()
     {
-        cooldownBar.gameObject.SetActive(false);
-
-        
         StartCoroutine(StartGameCoroutine());
     }
     
     public IEnumerator StartGameCoroutine()
     {
-        float timeCounter = 3;
-        while (timeCounter > 0)
-        {
-            timeCounter -= Time.deltaTime;
-            mainTextMesh.text = Mathf.CeilToInt(timeCounter).ToString("F0");
-            yield return null;
-        }
-
-        mainTextMesh.text = "Mashez !!!";
-        yield return new WaitForSeconds(1);
+        someoneWon = false;
+        yield return new WaitForSeconds(3.3f);
         
-        mainTextMesh.text = "";
         cooldownBar.gameObject.SetActive(true);
         cooldownBar.fillAmount = 1;
         StartGame?.Invoke();
 
-        timeCounter = GameLength;
-        while (timeCounter > 0)
+        float timeCounter = GameLength;
+        while (timeCounter > 0 && !someoneWon)
         {
             timeCounter -= Time.deltaTime;
-            mainTextMesh.text = timeCounter.ToString("F2");
-            cooldownBar.fillAmount = timeCounter / GameLength;
+            timerText.text = timeCounter.ToString("F2");
+            float fill = timeCounter / GameLength;
+            cooldownBar.fillAmount = fill;
+            cooldownBar.color = Color.Lerp(new Color(1f,0.3f,0.3f), new Color(0.3f,1f,0.3f), fill);
+
             yield return null;
         }
-        
-        cooldownBar.gameObject.SetActive(false);
-        mainTextMesh.text = "Fini !";
 
-        yield return new WaitForSeconds(2f);
+        if (timeCounter < 0) timerText.text = "0:00";
+        
+        
+        animUI.SetTrigger("Over");
+
+        yield return new WaitForSeconds(1.5f);
 
         EndGame();
-
-        if (P1 != null && P2 != null)
-        {
-            if (P1.P1JaugeFillAmout > P2.P1JaugeFillAmout) mainTextMesh.text = "Le joueur 1 a gagné";
-            else mainTextMesh.text = "Le joueur 2 a gagné";
-        }
     }
+
+    public Animator animUI;
 
     private void EndGame()
     {
         if (GameManager.instance != null)
         {
-            GameManager.instance.player_1_Score = 1;
-            GameManager.instance.player_2_Score = 1;
+            GameManager.instance.player_1_Score = pallierJoueur1;
+            GameManager.instance.player_2_Score = pallierJoueur2;
 
-            SceneManager.LoadScene("MainScene");
+            GameManager.instance.ReturnToMainScene();
         }
     }
 }
