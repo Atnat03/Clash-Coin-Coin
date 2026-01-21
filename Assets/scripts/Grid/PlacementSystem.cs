@@ -74,11 +74,15 @@ public class PlacementSystem : MonoBehaviour
     
     public void StartPlacement(int ID)
     {
+        print(ID);
+        
         StartCoroutine(WaitALittle());
 
         StopPlacement();
         selectedObjectIndex = database.itemsData.FindIndex(x => x.Id == ID);
 
+        print(database.itemsData[selectedObjectIndex].Name);
+        
         gridVisualisation.SetActive(true);
 
         previewSystem.StartShowingPlacementPreview(
