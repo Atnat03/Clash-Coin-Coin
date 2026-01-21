@@ -253,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 22263871}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.75, y: 0, z: 0.1}
+  m_LocalPosition: {x: 1.932, y: 0, z: 0.1}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -278,7 +278,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.36, y: 1, z: 1.51}
+  m_Size: {x: 0.24, y: 1, z: 1.51}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &22263874
 MonoBehaviour:
@@ -428,8 +428,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35063613}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.72, y: 0.04, z: 2.45531}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.720003, y: 0.04, z: 2.45531}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4910,7 +4910,7 @@ Transform:
   m_GameObject: {fileID: 1143652520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: -0.13}
+  m_LocalPosition: {x: 2.209, y: 0, z: -0.13}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4935,7 +4935,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.36, y: 1, z: 1.51}
+  m_Size: {x: 0.24, y: 1, z: 1.51}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1143652523
 MonoBehaviour:
@@ -5830,7 +5830,7 @@ Transform:
   m_GameObject: {fileID: 1269287333}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.15, y: 0, z: -0.11}
+  m_LocalPosition: {x: -2.359, y: 0, z: -0.11}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5855,7 +5855,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.36, y: 1, z: 1.51}
+  m_Size: {x: 0.24, y: 1, z: 1.51}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1269287336
 MonoBehaviour:
@@ -6111,8 +6111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardChoice
   animatorCards1: {fileID: 207124632}
   animatorCards2: {fileID: 1084807754}
-  itemPool1: {fileID: 11400000, guid: e736fc46b12a86c438d4f87eaed92157, type: 2}
-  itemPool2: {fileID: 11400000, guid: 62ee383d7bdac254284954c27fc178f5, type: 2}
   placementPlayer1: {fileID: 1647906339}
   placementPlayer2: {fileID: 1896602225}
   cardsUI1:
@@ -7603,7 +7601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f177e1c28b9d408ef64952d55dcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlacementSystem
-  isDuckPlayer: 0
+  isDuckPlayer: 1
   playerInputing: {fileID: 13937452}
   grid: {fileID: 1476923932}
   database: {fileID: 11400000, guid: e736fc46b12a86c438d4f87eaed92157, type: 2}
@@ -8979,7 +8977,7 @@ Transform:
   m_GameObject: {fileID: 1951186418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.36, y: 0, z: 0.06}
+  m_LocalPosition: {x: -2.544, y: 0, z: 0.06}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9004,7 +9002,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.36, y: 1, z: 1.51}
+  m_Size: {x: 0.24, y: 1, z: 1.51}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1951186421
 MonoBehaviour:

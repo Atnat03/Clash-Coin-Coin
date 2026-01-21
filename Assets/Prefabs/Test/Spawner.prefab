@@ -563,7 +563,7 @@ MonoBehaviour:
   PV: 100
   maxPV: 0
   currentHP: {fileID: 5282450216016227384}
-  spawnRate: 4
+  spawnRate: 2
   troopPrefab: {fileID: 2564806622089340945, guid: 9006adafbf887b5459ef1eaa14e60c9f, type: 3}
   spawnerPos: {fileID: 6368127128881874466}
 --- !u!65 &4459915405734591608
