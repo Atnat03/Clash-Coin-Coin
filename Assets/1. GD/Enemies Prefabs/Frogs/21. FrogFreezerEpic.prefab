@@ -52,7 +52,7 @@ MonoBehaviour:
   id: 0
   name: Player1
   PV: 400
-  maxPV: 100
+  maxPV: 400
   currentHP: {fileID: 8103242198617991682}
   Speed: 1
   RadiusAttack: 1
@@ -621,6 +621,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4997228335983406875, guid: e2dcb7ab6015e9d4da8cc5676d5e4622, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c784b416141e39478270b372c018b50, type: 2}
     - target: {fileID: 5381165145262408841, guid: e2dcb7ab6015e9d4da8cc5676d5e4622, type: 3}
       propertyPath: m_Name
       value: FrogModel (1)
