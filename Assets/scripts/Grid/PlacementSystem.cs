@@ -134,8 +134,6 @@ public class PlacementSystem : MonoBehaviour
         itemPlaced.id = data.Id;
         itemPlaced.enabled = false;
         itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
-        itemPlaced.maxPV = data.maxPV;
-        itemPlaced.PV = data.maxPV;
 
         selectedData.RegisterItemPosition(itemPlaced, gridPosition);
         

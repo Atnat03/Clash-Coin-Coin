@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -168,6 +169,22 @@ public class GameManager : MonoBehaviour
                 placedItemsP2.Remove(item);
             }
         }
+    }
+
+    public bool EndOfTurn()
+    {
+        bool isTroop = false;
+        
+        List<Item> l = placedItemsP1.Concat(placedItemsP2).ToList();
+        
+        foreach (Item item in l)
+        {
+            if(item is Troop t)
+                isTroop = true;
+        }
+
+
+        return isTroop;
     }
     
     public void RemovePlacedDataItem(Item item)
