@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class VariablesManager : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class VariablesManager : MonoBehaviour
     public ItemSO duckItemDatabase;
     public ItemSO frogItemDatabase;
 
+    public Sprite rewardSprite;
+    public Sprite placementSprite;
+    public Sprite combatSprite;
+    public Image logoState;
+    
     private void Awake()
     {
         instance = this;
