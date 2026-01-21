@@ -172,7 +172,6 @@ public class GameManager : MonoBehaviour
     
     public void SetAllPlacedItems(bool state)
     {
-        
         foreach (Item item in placedItemsP1)
         {
             if(item != null)

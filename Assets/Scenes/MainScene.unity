@@ -144,6 +144,10 @@ PrefabInstance:
       value: 'GamePlay/Areleased[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/Keyboard/space]'
       objectReference: {fileID: 0}
     - target: {fileID: 4053804592908859806, guid: 6e305bfabdb10d4468c43cf728b8a18c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnYPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053804592908859806, guid: 6e305bfabdb10d4468c43cf728b8a18c, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnXPress
       objectReference: {fileID: 0}
@@ -249,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 22263871}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0152, y: 0, z: 0.1}
+  m_LocalPosition: {x: 1.75, y: 0, z: 0.1}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -274,7 +278,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.57, y: 1, z: 1.51}
+  m_Size: {x: 0.36, y: 1, z: 1.51}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &22263874
 MonoBehaviour:
@@ -289,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TP_Troop
   destination: {fileID: 1951186419}
-  offset: {x: -1.5, y: 0, z: 0}
+  offset: {x: -1, y: 0, z: 0}
   isPlayer1: 1
 --- !u!54 &22263875
 Rigidbody:
@@ -1900,6 +1904,9 @@ MonoBehaviour:
   - {fileID: 13937452}
   - {fileID: 1866679516}
   mainCamera: {fileID: 131886891}
+  nexus:
+  - {fileID: 35063619}
+  - {fileID: 1790214086}
 --- !u!114 &322163874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4901,7 +4908,7 @@ Transform:
   m_GameObject: {fileID: 1143652520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2583, y: 0, z: -0.13}
+  m_LocalPosition: {x: 2, y: 0, z: -0.13}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4926,7 +4933,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.57, y: 1, z: 1.51}
+  m_Size: {x: 0.36, y: 1, z: 1.51}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1143652523
 MonoBehaviour:
@@ -4941,7 +4948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TP_Troop
   destination: {fileID: 1269287334}
-  offset: {x: -1.5, y: 0, z: 0}
+  offset: {x: -1, y: 0, z: 0}
   isPlayer1: 1
 --- !u!54 &1143652524
 Rigidbody:
@@ -5821,7 +5828,7 @@ Transform:
   m_GameObject: {fileID: 1269287333}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4183, y: 0, z: -0.11}
+  m_LocalPosition: {x: -2.15, y: 0, z: -0.11}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5846,7 +5853,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.57, y: 1, z: 1.51}
+  m_Size: {x: 0.36, y: 1, z: 1.51}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1269287336
 MonoBehaviour:
@@ -5861,7 +5868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TP_Troop
   destination: {fileID: 1143652521}
-  offset: {x: 1.5, y: 0, z: 0}
+  offset: {x: 1, y: 0, z: 0}
   isPlayer1: 0
 --- !u!54 &1269287337
 Rigidbody:
@@ -8684,6 +8691,10 @@ PrefabInstance:
       value: 'GamePlay/Areleased[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/Keyboard/space]'
       objectReference: {fileID: 0}
     - target: {fileID: 4053804592908859806, guid: 6e305bfabdb10d4468c43cf728b8a18c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnYPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053804592908859806, guid: 6e305bfabdb10d4468c43cf728b8a18c, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnXPress
       objectReference: {fileID: 0}
@@ -8964,7 +8975,7 @@ Transform:
   m_GameObject: {fileID: 1951186418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5977, y: 0, z: 0.06}
+  m_LocalPosition: {x: -2.36, y: 0, z: 0.06}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8989,7 +9000,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.57, y: 1, z: 1.51}
+  m_Size: {x: 0.36, y: 1, z: 1.51}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1951186421
 MonoBehaviour:
@@ -9004,7 +9015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TP_Troop
   destination: {fileID: 22263872}
-  offset: {x: 1.5, y: 0, z: 0}
+  offset: {x: 1, y: 0, z: 0}
   isPlayer1: 0
 --- !u!54 &1951186422
 Rigidbody:
