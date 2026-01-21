@@ -327,7 +327,14 @@ public class GameManager : MonoBehaviour
         VariablesManager.instance.placementSystems[1].PlaceItem();
         VariablesManager.instance.placementSystems[0].PlaceItem();
         
-        SetAllPlacedItems(false);
+        SetAllPlacedItems(true);
+        
+        foreach (Item item in placedItemsP1)
+            if (item != null) item.enabled = true;
+
+        foreach (Item item in placedItemsP2)
+            if (item != null) item.enabled = true;
+        
     }
     
     void PrepareUpdate()
