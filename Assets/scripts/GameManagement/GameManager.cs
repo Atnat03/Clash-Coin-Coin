@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
             onEnter:()=> Debug.Log("Enter  EndGame")
         ));
         
-        stateMachine.ChangeState(GameSate.Reward);
+        stateMachine.ChangeState(GameSate.MiniGame);
     }
     
     public void SetAllPlacedItems(bool state)

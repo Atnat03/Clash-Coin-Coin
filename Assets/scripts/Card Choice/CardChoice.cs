@@ -167,8 +167,6 @@ public class CardChoice : MonoBehaviour
    {
       inSelection1 = false;
       inSelection2 = false;
-      cardSelected1 = -1;
-      cardSelected2 = -1;
       
       Debug.Log("ResetCardSolves → inSelection1/2 forcé à false");
    }
