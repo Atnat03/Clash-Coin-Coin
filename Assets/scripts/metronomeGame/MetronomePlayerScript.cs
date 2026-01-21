@@ -74,9 +74,9 @@ public class MetronomePlayerScript : MonoBehaviour
 
         text.text = "points : " + points;
         jaugePoints.fillAmount = (float)points / MetronomeGameManager.instance.pointsToScore;
-        
-        if (playerID == 1) MetronomeGameManager.instance.score1 = points;
-        if (playerID == 2) MetronomeGameManager.instance.score2 = points;
+
+        if (playerID == 1) MetronomeGameManager.instance.cursorPosition--;
+        if (playerID == 2) MetronomeGameManager.instance.cursorPosition++;
     }
 
 }
