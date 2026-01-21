@@ -6120,8 +6120,6 @@ MonoBehaviour:
     dos: {fileID: 151671331}
   - face: {fileID: 635004289}
     dos: {fileID: 1757715719}
-  player1Fail: 0
-  player2Fail: 0
   cardsID1: 000000000000000000000000
   cardsID2: 000000000000000000000000
   cardSelected1: 0
@@ -6902,9 +6900,7 @@ MonoBehaviour:
   itemPlacedDataP1: []
   itemPlacedDataP2: []
   miniGames:
-  - MashingGame
   - MetronomeScene
-  - QTEGame
   player_1_Score: -1
   player_2_Score: -1
   CombatDuration: 20
@@ -7600,7 +7596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlacementSystem
   playerInputing: {fileID: 13937452}
   grid: {fileID: 1476923932}
-  database: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
+  database: {fileID: 11400000, guid: e736fc46b12a86c438d4f87eaed92157, type: 2}
   gridVisualisation: {fileID: 843314747}
   previewSystem: {fileID: 1148004584}
   gridSize: {x: 10, y: 10}
@@ -8792,7 +8788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlacementSystem
   playerInputing: {fileID: 1866679516}
   grid: {fileID: 276427236}
-  database: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
+  database: {fileID: 11400000, guid: 62ee383d7bdac254284954c27fc178f5, type: 2}
   gridVisualisation: {fileID: 2023556235}
   previewSystem: {fileID: 1474993245}
   gridSize: {x: 10, y: 10}

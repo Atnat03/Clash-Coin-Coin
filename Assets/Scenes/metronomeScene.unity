@@ -1727,7 +1727,7 @@ MonoBehaviour:
   text: {fileID: 608610949}
   jaugePoints: {fileID: 788992487}
   ingame: 0
-  playerID: 0
+  playerID: 1
 --- !u!4 &902719198
 Transform:
   m_ObjectHideFlags: 0
@@ -3107,7 +3107,7 @@ MonoBehaviour:
   text: {fileID: 1568665730}
   jaugePoints: {fileID: 2111561745}
   ingame: 0
-  playerID: 0
+  playerID: 2
 --- !u!4 &1803657509
 Transform:
   m_ObjectHideFlags: 0
