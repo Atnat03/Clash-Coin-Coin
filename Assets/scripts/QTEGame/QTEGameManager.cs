@@ -55,8 +55,9 @@ public class QTEGameManager : MonoBehaviour
     IEnumerator GameCoroutine()
     {
         float elapsedTime = 3;
-
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(0.1f);
+        AudioManager.instance.PlaySound(AudioManager.instance.startSound);
+        yield return new WaitForSeconds(3.4f);
 
         mainText.text = "";
         inGame = true;
@@ -79,7 +80,7 @@ public class QTEGameManager : MonoBehaviour
         if (elapsedTime < 0) mainText.text = "0";
 
         inGame = false;
-        
+        AudioManager.instance.PlaySound(AudioManager.instance.endSound);
         animUI.SetTrigger("Over");
         
         yield return new WaitForSeconds(2f);
