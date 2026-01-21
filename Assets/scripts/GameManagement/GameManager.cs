@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,6 +35,11 @@ public class GameManager : MonoBehaviour
     [Header("Troop Prefabs")]
     public List<GameObject> troopPrefabsP1;
     public List<GameObject> troopPrefabsP2;
+
+    public float PVNexus_P1 = 200;
+    public float maxPVNexus_P1;
+    public float PVNexus_P2 = 200;
+    public float maxPVNexus_P2;
     
     void Awake()
     {
@@ -42,6 +48,7 @@ public class GameManager : MonoBehaviour
         
         DontDestroyOnLoad(gameObject);
     }
+
 
     public void AddItemInList(Item item, Vector3Int position)
     {
@@ -69,9 +76,15 @@ public class GameManager : MonoBehaviour
         else
             itemPlacedDataP2.Add(itemData);
     }
+
+    public void UpdateNexusP1(float value) => PVNexus_P1 = value;
+    public void UpdateNexusP2(float value) => PVNexus_P2 = value;
     
     void Start()
     {
+        maxPVNexus_P1 = PVNexus_P1;
+        maxPVNexus_P2 = PVNexus_P2;
+        
         //StartGame
         stateMachine.Add(new State<GameSate>(
             GameSate.StartGame,
@@ -156,6 +169,21 @@ public class GameManager : MonoBehaviour
                 placedItemsP2.Remove(item);
             }
         }
+    }
+
+    public bool EndOfTurn()
+    {
+        bool isTroop = true;
+        
+        List<Item> l = placedItemsP1.Concat(placedItemsP2).ToList();
+        
+        foreach (Item item in l)
+        {
+            if(item is Troop t)
+                isTroop = false;
+        }
+
+        return isTroop;
     }
     
     public void RemovePlacedDataItem(Item item)
@@ -283,7 +311,10 @@ public class GameManager : MonoBehaviour
     
     void CombatUpdate()
     {
-        
+        if (EndOfTurn())
+        {
+            stateMachine.ChangeState(GameSate.MiniGame);
+        }
     }
 
     void CombatExit()
