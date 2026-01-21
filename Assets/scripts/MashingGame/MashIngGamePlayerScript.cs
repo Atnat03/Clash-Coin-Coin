@@ -19,6 +19,8 @@ public class MashIngGamePlayerScript : MonoBehaviour
 
     PlayerInput playerInput;
 
+    public Animator animButton;
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -71,6 +73,7 @@ public class MashIngGamePlayerScript : MonoBehaviour
         if (ingame && context.performed)
         {
             P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
+            animButton.SetTrigger("Clic");
         }
     }
 }

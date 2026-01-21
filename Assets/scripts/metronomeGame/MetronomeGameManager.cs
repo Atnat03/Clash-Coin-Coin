@@ -41,6 +41,17 @@ public class MetronomeGameManager : MonoBehaviour
 
     public Animator animUI;
     public bool finished;
+    
+    [SerializeField] private float sliderSmoothSpeed = 5f;
+
+    private float targetSliderValue;
+
+    void Update()
+    {
+        targetSliderValue = (float)cursorPosition / (float)pointsToScore;
+
+        pointSlider.value = Mathf.Lerp(pointSlider.value, targetSliderValue, Time.deltaTime * sliderSmoothSpeed);
+    }
 
     IEnumerator GameCoroutine()
     {
@@ -55,8 +66,6 @@ public class MetronomeGameManager : MonoBehaviour
             elapsedTime -= Time.deltaTime;
             mainText.text = elapsedTime.ToString("F2");
             yield return null;
-
-            pointSlider.value = (float)cursorPosition / (float)pointsToScore;
             
             float fill = elapsedTime / gameLength;
             cooldownBar.fillAmount = fill;

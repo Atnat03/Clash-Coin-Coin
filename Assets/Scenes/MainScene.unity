@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 131886891}
     - target: {fileID: 8558390522784603647, guid: 6e305bfabdb10d4468c43cf728b8a18c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.77
+      value: -10.08
       objectReference: {fileID: 0}
     - target: {fileID: 8558390522784603647, guid: 6e305bfabdb10d4468c43cf728b8a18c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6679,16 +6679,12 @@ MonoBehaviour:
   placedItemsP2: []
   itemPlacedDataP1: []
   itemPlacedDataP2: []
-  spawnedTroopsP1: []
-  spawnedTroopsP2: []
-  troopDataP1: []
-  troopDataP2: []
   miniGames:
   - MashingGame
   player_1_Score: -1
   player_2_Score: -1
-  troopPrefabs:
-  - {fileID: 2564806622089340945, guid: 9006adafbf887b5459ef1eaa14e60c9f, type: 3}
+  troopPrefabsP1: []
+  troopPrefabsP2: []
   CombatDuration: 10
 --- !u!1 &1569649508
 GameObject:
@@ -8372,7 +8368,7 @@ PrefabInstance:
       objectReference: {fileID: 131886891}
     - target: {fileID: 8558390522784603647, guid: 6e305bfabdb10d4468c43cf728b8a18c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.08
+      value: 10.79
       objectReference: {fileID: 0}
     - target: {fileID: 8558390522784603647, guid: 6e305bfabdb10d4468c43cf728b8a18c, type: 3}
       propertyPath: m_LocalPosition.y

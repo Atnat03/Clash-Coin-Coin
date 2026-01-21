@@ -16,6 +16,8 @@ public class MetronomePlayerScript : MonoBehaviour
     public int playerID;
     bool alreadyClicked;
 
+    public Animator animClic;
+
     public void Start()
     {
         ingame = false;
@@ -56,11 +58,31 @@ public class MetronomePlayerScript : MonoBehaviour
             yield return null;
         }
     }
-    
+
+
+    public Image[] feedBackSuccess;
     public void PlayerPressedA(InputAction.CallbackContext context)
     {
         if (!context.performed || alreadyClicked)
             return;
+        
+        animClic.SetTrigger("Clic");
+        
+        if (!(Mathf.Abs(slider.value) <= MetronomeGameManager.instance.SliderTolerence && points < MetronomeGameManager.instance.pointsToScore))
+        {
+            foreach (Image img in feedBackSuccess)
+            {
+                img.color = Color.red;
+            }
+        }
+        else
+        {
+            foreach (Image img in feedBackSuccess)
+            {
+                img.color = Color.green;
+            }
+        }
+        
         
         if (ingame)
         {
@@ -70,6 +92,17 @@ public class MetronomePlayerScript : MonoBehaviour
                 ScorePoint();
             }
         }
+
+        StartCoroutine(ReturnToWhite());
+    }
+
+    IEnumerator ReturnToWhite()
+    {
+        yield return new WaitForSeconds(0.3f);
+            foreach (Image img in feedBackSuccess)
+            {
+                img.color = Color.white;
+            }
     }
 
     public void ScorePoint()
