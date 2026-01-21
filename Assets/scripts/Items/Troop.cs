@@ -10,7 +10,8 @@ public class Troop : Item, ITargetable
     public float RadiusAttack = 1.5f;
     public float Damage = 10f;
     public float attackCooldown = 1f;
-
+    public float rotationSpeed = 10f;
+    
     [Header("to fill")]
     Bullet bulletPrefab;
     Transform bulletSpawn;
@@ -19,7 +20,7 @@ public class Troop : Item, ITargetable
     protected bool isAttacking;
     public Transform target;
     
-    public Animator animator;
+    Animator animator;
 
     GridManager gridManager;
 
@@ -38,6 +39,7 @@ public class Troop : Item, ITargetable
     
     Vector3 lastPosition;
     Vector3 velocity;
+    bool isMoving;
     
     void OnEnable()
     {
@@ -56,20 +58,21 @@ public class Troop : Item, ITargetable
         lastPosition = transform.position;
     }
 
+    void Start()
+    {
+        animator = transform.GetChild(0).GetComponent<Animator>();
+    }
+
     void Update()
     {
         if (isFrozen)
             return;
-        
+    
         if (!enabled || !gridManager)
             return;
-        
+    
         target = Rescan();
-        print("Target : " + target.name);
-
-        velocity = (transform.position - lastPosition) / Time.deltaTime;
-        lastPosition = transform.position;
-        
+    
         if (target && path.Count == 0)
         {
             FindPath(transform.position, target.position);
@@ -79,8 +82,8 @@ public class Troop : Item, ITargetable
 
         if (!target)
             return;
-        
-        animator.SetBool("Walk", path != null && path.Count > 0);
+    
+        animator.SetBool("Walk", isMoving && !isAttacking);
 
         pathRefreshTimer -= Time.deltaTime;
         if (pathRefreshTimer <= 0f || target != lastTarget || path.Count == 0)
@@ -89,42 +92,73 @@ public class Troop : Item, ITargetable
             lastTarget = target;
             pathRefreshTimer = PATH_REFRESH_TIME;
         }
-        
-        if (path.Count == 0)
+    
+        // Si on est en train d'attaquer, on ne fait rien d'autre
+        if (isAttacking)
         {
-            if (target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+            // On continue de regarder la cible
+            if (target)
             {
-                float dist = Vector3.Distance(transform.position, target.position);
-                if (dist <= RadiusAttack && !isAttacking)
-                    animator.SetTrigger("Throw");
+                Vector3 directionToTarget = (target.position - transform.position);
+                directionToTarget.y = 0;
+                RotateTowards(directionToTarget);
+            }
+            return;
+        }
+    
+        if (target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+        {
+            float dist = Vector3.Distance(transform.position, target.position);
+            if (dist <= RadiusAttack)
+            {
+                isAttacking = true;
+                animator.SetTrigger("Throw");
+            
+                Vector3 directionToTarget = (target.position - transform.position);
+                directionToTarget.y = 0;
+                RotateTowards(directionToTarget);
+                return;
             }
         }
-        else
+    
+        if (path.Count > 0)
         {
             Chase();
         }
 
         currentHP.fillAmount = PV / maxPV;
     }
+    
+    void RotateTowards(Vector3 direction)
+    {
+        if (direction.sqrMagnitude < 0.001f)
+            return;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
+    }
 
     public virtual void Attack()
     {
+        print("Attack normal");
+    
+        if (target && target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+        {
+            t.TakeDamage(Damage);
+        }
+    
+        StopAllCoroutines();
         StartCoroutine(Attacking());
     }
     
     protected virtual IEnumerator Attacking()
     {
-        isAttacking = true;
-
         yield return new WaitForSeconds(attackCooldown);
-
-        if (target &&
-            target.TryGetComponent<ITargetable>(out var t) &&
-            t.CanBeAttacked)
-        {
-            t.TakeDamage(Damage);
-        }
-
+    
         isAttacking = false;
     }
 
@@ -132,9 +166,17 @@ public class Troop : Item, ITargetable
     void Chase()
     {
         if (path == null || path.Count == 0)
+        {
+            isMoving = false;
             return;
+        }
+
+        isMoving = true;
 
         Vector3 nextPos = path[0].worldPosition;
+        Vector3 moveDir = (nextPos - transform.position).normalized;
+
+        RotateTowards(moveDir);
 
         transform.position = Vector3.MoveTowards(
             transform.position,
@@ -265,20 +307,6 @@ public class Troop : Item, ITargetable
         }
 
         path.Reverse();
-
-        if (target != null && target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
-        {
-            for (int i = 0; i < path.Count; i++)
-            {
-                float distToTarget = Vector3.Distance(path[i].worldPosition, target.position);
-                if (distToTarget <= RadiusAttack * 0.9f)
-                {
-                    path = path.GetRange(0, i);
-                    break;
-                }
-            }
-        }
-
     }
 
 

@@ -219,7 +219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.142}
+  m_AnchoredPosition: {x: 0, y: 1.361}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8485435101440765366
@@ -306,8 +306,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495070269614872522}
-  - component: {fileID: 6858756290497383957}
   - component: {fileID: 4035902845490923148}
+  - component: {fileID: 7691558336286540242}
   m_Layer: 0
   m_Name: CanardThrow
   m_TagString: Untagged
@@ -333,31 +333,6 @@ Transform:
   - {fileID: 2261524738378009327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6858756290497383957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9143655664051125612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae8702eb1ec871b4da0e119e35b024ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Troop
-  id: 0
-  name: Player1
-  PV: 100
-  maxPV: 100
-  currentHP: {fileID: 7761058272285806081}
-  Speed: 1
-  RadiusAttack: 1.5
-  Damage: 10
-  attackCooldown: 1
-  target: {fileID: 2261524738378009327}
-  animator: {fileID: 9139473623826859619}
-  alreadyTakeTP: 0
-  isFrozen: 0
 --- !u!65 &4035902845490923148
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -379,6 +354,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.4, z: 1}
   m_Center: {x: 0, y: 0.28, z: 0}
+--- !u!114 &7691558336286540242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9143655664051125612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78014825d14fec64d8350f970103857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LanceTroop
+  id: 0
+  name: 
+  PV: 100
+  maxPV: 0
+  currentHP: {fileID: 7761058272285806081}
+  Speed: 6
+  RadiusAttack: 3
+  Damage: 10
+  attackCooldown: 2
+  rotationSpeed: 10
+  target: {fileID: 0}
+  alreadyTakeTP: 0
+  isFrozen: 0
+  throwBoulePrefab: {fileID: 3762000939536537322, guid: c599ac22fb7fe7f4983b370c63cd9d90, type: 3}
+  throwPos: {fileID: 2261524738378009327}
 --- !u!1001 &7468486000908822881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -459,10 +461,5 @@ MonoBehaviour:
 --- !u!4 &2897435253343607833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5733265326902654328, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
-  m_PrefabInstance: {fileID: 7468486000908822881}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &9139473623826859619 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1833117488681152258, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
   m_PrefabInstance: {fileID: 7468486000908822881}
   m_PrefabAsset: {fileID: 0}

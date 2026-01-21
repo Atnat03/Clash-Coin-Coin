@@ -1,25 +1,36 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class PaveExplosif : MonoBehaviour, IPave
 {
-    public float damage = 10;
+    private float damage = 10;
     public float throwDuration = 0.6f;
     public float arcHeight = 2f;
     public ParticleSystem throwParticles;
     public float explosionZone = 1.5f;
     public bool playerOneProperty;
     
-    public void Throw(Vector3 startPos, Vector3 targetPos, bool playerOneProperty)
+    public void Throw(Vector3 startPos, Vector3 targetPos, bool playerOneProperty, float damage)
     {
+        if (throwDuration <= 0f)
+        {
+            transform.position = targetPos;
+            OnImpact();
+            return;
+        }
+        
+        this.damage = damage;
+
         this.playerOneProperty = playerOneProperty;
         StartCoroutine(ThrowCoroutine(startPos, targetPos));
     }
+
     
     IEnumerator ThrowCoroutine(Vector3 startPos, Vector3 targetPos)
     {
         float elapsed = 0f;
-
+        
         while (elapsed < throwDuration)
         {
             float t = elapsed / throwDuration;
@@ -36,7 +47,6 @@ public class PaveExplosif : MonoBehaviour, IPave
         }
 
         transform.position = targetPos;
-
         OnImpact();
     }
 
@@ -46,23 +56,40 @@ public class PaveExplosif : MonoBehaviour, IPave
 
         foreach (Collider hit in hits)
         {
-            Troop troop = hit.GetComponent<Troop>();
-            if (troop != null && playerOneProperty != troop.playerOneProperty)
+            if (hit.GetComponent<Item>())
             {
-                print("touché une troupe");
+                Item troop = hit.GetComponent<Item>();
+                if (troop != null && playerOneProperty != troop.playerOneProperty)
+                {
+                    print("touché une troupe");
                 
-                troop.TakeDamage(damage);
+                    troop.TakeDamage(damage);
                 
-                break;
+                    break;
+                }
             }
+            else if (hit.GetComponent<Nexus>())
+            {
+                Nexus troop = hit.GetComponent<Nexus>();
+                if (troop != null && playerOneProperty != troop.playerOneProperty)
+                {
+                    print("touché une troupe");
+                
+                    troop.TakeDamage(damage);
+                
+                    break;
+                }
+            }
+
         }
         
         Instantiate(throwParticles, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 
-    public void Throw(Vector3 startPos, Vector3 targetPos)
+    private void OnDrawGizmos()
     {
-        throw new System.NotImplementedException();
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionZone);
     }
 }
