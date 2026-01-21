@@ -176,6 +176,7 @@ public class Troop : Item, ITargetable
             yield return null;
         }
         isFrozen = false;
+        currentHP.color = Color.green;
     }
 
 
