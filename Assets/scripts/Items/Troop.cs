@@ -93,10 +93,8 @@ public class Troop : Item, ITargetable
             pathRefreshTimer = PATH_REFRESH_TIME;
         }
     
-        // Si on est en train d'attaquer, on ne fait rien d'autre
         if (isAttacking)
         {
-            // On continue de regarder la cible
             if (target)
             {
                 Vector3 directionToTarget = (target.position - transform.position);
@@ -112,6 +110,8 @@ public class Troop : Item, ITargetable
             if (dist <= RadiusAttack)
             {
                 isAttacking = true;
+                animator.ResetTrigger("Throw");
+                animator.SetBool("Walk", false);
                 animator.SetTrigger("Throw");
             
                 Vector3 directionToTarget = (target.position - transform.position);
@@ -125,8 +125,6 @@ public class Troop : Item, ITargetable
         {
             Chase();
         }
-
-        currentHP.fillAmount = PV / maxPV;
     }
     
     void RotateTowards(Vector3 direction)

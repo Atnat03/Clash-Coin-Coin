@@ -7,7 +7,7 @@ public abstract class Item : MonoBehaviour
     [HideInInspector]public int id;
     [HideInInspector]public string name;
     public float PV;
-    [HideInInspector]public float maxPV;
+    public float maxPV;
     public Image currentHP;
     
     public bool IsMovementTarget => false;
@@ -21,7 +21,6 @@ public abstract class Item : MonoBehaviour
     {
         id = 0;
         name = "";
-        PV = 0;
         Debug.LogWarning("Item created without parameters");
     }
     
@@ -29,8 +28,6 @@ public abstract class Item : MonoBehaviour
     {
         this.id = id;
         this.name = name;
-        this.maxPV = maxPV;
-        this.PV = maxPV;
     }
     
     public bool CanBeAttacked => true;
@@ -46,7 +43,9 @@ public abstract class Item : MonoBehaviour
     public void TakeDamage(float damage)
     {
         PV -= damage;
-        print("take damage" + damage);
+        print(transform.name + "  take damage :" + damage);
+        
+        print(maxPV);
         
         currentHP.fillAmount = PV / maxPV;
         

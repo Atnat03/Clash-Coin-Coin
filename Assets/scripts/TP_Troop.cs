@@ -68,14 +68,10 @@ public class TP_Troop : MonoBehaviour, ITargetable
 
     public bool playerOneProperty { get; set; }
     public void TakeDamage(float damage)
-    {
-        throw new NotImplementedException();
-    }
+    { }
 
     public void GetPoisoned(float duration, float damage)
-    {
-        throw new NotImplementedException();
-    }
+    { }
     
     public bool CanBeAttacked => false;
 }
