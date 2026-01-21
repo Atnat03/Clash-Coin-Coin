@@ -30,6 +30,29 @@ public class PaveRoule : MonoBehaviour, IPave
         
         StartCoroutine(RollCoroutine(rollDirection));
     }
+
+    public void OnTriggerEnter(Collider collision)
+    {
+        print("collision");
+        
+        if (collision.GetComponent<ITargetable>() != null)
+        {
+            if(collision == mine)
+                return;
+            
+            
+            ITargetable troop = collision.GetComponent<ITargetable>();
+            
+            print(playerOneProperty + " / " + troop + " / " + troop.playerOneProperty);
+            
+            if (troop != null && playerOneProperty != troop.playerOneProperty)
+            {
+                print("touché une troupe");
+                
+                troop.TakeDamage(damage);
+            }
+        }
+    }
     
     IEnumerator RollCoroutine(Vector3 direction)
     {
@@ -42,39 +65,6 @@ public class PaveRoule : MonoBehaviour, IPave
             distanceTraveled += moveDistance;
             
             transform.Rotate(Vector3.right, rollSpeed * 100f * Time.deltaTime);
-            
-            Collider[] hits = Physics.OverlapSphere(transform.position, DamageDistance);
-            
-            foreach (Collider hit in hits)
-            {
-                if (hitTargets.Contains(hit.gameObject))
-                    continue;
-                
-                if(mine == hit)
-                    continue;
-                
-                if (hit.GetComponent<Item>())
-                {
-                    Item troop = hit.GetComponent<Item>();
-                    if (troop != null && playerOneProperty != troop.playerOneProperty)
-                    {
-                        print("Pavé roulant a touché une troupe : " + troop.name);
-                        troop.TakeDamage(damage);
-                        hitTargets.Add(hit.gameObject);
-                    }
-                }
-                else if (hit.GetComponent<Nexus>())
-                {
-                    Nexus nexus = hit.GetComponent<Nexus>();
-                    if (nexus != null && playerOneProperty != nexus.playerOneProperty)
-                    {
-                        print("Pavé roulant a touché le Nexus");
-                        nexus.TakeDamage(damage);
-                        hitTargets.Add(hit.gameObject);
-                    }
-                }
-            }
-            
             yield return null;
         }
         
@@ -95,4 +85,46 @@ public class PaveRoule : MonoBehaviour, IPave
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, DamageDistance);
     }
+    
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, DamageDistance);
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, DamageDistance);
+
+        foreach (Collider hit in hits)
+        {
+            Vector3 center = hit.bounds.center;
+
+            if (mine != null && hit == mine)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawSphere(center, 0.1f);
+                continue;
+            }
+
+            ITargetable target = hit.GetComponentInParent<ITargetable>();
+
+            if (target == null)
+            {
+                Gizmos.color = Color.gray;
+                Gizmos.DrawSphere(center, 0.08f);
+                continue;
+            }
+
+            if (target.playerOneProperty == playerOneProperty)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawSphere(center, 0.1f);
+                continue;
+            }
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(center, 0.15f);
+        }
+    }
+#endif
+
 }

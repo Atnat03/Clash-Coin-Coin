@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8015153328880923861}
   - component: {fileID: 5926468282255683409}
   - component: {fileID: 8298793025188439269}
+  - component: {fileID: 8945341513907316754}
   m_Layer: 0
   m_Name: "Pav\xE9TrhowTest"
   m_TagString: Untagged
@@ -125,9 +126,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c648ec03d645b49a836f38607610a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaveExplosif
-  damage: 10
   throwDuration: 0.6
   arcHeight: 2
   throwParticles: {fileID: 848816198885713172, guid: eb87983a213563b41b66c46c89fdd5cd, type: 3}
   explosionZone: 1.5
   playerOneProperty: 0
+--- !u!54 &8945341513907316754
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762000939536537322}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

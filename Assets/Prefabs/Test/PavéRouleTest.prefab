@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7437032558153081338}
   - component: {fileID: 3491188565589776251}
   - component: {fileID: 2103278056460492562}
+  - component: {fileID: 414433446728775279}
   m_Layer: 0
   m_Name: "Pav\xE9RouleTest"
   m_TagString: Untagged
@@ -129,3 +130,31 @@ MonoBehaviour:
   rollSpeed: 8
   impactParticles: {fileID: 848816198885713172, guid: eb87983a213563b41b66c46c89fdd5cd, type: 3}
   playerOneProperty: 0
+  DamageDistance: 1
+--- !u!54 &414433446728775279
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587784164057109776}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
