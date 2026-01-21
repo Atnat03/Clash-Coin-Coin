@@ -26,6 +26,8 @@ public class MashingGameManager : MonoBehaviour
     [SerializeField] private MashIngGamePlayerScript P2;
 
     public bool someoneWon;
+
+    public int pallierJoueur1, pallierJoueur2;
     
     void Awake()
     {
@@ -74,8 +76,8 @@ public class MashingGameManager : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            GameManager.instance.player_1_Score = 2;
-            GameManager.instance.player_2_Score = 1;
+            GameManager.instance.player_1_Score = pallierJoueur1;
+            GameManager.instance.player_2_Score = pallierJoueur2;
 
             GameManager.instance.ReturnToMainScene();
         }
