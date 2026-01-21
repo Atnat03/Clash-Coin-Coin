@@ -78,11 +78,11 @@ MonoBehaviour:
   RadiusAttack: 1.5
   Damage: 10
   attackCooldown: 1
+  rotationSpeed: 10
   target: {fileID: 0}
-  animator: {fileID: 2981758513739928515}
   alreadyTakeTP: 0
   isFrozen: 0
-  throwBoulePrefab: {fileID: 7136807689920212623, guid: c79cdb73ee751ef4baa1853d73af77e0, type: 3}
+  throwBoulePrefab: {fileID: 3762000939536537322, guid: c599ac22fb7fe7f4983b370c63cd9d90, type: 3}
   throwPos: {fileID: 712977467016994150}
 --- !u!1 &2620234151117410887
 GameObject:
@@ -441,11 +441,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6491873678803077160}
   m_SourcePrefab: {fileID: 100100000, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
---- !u!95 &2981758513739928515 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1833117488681152258, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
-  m_PrefabInstance: {fileID: 3463795007974177985}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8415725675758654211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4961690105361788866, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}

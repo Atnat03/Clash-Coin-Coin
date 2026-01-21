@@ -12,14 +12,22 @@ public class PaveExplosif : MonoBehaviour, IPave
     
     public void Throw(Vector3 startPos, Vector3 targetPos, bool playerOneProperty)
     {
+        if (throwDuration <= 0f)
+        {
+            transform.position = targetPos;
+            OnImpact();
+            return;
+        }
+
         this.playerOneProperty = playerOneProperty;
         StartCoroutine(ThrowCoroutine(startPos, targetPos));
     }
+
     
     IEnumerator ThrowCoroutine(Vector3 startPos, Vector3 targetPos)
     {
         float elapsed = 0f;
-
+        
         while (elapsed < throwDuration)
         {
             float t = elapsed / throwDuration;
@@ -36,7 +44,6 @@ public class PaveExplosif : MonoBehaviour, IPave
         }
 
         transform.position = targetPos;
-
         OnImpact();
     }
 
@@ -46,23 +53,34 @@ public class PaveExplosif : MonoBehaviour, IPave
 
         foreach (Collider hit in hits)
         {
-            Troop troop = hit.GetComponent<Troop>();
-            if (troop != null && playerOneProperty != troop.playerOneProperty)
+            if (hit.GetComponent<Item>())
             {
-                print("touché une troupe");
+                Item troop = hit.GetComponent<Item>();
+                if (troop != null && playerOneProperty != troop.playerOneProperty)
+                {
+                    print("touché une troupe");
                 
-                troop.TakeDamage(damage);
+                    troop.TakeDamage(damage);
                 
-                break;
+                    break;
+                }
             }
+            else if (hit.GetComponent<Nexus>())
+            {
+                Nexus troop = hit.GetComponent<Nexus>();
+                if (troop != null && playerOneProperty != troop.playerOneProperty)
+                {
+                    print("touché une troupe");
+                
+                    troop.TakeDamage(damage);
+                
+                    break;
+                }
+            }
+
         }
         
         Instantiate(throwParticles, transform.position, transform.rotation);
         Destroy(gameObject);
-    }
-
-    public void Throw(Vector3 startPos, Vector3 targetPos)
-    {
-        throw new System.NotImplementedException();
     }
 }
