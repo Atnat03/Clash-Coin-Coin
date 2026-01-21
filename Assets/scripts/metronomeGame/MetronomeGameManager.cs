@@ -56,8 +56,9 @@ public class MetronomeGameManager : MonoBehaviour
     IEnumerator GameCoroutine()
     {
         float elapsedTime = 3;
-        
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(0.1f);
+        AudioManager.instance.PlaySound(AudioManager.instance.startSound);
+        yield return new WaitForSeconds(3.4f);
         BeginGame?.Invoke();
 
         elapsedTime = gameLength;
@@ -76,7 +77,7 @@ public class MetronomeGameManager : MonoBehaviour
                 finished = true;
             }
         }
-        
+        AudioManager.instance.PlaySound(AudioManager.instance.endSound);
         animUI.SetTrigger("Over");
         
         yield return new WaitForSeconds(1.5f);
