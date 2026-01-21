@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MetronomePlayerScript : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public class MetronomePlayerScript : MonoBehaviour
     bool alreadyClicked;
 
     public Animator animClic;
-
+    public AudioClip clickSound;
+    public float volume;
+    public AudioSource SFXSource;
     public void Start()
     {
         ingame = false;
@@ -58,7 +61,12 @@ public class MetronomePlayerScript : MonoBehaviour
             yield return null;
         }
     }
+    public void PlaySoundRandowPitch(AudioClip clip, float volume)
+    {
+        SFXSource.pitch = Random.Range(0.8f, 1.2f);
+        SFXSource.PlayOneShot(clip, volume);
 
+    }
 
     public Image[] feedBackSuccess;
     public void PlayerPressedA(InputAction.CallbackContext context)
@@ -77,6 +85,7 @@ public class MetronomePlayerScript : MonoBehaviour
         }
         else
         {
+            PlaySoundRandowPitch(clickSound,volume);
             foreach (Image img in feedBackSuccess)
             {
                 img.color = Color.green;
