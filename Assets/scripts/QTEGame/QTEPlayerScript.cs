@@ -7,6 +7,7 @@ public class QTEPlayerScript : MonoBehaviour
 {
     public int score = 0;
     public Image imageNextInput;
+    public Image jaugeScore;
     
     public Queue<QTEGameManager.ButtonDirection> inputList = new Queue<QTEGameManager.ButtonDirection>();
     
@@ -35,6 +36,12 @@ public class QTEPlayerScript : MonoBehaviour
             score++;
             imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
         }
+        else
+        {
+            score--;
+        }
+        
+        jaugeScore.fillAmount = (float)score/QTEGameManager.instance.scoreMax;
     }
 
     public void NorthButtonPressed(InputAction.CallbackContext context)
