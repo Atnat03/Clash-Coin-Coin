@@ -20,7 +20,7 @@ public class TP_Troop : MonoBehaviour, ITargetable
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Troop>() && other.GetComponent<Troop>().enabled)
+        if (other.GetComponent<Troop>() && other.GetComponent<Troop>().enabled && other.GetComponent<Troop>().playerOneProperty != playerOneProperty)
         {
             currentTroop = other.GetComponent<Troop>();
             StartCoroutine(TP());

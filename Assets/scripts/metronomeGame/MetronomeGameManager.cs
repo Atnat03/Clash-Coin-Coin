@@ -72,6 +72,8 @@ public class MetronomeGameManager : MonoBehaviour
         
         yield return new WaitForSeconds(1.5f);
 
+        GameManager.instance.player_1_Score = 0;
+        GameManager.instance.player_2_Score = 0;
         
         if (cursorPosition < 0)
         {
@@ -89,7 +91,6 @@ public class MetronomeGameManager : MonoBehaviour
             GameManager.instance.player_1_Score = 2;
             GameManager.instance.player_2_Score = 2; 
         }
-        
         
         GameManager.instance.ReturnToMainScene();
     }

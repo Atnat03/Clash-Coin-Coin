@@ -13,6 +13,13 @@ public class Bullet : MonoBehaviour
         this.col = col;
         this.target = target;
     }
+    
+    public void SetUp(Transform target, Collider col, float damage)
+    {
+        this.col = col;
+        this.target = target;
+        this.damage = damage;
+    }
 
     public void Update()
     {
