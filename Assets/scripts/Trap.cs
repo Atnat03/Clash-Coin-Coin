@@ -42,11 +42,12 @@ public class Trap : Build
 
     IEnumerator Explosed()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 10; i++)
         {
-            modelRenderer.material = matExplose;
-            yield return new WaitForSeconds(0.5f);
-            modelRenderer.material = matDefault;
+            modelRenderer.sharedMaterial = matExplose;
+            yield return new WaitForSeconds(0.1f);
+            modelRenderer.sharedMaterial = matDefault;
+            yield return new WaitForSeconds(0.1f);
         }
         
         print("Explosion");
