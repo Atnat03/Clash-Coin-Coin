@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class FreezingTroop : Troop
+public class PoiseningTroops : Troop
 {
-    private float freezingDuration;
+    public float poisonDamage;
+    public float poisonDuration;
+    
     public override void Attack()
     {
         print("Attack normal");
@@ -11,8 +14,8 @@ public class FreezingTroop : Troop
         {
             if (t is Troop troop)
             {
-                troop.GetFrozen(freezingDuration);
-                troop.currentHP.color = Color.blue;
+                troop.GetPoisoned(poisonDuration, poisonDamage);
+                troop.currentHP.color = Color.purple;
             }
         }
     

@@ -33,6 +33,7 @@ public class Troop : Item, ITargetable
     const float PATH_REFRESH_TIME = 0.5f;
     
     public bool isFrozen;
+    public bool isPoisened;
     
     public new bool IsMovementTarget => true;
     public new bool CanBeAttacked => true;
@@ -158,6 +159,23 @@ public class Troop : Item, ITargetable
         yield return new WaitForSeconds(attackCooldown);
     
         isAttacking = false;
+    }
+
+    public void GetFrozen(float duration)
+    {
+        isFrozen = true;
+        StartCoroutine(FrozenCoroutine(duration));
+    }
+
+    IEnumerator FrozenCoroutine(float duration)
+    {
+        float elapsedtime = 0f;
+        while (elapsedtime < duration)
+        {
+            elapsedtime += Time.deltaTime;
+            yield return null;
+        }
+        isFrozen = false;
     }
 
 
