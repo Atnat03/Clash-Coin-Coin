@@ -17,7 +17,7 @@ public class Troop : Item, ITargetable
     
     [Header("Runtime")]
     bool isAttacking;
-    Transform target;
+    public Transform target;
 
     GridManager gridManager;
 
@@ -162,6 +162,14 @@ public class Troop : Item, ITargetable
             
             if(alreadyTakeTP && t is TP_Troop)
                 continue;
+
+            if (t is Troop troop)
+            {
+                if (troop.alreadyTakeTP)
+                {
+                    continue;
+                }
+            }
             
             Transform tTransform = ((MonoBehaviour)t).transform;
             float dist = Vector3.SqrMagnitude(tTransform.position - myPos);
@@ -302,6 +310,8 @@ public class Troop : Item, ITargetable
     {
         StopAllCoroutines();
         isAttacking = false;
+
+        target = null;
 
         path.Clear();
         lastTarget = ignoreLastTarget ? null : lastTarget;

@@ -322,17 +322,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &35063619 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 310473251373033419, guid: 308fb2347ea2b194fafbf7091fc147b8, type: 3}
-  m_PrefabInstance: {fileID: 6237398948783635813}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86168ee281752a4bac137ddf14e248d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &57480424
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +454,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &77627592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5303409514158604093, guid: 308fb2347ea2b194fafbf7091fc147b8, type: 3}
+  m_PrefabInstance: {fileID: 6237398948783635813}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &77627597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77627592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86168ee281752a4bac137ddf14e248d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Nexus
+  isPlayer1: 1
+  PV: 200
+  currentHP: {fileID: 1719964402}
 --- !u!1 &93447255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,8 +1793,8 @@ MonoBehaviour:
   - {fileID: 1866679516}
   mainCamera: {fileID: 131886891}
   nexus:
-  - {fileID: 35063619}
-  - {fileID: 1790214086}
+  - {fileID: 0}
+  - {fileID: 0}
   duckItemDatabase: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
   frogItemDatabase: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
 --- !u!114 &322163874
@@ -7742,6 +7751,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705802331}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1719964402 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3623459331821337872, guid: 308fb2347ea2b194fafbf7091fc147b8, type: 3}
+  m_PrefabInstance: {fileID: 6237398948783635813}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1730787267
 GameObject:
   m_ObjectHideFlags: 0
@@ -8269,13 +8289,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f86168ee281752a4bac137ddf14e248d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  id: 0
-  name: 
-  PV: 200
-  maxPV: 0
-  currentHP: {fileID: 315728872}
+  m_EditorClassIdentifier: Assembly-CSharp::Nexus
   isPlayer1: 0
+  PV: 200
+  currentHP: {fileID: 315728872}
 --- !u!1 &1848148976
 GameObject:
   m_ObjectHideFlags: 0
@@ -9171,10 +9188,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: nexus1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 310473251373033419, guid: 308fb2347ea2b194fafbf7091fc147b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5303409514158604093, guid: 308fb2347ea2b194fafbf7091fc147b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77627597}
   m_SourcePrefab: {fileID: 100100000, guid: 308fb2347ea2b194fafbf7091fc147b8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
