@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnerTroop : Build, ITargetable
@@ -46,21 +48,7 @@ public class SpawnerTroop : Build, ITargetable
         t.playerOneProperty = playerOneProperty;
         t.ForceRecalculatePath();
 
-        GameManager.instance.RegisterTroop(t);
+        //GameManager.instance.RegisterTroop(t);
     }
-
-}
-
-[System.Serializable]
-public class TroopData
-{
-    public int id;
-    public bool playerOneProperty;
-
-    public Vector3 position;
-    public Quaternion rotation;
-
-    public float PV;
-    public float maxPV;
 }
 
