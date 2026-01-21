@@ -38,6 +38,7 @@ public class Turret : Build, ITargetable
 
                     Bullet b = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
                     b.SetUp(troop.transform, GetComponent<Collider>());
+                    Destroy(b,3f);
                     break;
                 }
             }
