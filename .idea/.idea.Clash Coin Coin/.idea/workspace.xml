@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b8a5146e-343f-4223-bd43-7e9bd2bba73b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Test/PavéRouleTest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Test/PavéRouleTest.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Test/PavéTrhowTest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Test/PavéTrhowTest.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/LanceTroop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/LanceTroop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/PaveExplosif.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/PaveExplosif.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/PaveRoule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/PaveRoule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/RouleTroop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/RouleTroop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/Troop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/Troop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/TP_Troop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/TP_Troop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Turret.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Turret.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/VariablesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/VariablesManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
