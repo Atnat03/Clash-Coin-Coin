@@ -7,7 +7,7 @@ public class Build : Item
     {
         id = id;
         this.name = name;
-        this.maxPV = maxPV;
+        this.maxPV = PV;
         this.PV = maxPV;
     }
 }
