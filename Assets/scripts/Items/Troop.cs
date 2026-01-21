@@ -10,7 +10,8 @@ public class Troop : Item, ITargetable
     public float RadiusAttack = 1.5f;
     public float Damage = 10f;
     public float attackCooldown = 1f;
-
+    public float rotationSpeed = 10f;
+    
     [Header("to fill")]
     Bullet bulletPrefab;
     Transform bulletSpawn;
@@ -19,7 +20,7 @@ public class Troop : Item, ITargetable
     protected bool isAttacking;
     public Transform target;
     
-    public Animator animator;
+    Animator animator;
 
     GridManager gridManager;
 
@@ -38,6 +39,7 @@ public class Troop : Item, ITargetable
     
     Vector3 lastPosition;
     Vector3 velocity;
+    bool isMoving;
     
     void OnEnable()
     {
@@ -56,6 +58,11 @@ public class Troop : Item, ITargetable
         lastPosition = transform.position;
     }
 
+    void Start()
+    {
+        animator = transform.GetChild(0).GetComponent<Animator>();
+    }
+
     void Update()
     {
         if (isFrozen)
@@ -66,9 +73,6 @@ public class Troop : Item, ITargetable
         
         target = Rescan();
         print("Target : " + target.name);
-
-        velocity = (transform.position - lastPosition) / Time.deltaTime;
-        lastPosition = transform.position;
         
         if (target && path.Count == 0)
         {
@@ -80,7 +84,7 @@ public class Troop : Item, ITargetable
         if (!target)
             return;
         
-        animator.SetBool("Walk", path != null && path.Count > 0);
+        animator.SetBool("Walk", isMoving && !isAttacking);
 
         pathRefreshTimer -= Time.deltaTime;
         if (pathRefreshTimer <= 0f || target != lastTarget || path.Count == 0)
@@ -96,7 +100,10 @@ public class Troop : Item, ITargetable
             {
                 float dist = Vector3.Distance(transform.position, target.position);
                 if (dist <= RadiusAttack && !isAttacking)
+                {
+                    isAttacking = true;
                     animator.SetTrigger("Throw");
+                }
             }
         }
         else
@@ -106,24 +113,41 @@ public class Troop : Item, ITargetable
 
         currentHP.fillAmount = PV / maxPV;
     }
+    
+    void RotateTowards(Vector3 direction)
+    {
+        if (direction.sqrMagnitude < 0.001f)
+            return;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
+    }
 
     public virtual void Attack()
     {
+        if(isAttacking)return;
+        
+        print("Attack normal");
+        StopAllCoroutines();
         StartCoroutine(Attacking());
     }
     
     protected virtual IEnumerator Attacking()
     {
         isAttacking = true;
-
-        yield return new WaitForSeconds(attackCooldown);
-
+        
         if (target &&
             target.TryGetComponent<ITargetable>(out var t) &&
             t.CanBeAttacked)
         {
             t.TakeDamage(Damage);
         }
+        
+        yield return new WaitForSeconds(attackCooldown);
 
         isAttacking = false;
     }
@@ -132,9 +156,17 @@ public class Troop : Item, ITargetable
     void Chase()
     {
         if (path == null || path.Count == 0)
+        {
+            isMoving = false;
             return;
+        }
+
+        isMoving = true;
 
         Vector3 nextPos = path[0].worldPosition;
+        Vector3 moveDir = (nextPos - transform.position).normalized;
+
+        RotateTowards(moveDir);
 
         transform.position = Vector3.MoveTowards(
             transform.position,

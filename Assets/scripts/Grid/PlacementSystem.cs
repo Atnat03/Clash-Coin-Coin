@@ -110,8 +110,6 @@ public class PlacementSystem : MonoBehaviour
 
     private void PlaceStructure()
     {
-        if (playerInputing.IsPointerOverUI()) return;
-        
         Vector3 mousePosition = playerInputing.GetWorldAimPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
         
