@@ -19,10 +19,15 @@ public class MashIngGamePlayerScript : MonoBehaviour
     public GameObject roueBike;
     private SkinnedMeshRenderer roueBikeMesh;
     private float shapeFillAmount;
-
+    public AudioClip clickSound;
+    public float volume;
+    public AudioSource duckSource;
+    
     PlayerInput playerInput;
+    
 
     public Animator animButton;
+    public Animator pompe;
 
     private void Awake()
     {
@@ -38,7 +43,6 @@ public class MashIngGamePlayerScript : MonoBehaviour
     public void StartGame()
     {
         P1Jauge.fillAmount = P1JaugeFillAmout;
-
         StartCoroutine(GameCoroutine());
     }
 
@@ -78,6 +82,8 @@ public class MashIngGamePlayerScript : MonoBehaviour
         {
             P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
             animButton.SetTrigger("Clic");
+            pompe.SetTrigger("Pomp");
+            AudioManager.instance.PlaySoundRandowPitch(clickSound,volume);
             shapeFillAmount += 100/(1 / MashingGameManager.instance.amountPerClic);
             roueBikeMesh.SetBlendShapeWeight(0, shapeFillAmount);
         }

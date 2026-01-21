@@ -42,7 +42,9 @@ public class MashingGameManager : MonoBehaviour
     public IEnumerator StartGameCoroutine()
     {
         someoneWon = false;
-        yield return new WaitForSeconds(3.3f);
+        yield return new WaitForSeconds(0.1f);
+        AudioManager.instance.PlaySound(AudioManager.instance.startSound);
+        yield return new WaitForSeconds(3.2f);
         
         cooldownBar.gameObject.SetActive(true);
         cooldownBar.fillAmount = 1;
@@ -62,7 +64,7 @@ public class MashingGameManager : MonoBehaviour
 
         if (timeCounter < 0) timerText.text = "0:00";
         
-        
+        AudioManager.instance.PlaySound(AudioManager.instance.endSound);
         animUI.SetTrigger("Over");
 
         yield return new WaitForSeconds(1.5f);
