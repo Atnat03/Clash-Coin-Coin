@@ -50,14 +50,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Troop
   id: 0
   name: Player1
-  PV: 100
+  PV: 120
   maxPV: 100
   currentHP: {fileID: 8103242198617991682}
-  Speed: 5
-  RaduisAttack: 2
-  isAttaking: 0
-  Damage: 10
-  attackCooldow: 0
+  Speed: 1
+  RadiusAttack: 3
+  Damage: 45
+  attackCooldown: 1
+  alreadyTakeTP: 0
+  isFrozen: 0
 --- !u!65 &4411826439638955582
 BoxCollider:
   m_ObjectHideFlags: 0
