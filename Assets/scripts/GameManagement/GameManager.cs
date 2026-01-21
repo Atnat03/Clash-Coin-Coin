@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public int player_1_Score = -1;
     public int player_2_Score = -1;
     
+    private bool canLaunchMiniGame = true;
+    
     void Awake()
     {
         if(instance == null)instance = this;
@@ -212,7 +214,7 @@ public class GameManager : MonoBehaviour
     
     void StartUpdate()
     {
-        if (VariablesManager.instance.players.Length == 2)
+        if (VariablesManager.instance.players.Length == 2 && canLaunchMiniGame)
         {
             stateMachine.ChangeState(GameSate.MiniGame);
         }
