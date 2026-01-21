@@ -2372,7 +2372,9 @@ MonoBehaviour:
   score2: 0
   cursorPosition: 0
   pointSlider: {fileID: 336643011}
+  cooldownBar: {fileID: 393865271}
   animUI: {fileID: 1284319670}
+  finished: 0
 --- !u!4 &1311699045
 Transform:
   m_ObjectHideFlags: 0

@@ -26,6 +26,8 @@ public class MetronomeGameManager : MonoBehaviour
     public int cursorPosition;
     public Slider pointSlider;
     
+    public Image cooldownBar;
+    
     void Awake()
     {
         if(instance == null)instance = this;
@@ -38,6 +40,7 @@ public class MetronomeGameManager : MonoBehaviour
     }
 
     public Animator animUI;
+    public bool finished;
 
     IEnumerator GameCoroutine()
     {
@@ -47,17 +50,21 @@ public class MetronomeGameManager : MonoBehaviour
         BeginGame?.Invoke();
 
         elapsedTime = gameLength;
-        while (elapsedTime > 0)
+        while (elapsedTime > 0 && !finished)
         {
             elapsedTime -= Time.deltaTime;
             mainText.text = elapsedTime.ToString("F2");
             yield return null;
 
             pointSlider.value = (float)cursorPosition / (float)pointsToScore;
+            
+            float fill = elapsedTime / gameLength;
+            cooldownBar.fillAmount = fill;
+            cooldownBar.color = Color.Lerp(new Color(1f,0.3f,0.3f), new Color(0.3f,1f,0.3f), fill);
 
             if (cursorPosition == pointsToScore || cursorPosition == -pointsToScore)
             {
-                
+                finished = true;
             }
         }
         

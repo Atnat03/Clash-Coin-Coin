@@ -6823,6 +6823,8 @@ MonoBehaviour:
   itemPlacedDataP2: []
   miniGames:
   - MetronomeScene
+  - MashingGame
+  - QTEGame
   player_1_Score: -1
   player_2_Score: -1
   CombatDuration: 20
