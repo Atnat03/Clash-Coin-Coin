@@ -10,8 +10,9 @@ public class PaveExplosif : MonoBehaviour, IPave
     public ParticleSystem throwParticles;
     public float explosionZone = 1.5f;
     public bool playerOneProperty;
+    private Collider mine;
     
-    public void Throw(Vector3 startPos, Vector3 targetPos, bool playerOneProperty, float damage)
+    public void Throw(Vector3 startPos, Vector3 targetPos, bool playerOneProperty, float damage, Collider mine)
     {
         if (throwDuration <= 0f)
         {
@@ -21,6 +22,7 @@ public class PaveExplosif : MonoBehaviour, IPave
         }
         
         this.damage = damage;
+        this.mine = mine;
 
         this.playerOneProperty = playerOneProperty;
         StartCoroutine(ThrowCoroutine(startPos, targetPos));
