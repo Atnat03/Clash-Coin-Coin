@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 231210048726488771, guid: 106b74e84e02ce84c8e25d5f2ad05245, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bd5a231bd7af4fc478c63f6a4230e696, type: 2}
     - target: {fileID: 919132149155446097, guid: 106b74e84e02ce84c8e25d5f2ad05245, type: 3}
       propertyPath: m_Name
       value: FrogModel
