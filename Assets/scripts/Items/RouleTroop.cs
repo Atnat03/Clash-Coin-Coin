@@ -17,7 +17,6 @@ public class RouleTroop : Troop
     {
         if (throwBoulePrefab == null || throwPos == null || target == null)
         {
-            Debug.LogWarning("Impossible d'attaquer, prefab, position ou target manquant");
             isAttacking = false;
             yield break;
         }

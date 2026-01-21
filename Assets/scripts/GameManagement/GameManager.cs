@@ -268,6 +268,8 @@ public class GameManager : MonoBehaviour
 
     void CombatEnter()
     {
+        VariablesManager.instance.logoState.sprite = VariablesManager.instance.combatSprite;
+        
         Debug.Log("Enter Combat");
 
         foreach (Item item in placedItemsP1)
@@ -328,6 +330,8 @@ public class GameManager : MonoBehaviour
 
     void PrepareEnter()
     {
+        VariablesManager.instance.logoState.sprite = VariablesManager.instance.placementSprite;
+        
         StartCoroutine(Pepare());
     }
         
@@ -363,6 +367,8 @@ public class GameManager : MonoBehaviour
     void RewardEnter()
     {
         Debug.Log("Enter Reward");
+
+        VariablesManager.instance.logoState.sprite = VariablesManager.instance.rewardSprite;
         
         CardChoice.instance.ResolveMiniGameResults(player_1_Score, player_2_Score);
     }

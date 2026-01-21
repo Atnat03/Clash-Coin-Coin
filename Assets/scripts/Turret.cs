@@ -15,8 +15,21 @@ public class Turret : Build, ITargetable
         
     }
 
+    public new void TakeDamage(float damage)
+    {
+        PV -= damage;
+        print(transform.name + "  take damage :" + damage);
+        
+        if (PV <= 0)
+        { 
+            Die();
+        }    
+    }
+    
     private void Update()
     {
+        currentHP.fillAmount = PV / maxPV;
+        
         if (t < shootRate)
         {
             t += Time.deltaTime;
@@ -37,9 +50,7 @@ public class Turret : Build, ITargetable
                     Vector3 dir = troop.transform.position - headTurret.position;
                     dir.y = 0;
                     headTurret.localRotation = Quaternion.LookRotation(dir);
-
-
-
+                    
                     Bullet b = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
                     b.SetUp(troop.transform, GetComponent<Collider>());
                     Destroy(b.gameObject,3f);
