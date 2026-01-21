@@ -26,6 +26,8 @@ public class MetronomeGameManager : MonoBehaviour
     public int cursorPosition;
     public Slider pointSlider;
     
+    public Image cooldownBar;
+    
     void Awake()
     {
         if(instance == null)instance = this;
@@ -38,6 +40,18 @@ public class MetronomeGameManager : MonoBehaviour
     }
 
     public Animator animUI;
+    public bool finished;
+    
+    [SerializeField] private float sliderSmoothSpeed = 5f;
+
+    private float targetSliderValue;
+
+    void Update()
+    {
+        targetSliderValue = (float)cursorPosition / (float)pointsToScore;
+
+        pointSlider.value = Mathf.Lerp(pointSlider.value, targetSliderValue, Time.deltaTime * sliderSmoothSpeed);
+    }
 
     IEnumerator GameCoroutine()
     {
@@ -47,17 +61,19 @@ public class MetronomeGameManager : MonoBehaviour
         BeginGame?.Invoke();
 
         elapsedTime = gameLength;
-        while (elapsedTime > 0)
+        while (elapsedTime > 0 && !finished)
         {
             elapsedTime -= Time.deltaTime;
             mainText.text = elapsedTime.ToString("F2");
             yield return null;
-
-            pointSlider.value = (float)cursorPosition / (float)pointsToScore;
+            
+            float fill = elapsedTime / gameLength;
+            cooldownBar.fillAmount = fill;
+            cooldownBar.color = Color.Lerp(new Color(1f,0.3f,0.3f), new Color(0.3f,1f,0.3f), fill);
 
             if (cursorPosition == pointsToScore || cursorPosition == -pointsToScore)
             {
-                
+                finished = true;
             }
         }
         
@@ -65,6 +81,8 @@ public class MetronomeGameManager : MonoBehaviour
         
         yield return new WaitForSeconds(1.5f);
 
+        GameManager.instance.player_1_Score = 0;
+        GameManager.instance.player_2_Score = 0;
         
         if (cursorPosition < 0)
         {
@@ -82,7 +100,6 @@ public class MetronomeGameManager : MonoBehaviour
             GameManager.instance.player_1_Score = 2;
             GameManager.instance.player_2_Score = 2; 
         }
-        
         
         GameManager.instance.ReturnToMainScene();
     }

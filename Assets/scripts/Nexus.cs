@@ -7,6 +7,10 @@ public class Nexus : Build, ITargetable
     
     public Nexus(int id, string name, float maxPV) : base(id, name, maxPV)
     {
+        id = id;
+        this.name = name;
+        this.maxPV = maxPV;
+        this.PV = maxPV;
     }
 
     private void Start()

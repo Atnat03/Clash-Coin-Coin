@@ -20,7 +20,7 @@ public class TP_Troop : MonoBehaviour, ITargetable
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Troop>() && other.GetComponent<Troop>().enabled)
+        if (other.GetComponent<Troop>() && other.GetComponent<Troop>().enabled && other.GetComponent<Troop>().playerOneProperty != playerOneProperty)
         {
             currentTroop = other.GetComponent<Troop>();
             StartCoroutine(TP());
@@ -31,32 +31,37 @@ public class TP_Troop : MonoBehaviour, ITargetable
     {
         currentTroop.isFrozen = true;
 
-        float t = 0;
+        float t = 0f;
         float duration = 0.25f;
 
+        // Disparaît
         while (t <= duration)
         {
-            currentTroop.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t/duration);
+            currentTroop.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t / duration);
             t += Time.deltaTime;
             yield return null;
         }
 
+        // Déplacement
         currentTroop.transform.position = destination.position + offset;
-        
-        t = 0;
-        
+
+        t = 0f;
+
+        // Réapparition
         while (t <= duration)
         {
-            currentTroop.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t/duration);
+            currentTroop.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t / duration);
             t += Time.deltaTime;
             yield return null;
         }
 
         currentTroop.transform.localScale = Vector3.one;
-        
+    
         currentTroop.isFrozen = false;
         currentTroop.alreadyTakeTP = true;
-        currentTroop.ForceRecalculatePath();
+
+        currentTroop.ForceRecalculatePath(ignoreLastTarget: true);
+
     }
 
     public bool playerOneProperty { get; set; }

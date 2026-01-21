@@ -11,6 +11,10 @@ public class Troop : Item, ITargetable
     public float Damage = 10f;
     public float attackCooldown = 1f;
 
+    [Header("to fill")]
+    Bullet bulletPrefab;
+    Transform bulletSpawn;
+    
     [Header("Runtime")]
     bool isAttacking;
     Transform target;
@@ -104,6 +108,9 @@ public class Troop : Item, ITargetable
             t.CanBeAttacked)
         {
             t.TakeDamage(Damage);
+            /*
+            Bullet b = Instantiate(bulletPrefab,  bulletSpawn.position, Quaternion.identity);
+            b.SetUp(target, this.GetComponent<Collider>(), Damage);*/
         }
 
         isAttacking = false;
@@ -153,9 +160,8 @@ public class Troop : Item, ITargetable
             if (t.playerOneProperty == playerOneProperty)
                 continue;
             
-            if(alreadyTakeTP)
-                if(t is TP_Troop)
-                    continue;
+            if(alreadyTakeTP && t is TP_Troop)
+                continue;
             
             Transform tTransform = ((MonoBehaviour)t).transform;
             float dist = Vector3.SqrMagnitude(tTransform.position - myPos);
@@ -240,29 +246,21 @@ public class Troop : Item, ITargetable
 
         path.Reverse();
 
-        bool stopAtAttackRange =
-            target.TryGetComponent<ITargetable>(out var t) &&
-            t.CanBeAttacked &&
-            !t.IsMovementTarget;
-
-        if (stopAtAttackRange && path.Count > 1)
+        if (target != null && target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
         {
-            while (path.Count > 0)
+            for (int i = 0; i < path.Count; i++)
             {
-                Vector3 lastNodePos = path[path.Count - 1].worldPosition;
-                float distToTarget = Vector3.Distance(lastNodePos, target.position);
-
-                if (distToTarget <= RadiusAttack * 0.9)
+                float distToTarget = Vector3.Distance(path[i].worldPosition, target.position);
+                if (distToTarget <= RadiusAttack * 0.9f)
                 {
-                    path.RemoveAt(path.Count - 1);
-                }
-                else
-                {
+                    path = path.GetRange(0, i);
                     break;
                 }
             }
         }
+
     }
+
 
 
     Node GetLowestFCostNode(List<Node> nodes)
@@ -300,13 +298,13 @@ public class Troop : Item, ITargetable
         enabled = state;
     }
     
-    public void ForceRecalculatePath()
+    public void ForceRecalculatePath(bool ignoreLastTarget = false)
     {
         StopAllCoroutines();
         isAttacking = false;
 
         path.Clear();
-        lastTarget = null;
+        lastTarget = ignoreLastTarget ? null : lastTarget;
         pathRefreshTimer = -1f;
 
         target = Rescan();
@@ -317,6 +315,7 @@ public class Troop : Item, ITargetable
             lastTarget = target;
         }
     }
+
 
 
 
@@ -336,4 +335,12 @@ public class Troop : Item, ITargetable
         }
     }
 
+    public void ResetTroup()
+    {
+        target = null;             
+        lastTarget = null;         
+        path.Clear();             
+        pathRefreshTimer = 0f; 
+        ForceRecalculatePath();
+    }
 }

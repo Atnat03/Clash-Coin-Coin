@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnerTroop : Build, ITargetable
@@ -7,15 +9,20 @@ public class SpawnerTroop : Build, ITargetable
     public GameObject troopPrefab;
     public Transform spawnerPos;
     private float t = 0;
+    [HideInInspector]public int troopId;
     
     public SpawnerTroop(int id, string name, float maxPV) : base(id, name, maxPV)
     { }
 
     private void Start()
     {
+        print(name + " : " + id);
+        
         Transform target = playerOneProperty ? VariablesManager.instance.nexus[0].transform : VariablesManager.instance.nexus[1].transform; 
         
         transform.LookAt(target);
+        
+        troopId = troopPrefab.GetComponent<Troop>().id;
     }
 
     void Update()
@@ -36,7 +43,12 @@ public class SpawnerTroop : Build, ITargetable
     {
         GameObject newTroop = Instantiate(troopPrefab, spawnerPos.position, spawnerPos.rotation);
         Troop t = newTroop.GetComponent<Troop>();
+
+        t.id = troopId;
         t.playerOneProperty = playerOneProperty;
         t.ForceRecalculatePath();
+
+        //GameManager.instance.RegisterTroop(t);
     }
 }
+
