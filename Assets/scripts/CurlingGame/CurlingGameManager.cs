@@ -34,8 +34,9 @@ public class CurlingGameManager : MonoBehaviour
     IEnumerator GameCoroutine()
     {
         float elapsedTime = 3;
-        
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(0.1f);
+        AudioManager.instance.PlaySound(AudioManager.instance.startSound);
+        yield return new WaitForSeconds(3.4f);
         
         inGame = true;
 
@@ -49,7 +50,7 @@ public class CurlingGameManager : MonoBehaviour
             cooldownBar.color = Color.Lerp(new Color(1f,0.3f,0.3f), new Color(0.3f,1f,0.3f), fill);
             yield return null;
         }
-        
+        AudioManager.instance.PlaySound(AudioManager.instance.endSound);
         animUI.SetTrigger("Over");
         
         
