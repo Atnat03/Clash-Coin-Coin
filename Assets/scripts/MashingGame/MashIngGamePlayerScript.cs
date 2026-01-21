@@ -12,7 +12,14 @@ public class MashIngGamePlayerScript : MonoBehaviour
     
     public bool ingame;
 
+    public int playerID;
+
+    public float ratioPallier1;
+    public float ratioPallier2;
+
     PlayerInput playerInput;
+
+    public Animator animButton;
 
     private void Awake()
     {
@@ -44,9 +51,20 @@ public class MashIngGamePlayerScript : MonoBehaviour
             {
                 MashingGameManager.instance.someoneWon = true;
             }
-            
             yield return null;
         }
+
+        if (P1JaugeFillAmout >= ratioPallier1)
+        {
+            if (playerID == 1) MashingGameManager.instance.pallierJoueur1 = 2;
+            if (playerID == 2) MashingGameManager.instance.pallierJoueur2 = 2;
+        }
+        if (P1JaugeFillAmout >= ratioPallier2)
+        {
+            if (playerID == 1) MashingGameManager.instance.pallierJoueur1 = 3;
+            if (playerID == 2) MashingGameManager.instance.pallierJoueur2 = 3;
+        }
+
         ingame = false;
     }
 
@@ -55,6 +73,7 @@ public class MashIngGamePlayerScript : MonoBehaviour
         if (ingame && context.performed)
         {
             P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
+            animButton.SetTrigger("Clic");
         }
     }
 }

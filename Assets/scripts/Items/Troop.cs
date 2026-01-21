@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Troop : Item
+public class Troop : Item, ITargetable
 {
     [Header("Stats")]
     public float Speed = 3f;
@@ -11,6 +11,10 @@ public class Troop : Item
     public float Damage = 10f;
     public float attackCooldown = 1f;
 
+    [Header("to fill")]
+    Bullet bulletPrefab;
+    Transform bulletSpawn;
+    
     [Header("Runtime")]
     bool isAttacking;
     Transform target;
@@ -103,7 +107,9 @@ public class Troop : Item
             target.TryGetComponent<ITargetable>(out var t) &&
             t.CanBeAttacked)
         {
-            t.TakeDamage(Damage);
+            //t.TakeDamage(Damage);
+            Bullet b = Instantiate(bulletPrefab,  bulletSpawn.position, Quaternion.identity);
+            b.SetUp(target, this.GetComponent<Collider>(), Damage);
         }
 
         isAttacking = false;

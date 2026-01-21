@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MetronomeGameManager : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public class MetronomeGameManager : MonoBehaviour
 
     [SerializeField] private MetronomePlayerScript P1;
     [SerializeField] private MetronomePlayerScript P2;
+
+    public int score1, score2;
+
+    public int cursorPosition;
+    public Slider pointSlider;
+    
+    public Image cooldownBar;
     
     void Awake()
     {
@@ -32,6 +40,18 @@ public class MetronomeGameManager : MonoBehaviour
     }
 
     public Animator animUI;
+    public bool finished;
+    
+    [SerializeField] private float sliderSmoothSpeed = 5f;
+
+    private float targetSliderValue;
+
+    void Update()
+    {
+        targetSliderValue = (float)cursorPosition / (float)pointsToScore;
+
+        pointSlider.value = Mathf.Lerp(pointSlider.value, targetSliderValue, Time.deltaTime * sliderSmoothSpeed);
+    }
 
     IEnumerator GameCoroutine()
     {
@@ -41,19 +61,45 @@ public class MetronomeGameManager : MonoBehaviour
         BeginGame?.Invoke();
 
         elapsedTime = gameLength;
-        while (elapsedTime > 0)
+        while (elapsedTime > 0 && !finished)
         {
             elapsedTime -= Time.deltaTime;
             mainText.text = elapsedTime.ToString("F2");
             yield return null;
+            
+            float fill = elapsedTime / gameLength;
+            cooldownBar.fillAmount = fill;
+            cooldownBar.color = Color.Lerp(new Color(1f,0.3f,0.3f), new Color(0.3f,1f,0.3f), fill);
+
+            if (cursorPosition == pointsToScore || cursorPosition == -pointsToScore)
+            {
+                finished = true;
+            }
         }
         
         animUI.SetTrigger("Over");
         
         yield return new WaitForSeconds(1.5f);
 
-        GameManager.instance.player_1_Score = 1;
-        GameManager.instance.player_2_Score = 1;
+        GameManager.instance.player_1_Score = 0;
+        GameManager.instance.player_2_Score = 0;
+        
+        if (cursorPosition < 0)
+        {
+            GameManager.instance.player_1_Score = 3;
+            GameManager.instance.player_2_Score = 1; 
+        }
+        if (cursorPosition > 0)
+        {
+            GameManager.instance.player_1_Score = 1;
+            GameManager.instance.player_2_Score = 3; 
+        }
+
+        if (cursorPosition == 0)
+        {
+            GameManager.instance.player_1_Score = 2;
+            GameManager.instance.player_2_Score = 2; 
+        }
         
         GameManager.instance.ReturnToMainScene();
     }
