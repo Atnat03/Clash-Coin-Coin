@@ -19,6 +19,10 @@ public class MetronomeGameManager : MonoBehaviour
 
     [SerializeField] private MetronomePlayerScript P1;
     [SerializeField] private MetronomePlayerScript P2;
+
+    public int winner;
+
+    public int score1, score2;
     
     void Awake()
     {
@@ -52,8 +56,24 @@ public class MetronomeGameManager : MonoBehaviour
         
         yield return new WaitForSeconds(1.5f);
 
-        GameManager.instance.player_1_Score = 1;
-        GameManager.instance.player_2_Score = 1;
+        
+        if (score1 > score2)
+        {
+            GameManager.instance.player_1_Score = 3;
+            GameManager.instance.player_2_Score = 1; 
+        }
+        if (score1 < score2)
+        {
+            GameManager.instance.player_1_Score = 1;
+            GameManager.instance.player_2_Score = 3; 
+        }
+
+        if (score1 == score2)
+        {
+            GameManager.instance.player_1_Score = 2;
+            GameManager.instance.player_2_Score = 2; 
+        }
+        
         
         GameManager.instance.ReturnToMainScene();
     }

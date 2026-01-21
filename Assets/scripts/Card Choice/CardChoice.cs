@@ -20,7 +20,6 @@ public class CardChoice : MonoBehaviour
    }
    public CardsPNG[] cardsUI1, cardsUI2;
 
-   public bool player1Fail, player2Fail;
 
    public int[] cardsID1, cardsID2;
    
@@ -93,11 +92,11 @@ public class CardChoice : MonoBehaviour
          cardsUI2[i].face.color = Color.white;
       }
       
-      if(cardSelected1 != -1) cardsUI1[cardSelected1].face.color = new Color(0.5f, 0.5f, 0.5f);
-      if(cardSelected2 != -1)cardsUI2[cardSelected2].face.color = new Color(0.5f, 0.5f, 0.5f);
+      if(cardSelected1 != -1) cardsUI1[cardSelected1].face.color = new Color(0.7f, 0.7f, 0.7f);
+      if(cardSelected2 != -1)cardsUI2[cardSelected2].face.color = new Color(0.7f, 0.7f, 0.7f);
    }
    
-   public void ResolveMiniGameResults(int miniGame2, int miniGame1)
+   public void ResolveMiniGameResults(int miniGame1, int miniGame2)
    {
       inSelection1 = true;
       inSelection2 = true;
@@ -107,17 +106,14 @@ public class CardChoice : MonoBehaviour
 
       cardSelected1 = 0;
       cardSelected2 = 0;
-      ResolvePlayer(miniGame1, ref player1Fail, ref cardsID1, ref itemPool1, cardsUI1);
-      ResolvePlayer(miniGame2, ref player2Fail, ref cardsID2, ref itemPool2, cardsUI2);
+      ResolvePlayer(miniGame1, ref cardsID1, ref itemPool1, cardsUI1);
+      ResolvePlayer(miniGame2, ref cardsID2, ref itemPool2, cardsUI2);
       
-      if(!player1Fail) animatorCards1.SetTrigger("Start");
-      if(!player2Fail) animatorCards2.SetTrigger("Start");
+      animatorCards1.SetTrigger("Start");
+      animatorCards2.SetTrigger("Start");
    }
-   void ResolvePlayer(int result, ref bool playerFail, ref int[] cardsID, ref ItemSO itemPool, CardsPNG[] cardsUI)
+   void ResolvePlayer(int result, ref int[] cardsID, ref ItemSO itemPool, CardsPNG[] cardsUI)
    {
-      if (result <= 0) { playerFail = true; return; }
-      playerFail = false;
-
       int[] raritiesToPick = result switch
       {
          1 => new[] { 0, 0, 0 }, 

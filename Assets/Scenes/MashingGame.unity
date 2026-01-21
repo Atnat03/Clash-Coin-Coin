@@ -290,6 +290,9 @@ MonoBehaviour:
   P1JaugeFillAmout: 0
   P1Jauge: {fileID: 1386932601}
   ingame: 0
+  playerID: 2
+  ratioPallier1: 0.67
+  ratioPallier2: 0.82
 --- !u!4 &44543026
 Transform:
   m_ObjectHideFlags: 0
@@ -1241,6 +1244,9 @@ MonoBehaviour:
   P1JaugeFillAmout: 0
   P1Jauge: {fileID: 1533756711}
   ingame: 0
+  playerID: 1
+  ratioPallier1: 0.67
+  ratioPallier2: 0.82
 --- !u!4 &409549551
 Transform:
   m_ObjectHideFlags: 0
@@ -2907,6 +2913,8 @@ MonoBehaviour:
   P1: {fileID: 409549550}
   P2: {fileID: 44543025}
   someoneWon: 0
+  pallierJoueur1: 0
+  pallierJoueur2: 0
   animUI: {fileID: 1134924533}
 --- !u!114 &1137490992
 MonoBehaviour:

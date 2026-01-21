@@ -15,6 +15,7 @@ public class MetronomePlayerScript : MonoBehaviour
     public TextMeshProUGUI text;
     public Image jaugePoints;
     public bool ingame;
+    public int playerID;
 
     public void Start()
     {
@@ -50,6 +51,10 @@ public class MetronomePlayerScript : MonoBehaviour
             }
             yield return null;
         }
+
+
+        if (playerID == 1) MetronomeGameManager.instance.score1 = points;
+        if (playerID == 2) MetronomeGameManager.instance.score2 = points;
     }
     
     public void PlayerPressedA(InputAction.CallbackContext context)
@@ -73,14 +78,6 @@ public class MetronomePlayerScript : MonoBehaviour
 
         text.text = "points : " + points;
         jaugePoints.fillAmount = (float)points / MetronomeGameManager.instance.pointsToScore;
-        
-        /*
-        float phase = elapsedTime * cursorSpeed;
-        
-        cursorSpeed *= MetronomeGameManager.instance.cursorAccelerationFactor;
-        
-        elapsedTime = phase / cursorSpeed;
-        */
     }
 
 }

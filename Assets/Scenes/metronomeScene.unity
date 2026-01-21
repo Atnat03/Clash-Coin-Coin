@@ -1727,6 +1727,7 @@ MonoBehaviour:
   text: {fileID: 608610949}
   jaugePoints: {fileID: 788992487}
   ingame: 0
+  playerID: 0
 --- !u!4 &902719198
 Transform:
   m_ObjectHideFlags: 0
@@ -2398,13 +2399,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   gameLength: 15
-  SliderTolerence: 0.3
-  pointsToScore: 15
-  cursorAccelerationFactor: 1.01
-  cursorDefaultSpeed: 1
+  SliderTolerence: 0.4
+  pointsToScore: 8
+  cursorAccelerationFactor: 1.008
+  cursorDefaultSpeed: 1.5
   mainText: {fileID: 411875087}
   P1: {fileID: 902719197}
   P2: {fileID: 1803657508}
+  winner: 0
+  score1: 0
+  score2: 0
   animUI: {fileID: 1284319670}
 --- !u!4 &1311699045
 Transform:
@@ -3103,6 +3107,7 @@ MonoBehaviour:
   text: {fileID: 1568665730}
   jaugePoints: {fileID: 2111561745}
   ingame: 0
+  playerID: 0
 --- !u!4 &1803657509
 Transform:
   m_ObjectHideFlags: 0
