@@ -30,7 +30,7 @@ public class LanceTroop : Troop
             ITargetable targetItem = target.GetComponent<ITargetable>();
             if (targetItem != null)
             {
-                b.Throw(throwPos.position, targetPos, targetItem.playerOneProperty, Damage);
+                b.Throw(throwPos.position, targetPos, targetItem.playerOneProperty, Damage, GetComponent<Collider>());
             }
             else
             {
