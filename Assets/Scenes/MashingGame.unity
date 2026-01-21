@@ -2717,7 +2717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Terrmin\xE9 !"
+  m_text: "Termin\xE9 !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 51f9f0f82f83ec54d80d4c41bc1bf839, type: 2}
   m_sharedMaterial: {fileID: -8287323102424376776, guid: 51f9f0f82f83ec54d80d4c41bc1bf839, type: 2}

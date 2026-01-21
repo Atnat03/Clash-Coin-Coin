@@ -2813,7 +2813,7 @@ MonoBehaviour:
   m_MinValue: -1
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.055
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3565,7 +3565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Terrmin\xE9 !"
+  m_text: "Termin\xE9 !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 51f9f0f82f83ec54d80d4c41bc1bf839, type: 2}
   m_sharedMaterial: {fileID: -8287323102424376776, guid: 51f9f0f82f83ec54d80d4c41bc1bf839, type: 2}
@@ -4278,8 +4278,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -37.51, y: 0}
-  m_SizeDelta: {x: -75.04, y: 0}
+  m_AnchoredPosition: {x: -38.28, y: 0}
+  m_SizeDelta: {x: -76.57, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1611982668
 MonoBehaviour:
