@@ -1,12 +1,16 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public abstract class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour, ITargetable
 {
     [HideInInspector]public int id;
-    public string name;
+    [HideInInspector]public string name;
     public float PV;
-    public float maxPV;
-    public bool playerOneProperty;
+    [HideInInspector]public float maxPV;
+    public Image currentHP;
+    
+    public bool IsMovementTarget => false;
     
     public Item()
     {
@@ -25,19 +29,36 @@ public abstract class Item : MonoBehaviour
         this.PV = maxPV;
     }
     
-    public virtual void DoThing(){}
-
-    public void TakeDamages(int damages)
+    public bool CanBeAttacked => true;
+    
+    public void Die()
     {
-        PV -= damages;
+        GameManager.instance.RemovePlacedItem(this);
+        GameManager.instance.RemovePlacedDataItem(this);
+        Destroy(gameObject);
+    }
+
+    public bool playerOneProperty { get; set; }
+    public void TakeDamage(float damage)
+    {
+        PV -= damage;
+        print("take damage" + damage);
+        
+        currentHP.fillAmount = PV / maxPV;
+        
         if (PV <= 0)
         { 
             Die();
-        }
+        }    
     }
 
-    public void Die()
+    public void GetPoisoned(float duration, float damage)
     {
-        Destroy(gameObject);
+        
+    }
+
+    public virtual void SetActive(bool state)
+    {
+        enabled = state;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerInputing : MonoBehaviour
 {
@@ -13,32 +14,37 @@ public class PlayerInputing : MonoBehaviour
     public float maxDistance = 100f;
     public LayerMask hitMask;
 
-    Vector2 aimInput;
+    public Vector2 aimInput;
     Vector2 screenCursor;
     Vector3 worldAimPosition;
 
     public Action OnClicked, OnExit;
+    public Action<int> OnSelectTroop, OnSelectBuild;
 
+    public bool isPlayerOne;
+    
+    private Bounds aimBounds;
+    private bool hasBounds = false;
+
+    public bool IsReady = false;
+    
     void Start()
     {
         screenCursor = new Vector2(Screen.width / 2f, Screen.height / 2f);
     }
-
-    public void OnAim(InputAction.CallbackContext context)
-    {
-        aimInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnPressedInput(InputAction.CallbackContext context)
-    {
-        OnClicked?.Invoke();
-    }
     
-    public void OnExitInput(InputAction.CallbackContext context)
+    public void SetAimBounds(Bounds bounds)
     {
-        OnExit?.Invoke();
+        aimBounds = bounds;
+        hasBounds = true;
     }
 
+    public void OnAim(InputAction.CallbackContext context) => aimInput = context.ReadValue<Vector2>();
+    public void OnPressedInput(InputAction.CallbackContext context) => OnClicked?.Invoke();
+    public void OnExitInput(InputAction.CallbackContext context) => OnExit?.Invoke();
+    
+    public void OnXPress(InputAction.CallbackContext context) => OnSelectTroop?.Invoke(1);
+    
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
     
     void Update()
@@ -54,14 +60,32 @@ public class PlayerInputing : MonoBehaviour
 
         if (groundPlane.Raycast(ray, out float enter))
         {
-            worldAimPosition = ray.GetPoint(enter);
+            Vector3 hitPoint = ray.GetPoint(enter);
+
+            if (hasBounds)
+            {
+                hitPoint.x = Mathf.Clamp(hitPoint.x, aimBounds.min.x, aimBounds.max.x);
+                hitPoint.z = Mathf.Clamp(hitPoint.z, aimBounds.min.z, aimBounds.max.z);
+            }
+
+            worldAimPosition = hitPoint;
 
             Debug.DrawLine(ray.origin, worldAimPosition, Color.green);
         }
+
     }
 
     public Vector3 GetWorldAimPosition()
     {
         return new Vector3(worldAimPosition.x, 0f, worldAimPosition.z);
     }
+    
+    void OnDrawGizmos()
+    {
+        if (!hasBounds) return;
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(aimBounds.center, aimBounds.size);
+    }
+
 }

@@ -1,175 +1,339 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Troop : Item
 {
-    public float Speed;
-    public float RaduisAttack;
-    
-    public Troop(int  id, string name, float maxPV, float speed, float raduisAttack)
-    {
-        this.id = id;
-        this.name = name;
-        this.maxPV = maxPV;
-        PV = maxPV;
-        Speed = speed;
-        RaduisAttack = raduisAttack;
-    }
-    
+    [Header("Stats")]
+    public float Speed = 3f;
+    public float RadiusAttack = 1.5f;
+    public float Damage = 10f;
+    public float attackCooldown = 1f;
+
+    [Header("Runtime")]
+    bool isAttacking;
     Transform target;
 
-	GridManager gridManager;
-	
-	private float t = 1;
+    GridManager gridManager;
 
-	private void Start()
-	{
-		gridManager = GridManager.instance;
-		target = Rescan();
-	}
+    List<Node> path = new();
+    Transform lastTarget;
+    float pathRefreshTimer;
 
-	void Update()
-	{
-		if (target == null) return;
-		
-		FindPath(transform.position, target.position);
-		
-		if (t <= 0)
-		{
-			target = Rescan();
-			t = 1;
-		}
-		else
-		{
-			t -= Time.deltaTime;
-		}
-		
-		if (gridManager.path != null)
-		{
-			if (gridManager.path.Count > 0)
-			{
-				transform.position = Vector3.MoveTowards(transform.position, gridManager.path[0].worldPosition, Speed * Time.deltaTime);
-			}
-		}
-	}
+    public bool alreadyTakeTP = false;
 
-	private Transform Rescan()
-	{
-		Collider[] hits = Physics.OverlapSphere(transform.position, 1000000);
+    const float PATH_REFRESH_TIME = 0.5f;
+    
+    public bool isFrozen;
+    
+    public new bool IsMovementTarget => true;
+    public new bool CanBeAttacked => true;
+    
+    void OnEnable()
+    {
+        gridManager = GridManager.instance;
+        if (gridManager == null)
+        {
+            Debug.LogWarning($"{name}: GridManager not found!");
+            return;
+        }
+    
+        gridManager = GridManager.instance;
 
-		Transform closestTarget = null;
-		float closestDistanceSqr = float.MaxValue;
+        lastTarget = null;
+        pathRefreshTimer = 0f;
+    }
 
-		foreach (Collider hit in hits)
-		{
-			if (!hit.TryGetComponent<ITargetable>(out _))
-				continue;
+    void Update()
+    {
+        if (isFrozen)
+            return;
+        
+        if (!enabled || !gridManager)
+            return;
+        
+        target = Rescan();
+        print("Target : " + target.name);
 
-			Vector3 delta = hit.transform.position - transform.position;
-			float distanceSqr = delta.sqrMagnitude;
+        if (target && path.Count == 0)
+        {
+            FindPath(transform.position, target.position);
+            lastTarget = target;
+            pathRefreshTimer = PATH_REFRESH_TIME;
+        }
 
-			if (distanceSqr < closestDistanceSqr)
-			{
-				closestDistanceSqr = distanceSqr;
-				closestTarget = hit.transform;
-			}
-		}
+        if (!target)
+            return;
 
-		return closestTarget;
-	}
+        pathRefreshTimer -= Time.deltaTime;
+        if (pathRefreshTimer <= 0f || target != lastTarget || path.Count == 0)
+        {
+            FindPath(transform.position, target.position);
+            lastTarget = target;
+            pathRefreshTimer = PATH_REFRESH_TIME;
+        }
+        
+        if (path.Count == 0)
+        {
+            if (target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+            {
+                float dist = Vector3.Distance(transform.position, target.position);
+                if (dist <= RadiusAttack && !isAttacking)
+                    StartCoroutine(Attack());
+            }
+        }
+        else
+        {
+            Chase();
+        }
 
 
 
-	void FindPath(Vector3 startPos, Vector3 endPos)
-	{
-		Node startNode = gridManager.NodeFromWorldPosition(startPos - gridManager.transform.position);
-		Node endNode   = gridManager.NodeFromWorldPosition(endPos - gridManager.transform.position);
+        currentHP.fillAmount = PV / maxPV;
+    }
+    
+    IEnumerator Attack()
+    {
+        isAttacking = true;
 
-		List<Node>    openNodes   = new();
-		HashSet<Node> closedNodes = new();
+        yield return new WaitForSeconds(attackCooldown);
 
-		openNodes.Add(startNode);
+        if (target &&
+            target.TryGetComponent<ITargetable>(out var t) &&
+            t.CanBeAttacked)
+        {
+            t.TakeDamage(Damage);
+        }
 
-		while (openNodes.Count > 0)
-		{
-			Node currentNode = GetLowestFCostNode(openNodes);
+        isAttacking = false;
+    }
 
-			openNodes.Remove(currentNode);
-			closedNodes.Add(currentNode);
 
-			if (currentNode == endNode)
-			{
-				RetracePath(startNode, endNode);
-				return;
-			}
+    void Chase()
+    {
+        if (path == null || path.Count == 0)
+            return;
 
-			foreach (Node neighbour in gridManager.GetNeighbours(currentNode))
-			{
-				if (!neighbour.walkable || closedNodes.Contains(neighbour))
-				{
-					continue;
-				}
+        Vector3 nextPos = path[0].worldPosition;
 
-				int newCost = currentNode.gCost + GetDistance(currentNode, neighbour);
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            nextPos,
+            Speed * Time.deltaTime
+        );
 
-				if (newCost < neighbour.gCost || !openNodes.Contains(neighbour))
-				{
-					neighbour.gCost  = newCost;
-					
-					neighbour.hCost  = GetDistance(neighbour, endNode);
-					neighbour.parent = currentNode;
+        if (Vector3.Distance(transform.position, nextPos) < 0.05f)
+        {
+            path.RemoveAt(0);
+        }
+    }
+    
+    public Transform Rescan()
+    {
+        ITargetable[] targets = FindObjectsOfType<MonoBehaviour>()
+            .OfType<ITargetable>()
+            .Where(t =>
+            {
+                MonoBehaviour mb = (MonoBehaviour)t;
+                return mb.gameObject.activeInHierarchy
+                       && mb != this;
+            })
+            .ToArray();
 
-					if (!openNodes.Contains(neighbour))
-					{
-						openNodes.Add(neighbour);
-					}
-				}
-			}
-		}
-	}
+        if (targets.Length == 0)
+            return null;
 
-	int GetDistance(Node nodeA, Node nodeB)
-	{
-		const int diagonalCost = 14;
-		const int straightCost = 10;
+        Transform closest = null;
+        float minDistance = Mathf.Infinity;
+        Vector3 myPos = transform.position;
 
-		int distX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
-		int distY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+        foreach (ITargetable t in targets)
+        {
+            if (t.playerOneProperty == playerOneProperty)
+                continue;
+            
+            if(alreadyTakeTP)
+                if(t is TP_Troop)
+                    continue;
+            
+            Transform tTransform = ((MonoBehaviour)t).transform;
+            float dist = Vector3.SqrMagnitude(tTransform.position - myPos);
 
-		return distX > distY
-			? diagonalCost * distY + straightCost * (distX - distY)
-			: diagonalCost * distX + straightCost * (distY - distX);
-	}
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+                closest = tTransform;
+            }
+        }
 
-	void RetracePath(Node startNode, Node endNode)
-	{
-		List<Node> path = new();
+        return closest;
+    }
 
-		Node currentNode = endNode;
+    public void FindPath(Vector3 startPos, Vector3 endPos)
+    {
+        Node startNode = gridManager.NodeFromWorldPosition(startPos);
+        Node endNode = gridManager.NodeFromWorldPosition(endPos);
 
-		while (currentNode != startNode)
-		{
-			path.Add(currentNode);
-			currentNode = currentNode.parent;
-		}
+        if (startNode == null || endNode == null)
+            return;
 
-		path.Reverse();
-		gridManager.path = path;
-	}
+        // Reset nodes
+        foreach (Node n in gridManager.grid)
+        {
+            n.gCost = int.MaxValue;
+            n.hCost = 0;
+            n.parent = null;
+        }
 
-	Node GetLowestFCostNode(List<Node> nodes)
-	{
-		Node bestNode = nodes[0];
+        startNode.gCost = 0;
 
-		foreach (Node node in nodes)
-		{
-			if (node.fCost < bestNode.fCost || (node.fCost == bestNode.fCost && node.hCost < bestNode.hCost))
-			{
-				bestNode = node;
-			}
-		}
+        List<Node> open = new();
+        HashSet<Node> closed = new();
 
-		return bestNode;
-	}
-	
+        open.Add(startNode);
+
+        while (open.Count > 0)
+        {
+            Node current = GetLowestFCostNode(open);
+
+            open.Remove(current);
+            closed.Add(current);
+
+            if (current == endNode)
+            {
+                RetracePath(startNode, endNode);
+                return;
+            }
+
+            foreach (Node neighbour in gridManager.GetNeighbours(current))
+            {
+                if (!neighbour.walkable || closed.Contains(neighbour))
+                    continue;
+
+                int newCost = current.gCost + GetDistance(current, neighbour);
+
+                if (newCost < neighbour.gCost)
+                {
+                    neighbour.gCost = newCost;
+                    neighbour.hCost = GetDistance(neighbour, endNode);
+                    neighbour.parent = current;
+
+                    if (!open.Contains(neighbour))
+                        open.Add(neighbour);
+                }
+            }
+        }
+    }
+
+    void RetracePath(Node startNode, Node endNode)
+    {
+        path.Clear();
+
+        Node current = endNode;
+
+        while (current != startNode && current != null)
+        {
+            path.Add(current);
+            current = current.parent;
+        }
+
+        path.Reverse();
+
+        bool stopAtAttackRange =
+            target.TryGetComponent<ITargetable>(out var t) &&
+            t.CanBeAttacked &&
+            !t.IsMovementTarget;
+
+        if (stopAtAttackRange && path.Count > 1)
+        {
+            while (path.Count > 0)
+            {
+                Vector3 lastNodePos = path[path.Count - 1].worldPosition;
+                float distToTarget = Vector3.Distance(lastNodePos, target.position);
+
+                if (distToTarget <= RadiusAttack * 0.9)
+                {
+                    path.RemoveAt(path.Count - 1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+    }
+
+
+    Node GetLowestFCostNode(List<Node> nodes)
+    {
+        Node best = nodes[0];
+
+        foreach (Node n in nodes)
+        {
+            if (n.fCost < best.fCost ||
+                (n.fCost == best.fCost && n.hCost < best.hCost))
+            {
+                best = n;
+            }
+        }
+
+        return best;
+    }
+
+    int GetDistance(Node a, Node b)
+    {
+        int dx = Mathf.Abs(a.gridX - b.gridX);
+        int dy = Mathf.Abs(a.gridY - b.gridY);
+
+        const int diag = 14;
+        const int straight = 10;
+
+        return dx > dy
+            ? diag * dy + straight * (dx - dy)
+            : diag * dx + straight * (dy - dx);
+    }
+    
+    public override void SetActive(bool state)
+    {
+        base.SetActive(state);
+        enabled = state;
+    }
+    
+    public void ForceRecalculatePath()
+    {
+        StopAllCoroutines();
+        isAttacking = false;
+
+        path.Clear();
+        lastTarget = null;
+        pathRefreshTimer = -1f;
+
+        target = Rescan();
+
+        if (target != null)
+        {
+            FindPath(transform.position, target.position);
+            lastTarget = target;
+        }
+    }
+
+
+
+    
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, RadiusAttack);
+
+        if (path != null)
+        {
+            Gizmos.color = Color.cyan;
+            foreach (Node n in path)
+            {
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * 0.2f);
+            }
+        }
+    }
+
 }

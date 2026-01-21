@@ -13,5 +13,11 @@ public class ItemsData
     public int Id;
     public string Name;
     public Vector2Int Size = Vector2Int.one;
-    public GameObject Prefab;    
+    public GameObject Prefab;
+    [HideInInspector] public float PV;
+    public float maxPV;
+    
+    public Sprite carte;
+    public Sprite dosCarte;
+    public int rarity;
 }

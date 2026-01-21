@@ -21,7 +21,7 @@
                     "id": "6ee81ec4-449d-4cbe-bddb-7f6ef3f48f26",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Press(pressPoint=0.2)",
                     "initialStateCheck": false
                 },
                 {
@@ -30,7 +30,34 @@
                     "id": "98859e88-cb5e-46ad-a75e-4869ccf75e55",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "YPressed",
+                    "type": "Button",
+                    "id": "f961b4fe-234b-4796-b274-cffa5ac3ab7a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "XPressed",
+                    "type": "Button",
+                    "id": "4b3f9389-b4a0-4aef-8ff4-834e4b9439f0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Areleased",
+                    "type": "Button",
+                    "id": "100797c3-934e-4d06-8009-9149e4de9126",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -160,7 +187,7 @@
                     "name": "",
                     "id": "d53f8ea3-067a-425e-af0b-b37b018b2bd8",
                     "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "APressed",
@@ -171,7 +198,7 @@
                     "name": "",
                     "id": "57fdf66c-dccc-4093-9f9a-a04745650ff4",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "APressed",
@@ -199,9 +226,65 @@
                     "action": "BPressed",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8048a999-aa08-44e6-bb9d-66b7857316bb",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "YPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f483977-d09c-49d9-9052-42f53b279753",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d977207-c4eb-4f27-810b-fd3d7b0c089d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press(pressPoint=0.3,behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Areleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba47f2fe-ef19-40c4-8044-d871a75ef334",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Areleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
