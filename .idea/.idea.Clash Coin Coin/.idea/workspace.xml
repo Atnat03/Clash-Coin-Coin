@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8a5146e-343f-4223-bd43-7e9bd2bba73b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/GameManagement/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/GameManagement/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Turret.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Turret.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Trap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Trap.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +22,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/scripts/EnableInputs.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/GameManagement/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/Grid/GridData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/Grid/PlayerInputing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/ItemSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/Nexus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/scripts/Trap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/Turret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@02433b2481ab/InputSystem/Plugins/PlayerInput/PlayerInputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@02433b2481ab/InputSystem/Plugins/Users/InputUser.cs" root0="SKIP_HIGHLIGHTING" />
@@ -114,6 +115,8 @@
       <updated>1768833038386</updated>
       <workItem from="1768833041387" duration="1284000" />
       <workItem from="1768898630839" duration="4638000" />
+      <workItem from="1768982112994" duration="1368000" />
+      <workItem from="1768983512141" duration="951000" />
     </task>
     <servers />
   </component>
