@@ -31,12 +31,11 @@ public class CurplingPlayerScript : MonoBehaviour
 
     public void ButtonPress(InputAction.CallbackContext context)
     {
-        if(played)return;
-        
-        if (!context.performed || !CurlingGameManager.instance.inGame)
+        if (!context.performed || !CurlingGameManager.instance.inGame || played)
             return;
         
         buttonHeld = true;
+        played = true;
         
         StartCoroutine(ButtonPressedCoroutine());
 
