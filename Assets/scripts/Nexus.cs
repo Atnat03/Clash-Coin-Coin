@@ -10,7 +10,16 @@ public class Nexus : MonoBehaviour, ITargetable
 
     private void Start()
     {
-        maxPV = PV;
+        if(playerOneProperty)
+        {
+            PV = GameManager.instance.PVNexus_P1;
+            maxPV = GameManager.instance.maxPVNexus_P1;
+        }
+        else
+        {
+            PV = GameManager.instance.PVNexus_P2;
+            maxPV = GameManager.instance.maxPVNexus_P2;
+        }        
         playerOneProperty = isPlayer1;
         name = "Nexus";
     }
