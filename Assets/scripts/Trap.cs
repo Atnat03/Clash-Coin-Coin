@@ -76,7 +76,7 @@ public class Trap : Build
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, detectionZone);
         
-        Gizmos.color = Color.darkBlue;
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, explosionZone);
     }
 }
