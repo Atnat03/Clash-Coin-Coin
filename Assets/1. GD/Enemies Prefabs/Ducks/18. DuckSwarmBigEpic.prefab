@@ -56,12 +56,13 @@ MonoBehaviour:
   id: 0
   name: Player1
   PV: 135
-  maxPV: 100
+  maxPV: 135
   currentHP: {fileID: 8103242198617991682}
   Speed: 2
   RadiusAttack: 1
   Damage: 34
   attackCooldown: 0.75
+  rotationSpeed: 10
   target: {fileID: 0}
   alreadyTakeTP: 0
   isFrozen: 0

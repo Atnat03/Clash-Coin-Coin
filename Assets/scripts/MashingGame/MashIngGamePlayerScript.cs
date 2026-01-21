@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MashIngGamePlayerScript : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class MashIngGamePlayerScript : MonoBehaviour
     private float shapeFillAmount;
     public AudioClip clickSound;
     public float volume;
-    public AudioSource duckSource;
+    public AudioSource SFXSource;
     
     PlayerInput playerInput;
     
@@ -75,6 +76,12 @@ public class MashIngGamePlayerScript : MonoBehaviour
 
         ingame = false;
     }
+    public void PlaySoundRandowPitch(AudioClip clip, float volume)
+    {
+        SFXSource.pitch = Random.Range(0.8f, 1.2f);
+        SFXSource.PlayOneShot(clip, volume);
+
+    }
 
     public void PlayerPressedA(InputAction.CallbackContext context)
     {
@@ -83,7 +90,7 @@ public class MashIngGamePlayerScript : MonoBehaviour
             P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
             animButton.SetTrigger("Clic");
             pompe.SetTrigger("Pomp");
-            AudioManager.instance.PlaySoundRandowPitch(clickSound,volume);
+            PlaySoundRandowPitch(clickSound,volume);
             shapeFillAmount += 100/(1 / MashingGameManager.instance.amountPerClic);
             roueBikeMesh.SetBlendShapeWeight(0, shapeFillAmount);
         }

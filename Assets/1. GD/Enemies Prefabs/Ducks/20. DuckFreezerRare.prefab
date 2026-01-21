@@ -52,7 +52,7 @@ MonoBehaviour:
   id: 0
   name: Player1
   PV: 265
-  maxPV: 100
+  maxPV: 265
   currentHP: {fileID: 8103242198617991682}
   Speed: 1
   RadiusAttack: 1
@@ -637,6 +637,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9138685852647923146, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f5bd6765d6439304b865d1f00daf2986, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

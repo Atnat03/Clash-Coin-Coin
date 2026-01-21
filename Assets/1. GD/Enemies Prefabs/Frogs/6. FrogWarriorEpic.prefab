@@ -52,7 +52,7 @@ MonoBehaviour:
   id: 0
   name: Player1
   PV: 340
-  maxPV: 100
+  maxPV: 340
   currentHP: {fileID: 8103242198617991682}
   Speed: 2
   RadiusAttack: 1.5

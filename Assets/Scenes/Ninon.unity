@@ -246,6 +246,128 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1001 &1366659672
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50.569424
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6167507
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 37.770367
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564806622089340945, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: m_Name
+      value: 20. DuckFreezerRare
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672028259943067964, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ae4eec1e666c83448759f7d5dc77a89, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
+--- !u!1001 &1870410930
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 52.680664
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.61675006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 36.951424
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253301024315926119, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564806622089340945, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: m_Name
+      value: 21. FrogFreezerEpic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4762953627273228766, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 502e6e544632b6846a1c31eccb362806, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fbea08119d4ef5429a1ac39c6b10dc5, type: 3}
 --- !u!1 &2117144109
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,3 +988,5 @@ SceneRoots:
   - {fileID: 601526782627396137}
   - {fileID: 8740225625956566072}
   - {fileID: 5905870131955945735}
+  - {fileID: 1366659672}
+  - {fileID: 1870410930}
