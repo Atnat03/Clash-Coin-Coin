@@ -6684,7 +6684,7 @@ MonoBehaviour:
   troopDataP1: []
   troopDataP2: []
   miniGames:
-  - MetronomeScene
+  - MashingGame
   player_1_Score: -1
   player_2_Score: -1
   troopPrefabs:

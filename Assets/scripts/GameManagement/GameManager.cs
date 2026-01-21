@@ -295,7 +295,8 @@ public class GameManager : MonoBehaviour
         else
         {
             SetAllPlacedItems(false);
-
+            ActivateAllTroops(false);
+            
             yield return new WaitForSeconds(5f);
 
             CombatDuration = 20;
@@ -326,7 +327,7 @@ public class GameManager : MonoBehaviour
         VariablesManager.instance.placementSystems[1].PlaceItem();
         VariablesManager.instance.placementSystems[0].PlaceItem();
         
-        SetAllPlacedItems(true);
+        SetAllPlacedItems(false);
     }
     
     void PrepareUpdate()
