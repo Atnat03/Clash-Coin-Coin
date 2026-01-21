@@ -73,43 +73,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    public void ReturnToMainScene()
-    {
-        print("bz ta mere");
-        StartCoroutine(LoadMainSceneAndCheck());
-    }
-    
-    private IEnumerator LoadMainSceneAndCheck()
-    {
-        AsyncOperation op = SceneManager.LoadSceneAsync("MainScene");
-
-        while (!op.isDone)
-        {
-            yield return null;
-        }
-
-        if (player_1_Score == -1 && player_2_Score == -1)
-        {
-            stateMachine.ChangeState(GameSate.StartGame);
-        }
-        else
-        {
-            stateMachine.ChangeState(GameSate.Reward);
-        }
-        
-        placedItemsP1.Clear();
-        placedItemsP2.Clear();
-        
-        VariablesManager.instance.placementSystems[0].ReloadData(itemPlacedDataP1);
-        VariablesManager.instance.placementSystems[1].ReloadData(itemPlacedDataP2);
-        
-        itemPlacedDataP1.Clear();
-        itemPlacedDataP2.Clear();
-
-        SetAllPlacedItems(false);
-    }
-
     
     void Start()
     {
@@ -262,11 +225,8 @@ public class GameManager : MonoBehaviour
     void StartMiniGame()
     {
         Debug.Log("Enter MiniGames");
-        
-        foreach (var placementSystem in VariablesManager.instance.placementSystems)
-        {
-            placementSystem.SaveGrid();
-        }
+
+        SaveBeforeSceneChange();
 
         string sceneName = miniGames[Random.Range(0, miniGames.Length - 1)];
         SceneManager.LoadScene(sceneName);
@@ -383,5 +343,184 @@ public class GameManager : MonoBehaviour
         return !CardChoice.instance.inSelection1 && !CardChoice.instance.inSelection2;
     }
     
+    #endregion
+
+
+    #region SAVE
+
+    public void SaveBeforeSceneChange()
+    {
+        Debug.Log("Sauvegarde des items avant changement de scène");
+        
+        UpdateItemDataFromPlacedItems();
+        
+        SaveSystem.instance.SaveGame();
+    }
+    
+    private void UpdateItemDataFromPlacedItems()
+    {
+        foreach (Item item in placedItemsP1)
+        {
+            if (item != null)
+            {
+                ItemData data = itemPlacedDataP1.Find(x => x.id == item.id && x.name == item.name);
+                if (data != null)
+                {
+                    data.PV = item.PV;
+                    data.maxPV = item.maxPV;
+                }
+            }
+        }
+        
+        foreach (Item item in placedItemsP2)
+        {
+            if (item != null)
+            {
+                ItemData data = itemPlacedDataP2.Find(x => x.id == item.id && x.name == item.name);
+                if (data != null)
+                {
+                    data.PV = item.PV;
+                    data.maxPV = item.maxPV;
+                }
+            }
+        }
+    }
+    
+    public void LoadAfterSceneChange()
+{
+    GameSaveData saveData = SaveSystem.instance.LoadGame();
+    
+    if (saveData != null)
+    {
+        Debug.Log("Chargement des items sauvegardés");
+        
+        // Restaurer les scores
+        player_1_Score = saveData.player1Score;
+        player_2_Score = saveData.player2Score;
+        CombatDuration = saveData.combatDuration;
+        
+        // Vider les listes
+        itemPlacedDataP1.Clear();
+        itemPlacedDataP2.Clear();
+        
+        // IMPORTANT : Récupérer les prefabs depuis la database pour P1
+        foreach (ItemData itemData in saveData.itemsP1)
+        {
+            ItemSO database = VariablesManager.instance.placementSystems[0].database;
+            var itemInfo = database.itemsData.Find(x => x.Id == itemData.id);
+            
+            if (itemInfo != null)
+            {
+                itemData.prefab = itemInfo.Prefab; // ✅ Récupération du prefab
+                itemData.scale = itemInfo.Size;     // Au cas où
+                itemPlacedDataP1.Add(itemData);
+            }
+            else
+            {
+                Debug.LogError($"❌ Prefab non trouvé pour l'item ID: {itemData.id} (P1)");
+            }
+        }
+        
+        // IMPORTANT : Récupérer les prefabs depuis la database pour P2
+        foreach (ItemData itemData in saveData.itemsP2)
+        {
+            ItemSO database = VariablesManager.instance.placementSystems[1].database;
+            var itemInfo = database.itemsData.Find(x => x.Id == itemData.id);
+            
+            if (itemInfo != null)
+            {
+                itemData.prefab = itemInfo.Prefab; // ✅ Récupération du prefab
+                itemData.scale = itemInfo.Size;     // Au cas où
+                itemPlacedDataP2.Add(itemData);
+            }
+            else
+            {
+                Debug.LogError($"❌ Prefab non trouvé pour l'item ID: {itemData.id} (P2)");
+            }
+        }
+        
+        // Replacer les items dans la scène
+        RestorePlacedItems();
+    }
+    else
+    {
+        Debug.Log("Aucune sauvegarde à charger");
+    }
+}
+
+    
+    private void RestorePlacedItems()
+    {
+        if (VariablesManager.instance.placementSystems == null || 
+            VariablesManager.instance.placementSystems.Length < 2)
+        {
+            Debug.LogError("PlacementSystems non initialisés");
+            return;
+        }
+        
+        placedItemsP1.Clear();
+        placedItemsP2.Clear();
+        
+        foreach (ItemData data in itemPlacedDataP1)
+        {
+            VariablesManager.instance.placementSystems[0].PlaceStructureAt(data);
+        }
+        
+        foreach (ItemData data in itemPlacedDataP2)
+        {
+            VariablesManager.instance.placementSystems[1].PlaceStructureAt(data);
+        }
+        
+        Debug.Log($"Items restaurés - P1: {placedItemsP1.Count}, P2: {placedItemsP2.Count}");
+    }
+    
+    public void ReturnToMainScene()
+    {
+        print("Retour à la scène principale");
+        
+        StartCoroutine(LoadMainSceneAndCheck());
+    }
+    
+    private IEnumerator LoadMainSceneAndCheck()
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync("MainScene");
+
+        while (!op.isDone)
+        {
+            yield return null;
+        }
+        
+        yield return new WaitForEndOfFrame();
+        
+        LoadAfterSceneChange();
+
+        if (player_1_Score == -1 && player_2_Score == -1)
+        {
+            stateMachine.ChangeState(GameSate.StartGame);
+        }
+        else
+        {
+            stateMachine.ChangeState(GameSate.Reward);
+        }
+    }
+    
+    public void ResetGame()
+    {
+        placedItemsP1.Clear();
+        placedItemsP2.Clear();
+        itemPlacedDataP1.Clear();
+        itemPlacedDataP2.Clear();
+        
+        player_1_Score = -1;
+        player_2_Score = -1;
+        CombatDuration = 20;
+        
+        SaveSystem.instance.DeleteSave();
+        
+        SetAllPlacedItems(false);
+        
+        Debug.Log("Jeu réinitialisé");
+    }
+
     #endregion
 }
