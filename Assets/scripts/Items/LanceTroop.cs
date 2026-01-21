@@ -25,8 +25,7 @@ public class LanceTroop : Troop
         IPave b = Instantiate(throwBoulePrefab, throwPos.position, Quaternion.identity).GetComponent<IPave>();
         if (b != null)
         {
-            Vector3 forwardOffset = (target.position - transform.position).normalized;
-            Vector3 targetPos = target.position - forwardOffset;
+            Vector3 targetPos = target.position;
 
             ITargetable targetItem = target.GetComponent<ITargetable>();
             if (targetItem != null)
