@@ -28,6 +28,9 @@ public class SaveSystem : MonoBehaviour
         saveData.itemsP1 = new List<ItemData>(GameManager.instance.itemPlacedDataP1);
         saveData.itemsP2 = new List<ItemData>(GameManager.instance.itemPlacedDataP2);
         
+        saveData.troopsP1 = GameManager.instance.troopDataP1;
+        saveData.troopsP2 = GameManager.instance.troopDataP2;
+        
         // Sauvegarder les scores
         saveData.player1Score = GameManager.instance.player_1_Score;
         saveData.player2Score = GameManager.instance.player_2_Score;

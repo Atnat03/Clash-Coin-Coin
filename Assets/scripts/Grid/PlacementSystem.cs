@@ -9,7 +9,7 @@ public class PlacementSystem : MonoBehaviour
     public bool isDuckPlayer = false;
     
     [SerializeField] private PlayerInputing playerInputing = null;
-    [SerializeField] private Grid grid;
+    [SerializeField] public Grid grid;
 
     [HideInInspector] public ItemSO database;
     private int selectedObjectIndex = -1;
@@ -137,6 +137,7 @@ public class PlacementSystem : MonoBehaviour
 
         Item itemPlaced = go.GetComponentInChildren<Item>();
         ItemsData data = database.itemsData[selectedObjectIndex];
+        itemPlaced.id = data.Id;
         itemPlaced.enabled = false;
         itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
         itemPlaced.maxPV = data.maxPV;
@@ -203,7 +204,7 @@ public class PlacementSystem : MonoBehaviour
         itemPlaced.playerOneProperty = itemData.playerOneProperty;
         itemPlaced.maxPV = itemData.maxPV;
         itemPlaced.PV = itemData.PV;
-        itemPlaced.enabled = true;
+        itemPlaced.enabled = false;
     
         selectedData.RegisterItemPosition(itemPlaced, itemData.position);
     
@@ -237,7 +238,7 @@ public class PlacementSystem : MonoBehaviour
     {
         selectedObjectIndex = -1;
         gridVisualisation.SetActive(false);
-        previewSystem.StopShowingPreview();
+        previewSystem.StopShowingPreview(); 
         playerInputing.OnClicked -= PlaceStructure;
         playerInputing.OnExit -= StopPlacement;
         playerInputing.SetAimBounds(default);
