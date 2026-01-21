@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
             onEnter:()=> Debug.Log("Enter  EndGame")
         ));
         
-        stateMachine.ChangeState(GameSate.Reward);
+        stateMachine.ChangeState(GameSate.MiniGame);
     }
     
     public void SetAllPlacedItems(bool state)
@@ -562,6 +562,8 @@ public class GameManager : MonoBehaviour
     
     public void ReturnToMainScene()
     {
+        stateMachine.ChangeState(GameSate.Transition);
+        
         print("Retour à la scène principale");
         
         StartCoroutine(LoadMainSceneAndCheck());

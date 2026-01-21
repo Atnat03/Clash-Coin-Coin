@@ -22,6 +22,8 @@ public class MashIngGamePlayerScript : MonoBehaviour
 
     PlayerInput playerInput;
 
+    public Animator pomp;
+
     public Animator animButton;
 
     private void Awake()
@@ -78,6 +80,7 @@ public class MashIngGamePlayerScript : MonoBehaviour
         {
             P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
             animButton.SetTrigger("Clic");
+            pomp.SetTrigger("Pomp");
             shapeFillAmount += 100/(1 / MashingGameManager.instance.amountPerClic);
             roueBikeMesh.SetBlendShapeWeight(0, shapeFillAmount);
         }
