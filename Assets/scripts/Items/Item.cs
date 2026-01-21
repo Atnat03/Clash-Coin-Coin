@@ -70,6 +70,7 @@ public abstract class Item : MonoBehaviour
             TakeDamage(damage);
             yield return new WaitForSeconds(1f);
         }
+        currentHP.color = Color.green;
     }
     
     
