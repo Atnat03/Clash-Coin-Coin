@@ -263,7 +263,7 @@ MonoBehaviour:
   ratioPallier1: 0.67
   ratioPallier2: 0.82
   roueBike: {fileID: 1199341264}
-  clickSound: {fileID: 8300000, guid: 9b0cb3eff18e8b346888ed5b8a91456f, type: 3}
+  clickSound: {fileID: 8300000, guid: 709a5db691486d2428da4f60a0519c20, type: 3}
   volume: 0.9
   SFXSource: {fileID: 1633614566}
   animButton: {fileID: 145645825}
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   ratioPallier1: 0.67
   ratioPallier2: 0.82
   roueBike: {fileID: 707977655}
-  clickSound: {fileID: 8300000, guid: eb57feca68b85cc4b9830f611e627844, type: 3}
+  clickSound: {fileID: 8300000, guid: 7acc542e0a85a7548bb834bf0edf6651, type: 3}
   volume: 1.1
   SFXSource: {fileID: 1323914823}
   animButton: {fileID: 1650944330}
@@ -7212,8 +7212,6 @@ MonoBehaviour:
   musicClip: []
   startSound: {fileID: 8300000, guid: f16ff34de42fbbb4c9336d253448215e, type: 3}
   endSound: {fileID: 8300000, guid: ced6ce3c500383c43bed4d3af26bc7d6, type: 3}
-  coin: {fileID: 8300000, guid: eb57feca68b85cc4b9830f611e627844, type: 3}
-  croa: {fileID: 8300000, guid: 9b0cb3eff18e8b346888ed5b8a91456f, type: 3}
 --- !u!4 &1932399902
 Transform:
   m_ObjectHideFlags: 0
