@@ -26,7 +26,7 @@ public class LanceTroop : Troop
         if (b != null)
         {
             Vector3 forwardOffset = (target.position - transform.position).normalized;
-            Vector3 targetPos = target.position + forwardOffset;
+            Vector3 targetPos = target.position - forwardOffset;
 
             ITargetable targetItem = target.GetComponent<ITargetable>();
             if (targetItem != null)
