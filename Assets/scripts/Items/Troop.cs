@@ -67,13 +67,12 @@ public class Troop : Item, ITargetable
     {
         if (isFrozen)
             return;
-        
+    
         if (!enabled || !gridManager)
             return;
-        
+    
         target = Rescan();
-        print("Target : " + target.name);
-        
+    
         if (target && path.Count == 0)
         {
             FindPath(transform.position, target.position);
@@ -83,7 +82,7 @@ public class Troop : Item, ITargetable
 
         if (!target)
             return;
-        
+    
         animator.SetBool("Walk", isMoving && !isAttacking);
 
         pathRefreshTimer -= Time.deltaTime;
@@ -93,20 +92,36 @@ public class Troop : Item, ITargetable
             lastTarget = target;
             pathRefreshTimer = PATH_REFRESH_TIME;
         }
-        
-        if (path.Count == 0)
+    
+        // Si on est en train d'attaquer, on ne fait rien d'autre
+        if (isAttacking)
         {
-            if (target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+            // On continue de regarder la cible
+            if (target)
             {
-                float dist = Vector3.Distance(transform.position, target.position);
-                if (dist <= RadiusAttack && !isAttacking)
-                {
-                    isAttacking = true;
-                    animator.SetTrigger("Throw");
-                }
+                Vector3 directionToTarget = (target.position - transform.position);
+                directionToTarget.y = 0;
+                RotateTowards(directionToTarget);
+            }
+            return;
+        }
+    
+        if (target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+        {
+            float dist = Vector3.Distance(transform.position, target.position);
+            if (dist <= RadiusAttack)
+            {
+                isAttacking = true;
+                animator.SetTrigger("Throw");
+            
+                Vector3 directionToTarget = (target.position - transform.position);
+                directionToTarget.y = 0;
+                RotateTowards(directionToTarget);
+                return;
             }
         }
-        else
+    
+        if (path.Count > 0)
         {
             Chase();
         }
@@ -129,26 +144,21 @@ public class Troop : Item, ITargetable
 
     public virtual void Attack()
     {
-        if(isAttacking)return;
-        
         print("Attack normal");
+    
+        if (target && target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+        {
+            t.TakeDamage(Damage);
+        }
+    
         StopAllCoroutines();
         StartCoroutine(Attacking());
     }
     
     protected virtual IEnumerator Attacking()
     {
-        isAttacking = true;
-        
-        if (target &&
-            target.TryGetComponent<ITargetable>(out var t) &&
-            t.CanBeAttacked)
-        {
-            t.TakeDamage(Damage);
-        }
-        
         yield return new WaitForSeconds(attackCooldown);
-
+    
         isAttacking = false;
     }
 
@@ -297,20 +307,6 @@ public class Troop : Item, ITargetable
         }
 
         path.Reverse();
-
-        if (target != null && target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
-        {
-            for (int i = 0; i < path.Count; i++)
-            {
-                float distToTarget = Vector3.Distance(path[i].worldPosition, target.position);
-                if (distToTarget <= RadiusAttack * 0.9f)
-                {
-                    path = path.GetRange(0, i);
-                    break;
-                }
-            }
-        }
-
     }
 
 

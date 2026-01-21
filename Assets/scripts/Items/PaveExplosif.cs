@@ -1,16 +1,18 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class PaveExplosif : MonoBehaviour, IPave
 {
-    public float damage = 10;
+    private float damage = 10;
     public float throwDuration = 0.6f;
     public float arcHeight = 2f;
     public ParticleSystem throwParticles;
     public float explosionZone = 1.5f;
     public bool playerOneProperty;
+    private Collider mine;
     
-    public void Throw(Vector3 startPos, Vector3 targetPos, bool playerOneProperty)
+    public void Throw(Vector3 startPos, Vector3 targetPos, bool playerOneProperty, float damage, Collider mine)
     {
         if (throwDuration <= 0f)
         {
@@ -18,6 +20,9 @@ public class PaveExplosif : MonoBehaviour, IPave
             OnImpact();
             return;
         }
+        
+        this.damage = damage;
+        this.mine = mine;
 
         this.playerOneProperty = playerOneProperty;
         StartCoroutine(ThrowCoroutine(startPos, targetPos));
@@ -82,5 +87,11 @@ public class PaveExplosif : MonoBehaviour, IPave
         
         Instantiate(throwParticles, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionZone);
     }
 }
