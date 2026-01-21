@@ -8,8 +8,6 @@ public class LanceTroop : Troop
 
     public override void Attack()
     {
-        if (isAttacking) return;
-        
         print("Attack lancer");
         StopAllCoroutines();
         StartCoroutine(Attacking());
@@ -17,8 +15,6 @@ public class LanceTroop : Troop
     
     protected override IEnumerator Attacking()
     {
-        isAttacking = true;
-
         if (throwBoulePrefab == null || throwPos == null || target == null)
         {
             Debug.LogWarning("Impossible d'attaquer, prefab, position ou target manquant");
@@ -29,14 +25,12 @@ public class LanceTroop : Troop
         IPave b = Instantiate(throwBoulePrefab, throwPos.position, Quaternion.identity).GetComponent<IPave>();
         if (b != null)
         {
-            // Décalage devant la cible
-            Vector3 forwardOffset = target.forward * 1f; // 1 unité devant la target
-            Vector3 targetPos = target.position + forwardOffset;
+            Vector3 targetPos = target.position;
 
             ITargetable targetItem = target.GetComponent<ITargetable>();
             if (targetItem != null)
             {
-                b.Throw(throwPos.position, targetPos, targetItem.playerOneProperty);
+                b.Throw(throwPos.position, targetPos, targetItem.playerOneProperty, Damage, GetComponent<Collider>());
             }
             else
             {

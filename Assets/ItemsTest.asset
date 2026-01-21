@@ -16,7 +16,7 @@ MonoBehaviour:
   - Id: 0
     Name: Canard
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9143655664051125612, guid: 3d6b377a56ec4b0488e51144b7d83f4f, type: 3}
+    Prefab: {fileID: 9143655664051125612, guid: 481fe0516f4488c4f82f36a4ba4463c2, type: 3}
     carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
     dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
     rarity: 1

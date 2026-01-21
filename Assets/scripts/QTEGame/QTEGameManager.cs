@@ -26,6 +26,7 @@ public class QTEGameManager : MonoBehaviour
     public int scorePalier1;
     public int scorePalier2;
     public int scoreMax;
+    public int score1, score2;
 
     public enum ButtonDirection
     {
@@ -68,6 +69,11 @@ public class QTEGameManager : MonoBehaviour
             timerImage.color = Color.Lerp(new Color(1f,0.3f,0.3f), new Color(0.3f,1f,0.3f), elapsedTime / gameLength);
             mainText.text = elapsedTime.ToString("F2");
             yield return null;
+
+            if (score1 == scoreMax || score2 == scoreMax)
+            {
+                finished = true;
+            }
         }
 
         if (elapsedTime < 0) mainText.text = "0";
@@ -86,21 +92,15 @@ public class QTEGameManager : MonoBehaviour
 
     int VerifyScore(int score)
     {
-        if (scorePalier1 < score)
+        if (score >= scorePalier1)
         {
-            if (scorePalier2 < score)
+            if (score >= scorePalier2)
             {
-                if (scoreMax <= score)
-                {
-                    return 3;
-                }
-
-                return 2;
+                return 3;
             }
-            return 1;
+            return 2;
         }
-
-        return 0;
+        return 1;
     }
 
 }
