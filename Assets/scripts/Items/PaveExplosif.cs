@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PaveExplosif : MonoBehaviour, IPave
 {
-    public float damage = 10;
+    private float damage = 10;
     public float throwDuration = 0.6f;
     public float arcHeight = 2f;
     public ParticleSystem throwParticles;
     public float explosionZone = 1.5f;
     public bool playerOneProperty;
     
-    public void Throw(Vector3 startPos, Vector3 targetPos, bool playerOneProperty)
+    public void Throw(Vector3 startPos, Vector3 targetPos, bool playerOneProperty, float damage)
     {
         if (throwDuration <= 0f)
         {
@@ -19,6 +19,8 @@ public class PaveExplosif : MonoBehaviour, IPave
             OnImpact();
             return;
         }
+        
+        this.damage = damage;
 
         this.playerOneProperty = playerOneProperty;
         StartCoroutine(ThrowCoroutine(startPos, targetPos));

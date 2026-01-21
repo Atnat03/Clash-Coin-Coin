@@ -307,20 +307,6 @@ public class Troop : Item, ITargetable
         }
 
         path.Reverse();
-
-        if (target != null && target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
-        {
-            for (int i = 0; i < path.Count; i++)
-            {
-                float distToTarget = Vector3.Distance(path[i].worldPosition, target.position);
-                if (distToTarget <= RadiusAttack * 1.1f)
-                {
-                    path = path.GetRange(0, i);
-                    break;
-                }
-            }
-        }
-
     }
 
 

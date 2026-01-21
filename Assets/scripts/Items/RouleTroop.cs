@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class LanceTroop : Troop
+public class RouleTroop : Troop
 {
     public GameObject throwBoulePrefab;
     public Transform throwPos;
