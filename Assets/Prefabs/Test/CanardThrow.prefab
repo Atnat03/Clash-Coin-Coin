@@ -369,7 +369,7 @@ MonoBehaviour:
   id: 0
   name: 
   PV: 100
-  maxPV: 0
+  maxPV: 100
   currentHP: {fileID: 7761058272285806081}
   Speed: 6
   RadiusAttack: 3
