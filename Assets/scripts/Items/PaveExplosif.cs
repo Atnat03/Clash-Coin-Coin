@@ -58,21 +58,12 @@ public class PaveExplosif : MonoBehaviour, IPave
 
         foreach (Collider hit in hits)
         {
-            if (hit.GetComponent<Item>())
+            if (hit.GetComponent<ITargetable>()!= null)
             {
-                Item troop = hit.GetComponent<Item>();
-                if (troop != null && playerOneProperty != troop.playerOneProperty)
-                {
-                    print("touché une troupe");
+                if(mine == hit)
+                    continue;
                 
-                    troop.TakeDamage(damage);
-                
-                    break;
-                }
-            }
-            else if (hit.GetComponent<Nexus>())
-            {
-                Nexus troop = hit.GetComponent<Nexus>();
+                ITargetable troop = hit.GetComponent<ITargetable>();
                 if (troop != null && playerOneProperty != troop.playerOneProperty)
                 {
                     print("touché une troupe");
