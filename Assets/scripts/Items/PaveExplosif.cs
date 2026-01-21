@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -82,5 +83,11 @@ public class PaveExplosif : MonoBehaviour, IPave
         
         Instantiate(throwParticles, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionZone);
     }
 }
