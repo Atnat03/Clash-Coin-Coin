@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Turret : Build
+public class Turret : Build, ITargetable
 {
     public Bullet bulletPrefab;
     public float shootRange;

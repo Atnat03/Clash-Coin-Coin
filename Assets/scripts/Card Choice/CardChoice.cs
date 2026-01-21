@@ -9,7 +9,7 @@ public class CardChoice : MonoBehaviour
    
    public Animator animatorCards1, animatorCards2;
 
-   public ItemSO itemPool;
+   ItemSO itemPool1, itemPool2;
    
    public PlacementSystem placementPlayer1, placementPlayer2;
 
@@ -20,7 +20,6 @@ public class CardChoice : MonoBehaviour
    }
    public CardsPNG[] cardsUI1, cardsUI2;
 
-   public bool player1Fail, player2Fail;
 
    public int[] cardsID1, cardsID2;
    
@@ -35,12 +34,15 @@ public class CardChoice : MonoBehaviour
    private void Awake()
    {
       instance = this;
+      
+      itemPool1 = VariablesManager.instance.duckItemDatabase;
+      itemPool2 = VariablesManager.instance.frogItemDatabase;
    }
 
    private void OnDisable()
    {
-      SpawnPlayer.instance.players[0].OnClicked -= Player1Click;
-      SpawnPlayer.instance.players[1].OnClicked -= Player2Click;
+      VariablesManager.instance.players[0].OnClicked -= Player1Click;
+      VariablesManager.instance.players[1].OnClicked -= Player2Click;
    }
 
    private void Player1Click()
@@ -56,7 +58,7 @@ public class CardChoice : MonoBehaviour
    {
       if (inSelection1)
       {
-         float x = SpawnPlayer.instance.players[0].aimInput.x;
+         float x = VariablesManager.instance.players[0].aimInput.x;
 
          if (x > 0.9f && lastAimX1 <= 0.9f)
             cardSelected1++;
@@ -71,7 +73,7 @@ public class CardChoice : MonoBehaviour
 
       if (inSelection2)
       {
-         float x = SpawnPlayer.instance.players[1].aimInput.x;
+         float x = VariablesManager.instance.players[1].aimInput.x;
 
          if (x > 0.9f && lastAimX2 <= 0.9f)
             cardSelected2++;
@@ -93,8 +95,8 @@ public class CardChoice : MonoBehaviour
          cardsUI2[i].face.color = Color.white;
       }
       
-      if(cardSelected1 != -1) cardsUI1[cardSelected1].face.color = new Color(0.3f, 0.3f, 0.3f);
-      if(cardSelected2 != -1)cardsUI2[cardSelected2].face.color = new Color(0.3f, 0.3f, 0.3f);
+      if(cardSelected1 != -1) cardsUI1[cardSelected1].face.color = new Color(0.7f, 0.7f, 0.7f);
+      if(cardSelected2 != -1)cardsUI2[cardSelected2].face.color = new Color(0.7f, 0.7f, 0.7f);
    }
    
    public void ResolveMiniGameResults(int miniGame1, int miniGame2)
@@ -102,22 +104,19 @@ public class CardChoice : MonoBehaviour
       inSelection1 = true;
       inSelection2 = true;
       
-      SpawnPlayer.instance.players[0].OnClicked += Player1Click;
-      SpawnPlayer.instance.players[1].OnClicked += Player2Click;
+      VariablesManager.instance.players[0].OnClicked += Player1Click;
+      VariablesManager.instance.players[1].OnClicked += Player2Click;
 
       cardSelected1 = 0;
       cardSelected2 = 0;
-      ResolvePlayer(miniGame1, ref player1Fail, ref cardsID1, cardsUI1);
-      ResolvePlayer(miniGame2, ref player2Fail, ref cardsID2, cardsUI2);
+      ResolvePlayer(miniGame1, ref cardsID1, ref itemPool1, cardsUI1);
+      ResolvePlayer(miniGame2, ref cardsID2, ref itemPool2, cardsUI2);
       
-      if(!player1Fail) animatorCards1.SetTrigger("Start");
-      if(!player2Fail) animatorCards2.SetTrigger("Start");
+      animatorCards1.SetTrigger("Start");
+      animatorCards2.SetTrigger("Start");
    }
-   void ResolvePlayer(int result, ref bool playerFail, ref int[] cardsID, CardsPNG[] cardsUI)
+   void ResolvePlayer(int result, ref int[] cardsID, ref ItemSO itemPool, CardsPNG[] cardsUI)
    {
-      if (result <= 0) { playerFail = true; return; }
-      playerFail = false;
-
       int[] raritiesToPick = result switch
       {
          1 => new[] { 0, 0, 0 }, 
@@ -160,7 +159,6 @@ public class CardChoice : MonoBehaviour
          if(ID ==3) animatorCards2.SetTrigger("1");
          if(ID ==4) animatorCards2.SetTrigger("2");
          if(ID ==5) animatorCards2.SetTrigger("3");
-         
          placementPlayer2.currentItemToPlace = cardsID2[ID-3];
       }
    }
