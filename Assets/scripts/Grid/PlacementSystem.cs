@@ -106,8 +106,7 @@ public class PlacementSystem : MonoBehaviour
         playerInputing.OnClicked += PlaceStructure;
         playerInputing.OnExit += Validate;
     }
-
-
+    
     private void PlaceStructure()
     {
         Vector3 mousePosition = playerInputing.GetWorldAimPosition();
@@ -118,7 +117,7 @@ public class PlacementSystem : MonoBehaviour
         
         GameObject go = Instantiate(database.itemsData[selectedObjectIndex].Prefab);
         Vector3 worldPosition = grid.GetCellCenterWorld(gridPosition);
-        go.transform.position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
+        go.transform.position = new Vector3(worldPosition.x, -0.5f, worldPosition.z);
         
         placedObjects.Add(go);
         GridData selectedData = database.itemsData[selectedObjectIndex].Id == 0 ? floorData : furnitureData;

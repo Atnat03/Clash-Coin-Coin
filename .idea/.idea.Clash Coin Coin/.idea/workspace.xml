@@ -5,9 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8a5146e-343f-4223-bd43-7e9bd2bba73b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Test/BulletTurretTest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Test/BulletTurretTest.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Test/PavéTrhowTest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Test/PavéTrhowTest.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/1. DuckTankCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/1. DuckTankCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/10. DuckLobberCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/10. DuckLobberCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/11. DuckLobberRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/11. DuckLobberRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/12. DuckLobberEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/12. DuckLobberEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/19. DuckFreezerCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/19. DuckFreezerCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/2. DuckTankRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/2. DuckTankRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/20. DuckFreezerRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/20. DuckFreezerRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/21. DuckFreezerEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/21. DuckFreezerEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/22. DuckPoisonCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/22. DuckPoisonCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/23. DuckPoisonRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/23. DuckPoisonRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/24. DuckPoisonEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/24. DuckPoisonEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/3. DuckTankEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/3. DuckTankEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/4. DuckWarriorCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/4. DuckWarriorCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/5. DuckWarriorRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/5. DuckWarriorRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/6. DuckWarriorEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/6. DuckWarriorEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/7. DuckBoulisteCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/7. DuckBoulisteCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/8. DuckBoulisteRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/8. DuckBoulisteRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/9. DuckBoulisteEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/9. DuckBoulisteEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/1. FrogTankCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/1. FrogTankCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/11. FrogLobberRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/11. FrogLobberRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/12. FrogLobberEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/12. FrogLobberEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/19. FrogFreezerCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/19. FrogFreezerCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/2. FrogTankRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/2. FrogTankRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/20. FrogFreezerRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/20. FrogFreezerRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/21. FrogFreezerEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/21. FrogFreezerEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/22. FrogPoisonCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/22. FrogPoisonCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/23. FrogPoisonRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/23. FrogPoisonRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/24. FrogPoisonEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/24. FrogPoisonEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/3. FrogTankEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/3. FrogTankEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/4. FrogWarriorCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/4. FrogWarriorCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/5. FrogWarriorRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/5. FrogWarriorRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/6. FrogWarriorEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/6. FrogWarriorEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/7. FrogBoulisteCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/7. FrogBoulisteCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Grid/PlacementSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Grid/PlacementSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
