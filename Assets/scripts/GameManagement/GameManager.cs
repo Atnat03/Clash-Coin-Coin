@@ -172,13 +172,16 @@ public class GameManager : MonoBehaviour
     
     public void SetAllPlacedItems(bool state)
     {
+        
         foreach (Item item in placedItemsP1)
         {
-            item.SetActive(state);
+            if(item != null)
+                item.SetActive(state);
         }
         foreach (Item item in placedItemsP2)
         {
-            item.SetActive(state);
+            if(item != null)
+                item.SetActive(state);
         }
     }
     
