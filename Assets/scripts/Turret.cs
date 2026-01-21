@@ -34,11 +34,15 @@ public class Turret : Build, ITargetable
                 {
                     print("touché une troupe");
 
-                    headTurret.transform.LookAt(troop.transform);
+                    Vector3 dir = troop.transform.position - headTurret.position;
+                    dir.y = 0;
+                    headTurret.localRotation = Quaternion.LookRotation(dir);
+
+
 
                     Bullet b = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
                     b.SetUp(troop.transform, GetComponent<Collider>());
-                    Destroy(b,3f);
+                    Destroy(b.gameObject,3f);
                     break;
                 }
             }
