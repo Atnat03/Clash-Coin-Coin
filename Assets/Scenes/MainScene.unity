@@ -2910,8 +2910,8 @@ MonoBehaviour:
   nexus:
   - {fileID: 0}
   - {fileID: 0}
-  duckItemDatabase: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
-  frogItemDatabase: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
+  duckItemDatabase: {fileID: 11400000, guid: 62ee383d7bdac254284954c27fc178f5, type: 2}
+  frogItemDatabase: {fileID: 11400000, guid: e736fc46b12a86c438d4f87eaed92157, type: 2}
 --- !u!114 &322163874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10472,8 +10472,8 @@ Transform:
   m_GameObject: {fileID: 1320230418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.29, y: 6.55, z: -2.15}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: -1.87, y: 6.55, z: -2.15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 207124631}
@@ -12352,6 +12352,9 @@ MonoBehaviour:
   itemPlacedDataP2: []
   miniGames:
   - MashingGame
+  - QTEGame
+  - metronomeScene
+  - CurlingGame
   player_1_Score: -1
   player_2_Score: -1
   troopPrefabsP1: []
