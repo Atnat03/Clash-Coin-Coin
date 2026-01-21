@@ -656,7 +656,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 602646493586585482, guid: 53ec08d7c21c1b04b85205107860336a, type: 3}
   shootRange: 5
   shootPos: {fileID: 379103456051353827}
-  headTurret: {fileID: 8311776336499566219}
+  headTurret: {fileID: 3502646204956825309}
   shootRate: 1
 --- !u!65 &3841258380333390513
 BoxCollider:
@@ -884,6 +884,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 151938f2438e8a442b95ee95ba748ff7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ee76942a64c69a94895487734e073810, type: 2}
     - target: {fileID: 919132149155446097, guid: 151938f2438e8a442b95ee95ba748ff7, type: 3}
       propertyPath: m_Name
       value: M_Tourelle_duck

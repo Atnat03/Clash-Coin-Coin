@@ -56,6 +56,8 @@ public class TP_Troop : MonoBehaviour, ITargetable
         }
 
         currentTroop.transform.localScale = Vector3.one;
+        
+        print(currentTroop.target);
     
         currentTroop.isFrozen = false;
         currentTroop.alreadyTakeTP = true;

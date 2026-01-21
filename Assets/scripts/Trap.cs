@@ -33,23 +33,15 @@ public class Trap : Build
             if (hit.GetComponent<Troop>() != null)
             {
                 Debug.Log("TriggerExplosion");
-                alreadyTriggered = true;
-                StartCoroutine(Explosed());
+                alreadyTriggered = true; 
+                Explosed();
                 break;
             }
         }
     }
 
-    IEnumerator Explosed()
+    void Explosed()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            modelRenderer.sharedMaterial = matExplose;
-            yield return new WaitForSeconds(0.1f);
-            modelRenderer.sharedMaterial = matDefault;
-            yield return new WaitForSeconds(0.1f);
-        }
-        
         print("Explosion");
         
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionZone);
@@ -76,7 +68,7 @@ public class Trap : Build
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, detectionZone);
         
-        Gizmos.color = Color.darkBlue;
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, explosionZone);
     }
 }
