@@ -14,6 +14,7 @@ public class MetronomePlayerScript : MonoBehaviour
     
     public bool ingame;
     public int playerID;
+    bool alreadyClicked;
 
     public void Start()
     {
@@ -46,17 +47,24 @@ public class MetronomePlayerScript : MonoBehaviour
         
                 elapsedTime = phase / cursorSpeed;
             }
+
+            if (Mathf.Abs(slider.value) > 0.99f)
+            {
+                alreadyClicked = false;
+            }
+            
             yield return null;
         }
     }
     
     public void PlayerPressedA(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || alreadyClicked)
             return;
         
         if (ingame)
         {
+            alreadyClicked = true;
             if (Mathf.Abs(slider.value) <= MetronomeGameManager.instance.SliderTolerence && points < MetronomeGameManager.instance.pointsToScore)
             {
                 ScorePoint();
