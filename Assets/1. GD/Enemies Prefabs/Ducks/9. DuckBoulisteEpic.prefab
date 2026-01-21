@@ -50,13 +50,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Troop
   id: 0
   name: Player1
-  PV: 100
+  PV: 270
   maxPV: 100
   currentHP: {fileID: 8103242198617991682}
-  Speed: 5
-  RaduisAttack: 2
-  isAttaking: 0
-  Damage: 10
+  Speed: 1
+  RadiusAttack: 4
+  Damage: 80
+  attackCooldown: 1.5
+  alreadyTakeTP: 0
+  isFrozen: 0
 --- !u!65 &4411826439638955582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -568,4 +570,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d06545c76e6a8944a0db9e36c344670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlwaysInFrontOfCam
-  target: {fileID: 0}
