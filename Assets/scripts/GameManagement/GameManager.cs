@@ -173,16 +173,15 @@ public class GameManager : MonoBehaviour
 
     public bool EndOfTurn()
     {
-        bool isTroop = false;
+        bool isTroop = true;
         
         List<Item> l = placedItemsP1.Concat(placedItemsP2).ToList();
         
         foreach (Item item in l)
         {
             if(item is Troop t)
-                isTroop = true;
+                isTroop = false;
         }
-
 
         return isTroop;
     }
@@ -312,7 +311,10 @@ public class GameManager : MonoBehaviour
     
     void CombatUpdate()
     {
-        
+        if (EndOfTurn())
+        {
+            stateMachine.ChangeState(GameSate.MiniGame);
+        }
     }
 
     void CombatExit()
