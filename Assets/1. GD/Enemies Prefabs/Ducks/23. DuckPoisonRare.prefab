@@ -52,7 +52,7 @@ MonoBehaviour:
   id: 0
   name: Player1
   PV: 180
-  maxPV: 100
+  maxPV: 180
   currentHP: {fileID: 8103242198617991682}
   Speed: 1
   RadiusAttack: 3
@@ -637,13 +637,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9138685852647923146, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ae4eec1e666c83448759f7d5dc77a89, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5650935443908284666, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7914807889010376803}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4961690105361788866, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1875126517759226699}
   m_SourcePrefab: {fileID: 100100000, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
 --- !u!4 &2491620869132103614 stripped
 Transform:
@@ -655,6 +662,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5733265326902654328, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
   m_PrefabInstance: {fileID: 7852065679124528964}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2892246639847149702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4961690105361788866, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
+  m_PrefabInstance: {fileID: 7852065679124528964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1875126517759226699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2892246639847149702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44241fa50154844fb8834afa6f583dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayAnimation
 --- !u!1001 &8934569939405236460
 PrefabInstance:
   m_ObjectHideFlags: 0

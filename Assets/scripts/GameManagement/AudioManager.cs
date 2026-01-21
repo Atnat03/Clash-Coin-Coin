@@ -7,12 +7,13 @@ public class AudioManager : MonoBehaviour
     [Header("Audio sources")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
-
+    
     [Header("music Audio clips")]
     public AudioClip[] musicClip;
 
     [Header("SFX Audio clips")]
-    public AudioClip sfxTest;
+    public AudioClip startSound;
+    public AudioClip endSound;
     void Awake()
     {
         if (instance == null) 
