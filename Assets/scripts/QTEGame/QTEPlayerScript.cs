@@ -38,7 +38,7 @@ public class QTEPlayerScript : MonoBehaviour
         }
         else
         {
-            score--;
+            if(score > 0)score--;
         }
         
         jaugeScore.fillAmount = (float)score/QTEGameManager.instance.scoreMax;
