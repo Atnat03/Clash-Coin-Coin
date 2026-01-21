@@ -26,19 +26,14 @@ public class GameManager : MonoBehaviour
     public List<Item> placedItemsP2 = new List<Item>();
     public List<ItemData> itemPlacedDataP1 = new List<ItemData>();
     public List<ItemData> itemPlacedDataP2 = new List<ItemData>();
-
-    public List<Troop> spawnedTroopsP1 = new();
-    public List<Troop> spawnedTroopsP2 = new();
-
-    public List<TroopData> troopDataP1 = new();
-    public List<TroopData> troopDataP2 = new();
     
     public string[] miniGames;
     public int player_1_Score = -1;
     public int player_2_Score = -1;
     
     [Header("Troop Prefabs")]
-    public List<GameObject> troopPrefabs;
+    public List<GameObject> troopPrefabsP1;
+    public List<GameObject> troopPrefabsP2;
     
     void Awake()
     {
@@ -256,27 +251,8 @@ public class GameManager : MonoBehaviour
         foreach (PlacementSystem p in VariablesManager.instance.placementSystems)
             p.StartCombat();
         
-        ActivateAllTroops(true);
-
         UIManager.instance.HideCombatUI(true);
         StartCoroutine(DecompteCombat(1));
-    }
-    
-    public void ActivateAllTroops(bool state)
-    {
-        foreach (Troop t in spawnedTroopsP1)
-            if (t != null)
-            {
-                t.enabled = state;
-                t.GetComponent<Item>().enabled = state;
-            }
-
-        foreach (Troop t in spawnedTroopsP2)
-            if (t != null)
-            {
-                t.enabled = state;
-                t.GetComponent<Item>().enabled = state;
-            }
     }
 
 
@@ -295,11 +271,10 @@ public class GameManager : MonoBehaviour
         else
         {
             SetAllPlacedItems(false);
-            ActivateAllTroops(false);
             
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(1f);
 
-            CombatDuration = 20;
+            CombatDuration = 10;
             
             stateMachine.ChangeState(GameSate.MiniGame);
         }
@@ -322,6 +297,12 @@ public class GameManager : MonoBehaviour
 
     void PrepareEnter()
     {
+        StartCoroutine(Pepare());
+    }
+        
+    IEnumerator Pepare()
+    {
+        yield return new WaitForSeconds(0.5f);        
         Debug.Log("Enter Prepare");
         
         VariablesManager.instance.placementSystems[1].PlaceItem();
@@ -330,11 +311,10 @@ public class GameManager : MonoBehaviour
         SetAllPlacedItems(true);
         
         foreach (Item item in placedItemsP1)
-            if (item != null) item.enabled = true;
+            if (item != null) item.enabled = false;
 
         foreach (Item item in placedItemsP2)
-            if (item != null) item.enabled = true;
-        
+            if (item != null) item.enabled = false;
     }
     
     void PrepareUpdate()
@@ -379,47 +359,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Sauvegarde des items avant changement de scène");
         
-        SaveTroops();
         
         UpdateItemDataFromPlacedItems();
         
         SaveSystem.instance.SaveGame();
     }
     
-    private void SaveTroops()
-    {
-        troopDataP1.Clear();
-        troopDataP2.Clear();
-
-        foreach (Troop t in spawnedTroopsP1)
-        {
-            if (t == null) continue;
-            troopDataP1.Add(new TroopData
-            {
-                id = t.id,
-                playerOneProperty = true,
-                position = t.transform.position,
-                rotation = t.transform.rotation,
-                PV = t.PV,
-                maxPV = t.maxPV
-            });
-        }
-
-        foreach (Troop t in spawnedTroopsP2)
-        {
-            if (t == null) continue;
-            troopDataP2.Add(new TroopData
-            {
-                id = t.id,
-                playerOneProperty = false,
-                position = t.transform.position,
-                rotation = t.transform.rotation,
-                PV = t.PV,
-                maxPV = t.maxPV
-            });
-        }
-    }
-
     
     private void UpdateItemDataFromPlacedItems()
     {
@@ -445,7 +390,7 @@ public class GameManager : MonoBehaviour
             data.PV = item.PV;
             data.maxPV = item.maxPV;
             data.playerOneProperty = item.playerOneProperty;
-            data.position = VariablesManager.instance.placementSystems[0].grid.WorldToCell(item.transform.position);
+            data.position = item.transform.position;
         }
 
         // Pour P2
@@ -470,35 +415,44 @@ public class GameManager : MonoBehaviour
             data.PV = item.PV;
             data.maxPV = item.maxPV;
             data.playerOneProperty = item.playerOneProperty;
-            data.position = VariablesManager.instance.placementSystems[1].grid.WorldToCell(item.transform.position);
+            data.position = item.transform.position;
         }
     }
     
     public void LoadAfterSceneChange()
     {
+        StartCoroutine(DelayedRestore());
+    }
+
+    private IEnumerator DelayedRestore()
+    {
+        // attendre la fin de frame pour que tous les PlacementSystem aient exécuté Awake/Start
+        yield return new WaitForEndOfFrame();
+    
         GameSaveData saveData = SaveSystem.instance.LoadGame();
-        
+    
         if (saveData != null)
         {
             Debug.Log("Chargement des items sauvegardés");
-            
+
             // Restaurer les scores
             player_1_Score = saveData.player1Score;
             player_2_Score = saveData.player2Score;
             CombatDuration = saveData.combatDuration;
-            
+
             itemPlacedDataP1.Clear();
             itemPlacedDataP2.Clear();
-            
+
             foreach (ItemData itemData in saveData.itemsP1)
             {
                 ItemSO database = VariablesManager.instance.placementSystems[0].database;
-                var itemInfo = database.itemsData.Find(x => x.Id == itemData.id);
-    
+                ItemsData itemInfo = database.itemsData.Find(x => x.Id == itemData.id);
+
                 if (itemInfo != null)
                 {
                     itemData.prefab = itemInfo.Prefab;
                     itemData.scale = itemInfo.Size;
+
                     itemPlacedDataP1.Add(itemData);
                 }
             }
@@ -506,8 +460,8 @@ public class GameManager : MonoBehaviour
             foreach (ItemData itemData in saveData.itemsP2)
             {
                 ItemSO database = VariablesManager.instance.placementSystems[1].database;
-                var itemInfo = database.itemsData.Find(x => x.Id == itemData.id);
-    
+                ItemsData itemInfo = database.itemsData.Find(x => x.Id == itemData.id);
+
                 if (itemInfo != null)
                 {
                     itemData.prefab = itemInfo.Prefab;
@@ -516,8 +470,6 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            RestoreTroops(saveData);
-            
             RestorePlacedItems();
         }
         else
@@ -525,64 +477,27 @@ public class GameManager : MonoBehaviour
             Debug.Log("Aucune sauvegarde à charger");
         }
     }
-    
-    private void RestoreTroops(GameSaveData saveData)
+
+    public GameObject GetTroopPrefabById(int id, bool isPlayer1)
     {
-        spawnedTroopsP1.Clear();
-        spawnedTroopsP2.Clear();
-
-        foreach (TroopData data in saveData.troopsP1)
+        if (isPlayer1)
         {
-            SpawnTroopFromData(data);
+            GameObject prefab = troopPrefabsP1.Find(t => t.GetComponent<Troop>().id == id);
+            if (prefab != null)
+                return prefab.gameObject;
         }
-
-        foreach (TroopData data in saveData.troopsP2)
-        {
-            SpawnTroopFromData(data);
-        }
-    }
-
-    private void SpawnTroopFromData(TroopData data)
-    {
-        GameObject prefab = GetTroopPrefabById(data.id);
-        if (prefab == null) return; // sécurité
-
-        GameObject go = Instantiate(prefab, data.position, data.rotation);
-        Troop t = go.GetComponent<Troop>();
-
-        t.playerOneProperty = data.playerOneProperty;
-        t.PV = data.PV;
-        t.maxPV = data.maxPV;
-
-        // Désactiver avant le combat
-        t.enabled = false;
-        t.GetComponent<Item>().enabled = false;
-
-        if (data.playerOneProperty)
-            spawnedTroopsP1.Add(t);
         else
-            spawnedTroopsP2.Add(t);
-    }
-    
-    public GameObject GetTroopPrefabById(int id)
-    {
-        GameObject prefab = troopPrefabs.Find(t => t.GetComponent<Troop>().id == id);
-        if (prefab != null)
-            return prefab.gameObject;
-    
+        {
+            GameObject prefab = troopPrefabsP2.Find(t => t.GetComponent<Troop>().id == id);
+            if (prefab != null)
+                return prefab.gameObject;
+        }
+
         Debug.LogError($"❌ Prefab de troupe introuvable pour l'id : {id}");
         return null;
     }
-    
-    public void RegisterTroop(Troop t)
-    {
-        if (t.playerOneProperty)
-            spawnedTroopsP1.Add(t);
-        else
-            spawnedTroopsP2.Add(t);
-    }
 
-    
+
     private void RestorePlacedItems()
     {
         if (VariablesManager.instance.placementSystems == null || 

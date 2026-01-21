@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GridData
 {
-    private Dictionary<Vector3Int, PlacementData> placedObjects = new();
-    private Dictionary<int, Vector3Int> itemPositions = new(); // ← NOUVEAU: Map instance ID vers position
+    private Dictionary<Vector3, PlacementData> placedObjects = new();
+    private Dictionary<int, Vector3> itemPositions = new();
 
     public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex)
     {
@@ -21,8 +21,7 @@ public class GridData
         }
     }
     
-    // ← NOUVELLE MÉTHODE pour enregistrer la position d'un item
-    public void RegisterItemPosition(Item item, Vector3Int position)
+    public void RegisterItemPosition(Item item, Vector3 position)
     {
         itemPositions[item.GetInstanceID()] = position;
     }
@@ -51,7 +50,7 @@ public class GridData
         return true;
     }
     
-    public Vector3Int? GetItemPosition(Item item)
+    public Vector3? GetItemPosition(Item item)
     {
         if (item == null) return null;
         

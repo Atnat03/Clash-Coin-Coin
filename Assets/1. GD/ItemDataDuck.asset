@@ -232,7 +232,7 @@ MonoBehaviour:
   - Id: 24
     Name: "Pav\xE9xplosif"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: 01581e9e6f066a34bbe534942fbcb4d5, type: 3}
+    Prefab: {fileID: 7262453442348865695, guid: 636835af718823a40a2036a5cfcd4b09, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: 7993b6962853b6246b35439e4ca6a04d, type: 3}
@@ -241,7 +241,7 @@ MonoBehaviour:
   - Id: 25
     Name: "Pav\xE9xplosif"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: 11187256f2409ac44a5a4922b64cf15a, type: 3}
+    Prefab: {fileID: 7262453442348865695, guid: d9b643f5844032c4bbc40dcc42ee0bcf, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: 13805131ecbe66041b9b5e3eceb9034e, type: 3}
@@ -250,7 +250,7 @@ MonoBehaviour:
   - Id: 26
     Name: "Pav\xE9xplosif"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: b9977a141b3f0fc4689f180edeb11dcd, type: 3}
+    Prefab: {fileID: 7262453442348865695, guid: 0516cf8a212fc1a4d87111579bd5dfdf, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: a891d9188d3544f4da4b3c0be8c8fada, type: 3}
@@ -259,7 +259,7 @@ MonoBehaviour:
   - Id: 27
     Name: "Lance-Pav\xE9"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: d29a45e559b36c74598ee725e679be0f, type: 3}
+    Prefab: {fileID: 7136807689920212623, guid: 3084dee14acda934bbd60b4fc2046a3d, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: e672f0d74d9288f48aff4a039824ddaa, type: 3}
@@ -268,7 +268,7 @@ MonoBehaviour:
   - Id: 28
     Name: "Lance-Pav\xE9"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: fefbab4ef54d8f04aadc4169d0620cb0, type: 3}
+    Prefab: {fileID: 7136807689920212623, guid: 16a43e1d8f162e147b7f3b40214970c6, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: ed4a88895f1d4c44ab87ff145c320768, type: 3}
@@ -277,7 +277,7 @@ MonoBehaviour:
   - Id: 29
     Name: "Lance-Pav\xE9"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: cbb766aa0f7f10145876f2e7919ff73b, type: 3}
+    Prefab: {fileID: 7136807689920212623, guid: ebf2a0e5e4550e54d936d9566845d416, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: a678d1e627f5bd14c88ce0681eef4ac0, type: 3}
@@ -286,7 +286,7 @@ MonoBehaviour:
   - Id: 30
     Name: "Pav\xE9cole"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: 5080d483562320e41ac3a10dde91e9af, type: 3}
+    Prefab: {fileID: 7385127781502367683, guid: 375cde704f864694899a3c34aab56fae, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: 32dbf7a39689d2345b29455822835040, type: 3}
@@ -295,7 +295,7 @@ MonoBehaviour:
   - Id: 31
     Name: "Pav\xE9cole"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: b25f27aa3a66029459bc0a575e7d9f02, type: 3}
+    Prefab: {fileID: 7385127781502367683, guid: 078e685992974ae42b5997894eea3a3b, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: bd0667fc629c48542b5e04524fef3904, type: 3}
@@ -304,7 +304,7 @@ MonoBehaviour:
   - Id: 32
     Name: "Pav\xE9cole"
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 9126037231046463410, guid: a5dba1754e2ad9346a4a6f170012ca81, type: 3}
+    Prefab: {fileID: 7385127781502367683, guid: beb1d89361413ab44ae125dd734913be, type: 3}
     PV: 0
     maxPV: 2
     carte: {fileID: 21300000, guid: 5684180fc5538bc48874695d02d5e06b, type: 3}
