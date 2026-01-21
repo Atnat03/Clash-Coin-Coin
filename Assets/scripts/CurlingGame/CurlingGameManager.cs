@@ -12,13 +12,14 @@ public class CurlingGameManager : MonoBehaviour
     public float gameLength;
     public bool inGame = false;
     
-    public TextMeshProUGUI mainText;
     public TextMeshProUGUI chronoText;
 
     public CurplingPlayerScript P1;
     public CurplingPlayerScript P2;
     
     public Image cooldownBar;
+
+    public Animator animUI;
     
     void Awake()
     {
@@ -27,24 +28,15 @@ public class CurlingGameManager : MonoBehaviour
 
     void Start()
     {
-        chronoText.text = "";
         StartCoroutine(GameCoroutine());
     }
 
     IEnumerator GameCoroutine()
     {
         float elapsedTime = 3;
-        while (elapsedTime > 0)
-        {
-            elapsedTime -= Time.deltaTime;
-            mainText.text = (Mathf.CeilToInt(elapsedTime)).ToString();
-            yield return null;
-        }
-        mainText.text = "go !";
         
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3.5f);
         
-        mainText.text = "";
         inGame = true;
 
         elapsedTime = gameLength;
@@ -58,36 +50,36 @@ public class CurlingGameManager : MonoBehaviour
             yield return null;
         }
         
-        chronoText.text = "";
-        mainText.text = "fini !";
+        animUI.SetTrigger("Over");
         
-        yield return new WaitForSeconds(1);
+        
 
         if (P1.played == false)
         {
-            mainText.text = "joueur 2 a gagné !";
+            GameManager.instance.player_1_Score = 1;
+            GameManager.instance.player_2_Score = 3;
             yield break;
         }
 
         if (P2.played == false)
         {
-            mainText.text = "joueur 1 a gagné !";
+            GameManager.instance.player_1_Score = 3;
+            GameManager.instance.player_2_Score = 1;
             yield break;
         }
 
         if (P1.score > P2.score)
         {
-            mainText.text = "joueur 2 a gagné";
+            GameManager.instance.player_1_Score = 1;
+            GameManager.instance.player_2_Score = 3;
         }
         else
         {
-            mainText.text = "joueur 1 a gagné";
+            GameManager.instance.player_1_Score = 3;
+            GameManager.instance.player_2_Score = 1;
         }
         
-        yield return new WaitForSeconds(2f);
-
-        GameManager.instance.player_1_Score = 1;
-        GameManager.instance.player_2_Score = 1;
+        yield return new WaitForSeconds(1f);
         
         GameManager.instance.ReturnToMainScene();
         
