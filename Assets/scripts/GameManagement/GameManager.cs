@@ -562,6 +562,8 @@ public class GameManager : MonoBehaviour
     
     public void ReturnToMainScene()
     {
+        stateMachine.ChangeState(GameSate.Transition);
+        
         print("Retour à la scène principale");
         
         StartCoroutine(LoadMainSceneAndCheck());
