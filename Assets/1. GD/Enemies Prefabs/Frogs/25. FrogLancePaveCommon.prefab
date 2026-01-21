@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 8280402956758901338}
   - component: {fileID: 3841258380333390513}
   m_Layer: 0
-  m_Name: 26. FrogLancePaveRare
+  m_Name: 25. FrogLancePaveCommon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
