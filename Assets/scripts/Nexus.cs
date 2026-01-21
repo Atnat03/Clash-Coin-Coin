@@ -12,7 +12,7 @@ public class Nexus : MonoBehaviour, ITargetable
     {
         maxPV = PV;
         playerOneProperty = isPlayer1;
-        name = "Nexus"; 
+        name = "Nexus";
     }
 
     public bool playerOneProperty { get; set; }
@@ -22,6 +22,11 @@ public class Nexus : MonoBehaviour, ITargetable
         print("take damage" + damage);
         
         currentHP.fillAmount = PV / maxPV;
+        
+        if(playerOneProperty)
+            GameManager.instance.UpdateNexusP1(PV);
+        else
+            GameManager.instance.UpdateNexusP2(PV);
         
         if (PV <= 0)
         { 

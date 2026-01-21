@@ -22,8 +22,10 @@ public class QTEGameManager : MonoBehaviour
     public Image timerImage;
     public bool finished;
 
-    public int maxScore, pallier1, pallier2;
-    public int score1, score2;
+
+    public int scorePalier1;
+    public int scorePalier2;
+    public int scoreMax;
 
     public enum ButtonDirection
     {
@@ -75,11 +77,30 @@ public class QTEGameManager : MonoBehaviour
         animUI.SetTrigger("Over");
         
         yield return new WaitForSeconds(2f);
-
-        GameManager.instance.player_1_Score = 1;
-        GameManager.instance.player_2_Score = 1;
+        
+        GameManager.instance.player_1_Score = VerifyScore(P1.score);
+        GameManager.instance.player_2_Score = VerifyScore(P2.score);
         
         GameManager.instance.ReturnToMainScene();
+    }
+
+    int VerifyScore(int score)
+    {
+        if (scorePalier1 < score)
+        {
+            if (scorePalier2 < score)
+            {
+                if (scoreMax <= score)
+                {
+                    return 3;
+                }
+
+                return 2;
+            }
+            return 1;
+        }
+
+        return 0;
     }
 
 }

@@ -16,8 +16,10 @@ public class Troop : Item, ITargetable
     Transform bulletSpawn;
     
     [Header("Runtime")]
-    bool isAttacking;
+    protected bool isAttacking;
     public Transform target;
+    
+    public Animator animator;
 
     GridManager gridManager;
 
@@ -34,6 +36,9 @@ public class Troop : Item, ITargetable
     public new bool IsMovementTarget => true;
     public new bool CanBeAttacked => true;
     
+    Vector3 lastPosition;
+    Vector3 velocity;
+    
     void OnEnable()
     {
         gridManager = GridManager.instance;
@@ -47,6 +52,8 @@ public class Troop : Item, ITargetable
 
         lastTarget = null;
         pathRefreshTimer = 0f;
+        
+        lastPosition = transform.position;
     }
 
     void Update()
@@ -60,6 +67,9 @@ public class Troop : Item, ITargetable
         target = Rescan();
         print("Target : " + target.name);
 
+        velocity = (transform.position - lastPosition) / Time.deltaTime;
+        lastPosition = transform.position;
+        
         if (target && path.Count == 0)
         {
             FindPath(transform.position, target.position);
@@ -69,6 +79,8 @@ public class Troop : Item, ITargetable
 
         if (!target)
             return;
+        
+        animator.SetBool("Walk", path != null && path.Count > 0);
 
         pathRefreshTimer -= Time.deltaTime;
         if (pathRefreshTimer <= 0f || target != lastTarget || path.Count == 0)
@@ -84,7 +96,7 @@ public class Troop : Item, ITargetable
             {
                 float dist = Vector3.Distance(transform.position, target.position);
                 if (dist <= RadiusAttack && !isAttacking)
-                    StartCoroutine(Attack());
+                    animator.SetTrigger("Throw");
             }
         }
         else
@@ -92,12 +104,15 @@ public class Troop : Item, ITargetable
             Chase();
         }
 
-
-
         currentHP.fillAmount = PV / maxPV;
     }
+
+    public virtual void Attack()
+    {
+        StartCoroutine(Attacking());
+    }
     
-    IEnumerator Attack()
+    protected virtual IEnumerator Attacking()
     {
         isAttacking = true;
 
@@ -108,9 +123,6 @@ public class Troop : Item, ITargetable
             t.CanBeAttacked)
         {
             t.TakeDamage(Damage);
-            /*
-            Bullet b = Instantiate(bulletPrefab,  bulletSpawn.position, Quaternion.identity);
-            b.SetUp(target, this.GetComponent<Collider>(), Damage);*/
         }
 
         isAttacking = false;

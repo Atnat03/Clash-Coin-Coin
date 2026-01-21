@@ -11,12 +11,16 @@ public abstract class Item : MonoBehaviour
     public Image currentHP;
     
     public bool IsMovementTarget => false;
-    
+
+    private void Start()
+    {
+        maxPV = PV;
+    }
+
     public Item()
     {
         id = 0;
         name = "";
-        maxPV = 0;
         PV = 0;
         Debug.LogWarning("Item created without parameters");
     }
