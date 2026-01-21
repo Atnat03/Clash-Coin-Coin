@@ -12,14 +12,12 @@ public class MetronomePlayerScript : MonoBehaviour
     public float cursorSpeed;
     public int points;
     
-    public TextMeshProUGUI text;
-    public Image jaugePoints;
     public bool ingame;
     public int playerID;
+    bool alreadyClicked;
 
     public void Start()
     {
-        jaugePoints.fillAmount = 0;
         ingame = false;
         cursorSpeed = MetronomeGameManager.instance.cursorDefaultSpeed;
         MetronomeGameManager.instance.BeginGame += BeginGame;
@@ -49,21 +47,24 @@ public class MetronomePlayerScript : MonoBehaviour
         
                 elapsedTime = phase / cursorSpeed;
             }
+
+            if (Mathf.Abs(slider.value) > 0.99f)
+            {
+                alreadyClicked = false;
+            }
+            
             yield return null;
         }
-
-
-        if (playerID == 1) MetronomeGameManager.instance.score1 = points;
-        if (playerID == 2) MetronomeGameManager.instance.score2 = points;
     }
     
     public void PlayerPressedA(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || alreadyClicked)
             return;
         
         if (ingame)
         {
+            alreadyClicked = true;
             if (Mathf.Abs(slider.value) <= MetronomeGameManager.instance.SliderTolerence && points < MetronomeGameManager.instance.pointsToScore)
             {
                 ScorePoint();
@@ -73,11 +74,8 @@ public class MetronomePlayerScript : MonoBehaviour
 
     public void ScorePoint()
     {
-        points++;
-        points = Mathf.Clamp(points, 0, MetronomeGameManager.instance.pointsToScore);
-
-        text.text = "points : " + points;
-        jaugePoints.fillAmount = (float)points / MetronomeGameManager.instance.pointsToScore;
+        if (playerID == 1) MetronomeGameManager.instance.cursorPosition--;
+        if (playerID == 2) MetronomeGameManager.instance.cursorPosition++;
     }
 
 }

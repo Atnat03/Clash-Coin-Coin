@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CurplingPlayerScript : MonoBehaviour
 {
-        public GameObject palet;
+    public GameObject palet;
     public Transform target;
     public Image jauge;
 
@@ -31,12 +31,11 @@ public class CurplingPlayerScript : MonoBehaviour
 
     public void ButtonPress(InputAction.CallbackContext context)
     {
-        if(played)return;
-        
-        if (!context.performed || !CurlingGameManager.instance.inGame)
+        if (!context.performed || !CurlingGameManager.instance.inGame || played)
             return;
         
         buttonHeld = true;
+        played = true;
         
         StartCoroutine(ButtonPressedCoroutine());
 
@@ -68,10 +67,12 @@ public class CurplingPlayerScript : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        Vector3 desiredPos = ((palet.transform.position - target.position).normalized * powerAmount) * powerMultiplyFactor;
+        Vector3 direction = (target.position - palet.transform.position).normalized;
+        Vector3 desiredPos = palet.transform.position + direction * powerAmount * powerMultiplyFactor;
+
         while (Vector3.Distance(palet.transform.position, desiredPos) > 0.1f)
         {
-            palet.transform.position = Vector3.Lerp(palet.transform.position, desiredPos, Time.fixedDeltaTime);
+            palet.transform.position = Vector3.Lerp(palet.transform.position, desiredPos, Time.fixedDeltaTime*1.5f);
             yield return new WaitForFixedUpdate();
         }
         palet.transform.position = desiredPos;
