@@ -16,6 +16,7 @@ public class SpawnPlayer : MonoBehaviour
     [SerializeField] public PlacementSystem[] placementSystems;
     public PlayerInputing[] players;
     public Camera mainCamera;
+    public Nexus[] nexus;
 
     private void Awake()
     {
