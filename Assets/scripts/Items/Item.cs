@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Item : MonoBehaviour, ITargetable
+public abstract class Item : MonoBehaviour
 {
     [HideInInspector]public int id;
     [HideInInspector]public string name;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Troop : Item
+public class Troop : Item, ITargetable
 {
     [Header("Stats")]
     public float Speed = 3f;
