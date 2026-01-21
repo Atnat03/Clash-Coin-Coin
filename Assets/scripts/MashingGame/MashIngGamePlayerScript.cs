@@ -16,6 +16,9 @@ public class MashIngGamePlayerScript : MonoBehaviour
 
     public float ratioPallier1;
     public float ratioPallier2;
+    public GameObject roueBike;
+    private SkinnedMeshRenderer roueBikeMesh;
+    private float shapeFillAmount;
 
     PlayerInput playerInput;
 
@@ -29,6 +32,7 @@ public class MashIngGamePlayerScript : MonoBehaviour
     void Start()
     {
         MashingGameManager.instance.StartGame += StartGame;
+        roueBikeMesh = roueBike.GetComponent<SkinnedMeshRenderer>();
     }
     
     public void StartGame()
@@ -74,6 +78,8 @@ public class MashIngGamePlayerScript : MonoBehaviour
         {
             P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
             animButton.SetTrigger("Clic");
+            shapeFillAmount += 100/(1 / MashingGameManager.instance.amountPerClic);
+            roueBikeMesh.SetBlendShapeWeight(0, shapeFillAmount);
         }
     }
 }
