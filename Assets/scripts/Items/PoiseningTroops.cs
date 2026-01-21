@@ -1,0 +1,25 @@
+using UnityEngine;
+using UnityEngine.Serialization;
+
+public class PoiseningTroops : Troop
+{
+    public float poisonDamage;
+    public float poisonDuration;
+    
+    public override void Attack()
+    {
+        print("Attack normal");
+    
+        if (target && target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+        {
+            if (t is Troop troop)
+            {
+                troop.GetPoisoned(poisonDuration, poisonDamage);
+                troop.currentHP.color = Color.purple;
+            }
+        }
+    
+        StopAllCoroutines();
+        StartCoroutine(Attacking());
+    }
+}
