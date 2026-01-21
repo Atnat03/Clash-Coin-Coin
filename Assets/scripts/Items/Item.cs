@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,8 +58,22 @@ public abstract class Item : MonoBehaviour
 
     public void GetPoisoned(float duration, float damage)
     {
-        
+        StartCoroutine(PoisenedCoroutine(duration, damage));
     }
+
+    IEnumerator PoisenedCoroutine(float duration, float damage)
+    {
+        float elapsedtime = 0f;
+        while (elapsedtime < duration)
+        {
+            elapsedtime += 1f;
+            TakeDamage(damage);
+            yield return new WaitForSeconds(1f);
+        }
+        currentHP.color = Color.green;
+    }
+    
+    
 
     public virtual void SetActive(bool state)
     {
