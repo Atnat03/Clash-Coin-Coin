@@ -23,6 +23,11 @@ public class Nexus : MonoBehaviour, ITargetable
         
         currentHP.fillAmount = PV / maxPV;
         
+        if(playerOneProperty)
+            GameManager.instance.UpdateNexusP1(PV);
+        else
+            GameManager.instance.UpdateNexusP2(PV);
+        
         if (PV <= 0)
         { 
             Die();
