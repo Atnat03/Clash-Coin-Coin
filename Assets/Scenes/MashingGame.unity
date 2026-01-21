@@ -262,6 +262,7 @@ MonoBehaviour:
   playerID: 2
   ratioPallier1: 0.67
   ratioPallier2: 0.82
+  roueBike: {fileID: 0}
   animButton: {fileID: 145645825}
 --- !u!4 &44543026
 Transform:
@@ -1153,6 +1154,7 @@ MonoBehaviour:
   playerID: 1
   ratioPallier1: 0.67
   ratioPallier2: 0.82
+  roueBike: {fileID: 0}
   animButton: {fileID: 1650944330}
 --- !u!4 &409549551
 Transform:
@@ -7191,7 +7193,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
