@@ -6,10 +6,12 @@ using UnityEngine.Serialization;
 
 public class PlacementSystem : MonoBehaviour
 {
+    public bool isDuckPlayer = false;
+    
     [SerializeField] private PlayerInputing playerInputing = null;
     [SerializeField] private Grid grid;
 
-    [SerializeField] public ItemSO database;
+    [HideInInspector] public ItemSO database;
     private int selectedObjectIndex = -1;
     
     [SerializeField] private GameObject gridVisualisation;
@@ -47,6 +49,10 @@ public class PlacementSystem : MonoBehaviour
         Vector3 size = max - min + grid.cellSize;
 
         gridBounds = new Bounds(center, size);
+
+        database = isDuckPlayer
+            ? VariablesManager.instance.duckItemDatabase
+            : VariablesManager.instance.frogItemDatabase;
     }
 
     private void Start()

@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         itemData.PV = item.PV;
         itemData.maxPV = item.maxPV;
     
-        ItemSO database = itemData.playerOneProperty ? SpawnPlayer.instance.placementSystems[0].database : SpawnPlayer.instance.placementSystems[1].database;
+        ItemSO database = itemData.playerOneProperty ? VariablesManager.instance.placementSystems[0].database : VariablesManager.instance.placementSystems[1].database;
         var itemInfo = database.itemsData.Find(x => x.Id == item.id);
         
         if (itemInfo != null)
@@ -101,8 +101,8 @@ public class GameManager : MonoBehaviour
         placedItemsP1.Clear();
         placedItemsP2.Clear();
         
-        SpawnPlayer.instance.placementSystems[0].ReloadData(itemPlacedDataP1);
-        SpawnPlayer.instance.placementSystems[1].ReloadData(itemPlacedDataP2);
+        VariablesManager.instance.placementSystems[0].ReloadData(itemPlacedDataP1);
+        VariablesManager.instance.placementSystems[1].ReloadData(itemPlacedDataP2);
         
         itemPlacedDataP1.Clear();
         itemPlacedDataP2.Clear();
@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
 
     public bool isAllPlayerReadyToFight()
     {
-        foreach (PlayerInputing player in SpawnPlayer.instance.players)
+        foreach (PlayerInputing player in VariablesManager.instance.players)
         {
             if (!player.IsReady) return false;
         }
@@ -249,7 +249,7 @@ public class GameManager : MonoBehaviour
     
     void StartUpdate()
     {
-        if (SpawnPlayer.instance.players.Length == 2)
+        if (VariablesManager.instance.players.Length == 2)
         {
             stateMachine.ChangeState(GameSate.MiniGame);
         }
@@ -263,7 +263,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter MiniGames");
         
-        foreach (var placementSystem in SpawnPlayer.instance.placementSystems)
+        foreach (var placementSystem in VariablesManager.instance.placementSystems)
         {
             placementSystem.SaveGrid();
         }
@@ -289,7 +289,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter Combat");
 
-        foreach (PlacementSystem p in SpawnPlayer.instance.placementSystems)
+        foreach (PlacementSystem p in VariablesManager.instance.placementSystems)
         {
             p.StartCombat();
         }
@@ -344,8 +344,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter Prepare");
         
-        SpawnPlayer.instance.placementSystems[1].PlaceItem();
-        SpawnPlayer.instance.placementSystems[0].PlaceItem();
+        VariablesManager.instance.placementSystems[1].PlaceItem();
+        VariablesManager.instance.placementSystems[0].PlaceItem();
         
         SetAllPlacedItems(true);
     }

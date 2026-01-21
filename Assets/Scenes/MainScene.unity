@@ -1859,7 +1859,7 @@ GameObject:
   - component: {fileID: 322163873}
   - component: {fileID: 322163874}
   m_Layer: 0
-  m_Name: SpawnManager
+  m_Name: VariablesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1907,6 +1907,8 @@ MonoBehaviour:
   nexus:
   - {fileID: 35063619}
   - {fileID: 1790214086}
+  duckItemDatabase: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
+  frogItemDatabase: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
 --- !u!114 &322163874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7604,6 +7606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f177e1c28b9d408ef64952d55dcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlacementSystem
+  isDuckPlayer: 0
   playerInputing: {fileID: 13937452}
   grid: {fileID: 1476923932}
   database: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}
@@ -8800,6 +8803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f177e1c28b9d408ef64952d55dcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlacementSystem
+  isDuckPlayer: 0
   playerInputing: {fileID: 1866679516}
   grid: {fileID: 276427236}
   database: {fileID: 11400000, guid: 17f6a8ecbd8ffa240a5bb7cdb775b220, type: 2}

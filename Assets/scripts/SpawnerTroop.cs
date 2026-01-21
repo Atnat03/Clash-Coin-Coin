@@ -13,7 +13,7 @@ public class SpawnerTroop : Build, ITargetable
 
     private void Start()
     {
-        Transform target = playerOneProperty ? SpawnPlayer.instance.nexus[0].transform : SpawnPlayer.instance.nexus[1].transform; 
+        Transform target = playerOneProperty ? VariablesManager.instance.nexus[0].transform : VariablesManager.instance.nexus[1].transform; 
         
         transform.LookAt(target);
     }

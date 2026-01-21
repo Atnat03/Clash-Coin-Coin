@@ -9,7 +9,7 @@ public class CardChoice : MonoBehaviour
    
    public Animator animatorCards1, animatorCards2;
 
-   public ItemSO itemPool;
+   ItemSO itemPool;
    
    public PlacementSystem placementPlayer1, placementPlayer2;
 
@@ -39,8 +39,8 @@ public class CardChoice : MonoBehaviour
 
    private void OnDisable()
    {
-      SpawnPlayer.instance.players[0].OnClicked -= Player1Click;
-      SpawnPlayer.instance.players[1].OnClicked -= Player2Click;
+      VariablesManager.instance.players[0].OnClicked -= Player1Click;
+      VariablesManager.instance.players[1].OnClicked -= Player2Click;
    }
 
    private void Player1Click()
@@ -56,7 +56,7 @@ public class CardChoice : MonoBehaviour
    {
       if (inSelection1)
       {
-         float x = SpawnPlayer.instance.players[0].aimInput.x;
+         float x = VariablesManager.instance.players[0].aimInput.x;
 
          if (x > 0.9f && lastAimX1 <= 0.9f)
             cardSelected1++;
@@ -71,7 +71,7 @@ public class CardChoice : MonoBehaviour
 
       if (inSelection2)
       {
-         float x = SpawnPlayer.instance.players[1].aimInput.x;
+         float x = VariablesManager.instance.players[1].aimInput.x;
 
          if (x > 0.9f && lastAimX2 <= 0.9f)
             cardSelected2++;
@@ -102,8 +102,8 @@ public class CardChoice : MonoBehaviour
       inSelection1 = true;
       inSelection2 = true;
       
-      SpawnPlayer.instance.players[0].OnClicked += Player1Click;
-      SpawnPlayer.instance.players[1].OnClicked += Player2Click;
+      VariablesManager.instance.players[0].OnClicked += Player1Click;
+      VariablesManager.instance.players[1].OnClicked += Player2Click;
 
       cardSelected1 = 0;
       cardSelected2 = 0;
