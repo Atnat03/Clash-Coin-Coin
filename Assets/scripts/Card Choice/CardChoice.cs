@@ -93,11 +93,11 @@ public class CardChoice : MonoBehaviour
          cardsUI2[i].face.color = Color.white;
       }
       
-      if(cardSelected1 != -1) cardsUI1[cardSelected1].face.color = new Color(0.3f, 0.3f, 0.3f);
-      if(cardSelected2 != -1)cardsUI2[cardSelected2].face.color = new Color(0.3f, 0.3f, 0.3f);
+      if(cardSelected1 != -1) cardsUI1[cardSelected1].face.color = new Color(0.5f, 0.5f, 0.5f);
+      if(cardSelected2 != -1)cardsUI2[cardSelected2].face.color = new Color(0.5f, 0.5f, 0.5f);
    }
    
-   public void ResolveMiniGameResults(int miniGame1, int miniGame2)
+   public void ResolveMiniGameResults(int miniGame2, int miniGame1)
    {
       inSelection1 = true;
       inSelection2 = true;
@@ -160,7 +160,6 @@ public class CardChoice : MonoBehaviour
          if(ID ==3) animatorCards2.SetTrigger("1");
          if(ID ==4) animatorCards2.SetTrigger("2");
          if(ID ==5) animatorCards2.SetTrigger("3");
-         
          placementPlayer2.currentItemToPlace = cardsID2[ID-3];
       }
    }
