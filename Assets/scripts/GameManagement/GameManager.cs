@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -169,6 +170,21 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public bool EndOfTurn()
+    {
+        bool isTroop = true;
+        
+        List<Item> l = placedItemsP1.Concat(placedItemsP2).ToList();
+        
+        foreach (Item item in l)
+        {
+            if(item is Troop t)
+                isTroop = false;
+        }
+
+        return isTroop;
+    }
     
     public void RemovePlacedDataItem(Item item)
     {
@@ -295,7 +311,10 @@ public class GameManager : MonoBehaviour
     
     void CombatUpdate()
     {
-        
+        if (EndOfTurn())
+        {
+            stateMachine.ChangeState(GameSate.MiniGame);
+        }
     }
 
     void CombatExit()

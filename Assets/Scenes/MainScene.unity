@@ -240,7 +240,7 @@ GameObject:
   m_Layer: 0
   m_Name: "Entr\xE9"
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -253,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 22263871}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.963, y: 0, z: 0.1}
+  m_LocalPosition: {x: 1.623, y: 0, z: 0.31}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1721,7 +1721,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.02, y: 0, z: 1.61}
-  m_LocalScale: {x: 4.072344, y: 1, z: 1.7}
+  m_LocalScale: {x: 3.2578752, y: 1, z: 1.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1609218010}
@@ -1754,7 +1754,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210663829}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5369,7 +5369,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.02, y: 0, z: -2.74}
-  m_LocalScale: {x: 3.7669182, y: 1, z: 31.323889}
+  m_LocalScale: {x: 3.0135345, y: 1, z: 31.323889}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1609218010}
@@ -8965,7 +8965,7 @@ GameObject:
   m_Layer: 0
   m_Name: "Entr\xE9 (1)"
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -8978,7 +8978,7 @@ Transform:
   m_GameObject: {fileID: 1143652520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.211, y: 0, z: -0.13}
+  m_LocalPosition: {x: 1.82, y: 0, z: 0.316}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9571,7 +9571,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.02, y: 0, z: -7.11}
-  m_LocalScale: {x: 4.072344, y: 1, z: 1.7}
+  m_LocalScale: {x: 3.2578752, y: 1, z: 1.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1609218010}
@@ -9604,7 +9604,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216531542}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10085,7 +10085,7 @@ GameObject:
   m_Layer: 0
   m_Name: Sortis (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10098,7 +10098,7 @@ Transform:
   m_GameObject: {fileID: 1269287333}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.359, y: 0, z: -0.11}
+  m_LocalPosition: {x: -2, y: 0, z: 0.311}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12359,6 +12359,10 @@ MonoBehaviour:
   player_2_Score: -1
   troopPrefabsP1: []
   troopPrefabsP2: []
+  PVNexus_P1: 200
+  maxPVNexus_P1: 0
+  PVNexus_P2: 200
+  maxPVNexus_P2: 0
   CombatDuration: 10
 --- !u!1001 &1568383216
 PrefabInstance:
@@ -15245,7 +15249,7 @@ GameObject:
   m_Layer: 0
   m_Name: Sortis
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -15258,7 +15262,7 @@ Transform:
   m_GameObject: {fileID: 1951186418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.552, y: 0, z: 0.06}
+  m_LocalPosition: {x: -2.18, y: 0, z: 0.33}
   m_LocalScale: {x: 0.9860948, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16779,7 +16783,6 @@ SceneRoots:
   - {fileID: 1896602226}
   - {fileID: 413460514}
   - {fileID: 131886892}
-  - {fileID: 1553409299}
   - {fileID: 385755794}
   - {fileID: 1320230420}
   - {fileID: 13937450}
@@ -16788,3 +16791,4 @@ SceneRoots:
   - {fileID: 6237398948783635813}
   - {fileID: 1790214085}
   - {fileID: 2008395266}
+  - {fileID: 1553409299}

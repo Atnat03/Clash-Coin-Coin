@@ -12,7 +12,7 @@ public class Nexus : MonoBehaviour, ITargetable
     {
         maxPV = PV;
         playerOneProperty = isPlayer1;
-        name = "Nexus"; 
+        name = "Nexus";
     }
 
     public bool playerOneProperty { get; set; }
