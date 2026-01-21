@@ -22,6 +22,9 @@ public class QTEGameManager : MonoBehaviour
     public Image timerImage;
     public bool finished;
 
+    public int maxScore, pallier1, pallier2;
+    public int score1, score2;
+
     public enum ButtonDirection
     {
         south,
