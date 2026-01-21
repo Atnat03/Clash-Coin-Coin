@@ -82,6 +82,5 @@ public class CurlingGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         
         GameManager.instance.ReturnToMainScene();
-        
     }
 }

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1253301024315926119}
-  - component: {fileID: 5597989690353156273}
   - component: {fileID: 4411826439638955582}
+  - component: {fileID: 4195132809609123717}
   m_Layer: 0
   m_Name: 9. DuckBoulisteEpic
   m_TagString: Untagged
@@ -31,37 +31,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9193838174593175314}
   - {fileID: 6545647552129524264}
   - {fileID: 2408386028184498422}
   - {fileID: 6399332937664223062}
   - {fileID: 4711599439052896762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5597989690353156273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2564806622089340945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae8702eb1ec871b4da0e119e35b024ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Troop
-  id: 0
-  name: Player1
-  PV: 270
-  maxPV: 100
-  currentHP: {fileID: 8103242198617991682}
-  Speed: 1
-  RadiusAttack: 4
-  Damage: 80
-  attackCooldown: 1.5
-  rotationSpeed: 10
-  target: {fileID: 0}
-  alreadyTakeTP: 0
-  isFrozen: 0
 --- !u!65 &4411826439638955582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -83,6 +59,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.4302298, z: 1}
   m_Center: {x: 0, y: 0.21511495, z: 0}
+--- !u!114 &4195132809609123717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564806622089340945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78014825d14fec64d8350f970103857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LanceTroop
+  id: 0
+  name: 
+  PV: 270
+  maxPV: 0
+  currentHP: {fileID: 8103242198617991682}
+  Speed: 1
+  RadiusAttack: 4
+  Damage: 80
+  attackCooldown: 1.5
+  rotationSpeed: 10
+  target: {fileID: 0}
+  alreadyTakeTP: 0
+  isFrozen: 0
+  throwBoulePrefab: {fileID: 5587784164057109776, guid: 0b6f69c6e6a919d4e8f9efc842ad0a55, type: 3}
+  throwPos: {fileID: 9193838174593175314}
 --- !u!1 &4173297060032470032
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +460,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6960678906431185828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9193838174593175314}
+  m_Layer: 0
+  m_Name: ThrowPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9193838174593175314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960678906431185828}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1253301024315926119}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8548951010590429290
 GameObject:
   m_ObjectHideFlags: 0
