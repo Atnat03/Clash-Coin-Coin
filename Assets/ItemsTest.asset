@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemsData:
   - Id: 0
-    Name: 
+    Name: Canard
     Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 9006adafbf887b5459ef1eaa14e60c9f, type: 3}
-    PV: 0
-    maxPV: 100
+    Prefab: {fileID: 9143655664051125612, guid: 3d6b377a56ec4b0488e51144b7d83f4f, type: 3}
     carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
     dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
     rarity: 1
@@ -26,8 +24,6 @@ MonoBehaviour:
     Name: Tourelle
     Size: {x: 1, y: 1}
     Prefab: {fileID: 7136807689920212623, guid: c79cdb73ee751ef4baa1853d73af77e0, type: 3}
-    PV: 0
-    maxPV: 100
     carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
     dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
     rarity: 1
@@ -35,8 +31,6 @@ MonoBehaviour:
     Name: Trap
     Size: {x: 1, y: 1}
     Prefab: {fileID: 7262453442348865695, guid: 2f94f8acd3466de49a5ff9c5a09179aa, type: 3}
-    PV: 0
-    maxPV: 100
     carte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
     dosCarte: {fileID: 21300000, guid: a106ac2cd6591f948803acca2eafce0b, type: 3}
     rarity: 1
