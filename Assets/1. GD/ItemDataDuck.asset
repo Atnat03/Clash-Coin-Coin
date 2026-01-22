@@ -118,27 +118,6 @@ MonoBehaviour:
     carte: {fileID: 21300000, guid: b6a2cbc82038db6489cbbcf77aacbe73, type: 3}
     dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2
-  - Id: 15
-    Name: "Pav\xE9coliers (5)"
-    Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 075bbd35a9ea3b8468670df243ce8400, type: 3}
-    carte: {fileID: 21300000, guid: 04c10c8a220f6cb44ad4f19220b341b9, type: 3}
-    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
-    rarity: 0
-  - Id: 16
-    Name: "Pav\xE9coliers (5)"
-    Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 0c9bdfffe8cdc08499331b37e0926dd7, type: 3}
-    carte: {fileID: 21300000, guid: 886b72554c842f9439b6a7d6e53af4e6, type: 3}
-    dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
-    rarity: 1
-  - Id: 17
-    Name: "Pav\xE9coliers (5)"
-    Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 17435315b270af74488f00e6cdf9dfec, type: 3}
-    carte: {fileID: 21300000, guid: 137da4f1fbf57b24b9ff771f4cb007ea, type: 3}
-    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
-    rarity: 2
   - Id: 18
     Name: Glaceur
     Size: {x: 1, y: 1}

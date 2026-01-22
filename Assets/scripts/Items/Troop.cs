@@ -68,6 +68,9 @@ public class Troop : Item, ITargetable
     {
         if (isFrozen)
             return;
+
+        if(isAttacking)
+            return;
     
         if (!enabled || !gridManager)
             return;
@@ -105,7 +108,7 @@ public class Troop : Item, ITargetable
             return;
         }
     
-        if (target.TryGetComponent<ITargetable>(out var t))
+        if (target.TryGetComponent<Item>(out var t))
         {
             float dist = Vector3.Distance(transform.position, target.position);
             if (dist <= RadiusAttack && t.CanBeAttacked)
@@ -121,6 +124,27 @@ public class Troop : Item, ITargetable
                 RotateTowards(directionToTarget);
                 return;
             }
+        }
+        else
+        {
+                
+        if (target.TryGetComponent<Nexus>(out var n))
+        {
+            float dist = Vector3.Distance(transform.position, target.position);
+            if (dist <= RadiusAttack && n.CanBeAttacked)
+            {
+
+                isAttacking = true;
+                animator.ResetTrigger("Throw");
+                animator.SetBool("Walk", false);
+                animator.SetTrigger("Throw");
+            
+                Vector3 directionToTarget = (target.position - transform.position);
+                directionToTarget.y = 0;
+                RotateTowards(directionToTarget);
+                return;
+            }
+        }
         }
     
         if (path.Count > 0)
