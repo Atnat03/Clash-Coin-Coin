@@ -75,7 +75,7 @@ MonoBehaviour:
   PV: 180
   maxPV: 180
   currentHP: {fileID: 8103242198617991682}
-  Speed: 1
+  Speed: 2
   RadiusAttack: 3
   Damage: 150
   attackCooldown: 3

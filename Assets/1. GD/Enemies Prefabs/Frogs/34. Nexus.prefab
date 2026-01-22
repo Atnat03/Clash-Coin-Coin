@@ -406,8 +406,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::testBuild
   id: 0
   name: 
-  PV: 200
-  maxPV: 200
+  PV: 500
+  maxPV: 500
   currentHP: {fileID: 6609089311364581658}
 --- !u!65 &5493526469949075416
 BoxCollider:

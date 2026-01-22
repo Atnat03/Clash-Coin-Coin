@@ -650,8 +650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   id: 0
   name: 
-  PV: 100
-  maxPV: 100
+  PV: 350
+  maxPV: 350
   currentHP: {fileID: 6410208058379497403}
   bulletPrefab: {fileID: 602646493586585482, guid: 53ec08d7c21c1b04b85205107860336a, type: 3}
   shootRange: 5

@@ -76,7 +76,7 @@ MonoBehaviour:
   PV: 180
   maxPV: 180
   currentHP: {fileID: 8103242198617991682}
-  Speed: 1
+  Speed: 2
   RadiusAttack: 3
   Damage: 68
   attackCooldown: 1
@@ -84,6 +84,7 @@ MonoBehaviour:
   target: {fileID: 0}
   alreadyTakeTP: 0
   isFrozen: 0
+  isPoisened: 0
   throwBoulePrefab: {fileID: 5587784164057109776, guid: 0b6f69c6e6a919d4e8f9efc842ad0a55, type: 3}
   throwPos: {fileID: 1998721115712965736}
 --- !u!1 &4173297060032470032
