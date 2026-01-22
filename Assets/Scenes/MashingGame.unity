@@ -7923,6 +7923,7 @@ MonoBehaviour:
   musicSource: {fileID: 494108215}
   SFXSource: {fileID: 1013689093}
   musicClip: []
+  miniGame: {fileID: 8300000, guid: 7977d08956b8dbd48b85a7ce1e743149, type: 3}
   startSound: {fileID: 8300000, guid: f16ff34de42fbbb4c9336d253448215e, type: 3}
   endSound: {fileID: 8300000, guid: ced6ce3c500383c43bed4d3af26bc7d6, type: 3}
 --- !u!4 &1932399902
