@@ -10,9 +10,9 @@ public class AmbianceSoundsPlay : MonoBehaviour
     public AudioSource ambianceDuckSource;
     void Start()
     {
-        PlaySound(ambiancePond,0.5f,ambiancePondSource);
-        PlaySound(ambianceFrog,0.1f,ambianceFrogSource);
-        PlaySound(ambianceDuck,0.1f,ambianceDuckSource);
+        PlaySound(ambiancePond,0.6f,ambiancePondSource);
+        PlaySound(ambianceFrog,0.2f,ambianceFrogSource);
+        PlaySound(ambianceDuck,0.2f,ambianceDuckSource);
     }
 
     public void PlaySound(AudioClip clip, float volume, AudioSource source)
