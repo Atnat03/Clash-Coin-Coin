@@ -35,7 +35,7 @@ public class CurlingGameManager : MonoBehaviour
     {
         float elapsedTime = 3;
         yield return new WaitForSeconds(0.1f);
-        AudioManager.instance.PlaySound(AudioManager.instance.startSound);
+        AudioManager.instance.PlaySound(AudioManager.instance.startSound,0.8f);
         yield return new WaitForSeconds(3.4f);
         
         inGame = true;
