@@ -62,8 +62,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4217998027924786165}
   - {fileID: 9196489538300292926}
+  - {fileID: 4217998027924786165}
   - {fileID: 2408386028184498422}
   - {fileID: 6399332937664223062}
   - {fileID: 4711599439052896762}
@@ -115,6 +115,7 @@ MonoBehaviour:
   target: {fileID: 0}
   alreadyTakeTP: 0
   isFrozen: 0
+  isPoisened: 0
   throwBoulePrefab: {fileID: 5587784164057109776, guid: 0b6f69c6e6a919d4e8f9efc842ad0a55, type: 3}
   throwPos: {fileID: 4217998027924786165}
 --- !u!1 &4173297060032470032
@@ -665,13 +666,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8478143720457661009, guid: e2dcb7ab6015e9d4da8cc5676d5e4622, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4426518570355778558}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5381165145262408841, guid: e2dcb7ab6015e9d4da8cc5676d5e4622, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1613409560378784821}
   m_SourcePrefab: {fileID: 100100000, guid: e2dcb7ab6015e9d4da8cc5676d5e4622, type: 3}
 --- !u!4 &5471444553469680476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8478143720457661009, guid: e2dcb7ab6015e9d4da8cc5676d5e4622, type: 3}
   m_PrefabInstance: {fileID: 4487295100259938573}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8425019040858928516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5381165145262408841, guid: e2dcb7ab6015e9d4da8cc5676d5e4622, type: 3}
+  m_PrefabInstance: {fileID: 4487295100259938573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1613409560378784821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8425019040858928516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44241fa50154844fb8834afa6f583dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayAnimation
 --- !u!4 &9196489538300292926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4748603378112929331, guid: e2dcb7ab6015e9d4da8cc5676d5e4622, type: 3}
