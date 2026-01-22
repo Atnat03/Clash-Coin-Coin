@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FreezingTroop : Troop
 {
-    private float freezingDuration;
+    public float freezingDuration;
     protected override void Attack()
     {
         print("Attack normal");
