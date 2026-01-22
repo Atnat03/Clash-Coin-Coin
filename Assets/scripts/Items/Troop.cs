@@ -41,6 +41,9 @@ public class Troop : Item, ITargetable
     public Vector3 lastPosition;
     public Vector3 velocity;
     public bool isMoving;
+
+    [Header("Collision")]
+    float troopPushForce = 10f;
     
     void OnEnable()
     {
@@ -62,6 +65,17 @@ public class Troop : Item, ITargetable
     void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+        }
+
+        rb.isKinematic = true;
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX 
+                    | RigidbodyConstraints.FreezeRotationZ;
     }
 
     protected virtual void Update()
@@ -446,5 +460,24 @@ public class Troop : Item, ITargetable
         path.Clear();             
         pathRefreshTimer = 0f; 
         ForceRecalculatePath();
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<Troop>(out Troop otherTroop))
+        {
+            if (otherTroop == this)
+                return;
+
+            Vector3 pushDir = transform.position - otherTroop.transform.position;
+            pushDir.y = 0f;
+
+            if (pushDir.sqrMagnitude < 0.001f)
+                return;
+
+            pushDir.Normalize();
+
+            transform.position += pushDir * troopPushForce * Time.deltaTime;
+        }
     }
 }
