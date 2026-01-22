@@ -19,6 +19,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip cardFlip;
     public AudioClip rareCard;
     public AudioClip epicCard;
+    public AudioClip attackUnit;
+
     void Awake()
     {
         if (instance == null) 
