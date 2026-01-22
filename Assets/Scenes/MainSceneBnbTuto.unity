@@ -770,6 +770,8 @@ MonoBehaviour:
   isPlayer1: 1
   PV: 200
   currentHP: {fileID: 1719964402}
+  animEnd: {fileID: 0}
+  screen: {fileID: 0}
 --- !u!1001 &86154373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4271,7 +4273,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfdd8bf142380346a2be1e07c3e1d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  timerCombat: {fileID: 1310670045}
+  timerCombat: {fileID: 0}
+  timerText: {fileID: 0}
+  logo: {fileID: 0}
+  spritesTimer: []
 --- !u!1001 &445681224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10486,17 +10491,23 @@ MonoBehaviour:
   cardsUI1:
   - face: {fileID: 1193409463}
     dos: {fileID: 303226367}
+    rarete: 0
   - face: {fileID: 402413136}
     dos: {fileID: 446637755}
+    rarete: 0
   - face: {fileID: 734240646}
     dos: {fileID: 1677065083}
+    rarete: 0
   cardsUI2:
   - face: {fileID: 469981035}
     dos: {fileID: 2098936760}
+    rarete: 0
   - face: {fileID: 57480428}
     dos: {fileID: 151671331}
+    rarete: 0
   - face: {fileID: 635004289}
     dos: {fileID: 1757715719}
+    rarete: 0
   cardsID1: 000000000000000000000000
   cardsID2: 000000000000000000000000
   cardSelected1: 0
@@ -12403,6 +12414,12 @@ MonoBehaviour:
   maxPVNexus_P1: 0
   PVNexus_P2: 200
   maxPVNexus_P2: 0
+  uiEnd: {fileID: 0}
+  winIndex: -1
+  isEnd: 0
+  MAX_NUMBER_TOUR: 20
+  CURRENT_NUMBER_TOUR: 0
+  toursTXT: {fileID: 0}
   CombatDuration: 10
 --- !u!1001 &1568383216
 PrefabInstance:
@@ -14211,6 +14228,8 @@ MonoBehaviour:
   isPlayer1: 0
   PV: 200
   currentHP: {fileID: 315728872}
+  animEnd: {fileID: 0}
+  screen: {fileID: 0}
 --- !u!1001 &1791443666
 PrefabInstance:
   m_ObjectHideFlags: 0
