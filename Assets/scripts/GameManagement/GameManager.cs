@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour
     public float maxPVNexus_P1;
     public float PVNexus_P2 = 200;
     public float maxPVNexus_P2;
+
+    public GameObject uiEnd;
+    public int winIndex = -1;
+    public bool isEnd = false;
     
     void Awake()
     {
@@ -137,10 +141,19 @@ public class GameManager : MonoBehaviour
         //EndGame
         stateMachine.Add(new State<GameSate>(
             GameSate.EndGame,
-            onEnter:()=> Debug.Log("Enter  EndGame")
+            onEnter:EndGameEnter
         ));
         
         stateMachine.ChangeState(GameSate.MiniGame);
+    }
+
+    void EndGameEnter()
+    {
+        Debug.Log("Enter EndGame");
+        
+        SetAllPlacedItems(false);
+        uiEnd.SetActive(true);
+        uiEnd.GetComponent<UiEnd>().SetUp(winIndex);
     }
     
     public void SetAllPlacedItems(bool state)
@@ -172,7 +185,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool  EndOfTurn()
+    public bool EndOfTurn()
     {
         bool isTroop = true;
         
@@ -232,6 +245,25 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         stateMachine?.Update();
+
+        if(isEnd) return;
+        
+        if (PVNexus_P1 <= 0)
+        {
+            GameOverByDead(0);
+        }
+
+        if (PVNexus_P2 <= 0)
+        {
+            GameOverByDead(1);
+        }
+    }
+
+    private void GameOverByDead(int i)
+    {
+        isEnd = true;
+        winIndex = i;
+        stateMachine?.ChangeState(GameSate.EndGame);
     }
 
     void FixedUpdate()
