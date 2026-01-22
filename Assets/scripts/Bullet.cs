@@ -24,9 +24,9 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<ITargetable>() != null && other != col)
+        if (other.GetComponent<Item>() != null && other != col)
         {
-            other.GetComponent<ITargetable>().TakeDamage(damage);
+            other.GetComponent<Item>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

@@ -105,11 +105,12 @@ public class Troop : Item, ITargetable
             return;
         }
     
-        if (target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+        if (target.TryGetComponent<ITargetable>(out var t))
         {
             float dist = Vector3.Distance(transform.position, target.position);
-            if (dist <= RadiusAttack)
+            if (dist <= RadiusAttack && t.CanBeAttacked)
             {
+
                 isAttacking = true;
                 animator.ResetTrigger("Throw");
                 animator.SetBool("Walk", false);
@@ -144,8 +145,10 @@ public class Troop : Item, ITargetable
     public virtual void Attack()
     {
         print("Attack normal");
+
+        print(target.transform.name + " in range, attack! : " + target.GetComponent<ITargetable>().CanBeAttacked);
     
-        if (target && target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
+        if (target && target.TryGetComponent<Item>(out var t) && t.CanBeAttacked)
         {
             t.TakeDamage(Damage);
         }
