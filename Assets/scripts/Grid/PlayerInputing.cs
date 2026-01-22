@@ -44,7 +44,7 @@ public class PlayerInputing : MonoBehaviour
     public void OnExitInput(InputAction.CallbackContext context) => OnExit?.Invoke();
     
     public void OnXPress(InputAction.CallbackContext context) => OnSelectTroop?.Invoke(2);
-    public void OnYPress(InputAction.CallbackContext context) => OnSelectTroop?.Invoke(1);
+    public void OnYPress(InputAction.CallbackContext context) => OnSelectTroop?.Invoke(27);
     
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
     
