@@ -10,7 +10,8 @@ public class Nexus : MonoBehaviour, ITargetable
 
     void OnEnable()
     {
-        GameManager.instance.OnComeBack += SetUp;
+        if(GameManager.instance != null)
+            GameManager.instance.OnComeBack += SetUp;
     }
 
     void OnDisable()
