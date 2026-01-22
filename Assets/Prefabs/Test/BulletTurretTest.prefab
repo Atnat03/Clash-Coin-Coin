@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   speed: 2.5
   target: {fileID: 0}
-  damage: 10
+  damage: 40
   col: {fileID: 6786918396722019137}
 --- !u!54 &6429970632796901839
 Rigidbody:
