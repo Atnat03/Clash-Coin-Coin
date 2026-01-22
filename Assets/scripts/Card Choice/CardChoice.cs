@@ -126,32 +126,32 @@ public class CardChoice : MonoBehaviour
 
    public IEnumerator SonsCartes()
    {
-      yield return new WaitForSeconds(1.35f);
-      AudioManager.instance.PlaySound(AudioManager.instance.cardFlip);
+      yield return new WaitForSeconds(2f);
+      AudioManager.instance.PlaySound(AudioManager.instance.cardFlip, 1f);
       
-      if(cardsUI1[0].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard);
-      if(cardsUI1[0].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard);
+      if(cardsUI1[0].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI1[0].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
 
-      if(cardsUI2[0].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard);
-      if(cardsUI2[0].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard);
+      if(cardsUI2[0].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI2[0].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
       
       yield return new WaitForSeconds(0.8f);
-      AudioManager.instance.PlaySound(AudioManager.instance.cardFlip);
+      AudioManager.instance.PlaySound(AudioManager.instance.cardFlip, 1f);
       
-      if(cardsUI1[1].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard);
-      if(cardsUI1[1].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard);
+      if(cardsUI1[1].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI1[1].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
 
-      if(cardsUI2[1].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard);
-      if(cardsUI2[1].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard);
+      if(cardsUI2[1].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI2[1].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
       
-      yield return new WaitForSeconds(0.4f);
-      AudioManager.instance.PlaySound(AudioManager.instance.cardFlip);
+      yield return new WaitForSeconds(0.8f);
+      AudioManager.instance.PlaySound(AudioManager.instance.cardFlip, 1f);
       
-      if(cardsUI1[2].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard);
-      if(cardsUI1[2].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard);
+      if(cardsUI1[2].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI1[2].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
 
-      if(cardsUI2[2].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard);
-      if(cardsUI2[2].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard);
+      if(cardsUI2[2].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI2[2].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
    }
    
    
