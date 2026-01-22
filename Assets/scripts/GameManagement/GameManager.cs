@@ -228,13 +228,16 @@ public class GameManager : MonoBehaviour
             if (!player.IsReady) return false;
         }
 
+        // 🔧 Vérifier P1
         foreach (Item item in placedItemsP1)
         {
             if(item is Troop troop)
                 if(troop.GetComponent<AnimFlip>().did == false)
                     return false;
         }
-        foreach (Item item in placedItemsP1)
+    
+        // 🔧 Vérifier P2 (pas P1 !)
+        foreach (Item item in placedItemsP2)
         {
             if(item is Troop troop)
                 if(troop.GetComponent<AnimFlip>().did == false)
@@ -401,7 +404,13 @@ public class GameManager : MonoBehaviour
     void PrepareEnter()
     {
         VariablesManager.instance.logoState.sprite = VariablesManager.instance.placementSprite;
-        
+    
+        // 🔧 Réinitialiser l'état "ready" des joueurs
+        foreach (PlayerInputing player in VariablesManager.instance.players)
+        {
+            player.IsReady = false;
+        }
+    
         StartCoroutine(Pepare());
     }
         
@@ -447,11 +456,17 @@ public class GameManager : MonoBehaviour
             GameOverByEndNbTurn();
             return;
         }
-        
+    
         VariablesManager.instance.logoState.sprite = VariablesManager.instance.rewardSprite;
 
+        // 🔧 Réinitialiser l'état "ready" des joueurs
+        foreach (PlayerInputing player in VariablesManager.instance.players)
+        {
+            player.IsReady = false;
+        }
+
         OnComeBack?.Invoke();
-        
+    
         CardChoice.instance.ResolveMiniGameResults(player_1_Score, player_2_Score);
     }
     
@@ -682,6 +697,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         
         LoadAfterSceneChange();
+        
+        stateMachine.ChangeState(GameSate.Reward);
     }
     
     public void ResetGame()

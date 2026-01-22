@@ -55,12 +55,11 @@ public class CurlingGameManager : MonoBehaviour
         AudioManager.instance.PlaySound(AudioManager.instance.endSound);
         animUI.SetTrigger("Over");
         
-        
-
         if (P1.played == false)
         {
             GameManager.instance.player_1_Score = 1;
             GameManager.instance.player_2_Score = 3;
+            GameManager.instance.ReturnToMainScene();
             yield break;
         }
 
@@ -68,6 +67,7 @@ public class CurlingGameManager : MonoBehaviour
         {
             GameManager.instance.player_1_Score = 3;
             GameManager.instance.player_2_Score = 1;
+            GameManager.instance.ReturnToMainScene();
             yield break;
         }
 
@@ -82,8 +82,7 @@ public class CurlingGameManager : MonoBehaviour
             GameManager.instance.player_2_Score = 1;
         }
         
-        yield return new WaitForSeconds(1f);
-        
+        print("Degage de la ptn");
         GameManager.instance.ReturnToMainScene();
     }
 }

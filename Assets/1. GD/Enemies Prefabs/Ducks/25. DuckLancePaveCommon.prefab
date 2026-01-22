@@ -349,7 +349,7 @@ MonoBehaviour:
   PV: 200
   maxPV: 200
   currentHP: {fileID: 6410208058379497403}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 602646493586585482, guid: 53ec08d7c21c1b04b85205107860336a, type: 3}
   shootRange: 5
   shootPos: {fileID: 7670016554811404739}
   headTurret: {fileID: 3502646204956825309}

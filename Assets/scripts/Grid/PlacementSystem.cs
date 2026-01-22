@@ -128,7 +128,6 @@ private void PlaceStructure()
 
     if (data.Id >= 12 && data.Id <= 14)
     {
-        // IMPORTANT : Stocker les enfants AVANT de les détacher
         List<Transform> childrenToDetach = new List<Transform>();
         
         for (int i = 0; i < 3 && i < go.transform.childCount; i++)
@@ -136,7 +135,6 @@ private void PlaceStructure()
             childrenToDetach.Add(go.transform.GetChild(i));
         }
         
-        // Maintenant détacher et initialiser chaque enfant
         foreach (Transform child in childrenToDetach)
         {
             Item itemPlaced = child.GetComponent<Item>();
@@ -147,10 +145,9 @@ private void PlaceStructure()
                 continue;
             }
             
-            // Détacher l'enfant du parent
             child.SetParent(null);
 
-            itemPlaced.id = data.Id;
+            itemPlaced.id = 3;
             itemPlaced.enabled = false;
             itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
 
