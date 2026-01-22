@@ -4621,18 +4621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   timerCombat: {fileID: 570969967}
-  logo: {fileID: 29886834}
-  spritesTimer:
-  - {fileID: 21300000, guid: ee773513f84be214a9f5b8b37ddabb3f, type: 3}
-  - {fileID: 21300000, guid: 070fd4ee0fa99434bbc6f6452e1c086e, type: 3}
-  - {fileID: 21300000, guid: 5a6e26d135d904c4caf2563253b3c734, type: 3}
-  - {fileID: 21300000, guid: 21053b2b5cdcb0e4e90c09b3da317da6, type: 3}
-  - {fileID: 21300000, guid: 61fdebc25ae6b744bb14ec61455ce585, type: 3}
-  - {fileID: 21300000, guid: 2f988ef929ea9ae40a704bbe7629ae8b, type: 3}
-  - {fileID: 21300000, guid: 1a26f3ce5dace5047b8caa503521b394, type: 3}
-  - {fileID: 21300000, guid: 01ee58fc310d8bb4980e99555813c6ec, type: 3}
-  - {fileID: 21300000, guid: 3d1ae2b1f0fe8084486bee5d0fe68090, type: 3}
-  - {fileID: 21300000, guid: 70ef6bc5fca2f3b47896fb1aa99e0962, type: 3}
+  logo: {fileID: 0}
+  spritesTimer: []
 --- !u!1001 &445681224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6047,14 +6037,16 @@ MonoBehaviour:
   musicSource: {fileID: 2053172230}
   SFXSource: {fileID: 1276600007}
   musicClip: []
-  miniGame: {fileID: 8300000, guid: 7977d08956b8dbd48b85a7ce1e743149, type: 3}
+  miniGame: {fileID: 0}
   startSound: {fileID: 8300000, guid: f16ff34de42fbbb4c9336d253448215e, type: 3}
   endSound: {fileID: 8300000, guid: ced6ce3c500383c43bed4d3af26bc7d6, type: 3}
-  cardFlip: {fileID: 8300000, guid: dd251ca983f44794e8e4cbc72072e98f, type: 3}
-  rareCard: {fileID: 8300000, guid: b36629295566a55448cdfaa2d1f43c4a, type: 3}
-  epicCard: {fileID: 8300000, guid: ed612237ed6380447b1102e8f1fd8c2a, type: 3}
-  attackUnit: {fileID: 8300000, guid: 4092af38d0307844ba12748cc00dbe30, type: 3}
-  tutoCard: {fileID: 8300000, guid: fdc5364619be00b4dac186bcf3db1ab2, type: 3}
+  cardFlip: {fileID: 0}
+  rareCard: {fileID: 0}
+  epicCard: {fileID: 0}
+  attackUnit: {fileID: 0}
+  tutoCard: {fileID: 0}
+  buttonPressed: {fileID: 0}
+  gongStart: {fileID: 0}
 --- !u!4 &634107096
 Transform:
   m_ObjectHideFlags: 0
