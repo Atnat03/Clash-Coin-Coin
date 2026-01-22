@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
     [Header("SFX Audio clips")]
     public AudioClip startSound;
     public AudioClip endSound;
+    public AudioClip cardFlip;
+    public AudioClip rareCard;
+    public AudioClip epicCard;
     void Awake()
     {
         if (instance == null) 
