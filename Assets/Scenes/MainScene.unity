@@ -16549,9 +16549,9 @@ MonoBehaviour:
   player_2_Score: -1
   troopPrefabsP1: []
   troopPrefabsP2: []
-  PVNexus_P1: 1
+  PVNexus_P1: 2000
   maxPVNexus_P1: 0
-  PVNexus_P2: 1
+  PVNexus_P2: 2000
   maxPVNexus_P2: 0
   uiEnd: {fileID: 1020976774}
   winIndex: -1
