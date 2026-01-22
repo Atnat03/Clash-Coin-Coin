@@ -84,8 +84,11 @@ MonoBehaviour:
   alreadyTakeTP: 0
   isFrozen: 0
   isPoisened: 0
-  poisonDamage: 0
-  poisonDuration: 0
+  lastPosition: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  isMoving: 0
+  poisonDamage: 30
+  poisonDuration: 6
 --- !u!1 &4173297060032470032
 GameObject:
   m_ObjectHideFlags: 0
