@@ -58,6 +58,7 @@ public class MashIngGamePlayerScript : MonoBehaviour
             P1Jauge.fillAmount = P1JaugeFillAmout;
             if (P1JaugeFillAmout >= 0.95f)
             {
+                P1Jauge.fillAmount = 1f;
                 MashingGameManager.instance.someoneWon = true;
             }
             yield return null;

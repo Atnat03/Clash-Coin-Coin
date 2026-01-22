@@ -54,7 +54,7 @@ MonoBehaviour:
   PV: 300
   maxPV: 300
   currentHP: {fileID: 8103242198617991682}
-  Speed: 1
+  Speed: 2
   RadiusAttack: 1
   Damage: 60
   attackCooldown: 2
@@ -487,7 +487,7 @@ RectTransform:
   m_GameObject: {fileID: 8548951010590429290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.00049999997, y: 0.00049999997, z: 0.005}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.010000001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6105083492178195426}

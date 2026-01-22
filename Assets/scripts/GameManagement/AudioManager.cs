@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     [Header("music Audio clips")]
     public AudioClip[] musicClip;
 
+    public AudioClip miniGame;
+
     [Header("SFX Audio clips")]
     public AudioClip startSound;
     public AudioClip endSound;
@@ -29,6 +31,12 @@ public class AudioManager : MonoBehaviour
     public void PlayRandomMusic()
     {
         musicSource.PlayOneShot(musicClip[Random.Range(0, musicClip.Length)]);
+    }
+
+    public void PlayMusic(AudioClip clip)
+    {
+        musicSource.pitch = 1f;
+        musicSource.PlayOneShot(clip);
     }
 
     public void PlaySound(AudioClip clip)

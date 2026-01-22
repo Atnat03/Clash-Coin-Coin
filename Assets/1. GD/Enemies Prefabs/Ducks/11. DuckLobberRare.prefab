@@ -76,7 +76,7 @@ MonoBehaviour:
   PV: 180
   maxPV: 180
   currentHP: {fileID: 8103242198617991682}
-  Speed: 1
+  Speed: 2
   RadiusAttack: 3
   Damage: 68
   attackCooldown: 1
@@ -84,6 +84,7 @@ MonoBehaviour:
   target: {fileID: 0}
   alreadyTakeTP: 0
   isFrozen: 0
+  isPoisened: 0
   throwBoulePrefab: {fileID: 3762000939536537322, guid: c599ac22fb7fe7f4983b370c63cd9d90, type: 3}
   throwPos: {fileID: 8832250938467846305}
 --- !u!1 &4173297060032470032
@@ -520,7 +521,7 @@ RectTransform:
   m_GameObject: {fileID: 8548951010590429290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.00049999997, y: 0.00049999997, z: 0.005}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.010000001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6105083492178195426}
