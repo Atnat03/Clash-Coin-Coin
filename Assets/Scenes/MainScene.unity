@@ -9071,8 +9071,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   image: {fileID: 1020976776}
   sprites:
-  - {fileID: 21300000, guid: 63d5b2f162c7aea458de8289f69aa82a, type: 3}
-  - {fileID: 21300000, guid: d628abc59c28764478eb2df0e3dffe6b, type: 3}
+  - {fileID: 21300000, guid: 4daf296521d92de4d9f604da231051c9, type: 3}
+  - {fileID: 21300000, guid: 4daf296521d92de4d9f604da231051c9, type: 3}
 --- !u!1001 &1037935696
 PrefabInstance:
   m_ObjectHideFlags: 0
