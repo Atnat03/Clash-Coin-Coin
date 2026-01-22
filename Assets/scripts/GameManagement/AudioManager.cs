@@ -21,7 +21,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip epicCard;
     public AudioClip attackUnit;
     public AudioClip tutoCard;
-
+    public AudioClip buttonPressed;
+    public AudioClip gongStart;
     void Awake()
     {
         if (instance == null) 
