@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum GameSate
 {
@@ -41,6 +42,14 @@ public class GameManager : MonoBehaviour
     public float maxPVNexus_P1;
     public float PVNexus_P2 = 200;
     public float maxPVNexus_P2;
+
+    public GameObject uiEnd;
+    public int winIndex = -1;
+    public bool isEnd = false;
+
+    public int MAX_NUMBER_TOUR = 20;
+    public int CURRENT_NUMBER_TOUR = 0;
+    public Text toursTXT;
     
     void Awake()
     {
@@ -137,10 +146,19 @@ public class GameManager : MonoBehaviour
         //EndGame
         stateMachine.Add(new State<GameSate>(
             GameSate.EndGame,
-            onEnter:()=> Debug.Log("Enter  EndGame")
+            onEnter:EndGameEnter
         ));
         
         stateMachine.ChangeState(GameSate.MiniGame);
+    }
+
+    void EndGameEnter()
+    {
+        Debug.Log("Enter EndGame");
+        
+        uiEnd.gameObject.SetActive(true);
+        uiEnd.GetComponent<UiEnd>().SetUp(winIndex);
+        SetAllPlacedItems(false);
     }
     
     public void SetAllPlacedItems(bool state)
@@ -232,6 +250,35 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         stateMachine?.Update();
+
+        toursTXT.text = "Tour " + CURRENT_NUMBER_TOUR;
+
+        if(isEnd) return;
+        
+        if (PVNexus_P1 <= 0)
+        {
+            GameOverByDead(0);
+        }
+
+        if (PVNexus_P2 <= 0)
+        {
+            GameOverByDead(1);
+        }
+    }
+
+    private void GameOverByDead(int i)
+    {
+        StopAllCoroutines();
+        isEnd = true;
+        winIndex = i;
+        stateMachine?.ChangeState(GameSate.EndGame);
+    }
+    
+    private void GameOverByEndNbTurn()
+    {
+        isEnd = true;
+        winIndex = PVNexus_P1 >= PVNexus_P2 ? 0 : 1;
+        stateMachine?.ChangeState(GameSate.EndGame);
     }
 
     void FixedUpdate()
@@ -282,7 +329,6 @@ public class GameManager : MonoBehaviour
     
     #endregion
     
-    
     #region CombatState
 
     void CombatEnter()
@@ -332,11 +378,7 @@ public class GameManager : MonoBehaviour
     
     void CombatUpdate()
     {
-        if (EndOfTurn())
-        {
-            StartCoroutine(WaitBeforeMiniGame());
 
-        }
     }
 
     IEnumerator WaitBeforeMiniGame()
@@ -399,6 +441,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter Reward");
 
+        CURRENT_NUMBER_TOUR++;
+
+        if (CURRENT_NUMBER_TOUR >= 20)
+        {
+            GameOverByEndNbTurn();
+            return;
+        }
+        
         VariablesManager.instance.logoState.sprite = VariablesManager.instance.rewardSprite;
 
         OnComeBack?.Invoke();
