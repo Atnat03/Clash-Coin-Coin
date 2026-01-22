@@ -6,7 +6,7 @@ public class PoiseningTroops : Troop
     public float poisonDamage;
     public float poisonDuration;
     
-    public override void Attack()
+    protected override void Attack()
     {
         print("Attack normal");
     

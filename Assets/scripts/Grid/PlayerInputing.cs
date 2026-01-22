@@ -31,12 +31,36 @@ public class PlayerInputing : MonoBehaviour
     void Start()
     {
         screenCursor = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        
+        // Initialiser worldAimPosition au centre de l'écran
+        UpdateWorldAimPosition();
     }
     
     public void SetAimBounds(Bounds bounds)
     {
         aimBounds = bounds;
         hasBounds = true;
+        
+        // Centrer le curseur sur la grid
+        CenterCursorOnBounds();
+    }
+    
+    // Nouvelle méthode pour centrer le curseur sur les bounds
+    private void CenterCursorOnBounds()
+    {
+        if (!hasBounds || playerCamera == null) return;
+        
+        // Convertir le centre des bounds en position écran
+        Vector3 screenPos = playerCamera.WorldToScreenPoint(aimBounds.center);
+        
+        // Si le point est visible à l'écran
+        if (screenPos.z > 0)
+        {
+            screenCursor = new Vector2(screenPos.x, screenPos.y);
+            
+            // Mettre à jour immédiatement la position world
+            UpdateWorldAimPosition();
+        }
     }
 
     public void OnAim(InputAction.CallbackContext context) => aimInput = context.ReadValue<Vector2>();
@@ -44,7 +68,7 @@ public class PlayerInputing : MonoBehaviour
     public void OnExitInput(InputAction.CallbackContext context) => OnExit?.Invoke();
     
     public void OnXPress(InputAction.CallbackContext context) => OnSelectTroop?.Invoke(2);
-    public void OnYPress(InputAction.CallbackContext context) => OnSelectTroop?.Invoke(27);
+    public void OnYPress(InputAction.CallbackContext context) => OnSelectTroop?.Invoke(12);
     
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
     
@@ -55,8 +79,15 @@ public class PlayerInputing : MonoBehaviour
         screenCursor.x = Mathf.Clamp(screenCursor.x, 0, Screen.width);
         screenCursor.y = Mathf.Clamp(screenCursor.y, 0, Screen.height);
 
+        UpdateWorldAimPosition();
+    }
+    
+    // Méthode séparée pour mettre à jour la position world
+    private void UpdateWorldAimPosition()
+    {
+        if (playerCamera == null) return;
+        
         Ray ray = playerCamera.ScreenPointToRay(screenCursor);
-
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
         if (groundPlane.Raycast(ray, out float enter))
@@ -73,7 +104,6 @@ public class PlayerInputing : MonoBehaviour
 
             Debug.DrawLine(ray.origin, worldAimPosition, Color.green);
         }
-
     }
 
     public Vector3 GetWorldAimPosition()
@@ -88,5 +118,4 @@ public class PlayerInputing : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(aimBounds.center, aimBounds.size);
     }
-
 }

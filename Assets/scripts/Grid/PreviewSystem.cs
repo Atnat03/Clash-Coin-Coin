@@ -23,8 +23,11 @@ public class PreviewSystem : MonoBehaviour
     {
         previewObject = Instantiate(prefab);
         
-        if(previewObject.GetComponentInChildren<Item>() != null)
-            previewObject.GetComponentInChildren<Item>().enabled = false;
+        Item[] items = previewObject.GetComponentsInChildren<Item>();
+        foreach (Item item in items)
+        {
+            item.enabled = false;
+        }
         
         PreparePreavie(previewObject);
         PrepareCursor(size);
