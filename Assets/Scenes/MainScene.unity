@@ -6816,7 +6816,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 2053172230}
   SFXSource: {fileID: 1276600007}
-  musicClip: []
+  musicClip:
+  - {fileID: 8300000, guid: b4e5f1d607e9894459986d9ee842f684, type: 3}
   miniGame: {fileID: 0}
   startSound: {fileID: 8300000, guid: f16ff34de42fbbb4c9336d253448215e, type: 3}
   endSound: {fileID: 8300000, guid: ced6ce3c500383c43bed4d3af26bc7d6, type: 3}
@@ -10182,7 +10183,7 @@ GameObject:
   - component: {fileID: 1020976776}
   - component: {fileID: 1020976778}
   m_Layer: 0
-  m_Name: UI
+  m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10227,7 +10228,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d628abc59c28764478eb2df0e3dffe6b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c140b78276aa0241a54f21b489e4d8f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10259,8 +10260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   image: {fileID: 1020976776}
   sprites:
-  - {fileID: 21300000, guid: 4daf296521d92de4d9f604da231051c9, type: 3}
-  - {fileID: 21300000, guid: 4daf296521d92de4d9f604da231051c9, type: 3}
+  - {fileID: 21300000, guid: 1c140b78276aa0241a54f21b489e4d8f, type: 3}
+  - {fileID: 21300000, guid: f837e494e75e6c34abe0a4273c1647bd, type: 3}
 --- !u!1001 &1027404417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12337,8 +12338,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1020976775}
   - {fileID: 431026074}
+  - {fileID: 1020976775}
   m_Father: {fileID: 1553409299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -14486,6 +14487,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 889ad3dfd74b6c44bb256160e1dba584, type: 3}
+    - target: {fileID: 768504469539980592, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 379.5811
+      objectReference: {fileID: 0}
+    - target: {fileID: 768504469539980592, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000026941
+      objectReference: {fileID: 0}
+    - target: {fileID: 768504469539980592, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 39.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2000431525010792120, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1219.4
@@ -14493,6 +14506,22 @@ PrefabInstance:
     - target: {fileID: 2000431525010792120, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: m_SizeDelta.y
       value: 706.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2194967050991371682, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 356.6151
+      objectReference: {fileID: 0}
+    - target: {fileID: 2194967050991371682, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 211.8074
+      objectReference: {fileID: 0}
+    - target: {fileID: 2194967050991371682, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000016689
+      objectReference: {fileID: 0}
+    - target: {fileID: 2194967050991371682, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 2654747919769787211, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: m_Type
@@ -14607,6 +14636,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 706.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8049132397586143495, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6cfb8e4920117e34f8cb05309ca32572, type: 3}
     - target: {fileID: 8245094980280687965, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1219.4
@@ -14615,6 +14648,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 706.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8323257048998877175, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cb9db126a39a5e8438c7aacbbc342416, type: 3}
     - target: {fileID: 8474106281133242237, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -14699,6 +14736,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f4354b5d20a291f4c913660b14f1e9b7, type: 3}
+    - target: {fileID: 8510665910618766346, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 62cbfb5f1c6a9be4fb6fe8e2d467eb5a, type: 3}
     - target: {fileID: 8788985249208259475, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: m_Type
       value: 0
@@ -17058,7 +17099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7436696361848730020, guid: 60bacb46ae77e1c4e9327319eaa1f899, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7436696361848730020, guid: 60bacb46ae77e1c4e9327319eaa1f899, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18120,7 +18161,7 @@ Transform:
   m_GameObject: {fileID: 1647906338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: -5}
+  m_LocalPosition: {x: -7, y: -0.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21005,7 +21046,7 @@ Transform:
   m_GameObject: {fileID: 1896602224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: -5}
+  m_LocalPosition: {x: 7, y: -0.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22640,9 +22681,9 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

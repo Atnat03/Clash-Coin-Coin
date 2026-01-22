@@ -31,5 +31,25 @@ public class VariablesManager : MonoBehaviour
     {
         instance = this;
     }
-    
+
+    public void DisableInputA()
+    {
+        foreach (PlayerInputing p in players)
+        {
+            p.OnClicked -= ResetInputGame;
+        }
+    }
+
+    public void SetInputA()
+    {
+        foreach (PlayerInputing p in players)
+        {
+            p.OnClicked += ResetInputGame;
+        }
+    }
+
+    public void ResetInputGame()
+    {
+        GameManager.instance.ResetGame();
+    }
 }

@@ -145,7 +145,8 @@ public class GameManager : MonoBehaviour
         //EndGame
         stateMachine.Add(new State<GameSate>(
             GameSate.EndGame,
-            onEnter:EndGameEnter
+            onEnter:EndGameEnter,
+            onExit: EndGameExit
         ));
         
         stateMachine.ChangeState(GameSate.MiniGame);
@@ -158,6 +159,13 @@ public class GameManager : MonoBehaviour
         uiEnd.gameObject.SetActive(true);
         uiEnd.GetComponent<UiEnd>().SetUp(winIndex);
         SetAllPlacedItems(false);
+
+        VariablesManager.instance.SetInputA();
+    }
+
+    void EndGameExit()
+    {
+        VariablesManager.instance.DisableInputA();
     }
     
     public void SetAllPlacedItems(bool state)
@@ -405,7 +413,6 @@ public class GameManager : MonoBehaviour
     {
         VariablesManager.instance.logoState.sprite = VariablesManager.instance.placementSprite;
     
-        // 🔧 Réinitialiser l'état "ready" des joueurs
         foreach (PlayerInputing player in VariablesManager.instance.players)
         {
             player.IsReady = false;
@@ -459,7 +466,6 @@ public class GameManager : MonoBehaviour
     
         VariablesManager.instance.logoState.sprite = VariablesManager.instance.rewardSprite;
 
-        // 🔧 Réinitialiser l'état "ready" des joueurs
         foreach (PlayerInputing player in VariablesManager.instance.players)
         {
             player.IsReady = false;
@@ -703,6 +709,8 @@ public class GameManager : MonoBehaviour
     
     public void ResetGame()
     {
+        SceneManager.LoadScene("MainScene");
+        
         placedItemsP1.Clear();
         placedItemsP2.Clear();
         itemPlacedDataP1.Clear();
