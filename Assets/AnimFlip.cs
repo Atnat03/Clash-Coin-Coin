@@ -17,7 +17,7 @@ public class AnimFlip : MonoBehaviour
         Vector3 originalPos = child.localPosition;
         Vector3 elevatedPos = originalPos + Vector3.up * 2f;
 
-        float duration = 0.6f;
+        float duration = 0.2f;
         float t = 0f;
 
         // Montée
