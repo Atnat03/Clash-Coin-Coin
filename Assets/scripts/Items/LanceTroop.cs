@@ -9,7 +9,7 @@ public class LanceTroop : Troop
     protected override void Attack()
     {
         print("Attack lancer");
-        StopAllCoroutines();
+        //StopAllCoroutines();
         StartCoroutine(Attacking());
     }
     
