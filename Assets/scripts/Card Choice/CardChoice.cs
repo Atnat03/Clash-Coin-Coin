@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class CardChoice : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class CardChoice : MonoBehaviour
 
    float lastAimX1;
    float lastAimX2;
+   
+   
 
    private void Awake()
    {
@@ -91,12 +94,12 @@ public class CardChoice : MonoBehaviour
    {
       for (int i = 0; i < 3; i++)
       {
-         cardsUI1[i].face.color = Color.white;
-         cardsUI2[i].face.color = Color.white;
+         cardsUI1[i].face.color =  new Color(0.7f, 0.7f, 0.7f);
+         cardsUI2[i].face.color = new Color(0.7f, 0.7f, 0.7f);
       }
       
-      if(cardSelected1 != -1) cardsUI1[cardSelected1].face.color = new Color(0.7f, 0.7f, 0.7f);
-      if(cardSelected2 != -1)cardsUI2[cardSelected2].face.color = new Color(0.7f, 0.7f, 0.7f);
+      if(cardSelected1 != -1) cardsUI1[cardSelected1].face.color =Color.white;
+      if(cardSelected2 != -1)cardsUI2[cardSelected2].face.color = Color.white;
    }
    
    public void ResolveMiniGameResults(int miniGame1, int miniGame2)
@@ -115,31 +118,45 @@ public class CardChoice : MonoBehaviour
       animatorCards1.SetTrigger("Start");
       animatorCards2.SetTrigger("Start");
    }
+   
+   
    void ResolvePlayer(int result, ref int[] cardsID, ref ItemSO itemPool, CardsPNG[] cardsUI)
    {
       int[] raritiesToPick = result switch
       {
-         1 => new[] { 0, 0, 0 }, 
-         2 => new[] { 0, 0, 1 }, 
-         3 => new[] { 0, 1, 2 }, 
+         1 => new[] { 0, 0, 0 },
+         2 => new[] { 0, 0, 1 },
+         3 => new[] { 0, 1, 2 },
          _ => new[] { 0, 0, 0 }
       };
+
+      List<string> usedNames = new List<string>();
 
       for (int i = 0; i < 3; i++)
       {
          int rarity = raritiesToPick[i];
-         
-         var possibleItems = itemPool.itemsData.FindAll(item => item.rarity == rarity);
 
-         if (possibleItems.Count == 0) continue;
-         
+         var possibleItems = itemPool.itemsData.FindAll(item =>
+            item.rarity == rarity &&
+            !usedNames.Contains(item.Name)
+         );
+
+         if (possibleItems.Count == 0)
+         {
+            Debug.LogWarning($"No available item for rarity {rarity} without duplicate name.");
+            continue;
+         }
+
          ItemsData chosenItem = possibleItems[UnityEngine.Random.Range(0, possibleItems.Count)];
+
+         usedNames.Add(chosenItem.Name);
 
          cardsID[i] = chosenItem.Id;
          cardsUI[i].face.sprite = chosenItem.carte;
          cardsUI[i].dos.sprite = chosenItem.dosCarte;
       }
    }
+
 
 
    public void ChoseCard(int ID)
