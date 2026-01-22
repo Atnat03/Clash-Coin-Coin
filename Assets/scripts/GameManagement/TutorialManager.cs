@@ -84,6 +84,7 @@ public class TutorialManager : MonoBehaviour
 
     public void OpenCloseTutorial()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.buttonPressed);
         Debug.Log("OpenCloseTutorial");
         tutoPanel.SetActive(!tutoPanel.activeSelf);
 
@@ -95,6 +96,7 @@ public class TutorialManager : MonoBehaviour
 
     public void NavigateRight()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.tutoCard);
         tutorialObjects[index].SetActive(false);
         index++;
         index = Mathf.Clamp(index, 0, tutorialObjects.Count - 1);
@@ -103,6 +105,7 @@ public class TutorialManager : MonoBehaviour
 
     public void NavigateLeft()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.tutoCard);
         tutorialObjects[index].SetActive(false);
         index--;
         index = Mathf.Clamp(index, 0, tutorialObjects.Count - 1);
