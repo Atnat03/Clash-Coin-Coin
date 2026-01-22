@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+using System.Collections;
+
 public class CardChoice : MonoBehaviour
 {
    public static CardChoice instance;
@@ -18,6 +20,7 @@ public class CardChoice : MonoBehaviour
    public struct CardsPNG
    {
       public Image face, dos;
+      public int rarete;
    }
    public CardsPNG[] cardsUI1, cardsUI2;
 
@@ -117,6 +120,38 @@ public class CardChoice : MonoBehaviour
       
       animatorCards1.SetTrigger("Start");
       animatorCards2.SetTrigger("Start");
+      StartCoroutine(SonsCartes());
+   }
+
+
+   public IEnumerator SonsCartes()
+   {
+      yield return new WaitForSeconds(2f);
+      AudioManager.instance.PlaySound(AudioManager.instance.cardFlip, 1f);
+      
+      if(cardsUI1[0].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI1[0].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
+
+      if(cardsUI2[0].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI2[0].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
+      
+      yield return new WaitForSeconds(0.8f);
+      AudioManager.instance.PlaySound(AudioManager.instance.cardFlip, 1f);
+      
+      if(cardsUI1[1].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI1[1].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
+
+      if(cardsUI2[1].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI2[1].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
+      
+      yield return new WaitForSeconds(0.8f);
+      AudioManager.instance.PlaySound(AudioManager.instance.cardFlip, 1f);
+      
+      if(cardsUI1[2].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI1[2].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
+
+      if(cardsUI2[2].rarete == 1)  AudioManager.instance.PlaySound(AudioManager.instance.rareCard, 1f);
+      if(cardsUI2[2].rarete == 2)  AudioManager.instance.PlaySound(AudioManager.instance.epicCard, 1f);
    }
    
    
@@ -154,6 +189,7 @@ public class CardChoice : MonoBehaviour
          cardsID[i] = chosenItem.Id;
          cardsUI[i].face.sprite = chosenItem.carte;
          cardsUI[i].dos.sprite = chosenItem.dosCarte;
+         cardsUI[i].rarete = chosenItem.rarity;
       }
    }
 

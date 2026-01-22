@@ -75,7 +75,6 @@ public class PlacementSystem : MonoBehaviour
     
     public void StartPlacement(int ID)
     {
-        print(ID);
         
         StopPlacement();
         selectedObjectIndex = database.itemsData.FindIndex(x => x.Id == ID);
@@ -88,8 +87,8 @@ public class PlacementSystem : MonoBehaviour
             database.itemsData[selectedObjectIndex].Prefab,
             database.itemsData[selectedObjectIndex].Size);
 
-        Vector3 startPos = playerInputing.transform.position;
-        Vector3Int gridPos = grid.WorldToCell(startPos);
+        Vector3 gridCenter = gridBounds.center;
+        Vector3Int gridPos = grid.WorldToCell(gridCenter);
         Vector3 worldPos = grid.GetCellCenterWorld(gridPos);
 
         previewSystem.UpdatePosition(
@@ -102,38 +101,92 @@ public class PlacementSystem : MonoBehaviour
 
         playerInputing.IsReady = false;
         
-        
         playerInputing.OnClicked += PlaceStructure;
         playerInputing.OnExit += Validate;
     }
     
-    private void PlaceStructure()
-    {
-        Vector3 mousePosition = playerInputing.GetWorldAimPosition();
-        Vector3Int gridPosition = grid.WorldToCell(mousePosition);
-        
-        bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-        if (placementValidity == false) return;
-        
-        GameObject go = Instantiate(database.itemsData[selectedObjectIndex].Prefab);
-        Vector3 worldPosition = grid.GetCellCenterWorld(gridPosition);
-        go.transform.position = new Vector3(worldPosition.x, -0.5f, worldPosition.z);
-        
-        placedObjects.Add(go);
-        GridData selectedData = database.itemsData[selectedObjectIndex].Id == 0 ? floorData : furnitureData;
-        selectedData.AddObjectAt(gridPosition, 
-            database.itemsData[selectedObjectIndex].Size,
-            database.itemsData[selectedObjectIndex].Id,
-            placedObjects.Count - 1);
+private void PlaceStructure()
+{
+    Vector3 mousePosition = playerInputing.GetWorldAimPosition();
+    Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+    
+    bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
+    if (placementValidity == false) return;
+    
+    GameObject go = Instantiate(database.itemsData[selectedObjectIndex].Prefab);
+    Vector3 worldPosition = grid.GetCellCenterWorld(gridPosition);
+    go.transform.position = new Vector3(worldPosition.x, -0.5f, worldPosition.z);
+    
+    placedObjects.Add(go);
+    GridData selectedData = database.itemsData[selectedObjectIndex].Id == 0 ? floorData : furnitureData;
+    selectedData.AddObjectAt(gridPosition, 
+        database.itemsData[selectedObjectIndex].Size,
+        database.itemsData[selectedObjectIndex].Id,
+        placedObjects.Count - 1);
 
+    ItemsData data = database.itemsData[selectedObjectIndex];
+
+    if (data.Id >= 12 && data.Id <= 14)
+    {
+        // IMPORTANT : Stocker les enfants AVANT de les détacher
+        List<Transform> childrenToDetach = new List<Transform>();
+        
+        for (int i = 0; i < 3 && i < go.transform.childCount; i++)
+        {
+            childrenToDetach.Add(go.transform.GetChild(i));
+        }
+        
+        // Maintenant détacher et initialiser chaque enfant
+        foreach (Transform child in childrenToDetach)
+        {
+            Item itemPlaced = child.GetComponent<Item>();
+            
+            if (itemPlaced == null)
+            {
+                Debug.LogWarning($"Enfant {child.name} de {go.name} n'a pas de composant Item");
+                continue;
+            }
+            
+            // Détacher l'enfant du parent
+            child.SetParent(null);
+
+            itemPlaced.id = data.Id;
+            itemPlaced.enabled = false;
+            itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
+
+            selectedData.RegisterItemPosition(itemPlaced, gridPosition);
+
+            if (itemPlaced.playerOneProperty)
+            {
+                GameManager.instance.placedItemsP1.Add(itemPlaced);
+            }
+            else
+            {
+                GameManager.instance.placedItemsP2.Add(itemPlaced);
+            }
+            
+            GameManager.instance.AddItemInList(itemPlaced, gridPosition);
+        }
+        
+        // Détruire le parent vide maintenant que les enfants sont détachés
+        Destroy(go);
+    }
+    else
+    {
         Item itemPlaced = go.GetComponentInChildren<Item>();
-        ItemsData data = database.itemsData[selectedObjectIndex];
+        
+        if (itemPlaced == null)
+        {
+            Debug.LogError($"Aucun composant Item trouvé sur {go.name}");
+            return;
+        }
+
         itemPlaced.id = data.Id;
         itemPlaced.enabled = false;
         itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
 
         selectedData.RegisterItemPosition(itemPlaced, gridPosition);
-        
+
         if (itemPlaced.playerOneProperty)
         {
             GameManager.instance.placedItemsP1.Add(itemPlaced);
@@ -144,13 +197,14 @@ public class PlacementSystem : MonoBehaviour
         }
         
         GameManager.instance.AddItemInList(itemPlaced, gridPosition);
-        
-        currentItemToPlace = -1;
-        
-        previewSystem.UpdatePosition(gridPosition, false);
-
-        Validate();
     }
+    
+    currentItemToPlace = -1;
+    
+    previewSystem.UpdatePosition(gridPosition, false);
+
+    Validate();
+}
 
     public void PlaceStructureAt(ItemData itemData)
     {
@@ -161,13 +215,12 @@ public class PlacementSystem : MonoBehaviour
         }
 
         GameObject go = Instantiate(itemData.prefab);
-        go.transform.position = itemData.position; // utilise directement la position world
+        go.transform.position = itemData.position;
 
         placedObjects.Add(go);
 
         GridData selectedData = itemData.id == 0 ? floorData : furnitureData;
 
-        // Convertis seulement pour la grille si nécessaire
         Vector3Int gridPos = grid.WorldToCell(itemData.position);
         selectedData.AddObjectAt(gridPos, itemData.scale, itemData.id, placedObjects.Count - 1);
 

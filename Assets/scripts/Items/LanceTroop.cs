@@ -6,7 +6,7 @@ public class LanceTroop : Troop
     public GameObject throwBoulePrefab;
     public Transform throwPos;
 
-    public override void Attack()
+    protected override void Attack()
     {
         print("Attack lancer");
         StopAllCoroutines();

@@ -13,8 +13,8 @@ public class Troop : Item, ITargetable
     public float rotationSpeed = 10f;
     
     [Header("to fill")]
-    Bullet bulletPrefab;
-    Transform bulletSpawn;
+    protected Bullet bulletPrefab;
+    protected Transform bulletSpawn;
     
     [Header("Runtime")]
     protected bool isAttacking;
@@ -22,15 +22,15 @@ public class Troop : Item, ITargetable
     
     Animator animator;
 
-    GridManager gridManager;
+    protected GridManager gridManager;
 
-    List<Node> path = new();
-    Transform lastTarget;
-    float pathRefreshTimer;
+    protected List<Node> path = new();
+    protected Transform lastTarget;
+    protected float pathRefreshTimer;
 
     public bool alreadyTakeTP = false;
 
-    const float PATH_REFRESH_TIME = 0.5f;
+    protected const float PATH_REFRESH_TIME = 0.5f;
     
     public bool isFrozen;
     public bool isPoisened;
@@ -38,9 +38,9 @@ public class Troop : Item, ITargetable
     public new bool IsMovementTarget => true;
     public new bool CanBeAttacked => true;
     
-    Vector3 lastPosition;
-    Vector3 velocity;
-    bool isMoving;
+    public Vector3 lastPosition;
+    public Vector3 velocity;
+    public bool isMoving;
     
     void OnEnable()
     {
@@ -64,9 +64,12 @@ public class Troop : Item, ITargetable
         animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (isFrozen)
+            return;
+
+        if(isAttacking)
             return;
     
         if (!enabled || !gridManager)
@@ -105,7 +108,7 @@ public class Troop : Item, ITargetable
             return;
         }
     
-        if (target.TryGetComponent<ITargetable>(out var t))
+        if (target.TryGetComponent<Item>(out var t))
         {
             float dist = Vector3.Distance(transform.position, target.position);
             if (dist <= RadiusAttack && t.CanBeAttacked)
@@ -122,6 +125,27 @@ public class Troop : Item, ITargetable
                 return;
             }
         }
+        else
+        {
+                
+        if (target.TryGetComponent<Nexus>(out var n))
+        {
+            float dist = Vector3.Distance(transform.position, target.position);
+            if (dist <= RadiusAttack && n.CanBeAttacked)
+            {
+
+                isAttacking = true;
+                animator.ResetTrigger("Throw");
+                animator.SetBool("Walk", false);
+                animator.SetTrigger("Throw");
+            
+                Vector3 directionToTarget = (target.position - transform.position);
+                directionToTarget.y = 0;
+                RotateTowards(directionToTarget);
+                return;
+            }
+        }
+        }
     
         if (path.Count > 0)
         {
@@ -129,7 +153,7 @@ public class Troop : Item, ITargetable
         }
     }
     
-    void RotateTowards(Vector3 direction)
+    protected void RotateTowards(Vector3 direction)
     {
         if (direction.sqrMagnitude < 0.001f)
             return;
@@ -142,7 +166,12 @@ public class Troop : Item, ITargetable
         );
     }
 
-    public virtual void Attack()
+    public void AttackEvent()
+    {
+        Attack();
+    }
+
+    protected virtual void Attack()
     {
         print("Attack normal");
 
@@ -186,7 +215,7 @@ public class Troop : Item, ITargetable
     }
 
 
-    void Chase()
+    protected void Chase()
     {
         if (path == null || path.Count == 0)
         {
@@ -197,6 +226,9 @@ public class Troop : Item, ITargetable
         isMoving = true;
 
         Vector3 nextPos = path[0].worldPosition;
+
+        nextPos.y = -0.5f;
+
         Vector3 moveDir = (nextPos - transform.position).normalized;
 
         RotateTowards(moveDir);
@@ -388,6 +420,9 @@ public class Troop : Item, ITargetable
             lastTarget = target;
         }
     }
+
+
+
     
     void OnDrawGizmos()
     {
