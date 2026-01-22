@@ -682,8 +682,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         
         LoadAfterSceneChange();
-
-        stateMachine.ChangeState(GameSate.Reward);
     }
     
     public void ResetGame()
