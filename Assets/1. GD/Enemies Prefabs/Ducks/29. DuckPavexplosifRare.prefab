@@ -244,12 +244,13 @@ MonoBehaviour:
   PV: 0
   maxPV: 0
   currentHP: {fileID: 7453980253436979852}
-  damage: 50
+  damage: 300
   detectionZone: 1.5
   explosionZone: 2
   modelRenderer: {fileID: 4957528276006046352}
   matDefault: {fileID: 2100000, guid: 2638f0eba705d8f4f9e7281e6a914fe9, type: 2}
   matExplose: {fileID: 2100000, guid: af5d4ed78663fd1429bcd1ec7c9146e1, type: 2}
+  explosionEffect: {fileID: 848816198885713172, guid: eb87983a213563b41b66c46c89fdd5cd, type: 3}
 --- !u!135 &650962889391542635
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -332,6 +333,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -353,9 +356,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8451714101319778685
 GameObject:
@@ -446,7 +451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bce20f9d099163443b0eef9e805ff3ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.167
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bce20f9d099163443b0eef9e805ff3ba, type: 3}
       propertyPath: m_LocalPosition.z

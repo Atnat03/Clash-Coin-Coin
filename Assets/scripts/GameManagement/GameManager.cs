@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -249,7 +250,11 @@ public class GameManager : MonoBehaviour
 
         SaveBeforeSceneChange();
 
-        string sceneName = miniGames[Random.Range(0, miniGames.Length - 1)];
+        int i = UnityEngine.Random.Range(0, miniGames.Length);
+
+        print(i);
+
+        string sceneName = miniGames[i];
         SceneManager.LoadScene(sceneName);
     }
     
@@ -257,7 +262,7 @@ public class GameManager : MonoBehaviour
     {
         if (isAllPlayerReadyToFight())
         {
-            stateMachine.ChangeState(GameSate.Combat);
+            //stateMachine.ChangeState(GameSate.Combat);
         }
     }
     
@@ -364,11 +369,15 @@ public class GameManager : MonoBehaviour
     
     #region RewardState
 
+    public Action OnComeBack;
+
     void RewardEnter()
     {
         Debug.Log("Enter Reward");
 
         VariablesManager.instance.logoState.sprite = VariablesManager.instance.rewardSprite;
+
+        OnComeBack?.Invoke();
         
         CardChoice.instance.ResolveMiniGameResults(player_1_Score, player_2_Score);
     }
@@ -396,65 +405,84 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Sauvegarde des items avant changement de scène");
         
+        placedItemsP1.RemoveAll(item => item == null);
+        placedItemsP2.RemoveAll(item => item == null);
         
         UpdateItemDataFromPlacedItems();
         
         SaveSystem.instance.SaveGame();
-    }
-    
+    }    
     
     private void UpdateItemDataFromPlacedItems()
+{
+    // VIDER ET RECONSTRUIRE COMPLÈTEMENT
+    itemPlacedDataP1.Clear();
+    itemPlacedDataP2.Clear();
+    
+    // Pour P1
+    foreach (Item item in placedItemsP1)
     {
-        // Pour P1
-        for (int i = 0; i < placedItemsP1.Count; i++)
+        if (item == null) continue;
+
+        ItemData data = new ItemData();
+        data.id = item.id;
+        data.name = item.name;
+        data.PV = item.PV;
+        data.maxPV = item.maxPV;
+        data.playerOneProperty = item.playerOneProperty;
+        data.position = item.transform.position;
+        
+        // Récupérer prefab et scale depuis la database
+        ItemSO database = VariablesManager.instance.placementSystems[0].database;
+        var itemInfo = database.itemsData.Find(x => x.Id == item.id);
+        if (itemInfo != null)
         {
-            Item item = placedItemsP1[i];
-            if (item == null) continue;
-
-            ItemData data;
-            if (i < itemPlacedDataP1.Count)
-            {
-                data = itemPlacedDataP1[i];
-            }
-            else
-            {
-                data = new ItemData();
-                itemPlacedDataP1.Add(data);
-            }
-
-            data.id = item.id;
-            data.name = item.name;
-            data.PV = item.PV;
-            data.maxPV = item.maxPV;
-            data.playerOneProperty = item.playerOneProperty;
-            data.position = item.transform.position;
+            data.scale = itemInfo.Size;
+            data.prefab = itemInfo.Prefab;
+        }
+        
+        // Sauvegarder alreadyTakeTP pour les troupes
+        if (item is Troop troop)
+        {
+            data.alreadyTakeTP = troop.alreadyTakeTP;
         }
 
-        // Pour P2
-        for (int i = 0; i < placedItemsP2.Count; i++)
-        {
-            Item item = placedItemsP2[i];
-            if (item == null) continue;
-
-            ItemData data;
-            if (i < itemPlacedDataP2.Count)
-            {
-                data = itemPlacedDataP2[i];
-            }
-            else
-            {
-                data = new ItemData();
-                itemPlacedDataP2.Add(data);
-            }
-
-            data.id = item.id;
-            data.name = item.name;
-            data.PV = item.PV;
-            data.maxPV = item.maxPV;
-            data.playerOneProperty = item.playerOneProperty;
-            data.position = item.transform.position;
-        }
+        itemPlacedDataP1.Add(data);
     }
+
+    // Pour P2
+    foreach (Item item in placedItemsP2)
+    {
+        if (item == null) continue;
+
+        ItemData data = new ItemData();
+        data.id = item.id;
+        data.name = item.name;
+        data.PV = item.PV;
+        data.maxPV = item.maxPV;
+        data.playerOneProperty = item.playerOneProperty;
+        data.position = item.transform.position;
+        
+        // Récupérer prefab et scale depuis la database
+        ItemSO database = VariablesManager.instance.placementSystems[1].database;
+        var itemInfo = database.itemsData.Find(x => x.Id == item.id);
+        if (itemInfo != null)
+        {
+            data.scale = itemInfo.Size;
+            data.prefab = itemInfo.Prefab;
+        }
+        
+        // Sauvegarder alreadyTakeTP pour les troupes
+        if (item is Troop troop)
+        {
+            data.alreadyTakeTP = troop.alreadyTakeTP;
+        }
+
+        itemPlacedDataP2.Add(data);
+    }
+    
+    Debug.Log($"Sauvegarde mise à jour - P1: {itemPlacedDataP1.Count} items, P2: {itemPlacedDataP2.Count} items");
+}
     
     public void LoadAfterSceneChange()
     {

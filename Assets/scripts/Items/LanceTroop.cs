@@ -6,7 +6,7 @@ public class LanceTroop : Troop
     public GameObject throwBoulePrefab;
     public Transform throwPos;
 
-    public override void Attack()
+    protected override void Attack()
     {
         print("Attack lancer");
         StopAllCoroutines();
@@ -26,16 +26,7 @@ public class LanceTroop : Troop
         if (b != null)
         {
             Vector3 targetPos = target.position;
-
-            ITargetable targetItem = target.GetComponent<ITargetable>();
-            if (targetItem != null)
-            {
-                b.Throw(throwPos.position, targetPos, playerOneProperty, Damage, GetComponent<Collider>());
-            }
-            else
-            {
-                Debug.LogWarning("La target n'a pas de composant Item");
-            }
+            b.Throw(throwPos.position, targetPos, playerOneProperty, Damage, GetComponent<Collider>());
         }
         else
         {

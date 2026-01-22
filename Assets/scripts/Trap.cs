@@ -12,6 +12,7 @@ public class Trap : Build
     public Renderer modelRenderer;
     public Material matDefault;
     public Material matExplose;
+    public ParticleSystem explosionEffect;
     
     public Trap(int id, string name, float maxPV) : base(id, name, maxPV)
     {
@@ -33,7 +34,7 @@ public class Trap : Build
             if (hit.GetComponent<Troop>() != null)
             {
                 Debug.Log("TriggerExplosion");
-                alreadyTriggered = true; 
+                alreadyTriggered = true;
                 Explosed();
                 break;
             }
@@ -52,6 +53,8 @@ public class Trap : Build
             if (troop != null && playerOneProperty != troop.playerOneProperty)
             {
                 print("touché une troupe");
+
+                Instantiate(explosionEffect, transform.position + Vector3.up * 0.5f, Quaternion.identity);
                 
                 troop.TakeDamage(damage);
                 

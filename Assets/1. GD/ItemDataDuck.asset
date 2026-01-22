@@ -18,7 +18,7 @@ MonoBehaviour:
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 4a6ae935fc275fa4883018674135fab8, type: 3}
     carte: {fileID: 21300000, guid: bb935f988e717334e9144468a392bb53, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 1
     Name: Tank
@@ -32,194 +32,173 @@ MonoBehaviour:
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 3ddc50515f17d2a4688c7b329e110295, type: 3}
     carte: {fileID: 21300000, guid: 889ad3dfd74b6c44bb256160e1dba584, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2
   - Id: 3
     Name: Guerrier
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     carte: {fileID: 21300000, guid: 86740ebfd02b82c43a82e8601073b428, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 4
     Name: Guerrier
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 97aa9e119ab0b5f47a633a83e1bf363d, type: 3}
     carte: {fileID: 21300000, guid: b0e416206bdc3fc489fab98e16e41f05, type: 3}
-    dosCarte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
     rarity: 1
   - Id: 5
     Name: Guerrier
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: a1bb413a99e05624180d8ca98fa861de, type: 3}
     carte: {fileID: 21300000, guid: 518d2c4c03609064c8a1c6afe19c4952, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2
   - Id: 6
     Name: Bouliste
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 77e5195fe210d524893363bda84f4448, type: 3}
     carte: {fileID: 21300000, guid: 79835f6d95107fd4c877d8a673dec4fd, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 7
     Name: Bouliste
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 3b032efc425954e42bedca6fe3e17b30, type: 3}
     carte: {fileID: 21300000, guid: 244f4a3fb4823034dac325141dedddab, type: 3}
-    dosCarte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
     rarity: 1
   - Id: 8
     Name: Bouliste
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: eee119877613c01428187258f3c1ffa2, type: 3}
     carte: {fileID: 21300000, guid: d0b364a6c6142204b961ffee41891c58, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2
   - Id: 9
     Name: Lobber
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 5784e50134b1a384394330c49bf4501a, type: 3}
     carte: {fileID: 21300000, guid: 7fcc47a451fea8546b256910cc367fea, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 10
     Name: Lobber
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 46186fe7e0eb43f4b9352d153eec2dd3, type: 3}
     carte: {fileID: 21300000, guid: 1ba323ba86a58de45a2836bd166a8231, type: 3}
-    dosCarte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
     rarity: 1
   - Id: 11
     Name: Lobber
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 5cd48abff16db0b419a712ec56279a3a, type: 3}
     carte: {fileID: 21300000, guid: 32cf9c445f7148f4e9d7f87c02e564ba, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2
   - Id: 12
     Name: "Pav\xE9coliers (3)"
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 5dc945c54406a0d429022c0a3c8b7391, type: 3}
     carte: {fileID: 21300000, guid: cc28a10a942b5944cb9a48004431ea5e, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 13
     Name: "Pav\xE9coliers (3)"
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: b9aa7b2747dae2047ab180427000dc61, type: 3}
     carte: {fileID: 21300000, guid: f4354b5d20a291f4c913660b14f1e9b7, type: 3}
-    dosCarte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
     rarity: 1
   - Id: 14
     Name: "Pav\xE9coliers (3)"
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: a6d5741ec827e7b4996913512fdb8645, type: 3}
     carte: {fileID: 21300000, guid: b6a2cbc82038db6489cbbcf77aacbe73, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
-    rarity: 2
-  - Id: 15
-    Name: "Pav\xE9coliers (5)"
-    Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 075bbd35a9ea3b8468670df243ce8400, type: 3}
-    carte: {fileID: 21300000, guid: 04c10c8a220f6cb44ad4f19220b341b9, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
-    rarity: 0
-  - Id: 16
-    Name: "Pav\xE9coliers (5)"
-    Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 0c9bdfffe8cdc08499331b37e0926dd7, type: 3}
-    carte: {fileID: 21300000, guid: 886b72554c842f9439b6a7d6e53af4e6, type: 3}
-    dosCarte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
-    rarity: 1
-  - Id: 17
-    Name: "Pav\xE9coliers (5)"
-    Size: {x: 1, y: 1}
-    Prefab: {fileID: 2564806622089340945, guid: 17435315b270af74488f00e6cdf9dfec, type: 3}
-    carte: {fileID: 21300000, guid: 137da4f1fbf57b24b9ff771f4cb007ea, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2
   - Id: 18
     Name: Glaceur
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: d8769bbedbb67e049acfbfd346c197ed, type: 3}
-    carte: {fileID: 21300000, guid: cdeb507c549019348b2d7fb7b92b7c01, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    carte: {fileID: 21300000, guid: 871342213a63e924ba8efe8f302c9f9d, type: 3}
+    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 19
     Name: Glaceur
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 4c512e2cb2a811d4ca6db4538b3c433e, type: 3}
-    carte: {fileID: 21300000, guid: bcd64e96ac94a5946a32315d3d24b2a7, type: 3}
-    dosCarte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    carte: {fileID: 21300000, guid: b6414bfc87d915f4f80910ed73321aee, type: 3}
+    dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
     rarity: 1
   - Id: 20
     Name: Glaceur
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: dfae96b6ea9870e4fb9cdf011eb305c8, type: 3}
-    carte: {fileID: 21300000, guid: f2a182a56a8db7342b486c750d7e3628, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    carte: {fileID: 21300000, guid: 4c184c93ed6156e4bbc72f392cbd359b, type: 3}
+    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2
   - Id: 21
     Name: Empoisonneur
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: f2be251d227ab0241af4fd1a367db544, type: 3}
-    carte: {fileID: 21300000, guid: 9bf4c09b35c7fc64790e004b29e72e06, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    carte: {fileID: 21300000, guid: 7b6324f9a723acf4280ae4235e492410, type: 3}
+    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 22
     Name: Empoisonneur
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 86a756523678695429d05b3d58754d50, type: 3}
-    carte: {fileID: 21300000, guid: c6633a3d5a7a2d041bf10641b8dd5fab, type: 3}
-    dosCarte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    carte: {fileID: 21300000, guid: 76dee9ce99546454280b4b605ec3a6cb, type: 3}
+    dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
     rarity: 1
   - Id: 23
     Name: Empoisonneur
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 6ccd233df15adaa4ca8872bab753781a, type: 3}
-    carte: {fileID: 21300000, guid: 178058ebd831d184d8a65283147ae376, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    carte: {fileID: 21300000, guid: 1b2cdd3cbd4384c4286b5ca264b4ae32, type: 3}
+    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2
   - Id: 24
     Name: "Pav\xE9xplosif"
     Size: {x: 1, y: 1}
     Prefab: {fileID: 7262453442348865695, guid: 636835af718823a40a2036a5cfcd4b09, type: 3}
     carte: {fileID: 21300000, guid: 0dc9da994d556de4b8f36562639fb09b, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 25
     Name: "Pav\xE9xplosif"
     Size: {x: 1, y: 1}
     Prefab: {fileID: 7262453442348865695, guid: d9b643f5844032c4bbc40dcc42ee0bcf, type: 3}
     carte: {fileID: 21300000, guid: 7868fb55dfc912d4e9812990446720c6, type: 3}
-    dosCarte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
     rarity: 1
   - Id: 26
     Name: "Pav\xE9xplosif"
     Size: {x: 1, y: 1}
     Prefab: {fileID: 7262453442348865695, guid: 0516cf8a212fc1a4d87111579bd5dfdf, type: 3}
     carte: {fileID: 21300000, guid: 121fdc66829445048a670b874ffb894b, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2
   - Id: 27
     Name: "Lance-Pav\xE9"
     Size: {x: 1, y: 1}
     Prefab: {fileID: 7136807689920212623, guid: 3084dee14acda934bbd60b4fc2046a3d, type: 3}
     carte: {fileID: 21300000, guid: 3490a3335d25e9049ab55e9824487f35, type: 3}
-    dosCarte: {fileID: 21300000, guid: 10e5d8878da2f274d82767749e201a29, type: 3}
+    dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 28
     Name: "Lance-Pav\xE9"
     Size: {x: 1, y: 1}
     Prefab: {fileID: 7136807689920212623, guid: 16a43e1d8f162e147b7f3b40214970c6, type: 3}
     carte: {fileID: 21300000, guid: 812705917438fba4580aa3e09982ae62, type: 3}
-    dosCarte: {fileID: 21300000, guid: eea9e61a3396df24088f1a41b76ada9f, type: 3}
+    dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
     rarity: 1
   - Id: 29
     Name: "Lance-Pav\xE9"
     Size: {x: 1, y: 1}
     Prefab: {fileID: 7136807689920212623, guid: ebf2a0e5e4550e54d936d9566845d416, type: 3}
     carte: {fileID: 21300000, guid: ba4af1d54cad3df46a6657a0a70a000f, type: 3}
-    dosCarte: {fileID: 21300000, guid: b448d232bf6ae3c489e8936117811c49, type: 3}
+    dosCarte: {fileID: 21300000, guid: 88aa10adea28fb4479c10f1977fe6f9e, type: 3}
     rarity: 2

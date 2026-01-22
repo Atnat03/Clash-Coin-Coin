@@ -19,7 +19,9 @@ public class UIManager : MonoBehaviour
     }
 
     [Header("Combat")]
-    public Text timerCombat;
+    public GameObject timerCombat;
+    public Image logo;
+    public Sprite[] spritesTimer;
 
     private void Start()
     {
@@ -28,12 +30,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateCombatUI(int combat)
     {
-        timerCombat.text = combat.ToString();
+        logo.sprite = spritesTimer[combat];
     }
 
     public void HideCombatUI(bool state)
     {
-        if(timerCombat != null)
-            timerCombat.gameObject.SetActive(state);
+        timerCombat.gameObject.SetActive(state);
     }
 }
