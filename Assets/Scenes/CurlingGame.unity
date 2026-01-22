@@ -1818,9 +1818,9 @@ MonoBehaviour:
   powerAmount: 0
   score: 0
   played: 0
-  clickSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 4dafb2bffae8be64ca2d8ad0980ff98f, type: 3}
   volume: 0
-  SFXSource: {fileID: 0}
+  SFXSource: {fileID: 952050299}
   powerMultiplyFactor: 15
 --- !u!4 &303656777
 Transform:
@@ -8404,9 +8404,9 @@ MonoBehaviour:
   powerAmount: 0
   score: 0
   played: 0
-  clickSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 4dafb2bffae8be64ca2d8ad0980ff98f, type: 3}
   volume: 0
-  SFXSource: {fileID: 0}
+  SFXSource: {fileID: 952050299}
   powerMultiplyFactor: 15
 --- !u!4 &1577029881
 Transform:
