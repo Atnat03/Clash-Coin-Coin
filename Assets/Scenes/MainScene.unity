@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TP_Troop
   destination: {fileID: 1951186419}
-  offset: {x: -1, y: 0, z: 0}
+  offset: {x: -1, y: -0.5, z: 0}
   isPlayer1: 1
 --- !u!54 &22263875
 Rigidbody:
@@ -9078,7 +9078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TP_Troop
   destination: {fileID: 1269287334}
-  offset: {x: -1, y: 0, z: 0}
+  offset: {x: -1, y: -0.5, z: 0}
   isPlayer1: 1
 --- !u!54 &1143652524
 Rigidbody:
@@ -10198,7 +10198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TP_Troop
   destination: {fileID: 1143652521}
-  offset: {x: 1, y: 0, z: 0}
+  offset: {x: 1, y: -0.5, z: 0}
   isPlayer1: 0
 --- !u!54 &1269287337
 Rigidbody:
@@ -13387,7 +13387,7 @@ Transform:
   m_GameObject: {fileID: 1678320115}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.93, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14128,7 +14128,7 @@ Transform:
   m_GameObject: {fileID: 1790214080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.98, y: -0.054999977, z: 2.45531}
+  m_LocalPosition: {x: 12.98, y: -0.18499997, z: 2.45531}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -15293,7 +15293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TP_Troop
   destination: {fileID: 22263872}
-  offset: {x: 1, y: 0, z: 0}
+  offset: {x: 1, y: -0.5, z: 0}
   isPlayer1: 0
 --- !u!54 &1951186422
 Rigidbody:
@@ -15545,7 +15545,7 @@ Transform:
   m_GameObject: {fileID: 2008395265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.65897, y: 0.29000002, z: 2.42386}
+  m_LocalPosition: {x: 0.65897, y: 0.16000003, z: 2.42386}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16790,7 +16790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618837515893316634, guid: 308fb2347ea2b194fafbf7091fc147b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: 0.02000001
       objectReference: {fileID: 0}
     - target: {fileID: 1618837515893316634, guid: 308fb2347ea2b194fafbf7091fc147b8, type: 3}
       propertyPath: m_LocalPosition.z

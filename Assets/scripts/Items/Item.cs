@@ -45,9 +45,7 @@ public abstract class Item : MonoBehaviour
     {
         PV -= damage;
         print(transform.name + "  take damage :" + damage);
-        
-        print(maxPV);
-        
+                
         currentHP.fillAmount = PV / maxPV;
         
         if (PV <= 0)
