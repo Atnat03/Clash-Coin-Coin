@@ -54,7 +54,7 @@ public class Trap : Build
             {
                 print("touché une troupe");
 
-                Instantiate(explosionEffect, troop.transform.position + Vector3.up * 0.5f, Quaternion.identity);
+                Instantiate(explosionEffect, transform.position + Vector3.up * 0.5f, Quaternion.identity);
                 
                 troop.TakeDamage(damage);
                 
