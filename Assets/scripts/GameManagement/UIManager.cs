@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
 
     public void HideCombatUI(bool state)
     {
-        timerCombat.gameObject.SetActive(state);
+        if(timerCombat != null)
+            timerCombat.gameObject.SetActive(state);
     }
 }
