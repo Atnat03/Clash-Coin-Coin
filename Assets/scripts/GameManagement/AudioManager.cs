@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip rareCard;
     public AudioClip epicCard;
     public AudioClip attackUnit;
+    public AudioClip tutoCard;
 
     void Awake()
     {
