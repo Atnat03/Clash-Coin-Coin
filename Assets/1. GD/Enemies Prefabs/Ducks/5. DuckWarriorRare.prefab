@@ -56,8 +56,8 @@ MonoBehaviour:
   currentHP: {fileID: 8103242198617991682}
   Speed: 2
   RadiusAttack: 1
-  Damage: 225
-  attackCooldown: 1
+  Damage: 90
+  attackCooldown: 2
   rotationSpeed: 10
   target: {fileID: 0}
   alreadyTakeTP: 0
