@@ -37,6 +37,7 @@ public class MashingGameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(StartGameCoroutine());
+        AudioManager.instance.PlayRandomMusic();
     }
     
     public IEnumerator StartGameCoroutine()
