@@ -8,6 +8,8 @@ public class LanceTroop : Troop
 
     protected override void Attack()
     {
+        AudioManager.instance.PlaySoundRandowPitch(AudioManager.instance.attackUnit,1.1f);
+
         print("Attack lancer");
         //StopAllCoroutines();
         StartCoroutine(Attacking());

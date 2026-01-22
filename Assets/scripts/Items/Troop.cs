@@ -190,6 +190,7 @@ public class Troop : Item, ITargetable
     protected virtual void Attack()
     {
         print("Attack normal");
+        AudioManager.instance.PlaySoundRandowPitch(AudioManager.instance.attackUnit,1.1f);
 
         print(target.transform.name + " in range, attack! : " + target.GetComponent<ITargetable>().CanBeAttacked);
     

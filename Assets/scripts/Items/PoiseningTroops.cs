@@ -9,7 +9,8 @@ public class PoiseningTroops : Troop
     protected override void Attack()
     {
         print("Attack normal");
-    
+        AudioManager.instance.PlaySoundRandowPitch(AudioManager.instance.attackUnit,1.1f);
+
         if (target && target.TryGetComponent<ITargetable>(out var t) && t.CanBeAttacked)
         {
             if (t is Troop troop)
