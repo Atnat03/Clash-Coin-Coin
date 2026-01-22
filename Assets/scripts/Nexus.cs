@@ -68,14 +68,14 @@ public class Nexus : MonoBehaviour, ITargetable
         }    
     }
 
-    public Animator animEnd;
-    public GameObject screen;
+    //public Animator animEnd;
+    //public GameObject screen;
 
     private void Die()
     {
-        Time.timeScale = 0;
-        screen.SetActive(true);
-        animEnd.SetTrigger("End");
+        //Time.timeScale = 0;
+        //screen.SetActive(true);
+        //animEnd.SetTrigger("End");
     }
 
     public bool CanBeAttacked => true;
