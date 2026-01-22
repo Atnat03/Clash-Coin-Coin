@@ -37,13 +37,14 @@ public class MashingGameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(StartGameCoroutine());
+        AudioManager.instance.PlayRandomMusic();
     }
     
     public IEnumerator StartGameCoroutine()
     {
         someoneWon = false;
         yield return new WaitForSeconds(0.1f);
-        AudioManager.instance.PlaySound(AudioManager.instance.startSound);
+        AudioManager.instance.PlaySound(AudioManager.instance.startSound,0.8f);
         yield return new WaitForSeconds(3.2f);
         
         cooldownBar.gameObject.SetActive(true);
