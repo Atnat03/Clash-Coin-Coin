@@ -86,8 +86,8 @@ MonoBehaviour:
   lastPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   isMoving: 0
-  poisonDamage: 0
-  poisonDuration: 0
+  poisonDamage: 20
+  poisonDuration: 5
 --- !u!114 &2717094984445890024
 MonoBehaviour:
   m_ObjectHideFlags: 0

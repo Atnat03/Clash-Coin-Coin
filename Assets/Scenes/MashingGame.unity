@@ -264,7 +264,7 @@ MonoBehaviour:
   ratioPallier2: 0.82
   roueBike: {fileID: 1199341264}
   clickSound: {fileID: 8300000, guid: 709a5db691486d2428da4f60a0519c20, type: 3}
-  volume: 0.9
+  volume: 0.8
   SFXSource: {fileID: 1633614566}
   animButton: {fileID: 145645825}
   pompe: {fileID: 369406004}
