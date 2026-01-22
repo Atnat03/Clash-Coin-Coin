@@ -1,18 +1,18 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TP_Troop : MonoBehaviour, ITargetable
 {
     public Transform destination;
-
-    private Troop currentTroop;
     public Vector3 offset;
-    
-    public bool isPlayer1 = false;
 
+    public bool isPlayer1 = false;
     public bool IsMovementTarget => false;
-    
+
+    private Queue<Troop> waitingTroops = new Queue<Troop>();
+    private bool isTeleporting = false;
+
     private void Start()
     {
         playerOneProperty = isPlayer1;
@@ -20,58 +20,84 @@ public class TP_Troop : MonoBehaviour, ITargetable
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Troop>() && other.GetComponent<Troop>().enabled && other.GetComponent<Troop>().playerOneProperty != playerOneProperty)
-        {
-            currentTroop = other.GetComponent<Troop>();
-            StartCoroutine(TP());
-        }
+        if (!other.TryGetComponent<Troop>(out Troop troop))
+            return;
+
+        if (!troop.enabled)
+            return;
+
+        if (troop.playerOneProperty == playerOneProperty)
+            return;
+
+        if (troop.alreadyTakeTP)
+            return;
+
+        if (waitingTroops.Contains(troop))
+            return;
+
+        waitingTroops.Enqueue(troop);
+
+        if (!isTeleporting)
+            StartCoroutine(ProcessQueue());
     }
 
-    IEnumerator TP()
+    IEnumerator ProcessQueue()
     {
-        currentTroop.isFrozen = true;
+        isTeleporting = true;
+
+        while (waitingTroops.Count > 0)
+        {
+            Troop currentTroop = waitingTroops.Dequeue();
+
+            if (currentTroop == null || !currentTroop.enabled)
+                continue;
+
+            yield return StartCoroutine(TeleportTroop(currentTroop));
+        }
+
+        isTeleporting = false;
+    }
+
+    IEnumerator TeleportTroop(Troop troop)
+    {
+        troop.isFrozen = true;
 
         float t = 0f;
         float duration = 0.25f;
 
-        // Disparaît
-        while (t <= duration)
+        Vector3 startScale = troop.transform.localScale;
+
+        while (t < duration)
         {
-            currentTroop.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t / duration);
+            troop.transform.localScale =
+                Vector3.Lerp(startScale, Vector3.zero, t / duration);
             t += Time.deltaTime;
             yield return null;
         }
 
-        // Déplacement
-        currentTroop.transform.position = destination.position + offset;
+        troop.transform.localScale = Vector3.zero;
+
+        troop.transform.position = destination.position + offset;
 
         t = 0f;
 
-        // Réapparition
-        while (t <= duration)
+        while (t < duration)
         {
-            currentTroop.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t / duration);
+            troop.transform.localScale =
+                Vector3.Lerp(Vector3.zero, startScale, t / duration);
             t += Time.deltaTime;
             yield return null;
         }
 
-        currentTroop.transform.localScale = Vector3.one;
-        
-        print(currentTroop.target);
-    
-        currentTroop.isFrozen = false;
-        currentTroop.alreadyTakeTP = true;
+        troop.transform.localScale = startScale;
 
-        currentTroop.ForceRecalculatePath(ignoreLastTarget: true);
-
+        troop.isFrozen = false;
+        troop.alreadyTakeTP = true;
+        troop.ForceRecalculatePath(ignoreLastTarget: true);
     }
 
     public bool playerOneProperty { get; set; }
-    public void TakeDamage(float damage)
-    { }
-
-    public void GetPoisoned(float duration, float damage)
-    { }
-    
     public bool CanBeAttacked => false;
+    public void TakeDamage(float damage) { }
+    public void GetPoisoned(float duration, float damage) { }
 }
