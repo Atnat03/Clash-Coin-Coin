@@ -69,6 +69,9 @@ public class TP_Troop : MonoBehaviour, ITargetable
 
         while (t < duration)
         {
+            if(troop == null)
+                yield break;
+            
             troop.transform.localScale =
                 Vector3.Lerp(startScale, Vector3.zero, t / duration);
             t += Time.deltaTime;
@@ -83,6 +86,9 @@ public class TP_Troop : MonoBehaviour, ITargetable
 
         while (t < duration)
         {
+            if(troop == null)
+                yield break;
+            
             troop.transform.localScale =
                 Vector3.Lerp(Vector3.zero, startScale, t / duration);
             t += Time.deltaTime;
