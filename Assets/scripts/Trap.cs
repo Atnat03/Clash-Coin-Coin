@@ -57,8 +57,6 @@ public class Trap : Build
                 Instantiate(explosionEffect, transform.position + Vector3.up * 0.5f, Quaternion.identity);
                 
                 troop.TakeDamage(damage);
-                
-                break;
             }
         }
         

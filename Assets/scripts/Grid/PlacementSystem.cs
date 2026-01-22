@@ -282,6 +282,15 @@ private void PlaceStructure()
     {
         StopPlacement();
         playerInputing.IsReady = true;
+
+        List<Item> itemsToRegister = isDuckPlayer ? GameManager.instance.placedItemsP1 : GameManager.instance.placedItemsP2;
+
+        foreach (Item item in itemsToRegister)
+        {
+            if(item is Troop troop)
+                troop.GetComponent<AnimFlip>().TriggerAnim();
+        }
+
         uiReady.SetActive(true);
     }
 

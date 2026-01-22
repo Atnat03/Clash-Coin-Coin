@@ -583,7 +583,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: marteltez le bouton A
+  m_text: martelez le bouton A !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35e823b6b793d144a8cc788b5087219b, type: 2}
   m_sharedMaterial: {fileID: -8287323102424376776, guid: 35e823b6b793d144a8cc788b5087219b, type: 2}
@@ -7926,6 +7926,13 @@ MonoBehaviour:
   miniGame: {fileID: 8300000, guid: 7977d08956b8dbd48b85a7ce1e743149, type: 3}
   startSound: {fileID: 8300000, guid: f16ff34de42fbbb4c9336d253448215e, type: 3}
   endSound: {fileID: 8300000, guid: ced6ce3c500383c43bed4d3af26bc7d6, type: 3}
+  cardFlip: {fileID: 0}
+  rareCard: {fileID: 0}
+  epicCard: {fileID: 0}
+  attackUnit: {fileID: 0}
+  tutoCard: {fileID: 0}
+  buttonPressed: {fileID: 0}
+  gongStart: {fileID: 0}
 --- !u!4 &1932399902
 Transform:
   m_ObjectHideFlags: 0

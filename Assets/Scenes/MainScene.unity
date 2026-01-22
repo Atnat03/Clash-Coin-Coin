@@ -3294,8 +3294,8 @@ MonoBehaviour:
   nexus:
   - {fileID: 0}
   - {fileID: 0}
-  duckItemDatabase: {fileID: 11400000, guid: 62ee383d7bdac254284954c27fc178f5, type: 2}
-  frogItemDatabase: {fileID: 11400000, guid: e736fc46b12a86c438d4f87eaed92157, type: 2}
+  duckItemDatabase: {fileID: 11400000, guid: e736fc46b12a86c438d4f87eaed92157, type: 2}
+  frogItemDatabase: {fileID: 11400000, guid: 62ee383d7bdac254284954c27fc178f5, type: 2}
   rewardSprite: {fileID: 21300000, guid: 06b0fc3876ca5f94ebadb1b069bdba44, type: 3}
   placementSprite: {fileID: 21300000, guid: 195058c591a2fc841b786584072f43ef, type: 3}
   combatSprite: {fileID: 21300000, guid: 359029f1ab6370b4b9a65c3cd9391a3d, type: 3}
@@ -11880,7 +11880,7 @@ PrefabInstance:
     - target: {fileID: 7051095122286034385, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: eventSystem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 357036397}
     - target: {fileID: 7159223110169897000, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: m_Name
       value: TutoCanva
@@ -13315,13 +13315,14 @@ MonoBehaviour:
   - MashingGame
   - QTEGame
   - metronomeScene
+  - CurlingGame
   player_1_Score: -1
   player_2_Score: -1
   troopPrefabsP1: []
   troopPrefabsP2: []
-  PVNexus_P1: 200
+  PVNexus_P1: 2000
   maxPVNexus_P1: 0
-  PVNexus_P2: 200
+  PVNexus_P2: 2000
   maxPVNexus_P2: 0
   CombatDuration: 10
 --- !u!1001 &1568383216
