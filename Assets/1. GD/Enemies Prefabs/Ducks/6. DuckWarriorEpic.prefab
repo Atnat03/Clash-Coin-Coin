@@ -57,7 +57,7 @@ MonoBehaviour:
   Speed: 2
   RadiusAttack: 1
   Damage: 135
-  attackCooldown: 1
+  attackCooldown: 2
   rotationSpeed: 10
   target: {fileID: 0}
   alreadyTakeTP: 0

@@ -12415,6 +12415,7 @@ MonoBehaviour:
   - QTEGame
   - metronomeScene
   - CurlingGame
+  - CurlingGame
   player_1_Score: -1
   player_2_Score: -1
   troopPrefabsP1: []
