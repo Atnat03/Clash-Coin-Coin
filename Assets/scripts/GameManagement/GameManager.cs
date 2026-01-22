@@ -711,6 +711,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
         
+        transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
+        
         placedItemsP1.Clear();
         placedItemsP2.Clear();
         itemPlacedDataP1.Clear();

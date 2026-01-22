@@ -12408,7 +12408,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &1237986681
 GameObject:
@@ -16549,9 +16549,9 @@ MonoBehaviour:
   player_2_Score: -1
   troopPrefabsP1: []
   troopPrefabsP2: []
-  PVNexus_P1: 2000
+  PVNexus_P1: 1
   maxPVNexus_P1: 0
-  PVNexus_P2: 2000
+  PVNexus_P2: 1
   maxPVNexus_P2: 0
   uiEnd: {fileID: 1020976774}
   winIndex: -1
