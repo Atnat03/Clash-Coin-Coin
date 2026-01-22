@@ -34,7 +34,6 @@ public class Bullet : MonoBehaviour
         this.col = col;
         this.target = target;
         this.damage = damage;
-        print(damage);
     }
     
     private void Update()
@@ -43,8 +42,6 @@ public class Bullet : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             
-            print(Vector3.Distance(transform.position, target.position));
-
             if (Vector3.Distance(transform.position, target.position) < 0.1f)
             {
                 OnReachTarget();
@@ -63,7 +60,6 @@ public class Bullet : MonoBehaviour
             Troop troop = target.GetComponent<Troop>();
             if (troop != null)
             {
-                print(damage + " : rerggedsddfgdse");
                 troop.TakeDamage(40f);
             }
         }
