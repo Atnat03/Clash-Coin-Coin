@@ -44,19 +44,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.74999994
+      value: 0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.74999994
+      value: 0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.74999994
+      value: 0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.96
+      value: 0.539
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.y
@@ -64,7 +64,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.535
+      value: -0.113
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalRotation.w
@@ -103,7 +103,9 @@ PrefabInstance:
       value: 4. DuckWarriorCommon (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5212321018164490567, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+    - {fileID: 2198663141689115463, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
@@ -122,15 +124,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.74999994
+      value: 0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.74999994
+      value: 0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.74999994
+      value: 0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.x
@@ -181,7 +183,9 @@ PrefabInstance:
       value: 4. DuckWarriorCommon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5212321018164490567, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+    - {fileID: 2198663141689115463, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
@@ -200,19 +204,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.74999994
+      value: 0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.74999994
+      value: 0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.74999994
+      value: 0.41999996
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.249
+      value: 0.127
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.y
@@ -220,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.547
+      value: -0.186
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalRotation.w
@@ -259,7 +263,9 @@ PrefabInstance:
       value: 4. DuckWarriorCommon (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5212321018164490567, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+    - {fileID: 2198663141689115463, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}

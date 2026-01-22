@@ -250,6 +250,7 @@ MonoBehaviour:
   modelRenderer: {fileID: 4957528276006046352}
   matDefault: {fileID: 2100000, guid: 2638f0eba705d8f4f9e7281e6a914fe9, type: 2}
   matExplose: {fileID: 2100000, guid: af5d4ed78663fd1429bcd1ec7c9146e1, type: 2}
+  explosionEffect: {fileID: 848816198885713172, guid: eb87983a213563b41b66c46c89fdd5cd, type: 3}
 --- !u!135 &650962889391542635
 SphereCollider:
   m_ObjectHideFlags: 0
