@@ -210,6 +210,20 @@ public class GameManager : MonoBehaviour
         {
             if (!player.IsReady) return false;
         }
+
+        foreach (Item item in placedItemsP1)
+        {
+            if(item is Troop troop)
+                if(troop.GetComponent<AnimFlip>().did == false)
+                    return false;
+        }
+        foreach (Item item in placedItemsP1)
+        {
+            if(item is Troop troop)
+                if(troop.GetComponent<AnimFlip>().did == false)
+                    return false;
+        }
+
         return true;
     }
     
@@ -262,7 +276,7 @@ public class GameManager : MonoBehaviour
     {
         if (isAllPlayerReadyToFight())
         {
-            //stateMachine.ChangeState(GameSate.Combat);
+            stateMachine.ChangeState(GameSate.Combat);
         }
     }
     
@@ -320,9 +334,19 @@ public class GameManager : MonoBehaviour
     {
         if (EndOfTurn())
         {
-            stateMachine.ChangeState(GameSate.MiniGame);
+            StartCoroutine(WaitBeforeMiniGame());
+
         }
     }
+
+    IEnumerator WaitBeforeMiniGame()
+    {
+        SetAllPlacedItems(false);
+        
+        yield return new WaitForSeconds(1f);
+        stateMachine.ChangeState(GameSate.MiniGame);
+    }
+
 
     void CombatExit()
     {

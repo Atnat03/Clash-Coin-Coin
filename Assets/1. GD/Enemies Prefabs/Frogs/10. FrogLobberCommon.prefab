@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1253301024315926119}
   - component: {fileID: 4411826439638955582}
   - component: {fileID: 1330812608239312645}
+  - component: {fileID: 6195784228016087194}
   m_Layer: 0
   m_Name: 10. FrogLobberCommon
   m_TagString: Untagged
@@ -119,6 +120,19 @@ MonoBehaviour:
   isMoving: 0
   throwBoulePrefab: {fileID: 5587784164057109776, guid: 0b6f69c6e6a919d4e8f9efc842ad0a55, type: 3}
   throwPos: {fileID: 4217998027924786165}
+--- !u!114 &6195784228016087194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564806622089340945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e772a975cd0a9429f0b6b860f87cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimFlip
+  did: 0
 --- !u!1 &4173297060032470032
 GameObject:
   m_ObjectHideFlags: 0
