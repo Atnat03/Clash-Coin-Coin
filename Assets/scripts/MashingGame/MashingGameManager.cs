@@ -48,7 +48,7 @@ public class MashingGameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         AudioManager.instance.PlayMusic(AudioManager.instance.miniGame);
         yield return new WaitForSeconds(1.2f);
-        
+
         cooldownBar.gameObject.SetActive(true);
         cooldownBar.fillAmount = 1;
         StartGame?.Invoke();
