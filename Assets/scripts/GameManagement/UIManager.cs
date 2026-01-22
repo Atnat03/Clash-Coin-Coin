@@ -30,7 +30,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateCombatUI(int combat)
     {
-        logo.sprite = spritesTimer[combat];
+        if(logo != null)
+            logo.sprite = spritesTimer[combat];
     }
 
     public void HideCombatUI(bool state)

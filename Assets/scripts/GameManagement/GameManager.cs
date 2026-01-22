@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool EndOfTurn()
+    public bool  EndOfTurn()
     {
         bool isTroop = true;
         
@@ -332,11 +332,7 @@ public class GameManager : MonoBehaviour
     
     void CombatUpdate()
     {
-        if (EndOfTurn())
-        {
-            StartCoroutine(WaitBeforeMiniGame());
 
-        }
     }
 
     IEnumerator WaitBeforeMiniGame()

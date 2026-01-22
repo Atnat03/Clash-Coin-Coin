@@ -82,9 +82,6 @@ public class Troop : Item, ITargetable
     {
         if (isFrozen)
             return;
-
-        if(isAttacking)
-            return;
     
         if (!enabled || !gridManager)
             return;
@@ -125,8 +122,13 @@ public class Troop : Item, ITargetable
         if (target.TryGetComponent<Item>(out var t))
         {
             float dist = Vector3.Distance(transform.position, target.position);
+            
+            print("dist <= RadiusAttack : " + (dist <= RadiusAttack));
+            print("t.CanBeAttacked : " + t.CanBeAttacked);
+            
             if (dist <= RadiusAttack && t.CanBeAttacked)
             {
+                print("anim attack WTF ??");
 
                 isAttacking = true;
                 animator.ResetTrigger("Throw");
@@ -147,7 +149,6 @@ public class Troop : Item, ITargetable
             float dist = Vector3.Distance(transform.position, target.position);
             if (dist <= RadiusAttack && n.CanBeAttacked)
             {
-
                 isAttacking = true;
                 animator.ResetTrigger("Throw");
                 animator.SetBool("Walk", false);
@@ -182,6 +183,7 @@ public class Troop : Item, ITargetable
 
     public void AttackEvent()
     {
+        if (!isAttacking) return;
         Attack();
     }
 
@@ -227,8 +229,7 @@ public class Troop : Item, ITargetable
         isFrozen = false;
         currentHP.color = Color.green;
     }
-
-
+    
     protected void Chase()
     {
         if (path == null || path.Count == 0)
@@ -378,8 +379,6 @@ public class Troop : Item, ITargetable
         path.Reverse();
     }
 
-
-
     Node GetLowestFCostNode(List<Node> nodes)
     {
         Node best = nodes[0];
@@ -434,9 +433,6 @@ public class Troop : Item, ITargetable
             lastTarget = target;
         }
     }
-
-
-
     
     void OnDrawGizmos()
     {
