@@ -17,7 +17,9 @@ public class CurplingPlayerScript : MonoBehaviour
 
     private bool buttonHeld = false;
     private bool isMoving = false;
-
+    public AudioClip clickSound;
+    public float volume;
+    public AudioSource SFXSource;
     private Vector3 desiredPos;
 
     public float powerMultiplyFactor = 2;
@@ -28,12 +30,16 @@ public class CurplingPlayerScript : MonoBehaviour
         powerAmount = 0f;
     }
     
-
+    public void PlaySoundRandowPitch(AudioClip clip, float volume)
+    {
+        SFXSource.pitch = Random.Range(0.8f, 1.2f);
+        SFXSource.PlayOneShot(clip, volume);
+    }
     public void ButtonPress(InputAction.CallbackContext context)
     {
+        PlaySoundRandowPitch(clickSound,volume);
         if (!context.performed || !CurlingGameManager.instance.inGame || played)
             return;
-        
         buttonHeld = true;
         played = true;
         

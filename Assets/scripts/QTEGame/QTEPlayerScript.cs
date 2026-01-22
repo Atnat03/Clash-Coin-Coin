@@ -8,7 +8,10 @@ public class QTEPlayerScript : MonoBehaviour
     public int score = 0;
     public Image imageNextInput;
     public Image jaugeScore;
-
+    public AudioClip clickSound;
+    public float volume;
+    public AudioSource SFXSource;
+    
     public int playerID;
     
     public Queue<QTEGameManager.ButtonDirection> inputList = new Queue<QTEGameManager.ButtonDirection>();
@@ -29,11 +32,16 @@ public class QTEPlayerScript : MonoBehaviour
 
         imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
     }
-
+    public void PlaySoundRandowPitch(AudioClip clip, float volume)
+    {
+        SFXSource.pitch = Random.Range(0.8f, 1.2f);
+        SFXSource.PlayOneShot(clip, volume);
+    }
     public void RegisterInput(QTEGameManager.ButtonDirection input)
     {
         if (input == inputList.Peek())
         {
+            PlaySoundRandowPitch(clickSound,volume);
             inputList.Dequeue();
             score++;
             imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
@@ -66,7 +74,5 @@ public class QTEPlayerScript : MonoBehaviour
     {
         if(QTEGameManager.instance.inGame && context.performed)RegisterInput(QTEGameManager.ButtonDirection.west);
     }
-    
-    
     
 }

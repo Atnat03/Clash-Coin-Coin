@@ -65,7 +65,6 @@ public class MetronomePlayerScript : MonoBehaviour
     {
         SFXSource.pitch = Random.Range(0.8f, 1.2f);
         SFXSource.PlayOneShot(clip, volume);
-
     }
 
     public Image[] feedBackSuccess;
