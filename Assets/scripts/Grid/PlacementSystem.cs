@@ -161,13 +161,12 @@ public class PlacementSystem : MonoBehaviour
         }
 
         GameObject go = Instantiate(itemData.prefab);
-        go.transform.position = itemData.position; // utilise directement la position world
+        go.transform.position = itemData.position;
 
         placedObjects.Add(go);
 
         GridData selectedData = itemData.id == 0 ? floorData : furnitureData;
 
-        // Convertis seulement pour la grille si nécessaire
         Vector3Int gridPos = grid.WorldToCell(itemData.position);
         selectedData.AddObjectAt(gridPos, itemData.scale, itemData.id, placedObjects.Count - 1);
 

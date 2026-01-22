@@ -8,6 +8,31 @@ public class Nexus : MonoBehaviour, ITargetable
     float maxPV;
     public Image currentHP;
 
+    void OnEnable()
+    {
+        GameManager.instance.OnComeBack += SetUp;
+    }
+
+    void OnDisable()
+    {
+        GameManager.instance.OnComeBack -= SetUp;
+    }
+
+    public void SetUp()
+    {
+        if(playerOneProperty)
+        {
+            PV = GameManager.instance.PVNexus_P1;
+            maxPV = GameManager.instance.maxPVNexus_P1;
+        }
+        else
+        {
+            PV = GameManager.instance.PVNexus_P2;
+            maxPV = GameManager.instance.maxPVNexus_P2;
+        }        
+        currentHP.fillAmount = PV / maxPV;
+    }
+
     private void Start()
     {
         if(playerOneProperty)

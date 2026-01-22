@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -249,7 +250,7 @@ public class GameManager : MonoBehaviour
 
         SaveBeforeSceneChange();
 
-        int i = Random.Range(0, miniGames.Length);
+        int i = UnityEngine.Random.Range(0, miniGames.Length);
 
         print(i);
 
@@ -368,11 +369,15 @@ public class GameManager : MonoBehaviour
     
     #region RewardState
 
+    public Action OnComeBack;
+
     void RewardEnter()
     {
         Debug.Log("Enter Reward");
 
         VariablesManager.instance.logoState.sprite = VariablesManager.instance.rewardSprite;
+
+        OnComeBack?.Invoke();
         
         CardChoice.instance.ResolveMiniGameResults(player_1_Score, player_2_Score);
     }
