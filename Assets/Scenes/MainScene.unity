@@ -6066,12 +6066,12 @@ MonoBehaviour:
   miniGame: {fileID: 0}
   startSound: {fileID: 8300000, guid: f16ff34de42fbbb4c9336d253448215e, type: 3}
   endSound: {fileID: 8300000, guid: ced6ce3c500383c43bed4d3af26bc7d6, type: 3}
-  cardFlip: {fileID: 0}
-  rareCard: {fileID: 0}
-  epicCard: {fileID: 0}
-  attackUnit: {fileID: 0}
-  tutoCard: {fileID: 0}
-  buttonPressed: {fileID: 0}
+  cardFlip: {fileID: 8300000, guid: dd251ca983f44794e8e4cbc72072e98f, type: 3}
+  rareCard: {fileID: 8300000, guid: b36629295566a55448cdfaa2d1f43c4a, type: 3}
+  epicCard: {fileID: 8300000, guid: ed612237ed6380447b1102e8f1fd8c2a, type: 3}
+  attackUnit: {fileID: 8300000, guid: 4092af38d0307844ba12748cc00dbe30, type: 3}
+  tutoCard: {fileID: 8300000, guid: fdc5364619be00b4dac186bcf3db1ab2, type: 3}
+  buttonPressed: {fileID: 8300000, guid: 4dafb2bffae8be64ca2d8ad0980ff98f, type: 3}
   gongStart: {fileID: 0}
 --- !u!4 &634107096
 Transform:
