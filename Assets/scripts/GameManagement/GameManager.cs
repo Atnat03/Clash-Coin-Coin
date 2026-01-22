@@ -58,8 +58,7 @@ public class GameManager : MonoBehaviour
         
         DontDestroyOnLoad(gameObject);
     }
-
-
+    
     public void AddItemInList(Item item, Vector3Int position)
     {
         ItemData itemData = new ItemData();
