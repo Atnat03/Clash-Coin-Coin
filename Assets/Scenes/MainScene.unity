@@ -11729,7 +11729,7 @@ PrefabInstance:
     - target: {fileID: 7051095122286034385, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: eventSystem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 357036397}
     - target: {fileID: 7159223110169897000, guid: f6199b7eb45d69d4fb75f99638f85230, type: 3}
       propertyPath: m_Name
       value: TutoCanva
@@ -13168,9 +13168,9 @@ MonoBehaviour:
   player_2_Score: -1
   troopPrefabsP1: []
   troopPrefabsP2: []
-  PVNexus_P1: 200
+  PVNexus_P1: 1000
   maxPVNexus_P1: 0
-  PVNexus_P2: 200
+  PVNexus_P2: 1000
   maxPVNexus_P2: 0
   CombatDuration: 10
 --- !u!1001 &1568383216
