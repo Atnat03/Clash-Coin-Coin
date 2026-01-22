@@ -249,7 +249,11 @@ public class GameManager : MonoBehaviour
 
         SaveBeforeSceneChange();
 
-        string sceneName = miniGames[Random.Range(0, miniGames.Length - 1)];
+        int i = Random.Range(0, miniGames.Length);
+
+        print(i);
+
+        string sceneName = miniGames[i];
         SceneManager.LoadScene(sceneName);
     }
     
@@ -257,7 +261,7 @@ public class GameManager : MonoBehaviour
     {
         if (isAllPlayerReadyToFight())
         {
-            stateMachine.ChangeState(GameSate.Combat);
+            //stateMachine.ChangeState(GameSate.Combat);
         }
     }
     

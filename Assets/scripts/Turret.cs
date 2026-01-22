@@ -8,6 +8,7 @@ public class Turret : Build, ITargetable
     public Transform shootPos;
     public Transform headTurret;
     public float shootRate = 1f;
+    public float Damage = 10f;
     private float t = 0;
     
     public Turret(int id, string name, float maxPV) : base(id, name, maxPV)
@@ -52,7 +53,7 @@ public class Turret : Build, ITargetable
                     headTurret.localRotation = Quaternion.LookRotation(dir);
                     
                     Bullet b = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
-                    b.SetUp(troop.transform, GetComponent<Collider>());
+                    b.SetUp(troop.transform, GetComponent<Collider>(), Damage);
                     Destroy(b.gameObject,3f);
                     break;
                 }

@@ -151,6 +151,9 @@ public class Troop : Item, ITargetable
         if (target && target.TryGetComponent<Item>(out var t) && t.CanBeAttacked)
         {
             t.TakeDamage(Damage);
+        }else if (target && target.TryGetComponent<Nexus>(out var n))
+        {
+            n.TakeDamage(Damage);
         }
     
         StopAllCoroutines();
@@ -385,10 +388,6 @@ public class Troop : Item, ITargetable
             lastTarget = target;
         }
     }
-
-
-
-
     
     void OnDrawGizmos()
     {

@@ -26,16 +26,7 @@ public class LanceTroop : Troop
         if (b != null)
         {
             Vector3 targetPos = target.position;
-
-            Item targetItem = target.GetComponent<Item>();
-            if (targetItem != null)
-            {
-                b.Throw(throwPos.position, targetPos, playerOneProperty, Damage, GetComponent<Collider>());
-            }
-            else
-            {
-                Debug.LogWarning("La target n'a pas de composant Item");
-            }
+            b.Throw(throwPos.position, targetPos, playerOneProperty, Damage, GetComponent<Collider>());
         }
         else
         {

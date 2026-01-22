@@ -657,6 +657,7 @@ MonoBehaviour:
   shootPos: {fileID: 379103456051353827}
   headTurret: {fileID: 8311776336499566219}
   shootRate: 1
+  Damage: 10
 --- !u!65 &3841258380333390513
 BoxCollider:
   m_ObjectHideFlags: 0

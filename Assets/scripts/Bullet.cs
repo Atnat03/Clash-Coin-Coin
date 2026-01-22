@@ -8,26 +8,61 @@ public class Bullet : MonoBehaviour
     public float damage = 10f;
     public Collider col;
     
-    public void SetUp(Transform target, Collider col)
+    private Rigidbody rb;
+    
+    private void Awake()
+    {
+        // S'assurer qu'il y a un Rigidbody
+        rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+        }
+        rb.isKinematic = true; // Kinematic car on contrôle le mouvement manuellement
+        rb.useGravity = false;
+        
+        // S'assurer qu'il y a un Collider trigger
+        Collider bulletCollider = GetComponent<Collider>();
+        if (bulletCollider != null)
+        {
+            bulletCollider.isTrigger = true;
+        }
+    }
+    
+    public void SetUp(Transform target, Collider col, float damage)
     {
         this.col = col;
         this.target = target;
+        this.damage = damage;
     }
     
-    public void Update()
+    private void Update()
     {
         if (target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            
+            if (Vector3.Distance(transform.position, target.position) < 0.1f)
+            {
+                OnReachTarget();
+            }
         }
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Item>() != null && other != col)
+        else
         {
-            other.GetComponent<Item>().TakeDamage(damage);
             Destroy(gameObject);
         }
+    }
+    
+    private void OnReachTarget()
+    {
+        if (target != null)
+        {
+            Troop troop = target.GetComponent<Troop>();
+            if (troop != null)
+            {
+                troop.TakeDamage(40f);
+            }
+        }
+        Destroy(gameObject);
     }
 }
