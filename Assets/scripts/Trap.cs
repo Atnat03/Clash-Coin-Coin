@@ -34,7 +34,7 @@ public class Trap : Build
             if (hit.GetComponent<Troop>() != null)
             {
                 Debug.Log("TriggerExplosion");
-                alreadyTriggered = true; 
+                alreadyTriggered = true;
                 Explosed();
                 break;
             }

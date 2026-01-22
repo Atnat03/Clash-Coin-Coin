@@ -85,6 +85,9 @@ MonoBehaviour:
   alreadyTakeTP: 0
   isFrozen: 0
   isPoisened: 0
+  lastPosition: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  isMoving: 0
   throwBoulePrefab: {fileID: 5587784164057109776, guid: 0b6f69c6e6a919d4e8f9efc842ad0a55, type: 3}
   throwPos: {fileID: 9193838174593175314}
 --- !u!1 &4173297060032470032
@@ -678,28 +681,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5650935443908284666, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 474814237045165032}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4961690105361788866, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8526257753469585761}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
---- !u!1 &5880891220676688018 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4961690105361788866, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
-  m_PrefabInstance: {fileID: 1533028949218383696}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8526257753469585761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5880891220676688018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a44241fa50154844fb8834afa6f583dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayAnimation
 --- !u!4 &6545647552129524264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5733265326902654328, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}

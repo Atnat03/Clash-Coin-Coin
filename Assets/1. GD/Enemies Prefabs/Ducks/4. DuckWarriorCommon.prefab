@@ -63,6 +63,9 @@ MonoBehaviour:
   alreadyTakeTP: 0
   isFrozen: 0
   isPoisened: 0
+  lastPosition: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  isMoving: 0
 --- !u!65 &4411826439638955582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -644,28 +647,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5650935443908284666, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4836359077897399293}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4961690105361788866, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8884751071797773253}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
---- !u!1 &5174530662412948949 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4961690105361788866, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
-  m_PrefabInstance: {fileID: 222038558198037015}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8884751071797773253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5174530662412948949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a44241fa50154844fb8834afa6f583dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayAnimation
 --- !u!4 &5513655625416822639 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5733265326902654328, guid: 978f11331bc36774cb1ce61dd50acaba, type: 3}
