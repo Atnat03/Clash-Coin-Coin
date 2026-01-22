@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum GameSate
 {
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviour
     public GameObject uiEnd;
     public int winIndex = -1;
     public bool isEnd = false;
+
+    public int MAX_NUMBER_TOUR = 20;
+    public int CURRENT_NUMBER_TOUR = 0;
+    public Text toursTXT;
     
     void Awake()
     {
@@ -151,9 +156,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter EndGame");
         
-        SetAllPlacedItems(false);
-        uiEnd.SetActive(true);
+        uiEnd.gameObject.SetActive(true);
         uiEnd.GetComponent<UiEnd>().SetUp(winIndex);
+        SetAllPlacedItems(false);
     }
     
     public void SetAllPlacedItems(bool state)
@@ -246,6 +251,8 @@ public class GameManager : MonoBehaviour
     {
         stateMachine?.Update();
 
+        toursTXT.text = "Tour " + CURRENT_NUMBER_TOUR;
+
         if(isEnd) return;
         
         if (PVNexus_P1 <= 0)
@@ -261,8 +268,16 @@ public class GameManager : MonoBehaviour
 
     private void GameOverByDead(int i)
     {
+        StopAllCoroutines();
         isEnd = true;
         winIndex = i;
+        stateMachine?.ChangeState(GameSate.EndGame);
+    }
+    
+    private void GameOverByEndNbTurn()
+    {
+        isEnd = true;
+        winIndex = PVNexus_P1 >= PVNexus_P2 ? 0 : 1;
         stateMachine?.ChangeState(GameSate.EndGame);
     }
 
@@ -313,7 +328,6 @@ public class GameManager : MonoBehaviour
     }
     
     #endregion
-    
     
     #region CombatState
 
@@ -427,6 +441,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter Reward");
 
+        CURRENT_NUMBER_TOUR++;
+
+        if (CURRENT_NUMBER_TOUR >= 20)
+        {
+            GameOverByEndNbTurn();
+            return;
+        }
+        
         VariablesManager.instance.logoState.sprite = VariablesManager.instance.rewardSprite;
 
         OnComeBack?.Invoke();
