@@ -27,7 +27,7 @@ public class LanceTroop : Troop
         {
             Vector3 targetPos = target.position;
 
-            ITargetable targetItem = target.GetComponent<ITargetable>();
+            Item targetItem = target.GetComponent<Item>();
             if (targetItem != null)
             {
                 b.Throw(throwPos.position, targetPos, playerOneProperty, Damage, GetComponent<Collider>());
