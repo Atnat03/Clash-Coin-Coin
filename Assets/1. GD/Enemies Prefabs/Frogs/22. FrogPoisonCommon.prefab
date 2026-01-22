@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1253301024315926119}
   - component: {fileID: 4411826439638955582}
   - component: {fileID: 1635905579864469850}
+  - component: {fileID: -1521561356261952063}
   m_Layer: 0
   m_Name: 22. FrogPoisonCommon
   m_TagString: Untagged
@@ -84,8 +85,24 @@ MonoBehaviour:
   alreadyTakeTP: 0
   isFrozen: 0
   isPoisened: 0
+  lastPosition: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  isMoving: 0
   poisonDamage: 0
   poisonDuration: 0
+--- !u!114 &-1521561356261952063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564806622089340945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e772a975cd0a9429f0b6b860f87cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimFlip
+  did: 0
 --- !u!1 &4173297060032470032
 GameObject:
   m_ObjectHideFlags: 0

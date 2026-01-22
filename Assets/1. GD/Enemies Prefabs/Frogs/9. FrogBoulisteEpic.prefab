@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1253301024315926119}
   - component: {fileID: 4411826439638955582}
   - component: {fileID: 6484665887854153803}
+  - component: {fileID: -3422086402046114338}
   m_Layer: 0
   m_Name: 9. FrogBoulisteEpic
   m_TagString: Untagged
@@ -119,6 +120,19 @@ MonoBehaviour:
   isMoving: 0
   throwBoulePrefab: {fileID: 3762000939536537322, guid: c599ac22fb7fe7f4983b370c63cd9d90, type: 3}
   throwPos: {fileID: 2163541945728201590}
+--- !u!114 &-3422086402046114338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564806622089340945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e772a975cd0a9429f0b6b860f87cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimFlip
+  did: 0
 --- !u!1 &4173297060032470032
 GameObject:
   m_ObjectHideFlags: 0
