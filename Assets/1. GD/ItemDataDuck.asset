@@ -122,7 +122,7 @@ MonoBehaviour:
     Name: Glaceur
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: d8769bbedbb67e049acfbfd346c197ed, type: 3}
-    carte: {fileID: 21300000, guid: 871342213a63e924ba8efe8f302c9f9d, type: 3}
+    carte: {fileID: 21300000, guid: c6f9dad963535974cba2f954fd913eaf, type: 3}
     dosCarte: {fileID: 21300000, guid: ea8c2ed8e2e73c8409b213ca58ca07af, type: 3}
     rarity: 0
   - Id: 19
@@ -150,7 +150,7 @@ MonoBehaviour:
     Name: Empoisonneur
     Size: {x: 1, y: 1}
     Prefab: {fileID: 2564806622089340945, guid: 86a756523678695429d05b3d58754d50, type: 3}
-    carte: {fileID: 21300000, guid: 76dee9ce99546454280b4b605ec3a6cb, type: 3}
+    carte: {fileID: 21300000, guid: 0882d4c7217cc924f91b88bf00575dd8, type: 3}
     dosCarte: {fileID: 21300000, guid: dc6d44802cfc80a4aa0656fb6facb7df, type: 3}
     rarity: 1
   - Id: 23
