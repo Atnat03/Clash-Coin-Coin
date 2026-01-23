@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
             onExit: EndGameExit
         ));
         
-        stateMachine.ChangeState(GameSate.MiniGame);
+        stateMachine.ChangeState(GameSate.Reward);
     }
 
     void EndGameEnter()

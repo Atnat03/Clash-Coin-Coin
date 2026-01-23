@@ -599,7 +599,13 @@
                     "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
                 {
                     "devicePath": "<Keyboard>",
                     "isOptional": false,

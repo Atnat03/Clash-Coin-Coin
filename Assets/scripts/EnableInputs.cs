@@ -40,6 +40,9 @@ public class EnableInputs : MonoBehaviour
             Pair(input1, gamepads[0]);
             Pair(input2, gamepads[1]);
 
+            input1.SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+            input2.SwitchCurrentControlScheme("Gamepad", gamepads[1]);
+
             input1.SwitchCurrentActionMap("Gamepad");
             input2.SwitchCurrentActionMap("Gamepad");
         }
@@ -48,15 +51,20 @@ public class EnableInputs : MonoBehaviour
         {
             Debug.Log("MODE: 1 Gamepad + 1 Keyboard");
 
-            Pair(input1, gamepads[0]);
+            input1.SwitchCurrentControlScheme("Keyboard", Keyboard.current);
             input1.SwitchCurrentActionMap("Player1");
-
+            
+            Pair(input2, gamepads[0]);
+            input2.SwitchCurrentControlScheme("Gamepad", gamepads[0]);
             input2.SwitchCurrentActionMap("Gamepad");
         }
         
         else
         {
             Debug.Log("MODE: 2 Keyboard Players");
+
+            input1.SwitchCurrentControlScheme("Keyboard", Keyboard.current);
+            input2.SwitchCurrentControlScheme("Keyboard", Keyboard.current);
 
             input1.SwitchCurrentActionMap("Player1");
             input2.SwitchCurrentActionMap("Player2");
@@ -75,7 +83,8 @@ public class EnableInputs : MonoBehaviour
 
         InputUser.PerformPairingWithDevice(
             pad,
-            input.user
+            input.user,
+            InputUserPairingOptions.UnpairCurrentDevicesFromUser
         );
     }
 }
