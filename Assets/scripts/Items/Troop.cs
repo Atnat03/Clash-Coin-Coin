@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Troop : Item, ITargetable
+public class Troop : Item
 {
     [Header("Stats")]
     public float Speed = 3f;
@@ -30,7 +30,7 @@ public class Troop : Item, ITargetable
 
     public bool alreadyTakeTP = false;
 
-    protected const float PATH_REFRESH_TIME = 0.5f;
+    protected const float PATH_REFRESH_TIME = 0.1f;
     
     public bool isFrozen;
     public bool isPoisened;
@@ -263,17 +263,18 @@ public class Troop : Item, ITargetable
     
     public Transform Rescan()
     {
-        ITargetable[] targets = FindObjectsOfType<MonoBehaviour>()
-            .OfType<ITargetable>()
-            .Where(t =>
-            {
-                MonoBehaviour mb = (MonoBehaviour)t;
-                return mb.gameObject.activeInHierarchy
-                       && mb != this;
-            })
-            .ToArray();
-
-        if (targets.Length == 0)
+        List<ITargetable> targets = new List<ITargetable>();
+        foreach (TP_Troop i in VariablesManager.instance.tps) targets.Add(i);
+        foreach (Nexus i in VariablesManager.instance.nexus) targets.Add(i);
+        
+        if(playerOneProperty)
+            foreach (Item i in GameManager.instance.placedItemsP1) targets.Add(i);
+        else
+            foreach (Item i in GameManager.instance.placedItemsP1) targets.Add(i);
+        
+        print(targets.Count);
+        
+        if (targets.Count == 0)
             return null;
 
         Transform closest = null;

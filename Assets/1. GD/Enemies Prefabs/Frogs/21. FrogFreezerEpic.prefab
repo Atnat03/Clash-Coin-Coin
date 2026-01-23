@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1253301024315926119}
-  - component: {fileID: 5597989690353156273}
   - component: {fileID: 4411826439638955582}
   - component: {fileID: 6558673702366109779}
   - component: {fileID: -2870546600094864534}
@@ -37,35 +36,6 @@ Transform:
   - {fileID: 2408386028184498422}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5597989690353156273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2564806622089340945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae8702eb1ec871b4da0e119e35b024ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Troop
-  id: 0
-  name: Player1
-  PV: 400
-  maxPV: 400
-  currentHP: {fileID: 8103242198617991682}
-  Speed: 1
-  RadiusAttack: 1
-  Damage: 0
-  attackCooldown: 3
-  rotationSpeed: 10
-  target: {fileID: 0}
-  alreadyTakeTP: 0
-  isFrozen: 0
-  isPoisened: 0
-  lastPosition: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  isMoving: 0
 --- !u!65 &4411826439638955582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -116,6 +86,7 @@ MonoBehaviour:
   lastPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   isMoving: 0
+  freezingDuration: 0
 --- !u!114 &-2870546600094864534
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1253301024315926119}
-  - component: {fileID: 4674454045337375987}
   m_Layer: 0
   m_Name: 13. FrogSwarmSmallCommon
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -35,19 +34,6 @@ Transform:
   - {fileID: 7321119442027379674}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4674454045337375987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2564806622089340945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e772a975cd0a9429f0b6b860f87cc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimFlip
-  did: 0
 --- !u!1001 &4814334791136602758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,7 +56,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.06499994
+      value: 0.162
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -186,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.273
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -302,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.277
+      value: -0.050000012
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.y

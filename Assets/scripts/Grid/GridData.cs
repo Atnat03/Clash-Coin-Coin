@@ -10,17 +10,13 @@ public class GridData
     public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex)
     {
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
+        List<Vector3Int> loopList = new(positionToOccupy);
         PlacementData data = new PlacementData(positionToOccupy, ID, placedObjectIndex);
-        foreach (Vector3Int position in positionToOccupy)
+        for (int i = 0; i < positionToOccupy.Count; i++)
         {
-            if (placedObjects.ContainsKey(position))
-            {
-                throw new Exception("Already occupied");
-            }
-            placedObjects[position] = data;
+            placedObjects[positionToOccupy[i]] = data;
         }
     }
-    
     public void RegisterItemPosition(Item item, Vector3 position)
     {
         itemPositions[item.GetInstanceID()] = position;

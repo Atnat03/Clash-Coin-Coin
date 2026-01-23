@@ -6,10 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="b8a5146e-343f-4223-bd43-7e9bd2bba73b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Clash Coin Coin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/1. DuckTankCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/1. DuckTankCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/13. DuckSwarmSmallCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/13. DuckSwarmSmallCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/14. DuckSwarmSmallRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/14. DuckSwarmSmallRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/15. DuckSwarmSmallEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Ducks/15. DuckSwarmSmallEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/13. FrogSwarmSmallCommon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/13. FrogSwarmSmallCommon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/14. FrogSwarmSmallRare.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/14. FrogSwarmSmallRare.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/15. FrogSwarmSmallEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/15. FrogSwarmSmallEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/21. FrogFreezerEpic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. GD/Enemies Prefabs/Frogs/21. FrogFreezerEpic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Choix_Cartes.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Choix_Cartes.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Choix_Cartes_P2.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Choix_Cartes_P2.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/EnableInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/EnableInputs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scripts/GameManagement/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/GameManagement/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Grid/GridData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Grid/GridData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Grid/PlayerInputing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Grid/PlayerInputing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Items/Troop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Items/Troop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/Turret.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Turret.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scripts/VariablesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/VariablesManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +34,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/7f/81e807a1/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Asta/testBuild.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/AlwaysInFrontOfCam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
@@ -30,7 +45,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/scripts/ItemSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/Items/IPave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/Items/PaveRoule.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/scripts/Items/RouleTroop.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/Nexus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/PlayAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/SaveSystem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -141,7 +155,7 @@
       <workItem from="1768982112994" duration="1368000" />
       <workItem from="1768983512141" duration="28459000" />
       <workItem from="1769065358965" duration="745000" />
-      <workItem from="1769166509600" duration="5313000" />
+      <workItem from="1769166509600" duration="9063000" />
     </task>
     <servers />
   </component>

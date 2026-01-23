@@ -236,20 +236,36 @@ public class GameManager : MonoBehaviour
             if (!player.IsReady) return false;
         }
 
-        // 🔧 Vérifier P1
         foreach (Item item in placedItemsP1)
         {
+            Item t = null;
+            
             if(item is Troop troop)
-                if(troop.GetComponent<AnimFlip>().did == false)
-                    return false;
+                t = troop;
+            
+            if(item is LanceTroop tro)
+                t = tro;
+            
+            if (t == null) return false;
+
+            if(t.GetComponent<AnimFlip>().did == false)
+                return false;
         }
     
-        // 🔧 Vérifier P2 (pas P1 !)
         foreach (Item item in placedItemsP2)
         {
+            Item t = null;
+            
             if(item is Troop troop)
-                if(troop.GetComponent<AnimFlip>().did == false)
-                    return false;
+                t = troop;
+            
+            if(item is LanceTroop tro)
+                t = tro;
+            
+            if (t == null) return false;
+
+            if(t.GetComponent<AnimFlip>().did == false)
+                return false;
         }
 
         return true;

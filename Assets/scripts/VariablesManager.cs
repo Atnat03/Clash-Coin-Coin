@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,6 +27,8 @@ public class VariablesManager : MonoBehaviour
     public Sprite placementSprite;
     public Sprite combatSprite;
     public Image logoState;
+
+    public TP_Troop[] tps;
     
     private void Awake()
     {

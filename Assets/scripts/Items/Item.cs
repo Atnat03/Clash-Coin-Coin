@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour, ITargetable
 {
     [HideInInspector]public int id;
     [HideInInspector]public string name;

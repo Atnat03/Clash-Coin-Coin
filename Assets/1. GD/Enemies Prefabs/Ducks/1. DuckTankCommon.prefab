@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4411826439638955582}
   - component: {fileID: 4962337594334015661}
   - component: {fileID: 7785377498955501326}
-  - component: {fileID: 255777852361359954}
   m_Layer: 0
   m_Name: 1. DuckTankCommon
   m_TagString: Untagged
@@ -124,19 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e772a975cd0a9429f0b6b860f87cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  did: 0
---- !u!114 &255777852361359954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2564806622089340945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e772a975cd0a9429f0b6b860f87cc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimFlip
   did: 0
 --- !u!1 &4173297060032470032
 GameObject:
