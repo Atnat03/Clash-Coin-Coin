@@ -3,7 +3,7 @@
     "name": "Player",
     "maps": [
         {
-            "name": "GamePlay",
+            "name": "Gamepad",
             "id": "28b7f2fb-20cf-436c-8b4b-7b6ee6f1e773",
             "actions": [
                 {
@@ -84,61 +84,6 @@
                 },
                 {
                     "name": "2D Vector",
-                    "id": "9a6a5856-39e6-4fb5-ae1d-b9659ec15657",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "ceb1dce3-759c-4db5-ae81-f0598d21674d",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "bdc98805-9363-416d-85c0-42ed3c4a6294",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "58937240-ec2d-4c14-97af-18a4815aa498",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "d4fcbf90-1f63-4222-b19f-e0eee0d777b8",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "2D Vector",
                     "id": "b9b196d3-ff12-4024-9821-549f5c28c556",
                     "path": "2DVector",
                     "interactions": "",
@@ -205,30 +150,8 @@
                 },
                 {
                     "name": "",
-                    "id": "57fdf66c-dccc-4093-9f9a-a04745650ff4",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "APressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f3e7a854-74ac-4975-838c-d514b3a7f429",
                     "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BPressed",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "82d9443d-8672-41f7-809a-652c9da70c53",
-                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -271,8 +194,167 @@
                 },
                 {
                     "name": "",
-                    "id": "ba47f2fe-ef19-40c4-8044-d871a75ef334",
-                    "path": "<Keyboard>/space",
+                    "id": "d68eb7a8-f03f-461b-981c-a5b4137c042b",
+                    "path": "<Gamepad>/start",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player1",
+            "id": "93968aea-5dc8-47ff-a7fe-cd3de3b7e0a7",
+            "actions": [
+                {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "dae531fe-8ef7-46bd-aa44-eda916500b3c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "APressed",
+                    "type": "Button",
+                    "id": "b11eb416-5408-4943-adce-858cc2fb8a76",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BPressed",
+                    "type": "Button",
+                    "id": "2a494fda-b4d1-446e-aad4-c528c59d0055",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "YPressed",
+                    "type": "Button",
+                    "id": "55a38105-1c5e-4ce7-ab5b-e2cc3cb54507",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "XPressed",
+                    "type": "Button",
+                    "id": "8796873e-e7b7-4a95-a8c4-46227ca83417",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Areleased",
+                    "type": "Button",
+                    "id": "51e51702-1576-4536-953d-97c21f44e7b1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StartPressed",
+                    "type": "Button",
+                    "id": "eda89da9-c4a5-4240-a0bc-9d2ba9b91eee",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "7181645a-2433-4894-9dcd-3cd8bb4eb5a2",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "e8c6e4d0-c6a8-47c9-a91e-8acb9f232ef7",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "49776d64-7a3e-49f0-8037-cc58e4ae6fb8",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "a4e0257f-4112-4488-a572-b543283a9e4f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "74ce48cd-5905-41e9-83fd-3b2ec24cef0f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "deeaaa35-5d86-4fa5-8c8c-2953a2b4aa07",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "APressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c12b623-40f5-493a-913d-6f2bd7a7caf5",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26795fb7-8fc0-4aa9-890f-d21184311316",
+                    "path": "<Keyboard>/q",
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "",
@@ -282,12 +364,226 @@
                 },
                 {
                     "name": "",
-                    "id": "d68eb7a8-f03f-461b-981c-a5b4137c042b",
-                    "path": "<Gamepad>/start",
+                    "id": "8085bbd1-33a0-4c7c-afea-4a5eca194ddc",
+                    "path": "<Keyboard>/enter",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "StartPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be6c8c0c-482e-4765-ab77-a0c9364c034d",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "YPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "626ec8b8-b183-4381-bcc6-700570f802f3",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player2",
+            "id": "3d44400a-2bdb-4bc9-936b-6312dabc2241",
+            "actions": [
+                {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "e36ba9b9-299d-46e6-bb7a-201cf5ed5cdd",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "APressed",
+                    "type": "Button",
+                    "id": "ffeb2598-68f6-4a96-9e4e-fca7aec8c515",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BPressed",
+                    "type": "Button",
+                    "id": "af3ad9e7-5063-44e9-a0d1-3de67f8cc511",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "YPressed",
+                    "type": "Button",
+                    "id": "3eb9706c-4161-41f2-a844-7d7c7c10d53f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "XPressed",
+                    "type": "Button",
+                    "id": "74184151-6c6f-4e39-b8ac-f2d118236066",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Areleased",
+                    "type": "Button",
+                    "id": "fc67679f-d3a6-497f-b070-e5c9d989abc0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StartPressed",
+                    "type": "Button",
+                    "id": "a9ca7a26-c013-4bb4-a59b-e19f73e39830",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "49833cfa-fcde-4766-b005-fa8a61a4606c",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "b45980c9-db97-4392-a57c-24521b232dd1",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "cd89cbfc-daeb-456a-a8b0-d6dcc18bb1ce",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "c8595f5a-3f5a-4782-a9bf-647a357df09b",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "b83a6ae7-5240-445e-969b-89d80a4ca70e",
+                    "path": "<Keyboard>/semicolon",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "fb468f7e-e1db-45b5-8f1f-0ef6a8bb56ae",
+                    "path": "<Keyboard>/i",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "APressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53a8e29d-a6f5-4309-ae16-a429652c5b8f",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9bff183-462b-4d8f-842d-d834bbaa141f",
+                    "path": "<Keyboard>/i",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Areleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "24c62fa0-f944-42a2-b68f-fb3dc21ebfb9",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35712993-1ed1-4f1f-b512-b654cd663ed9",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "YPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db357e35-1a1b-4a05-9c54-51b021cc0898",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XPressed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -301,6 +597,11 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
                 }

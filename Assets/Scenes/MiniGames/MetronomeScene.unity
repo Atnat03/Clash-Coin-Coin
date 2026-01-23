@@ -3755,9 +3755,77 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: d05a06b3-da82-4832-a29d-162aa5d553e8
     m_ActionName: 'GamePlay/StartPressed[/XInputControllerWindows1/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dae531fe-8ef7-46bd-aa44-eda916500b3c
+    m_ActionName: 'Player1/Aim[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 902719197}
+        m_TargetAssemblyTypeName: MetronomePlayerScript, Assembly-CSharp
+        m_MethodName: PlayerPressedA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b11eb416-5408-4943-adce-858cc2fb8a76
+    m_ActionName: 'Player1/APressed[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2a494fda-b4d1-446e-aad4-c528c59d0055
+    m_ActionName: 'Player1/BPressed[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 55a38105-1c5e-4ce7-ab5b-e2cc3cb54507
+    m_ActionName: 'Player1/YPressed[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8796873e-e7b7-4a95-a8c4-46227ca83417
+    m_ActionName: 'Player1/XPressed[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 51e51702-1576-4536-953d-97c21f44e7b1
+    m_ActionName: 'Player1/Areleased[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eda89da9-c4a5-4240-a0bc-9d2ba9b91eee
+    m_ActionName: 'Player1/StartPressed[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e36ba9b9-299d-46e6-bb7a-201cf5ed5cdd
+    m_ActionName: 'Player2/Aim[/Keyboard/o,/Keyboard/l,/Keyboard/k,/Keyboard/semicolon]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ffeb2598-68f6-4a96-9e4e-fca7aec8c515
+    m_ActionName: 'Player2/APressed[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: af3ad9e7-5063-44e9-a0d1-3de67f8cc511
+    m_ActionName: 'Player2/BPressed[/Keyboard/p]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3eb9706c-4161-41f2-a844-7d7c7c10d53f
+    m_ActionName: 'Player2/YPressed[/Keyboard/0]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 74184151-6c6f-4e39-b8ac-f2d118236066
+    m_ActionName: 'Player2/XPressed[/Keyboard/8]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fc67679f-d3a6-497f-b070-e5c9d989abc0
+    m_ActionName: 'Player2/Areleased[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a9ca7a26-c013-4bb4-a59b-e19f73e39830
+    m_ActionName: 'Player2/StartPressed[/Keyboard/enter]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: GamePlay
+  m_DefaultActionMap: Player1
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &902719197
@@ -5341,6 +5409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnableInputs
   player1: {fileID: 902719195}
   player2: {fileID: 1803657506}
+  numberManettes: 0
 --- !u!1 &1396090196
 GameObject:
   m_ObjectHideFlags: 0
@@ -6689,9 +6758,77 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: d05a06b3-da82-4832-a29d-162aa5d553e8
     m_ActionName: 'GamePlay/StartPressed[/XInputControllerWindows1/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dae531fe-8ef7-46bd-aa44-eda916500b3c
+    m_ActionName: 'Player1/Aim[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b11eb416-5408-4943-adce-858cc2fb8a76
+    m_ActionName: 'Player1/APressed[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2a494fda-b4d1-446e-aad4-c528c59d0055
+    m_ActionName: 'Player1/BPressed[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 55a38105-1c5e-4ce7-ab5b-e2cc3cb54507
+    m_ActionName: 'Player1/YPressed[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8796873e-e7b7-4a95-a8c4-46227ca83417
+    m_ActionName: 'Player1/XPressed[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 51e51702-1576-4536-953d-97c21f44e7b1
+    m_ActionName: 'Player1/Areleased[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eda89da9-c4a5-4240-a0bc-9d2ba9b91eee
+    m_ActionName: 'Player1/StartPressed[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e36ba9b9-299d-46e6-bb7a-201cf5ed5cdd
+    m_ActionName: 'Player2/Aim[/Keyboard/o,/Keyboard/l,/Keyboard/k,/Keyboard/semicolon]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1803657508}
+        m_TargetAssemblyTypeName: MetronomePlayerScript, Assembly-CSharp
+        m_MethodName: PlayerPressedA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ffeb2598-68f6-4a96-9e4e-fca7aec8c515
+    m_ActionName: 'Player2/APressed[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: af3ad9e7-5063-44e9-a0d1-3de67f8cc511
+    m_ActionName: 'Player2/BPressed[/Keyboard/p]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3eb9706c-4161-41f2-a844-7d7c7c10d53f
+    m_ActionName: 'Player2/YPressed[/Keyboard/0]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 74184151-6c6f-4e39-b8ac-f2d118236066
+    m_ActionName: 'Player2/XPressed[/Keyboard/8]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fc67679f-d3a6-497f-b070-e5c9d989abc0
+    m_ActionName: 'Player2/Areleased[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a9ca7a26-c013-4bb4-a59b-e19f73e39830
+    m_ActionName: 'Player2/StartPressed[/Keyboard/enter]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: GamePlay
+  m_DefaultActionMap: Player2
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1803657508
