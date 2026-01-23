@@ -75,8 +75,7 @@ public class EnableInputs : MonoBehaviour
 
         InputUser.PerformPairingWithDevice(
             pad,
-            input.user,
-            InputUserPairingOptions.UnpairCurrentDevicesFromUser
+            input.user
         );
     }
 }
