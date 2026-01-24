@@ -54,8 +54,8 @@ public class PlacementSystem : MonoBehaviour
             ? VariablesManager.instance.duckItemDatabase
             : VariablesManager.instance.frogItemDatabase;
         
-        floorData = GameManager.instance.globalFloorData;
-        furnitureData = GameManager.instance.globalFurnitureData;
+        floorData = new();
+        furnitureData = new();
     }
 
     private void Start()

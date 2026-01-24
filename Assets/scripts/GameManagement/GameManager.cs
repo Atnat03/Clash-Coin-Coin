@@ -50,9 +50,6 @@ public class GameManager : MonoBehaviour
     public int MAX_NUMBER_TOUR = 20;
     public int CURRENT_NUMBER_TOUR = 0;
     public Text toursTXT;
-
-    public GridData globalFloorData = new GridData();
-    public GridData globalFurnitureData = new GridData();
     
     void Awake()
     {
@@ -148,8 +145,7 @@ public class GameManager : MonoBehaviour
         //EndGame
         stateMachine.Add(new State<GameSate>(
             GameSate.EndGame,
-            onEnter:EndGameEnter,
-            onExit: EndGameExit
+            onEnter:EndGameEnter
         ));
         
         stateMachine.ChangeState(GameSate.Reward);
@@ -160,15 +156,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Enter EndGame");
         
         uiEnd.gameObject.SetActive(true);
+        isEnd = true;
         uiEnd.GetComponent<UiEnd>().SetUp(winIndex);
         SetAllPlacedItems(false);
-
-        VariablesManager.instance.SetInputA();
-    }
-
-    void EndGameExit()
-    {
-        VariablesManager.instance.DisableInputA();
     }
     
     public void SetAllPlacedItems(bool state)
@@ -771,6 +761,10 @@ void CombatEnter()
     
     public void ResetGame()
     {
+        if(!isEnd)return;
+
+        print("Réinitialisation du jeu...");
+
         SceneManager.LoadScene("MainScene");
         
         transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
@@ -782,7 +776,7 @@ void CombatEnter()
         
         player_1_Score = -1;
         player_2_Score = -1;
-        CombatDuration = 20;
+        isEnd = false;
         
         SaveSystem.instance.DeleteSave();
         

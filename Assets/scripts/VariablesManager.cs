@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.iOS;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -33,26 +34,5 @@ public class VariablesManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    public void DisableInputA()
-    {
-        foreach (PlayerInputing p in players)
-        {
-            p.OnClicked -= ResetInputGame;
-        }
-    }
-
-    public void SetInputA()
-    {
-        foreach (PlayerInputing p in players)
-        {
-            p.OnClicked += ResetInputGame;
-        }
-    }
-
-    public void ResetInputGame()
-    {
-        GameManager.instance.ResetGame();
     }
 }

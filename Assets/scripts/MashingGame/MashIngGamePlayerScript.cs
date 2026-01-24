@@ -86,7 +86,7 @@ public class MashIngGamePlayerScript : MonoBehaviour
 
     public void PlayerPressedA(InputAction.CallbackContext context)
     {
-        if (ingame && context.performed)
+        if (ingame && context.started)
         {
             P1JaugeFillAmout = Mathf.Clamp(P1JaugeFillAmout + MashingGameManager.instance.amountPerClic, 0f, 1f);
             animButton.SetTrigger("Clic");
