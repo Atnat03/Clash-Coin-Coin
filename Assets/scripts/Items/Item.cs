@@ -41,6 +41,7 @@ public abstract class Item : MonoBehaviour, ITargetable
     }
 
     public bool playerOneProperty { get; set; }
+    
     public void TakeDamage(float damage)
     {
         PV -= damage;
@@ -69,9 +70,7 @@ public abstract class Item : MonoBehaviour, ITargetable
             yield return new WaitForSeconds(1f);
         }
         currentHP.color = Color.green;
-    }
-    
-    
+    }    
 
     public virtual void SetActive(bool state)
     {

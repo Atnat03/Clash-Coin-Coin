@@ -78,95 +78,104 @@ public class Troop : Item
                     | RigidbodyConstraints.FreezeRotationZ;
     }
 
-    protected virtual void Update()
-    {
-        if (isFrozen)
-            return;
-    
-        if (!enabled || !gridManager)
-            return;
-    
-        target = Rescan();
-    
-        if (target && path.Count == 0)
-        {
-            FindPath(transform.position, target.position);
-            lastTarget = target;
-            pathRefreshTimer = PATH_REFRESH_TIME;
-        }
+protected virtual void Update()
+{
+    if (isFrozen)
+        return;
 
-        if (!target)
-            return;
-    
-        animator.SetBool("Walk", isMoving && !isAttacking);
+    if (!enabled || !gridManager)
+        return;
 
-        pathRefreshTimer -= Time.deltaTime;
-        if (pathRefreshTimer <= 0f || target != lastTarget || path.Count == 0)
+    pathRefreshTimer -= Time.deltaTime;
+
+    if (target == null || pathRefreshTimer <= 0f)
         {
-            FindPath(transform.position, target.position);
-            lastTarget = target;
-            pathRefreshTimer = PATH_REFRESH_TIME;
-        }
-    
-        if (isAttacking)
-        {
-            if (target)
+            Debug.Log($"[{transform.name}] Rescan... (P1={playerOneProperty})");
+            
+            Transform newTarget = Rescan();
+
+            if (newTarget != target)
             {
-                Vector3 directionToTarget = (target.position - transform.position);
-                directionToTarget.y = 0;
-                RotateTowards(directionToTarget);
-            }
-            return;
-        }
-    
-        if (target.TryGetComponent<Item>(out var t))
-        {
-            float dist = Vector3.Distance(transform.position, target.position);
-            
-            print("dist <= RadiusAttack : " + (dist <= RadiusAttack));
-            print("t.CanBeAttacked : " + t.CanBeAttacked);
-            
-            if (dist <= RadiusAttack && t.CanBeAttacked)
-            {
-                print("anim attack WTF ??");
-
-                isAttacking = true;
-                animator.ResetTrigger("Throw");
-                animator.SetBool("Walk", false);
-                animator.SetTrigger("Throw");
-            
-                Vector3 directionToTarget = (target.position - transform.position);
-                directionToTarget.y = 0;
-                RotateTowards(directionToTarget);
-                return;
-            }
-        }
-        else
-        {
+                Debug.Log($"[{transform.name}] Changement de cible : {(target ? target.name : "null")} → {(newTarget ? newTarget.name : "null")}");
                 
-        if (target.TryGetComponent<Nexus>(out var n))
-        {
-            float dist = Vector3.Distance(transform.position, target.position);
-            if (dist <= RadiusAttack && n.CanBeAttacked)
-            {
-                isAttacking = true;
-                animator.ResetTrigger("Throw");
-                animator.SetBool("Walk", false);
-                animator.SetTrigger("Throw");
-            
-                Vector3 directionToTarget = (target.position - transform.position);
-                directionToTarget.y = 0;
-                RotateTowards(directionToTarget);
-                return;
+                target = newTarget;
+                path.Clear();
+                
+                if (target != null)
+                {
+                    FindPath(transform.position, target.position);
+                    lastTarget = target;
+                }
             }
+            
+            pathRefreshTimer = PATH_REFRESH_TIME;
         }
-        }
-    
-        if (path.Count > 0)
+
+
+    if (target && (path.Count == 0 || pathRefreshTimer <= 0f))
+    {
+        FindPath(transform.position, target.position);
+        lastTarget = target;
+        pathRefreshTimer = PATH_REFRESH_TIME;
+    }
+
+    if (!target)
+        return;
+
+    animator.SetBool("Walk", isMoving && !isAttacking);
+
+    if (isAttacking)
+    {
+        if (target)
         {
-            Chase();
+            Vector3 directionToTarget = (target.position - transform.position);
+            directionToTarget.y = 0;
+            RotateTowards(directionToTarget);
+        }
+        return;
+    }
+
+    if (target.TryGetComponent<Item>(out var t))
+    {
+        float dist = Vector3.Distance(transform.position, target.position);
+        
+        if (dist <= RadiusAttack && t.CanBeAttacked)
+        {
+            isAttacking = true;
+            animator.ResetTrigger("Throw");
+            animator.SetBool("Walk", false);
+            animator.SetTrigger("Throw");
+        
+            Vector3 directionToTarget = (target.position - transform.position);
+            directionToTarget.y = 0;
+            RotateTowards(directionToTarget);
+            return;
         }
     }
+    else if (target.TryGetComponent<Nexus>(out var n))
+    {
+        float dist = Vector3.Distance(transform.position, target.position);
+        if (dist <= RadiusAttack && n.CanBeAttacked)
+        {
+            isAttacking = true;
+            animator.ResetTrigger("Throw");
+            animator.SetBool("Walk", false);
+            animator.SetTrigger("Throw");
+        
+            Vector3 directionToTarget = (target.position - transform.position);
+            directionToTarget.y = 0;
+            RotateTowards(directionToTarget);
+            return;
+        }
+    }
+
+    if (path.Count > 0)
+    {
+        Chase();
+    }
+
+    print(transform.name + " ///////// " + playerOneProperty);
+}
     
     protected void RotateTowards(Vector3 direction)
     {
@@ -261,54 +270,112 @@ public class Troop : Item
         }
     }
     
-    public Transform Rescan()
+public Transform Rescan()
+{
+    Vector3 myPos = transform.position;
+    
+    Debug.Log($"[{transform.name}] P1={playerOneProperty} - Recherche de cible...");
+    
+    // ========== PRIORITÉ 1 : TROUPES ENNEMIES ACCESSIBLES ==========
+    List<Item> enemyTroops = playerOneProperty 
+        ? GameManager.instance.placedItemsP2 
+        : GameManager.instance.placedItemsP1;
+    
+    Transform closestTroop = null;
+    float minTroopDistance = Mathf.Infinity;
+    
+    foreach (Item item in enemyTroops)
     {
-        List<ITargetable> targets = new List<ITargetable>();
-        foreach (TP_Troop i in VariablesManager.instance.tps) targets.Add(i);
-        foreach (Nexus i in VariablesManager.instance.nexus) targets.Add(i);
-        
-        if(playerOneProperty)
-            foreach (Item i in GameManager.instance.placedItemsP1) targets.Add(i);
-        else
-            foreach (Item i in GameManager.instance.placedItemsP1) targets.Add(i);
-        
-        print(targets.Count);
-        
-        if (targets.Count == 0)
-            return null;
-
-        Transform closest = null;
-        float minDistance = Mathf.Infinity;
-        Vector3 myPos = transform.position;
-
-        foreach (ITargetable t in targets)
+        if (item == null) continue;
+        if (item.playerOneProperty == playerOneProperty) continue; // Double check
+                
+        // ✅ VÉRIFIER SI ON EST DU MÊME CÔTÉ DU TERRAIN
+        if (!IsOnSameSideOfTerrain(item.transform))
         {
-            if (t.playerOneProperty == playerOneProperty)
-                continue;
-            
-            if(alreadyTakeTP && t is TP_Troop)
-                continue;
-
-            if (t is Troop troop)
-            {
-                if (troop.alreadyTakeTP)
-                {
-                    continue;
-                }
-            }
-            
-            Transform tTransform = ((MonoBehaviour)t).transform;
-            float dist = Vector3.SqrMagnitude(tTransform.position - myPos);
-
-            if (dist < minDistance)
-            {
-                minDistance = dist;
-                closest = tTransform;
-            }
+            Debug.Log($"[{transform.name}] {item.name} est de l'autre côté du terrain, ignoré");
+            continue;
         }
-
-        return closest;
+        
+        float dist = Vector3.SqrMagnitude(item.transform.position - myPos);
+        
+        if (dist < minTroopDistance)
+        {
+            minTroopDistance = dist;
+            closestTroop = item.transform;
+        }
     }
+    
+    // Si on a trouvé une troupe ennemie accessible, on la cible en priorité
+    if (closestTroop != null)
+    {
+        Debug.Log($"[{transform.name}] ✅ PRIORITÉ 1 - Troupe accessible trouvée : {closestTroop.name}");
+        return closestTroop;
+    }
+    
+    Debug.Log($"[{transform.name}] Aucune troupe ennemie accessible, recherche TP/Nexus...");
+    
+    // ========== PRIORITÉ 2 : TP_TROOP ET NEXUS ==========
+    List<ITargetable> secondaryTargets = new List<ITargetable>();
+    
+    // Ajouter les TP_Troop (pour changer de côté)
+    if (!alreadyTakeTP)
+    {
+        foreach (TP_Troop tp in VariablesManager.instance.tps)
+        {
+            // On prend les TP de NOTRE côté pour pouvoir traverser
+            if (IsOnSameSideOfTerrain(tp.transform))
+                secondaryTargets.Add(tp);
+        }
+    }
+    
+    // Ajouter les Nexus ennemis accessibles
+    foreach (Nexus nexus in VariablesManager.instance.nexus)
+    {
+        if (nexus.playerOneProperty != playerOneProperty && IsOnSameSideOfTerrain(nexus.transform))
+            secondaryTargets.Add(nexus);
+    }
+    
+    if (secondaryTargets.Count == 0)
+    {
+        Debug.LogWarning($"[{transform.name}] ❌ AUCUNE CIBLE DISPONIBLE !");
+        return null;
+    }
+    
+    // Chercher la cible secondaire la plus proche
+    Transform closestSecondary = null;
+    float minSecondaryDistance = Mathf.Infinity;
+    
+    foreach (ITargetable t in secondaryTargets)
+    {
+        Transform tTransform = ((MonoBehaviour)t).transform;
+        float dist = Vector3.SqrMagnitude(tTransform.position - myPos);
+        
+        if (dist < minSecondaryDistance)
+        {
+            minSecondaryDistance = dist;
+            closestSecondary = tTransform;
+        }
+    }
+    
+    if (closestSecondary != null)
+    {
+        Debug.Log($"[{transform.name}] ✅ PRIORITÉ 2 - Cible secondaire : {closestSecondary.name}");
+    }
+    
+    return closestSecondary;
+}
+
+bool IsOnSameSideOfTerrain(Transform other)
+{
+    float divisionX = 0f;
+    bool imOnRight = transform.position.x > divisionX;
+    bool otherOnRight = other.position.x > divisionX;
+    
+    Debug.Log($"[IsOnSameSide] {transform.name} (x={transform.position.x:F2}, right={imOnRight}) vs {other.name} (x={other.position.x:F2}, right={otherOnRight}) → Même côté? {imOnRight == otherOnRight}");
+    
+    return imOnRight == otherOnRight;
+}
+
 
     public void FindPath(Vector3 startPos, Vector3 endPos)
     {

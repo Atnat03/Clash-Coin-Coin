@@ -54,8 +54,8 @@ public class PlacementSystem : MonoBehaviour
             ? VariablesManager.instance.duckItemDatabase
             : VariablesManager.instance.frogItemDatabase;
         
-        floorData = new();
-        furnitureData = new();
+        floorData = GameManager.instance.globalFloorData;
+        furnitureData = GameManager.instance.globalFurnitureData;
     }
 
     private void Start()
@@ -151,8 +151,9 @@ private void PlaceStructure()
             itemPlaced.enabled = false;
             itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
 
-            selectedData.RegisterItemPosition(itemPlaced, gridPosition);
-
+            Vector3Int childGridPos = grid.WorldToCell(child.position);
+            selectedData.RegisterItemPosition(itemPlaced, childGridPos);
+            
             if (itemPlaced.playerOneProperty)
             {
                 GameManager.instance.placedItemsP1.Add(itemPlaced);
@@ -228,9 +229,10 @@ private void PlaceStructure()
             return;
         }
 
+        itemPlaced.playerOneProperty = itemData.playerOneProperty;
+
         itemPlaced.id = itemData.id;
         itemPlaced.name = itemData.name;
-        itemPlaced.playerOneProperty = itemData.playerOneProperty;
         itemPlaced.maxPV = itemData.maxPV;
         itemPlaced.PV = itemData.PV;
         itemPlaced.currentHP.fillAmount = itemPlaced.PV / itemData.maxPV;
@@ -251,18 +253,19 @@ private void PlaceStructure()
     }
     
     private bool CheckPlacementValidity(Vector3Int gridPosition, int i)
-    {
-        if (!IsInsideGrid(gridPosition))
-            return false;
+{
+    if (!IsInsideGrid(gridPosition))
+        return false;
 
-        GridData selectedData = database.itemsData[selectedObjectIndex].Id == 0
-            ? floorData
-            : furnitureData;
+    GridData selectedData = database.itemsData[i].Id == 0
+        ? floorData
+        : furnitureData;
 
-        return selectedData.CanPlaceObejctAt(
-            gridPosition,
-            database.itemsData[selectedObjectIndex].Size);
-    }
+    return selectedData.CanPlaceObejctAt(
+        gridPosition,
+        database.itemsData[i].Size);
+}
+
     
     private void StopPlacement()
     {

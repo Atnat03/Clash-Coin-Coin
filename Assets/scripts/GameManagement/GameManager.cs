@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
     public int MAX_NUMBER_TOUR = 20;
     public int CURRENT_NUMBER_TOUR = 0;
     public Text toursTXT;
+
+    public GridData globalFloorData = new GridData();
+    public GridData globalFurnitureData = new GridData();
     
     void Awake()
     {
@@ -357,25 +360,68 @@ public class GameManager : MonoBehaviour
     
     #region CombatState
 
-    void CombatEnter()
+void CombatEnter()
+{
+    VariablesManager.instance.logoState.sprite = VariablesManager.instance.combatSprite;
+    
+    Debug.Log("Enter Combat");
+
+    // ✅ Étape 1 : Corriger TOUTES les propriétés d'équipe
+    PutCorrectPlayerOwned();
+    
+    // ✅ Étape 2 : Activer et recalculer pour P1
+    foreach (Item item in placedItemsP1)
     {
-        VariablesManager.instance.logoState.sprite = VariablesManager.instance.combatSprite;
+        if (item == null) continue;
         
-        Debug.Log("Enter Combat");
-
-        foreach (Item item in placedItemsP1)
-            if (item != null) item.enabled = true;
-
-        foreach (Item item in placedItemsP2)
-            if (item != null) item.enabled = true;
-
-        foreach (PlacementSystem p in VariablesManager.instance.placementSystems)
-            p.StartCombat();
+        item.enabled = true;
         
-        UIManager.instance.HideCombatUI(true);
-        StartCoroutine(DecompteCombat(1));
+        if (item is Troop troop)
+        {
+            Debug.Log($"[CombatEnter] Force recalcul pour {troop.name} (P1={troop.playerOneProperty})");
+            troop.ForceRecalculatePath(ignoreLastTarget: true);
+        }
     }
 
+    // ✅ Étape 3 : Activer et recalculer pour P2
+    foreach (Item item in placedItemsP2)
+    {
+        if (item == null) continue;
+        
+        item.enabled = true;
+        
+        if (item is Troop troop)
+        {
+            Debug.Log($"[CombatEnter] Force recalcul pour {troop.name} (P1={troop.playerOneProperty})");
+            troop.ForceRecalculatePath(ignoreLastTarget: true);
+        }
+    }
+
+    foreach (PlacementSystem p in VariablesManager.instance.placementSystems)
+        p.StartCombat();
+    
+    UIManager.instance.HideCombatUI(true);
+    StartCoroutine(DecompteCombat(1));
+}
+
+    void PutCorrectPlayerOwned()
+    {
+        foreach (Item item in placedItemsP1)
+        {
+            if (item != null)
+            {
+                item.playerOneProperty = true;
+            }
+        }
+
+        foreach (Item item in placedItemsP2)
+        {
+            if (item != null)
+            {
+                item.playerOneProperty = false;
+            }
+        }
+    }
 
     public float CombatDuration = 10;
 
