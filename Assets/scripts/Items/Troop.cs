@@ -370,9 +370,7 @@ bool IsOnSameSideOfTerrain(Transform other)
     float divisionX = 0f;
     bool imOnRight = transform.position.x > divisionX;
     bool otherOnRight = other.position.x > divisionX;
-    
-    Debug.Log($"[IsOnSameSide] {transform.name} (x={transform.position.x:F2}, right={imOnRight}) vs {other.name} (x={other.position.x:F2}, right={otherOnRight}) → Même côté? {imOnRight == otherOnRight}");
-    
+        
     return imOnRight == otherOnRight;
 }
 

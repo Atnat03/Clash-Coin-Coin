@@ -85,7 +85,7 @@ public class PlacementSystem : MonoBehaviour
 
         previewSystem.StartShowingPlacementPreview(
             database.itemsData[selectedObjectIndex].Prefab,
-            database.itemsData[selectedObjectIndex].Size);
+            Vector2Int.one);
 
         Vector3 gridCenter = gridBounds.center;
         Vector3Int gridPos = grid.WorldToCell(gridCenter);
@@ -120,7 +120,7 @@ private void PlaceStructure()
     placedObjects.Add(go);
     GridData selectedData = database.itemsData[selectedObjectIndex].Id == 0 ? floorData : furnitureData;
     selectedData.AddObjectAt(gridPosition, 
-        database.itemsData[selectedObjectIndex].Size,
+        Vector2Int.one,
         database.itemsData[selectedObjectIndex].Id,
         placedObjects.Count - 1);
 
@@ -166,7 +166,6 @@ private void PlaceStructure()
             GameManager.instance.AddItemInList(itemPlaced, gridPosition);
         }
         
-        // Détruire le parent vide maintenant que les enfants sont détachés
         Destroy(go);
     }
     else
@@ -220,7 +219,7 @@ private void PlaceStructure()
         GridData selectedData = itemData.id == 0 ? floorData : furnitureData;
 
         Vector3Int gridPos = grid.WorldToCell(itemData.position);
-        selectedData.AddObjectAt(gridPos, itemData.scale, itemData.id, placedObjects.Count - 1);
+        selectedData.AddObjectAt(gridPos, Vector2Int.one,itemData.id, placedObjects.Count - 1);
 
         Item itemPlaced = go.GetComponentInChildren<Item>();
         if (itemPlaced == null)
@@ -236,6 +235,9 @@ private void PlaceStructure()
         itemPlaced.maxPV = itemData.maxPV;
         itemPlaced.PV = itemData.PV;
         itemPlaced.currentHP.fillAmount = itemPlaced.PV / itemData.maxPV;
+        itemPlaced.transform.localScale = itemData.size;
+
+        print("Restauré l'échelle de l'objet à : " + itemData.size);
 
         if (itemPlaced is Troop troop)
             troop.alreadyTakeTP = itemData.alreadyTakeTP;
@@ -263,7 +265,7 @@ private void PlaceStructure()
 
     return selectedData.CanPlaceObejctAt(
         gridPosition,
-        database.itemsData[i].Size);
+        Vector2Int.one);
 }
 
     

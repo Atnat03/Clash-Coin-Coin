@@ -12,7 +12,7 @@ public class ItemsData
 {
     public int Id;
     public string Name;
-    public Vector2Int Size = Vector2Int.one;
+    [HideInInspector]public Vector3 Size;
     public GameObject Prefab;
     
     public Sprite carte;

@@ -76,7 +76,6 @@ public class GameManager : MonoBehaviour
         var itemInfo = database.itemsData.Find(x => x.Id == item.id);
         if (itemInfo != null)
         {
-            itemData.scale = itemInfo.Size;
             itemData.prefab = itemInfo.Prefab;
         }
 
@@ -328,6 +327,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter MiniGames");
 
+        VariablesManager.instance.termineTxt.gameObject.SetActive(false);
+
         SaveBeforeSceneChange();
 
         int i = UnityEngine.Random.Range(0, miniGames.Length);
@@ -420,7 +421,7 @@ void CombatEnter()
         yield return new WaitForSeconds(intervale);
         CombatDuration -= intervale;
       
-        if (CombatDuration > 0)
+        if (CombatDuration >= 0)
         {
             UIManager.instance.UpdateCombatUI((int)CombatDuration);
             StartCoroutine(DecompteCombat(intervale));
@@ -429,6 +430,8 @@ void CombatEnter()
         {
             SetAllPlacedItems(false);
             
+            VariablesManager.instance.termineTxt.gameObject.SetActive(true);
+
             yield return new WaitForSeconds(1f);
 
             CombatDuration = 10;
@@ -442,15 +445,6 @@ void CombatEnter()
     {
 
     }
-
-    IEnumerator WaitBeforeMiniGame()
-    {
-        SetAllPlacedItems(false);
-        
-        yield return new WaitForSeconds(1f);
-        stateMachine.ChangeState(GameSate.MiniGame);
-    }
-
 
     void CombatExit()
     {
@@ -577,17 +571,16 @@ void CombatEnter()
         data.maxPV = item.maxPV;
         data.playerOneProperty = item.playerOneProperty;
         data.position = item.transform.position;
+        data.size = item.transform.localScale;
+        print("size saved : " + data.size);
         
-        // Récupérer prefab et scale depuis la database
         ItemSO database = VariablesManager.instance.placementSystems[0].database;
         var itemInfo = database.itemsData.Find(x => x.Id == item.id);
         if (itemInfo != null)
         {
-            data.scale = itemInfo.Size;
             data.prefab = itemInfo.Prefab;
         }
         
-        // Sauvegarder alreadyTakeTP pour les troupes
         if (item is Troop troop)
         {
             data.alreadyTakeTP = troop.alreadyTakeTP;
@@ -608,13 +601,14 @@ void CombatEnter()
         data.maxPV = item.maxPV;
         data.playerOneProperty = item.playerOneProperty;
         data.position = item.transform.position;
+        data.size = item.transform.localScale;
+        print("size saved : " + data.size);
         
         // Récupérer prefab et scale depuis la database
         ItemSO database = VariablesManager.instance.placementSystems[1].database;
         var itemInfo = database.itemsData.Find(x => x.Id == item.id);
         if (itemInfo != null)
         {
-            data.scale = itemInfo.Size;
             data.prefab = itemInfo.Prefab;
         }
         
@@ -662,7 +656,6 @@ void CombatEnter()
                 if (itemInfo != null)
                 {
                     itemData.prefab = itemInfo.Prefab;
-                    itemData.scale = itemInfo.Size;
 
                     itemPlacedDataP1.Add(itemData);
                 }
@@ -676,7 +669,6 @@ void CombatEnter()
                 if (itemInfo != null)
                 {
                     itemData.prefab = itemInfo.Prefab;
-                    itemData.scale = itemInfo.Size;
                     itemPlacedDataP2.Add(itemData);
                 }
             }

@@ -8,7 +8,7 @@ public class ItemData
     public int id;
     public string name;
     public Vector3 position;
-    public Vector2Int scale;
+    public Vector3 size;
     public bool playerOneProperty;
     public float PV;
     public float maxPV;

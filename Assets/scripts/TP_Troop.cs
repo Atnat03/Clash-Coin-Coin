@@ -13,6 +13,8 @@ public class TP_Troop : MonoBehaviour, ITargetable
     private Queue<Troop> waitingTroops = new Queue<Troop>();
     private bool isTeleporting = false;
 
+    public ParticleSystem teleportEffect;
+
     private void Start()
     {
         playerOneProperty = isPlayer1;
@@ -77,6 +79,8 @@ public class TP_Troop : MonoBehaviour, ITargetable
             t += Time.deltaTime;
             yield return null;
         }
+
+        teleportEffect.Play();
 
         troop.transform.localScale = Vector3.zero;
 

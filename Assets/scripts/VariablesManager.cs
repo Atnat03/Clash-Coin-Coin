@@ -29,6 +29,8 @@ public class VariablesManager : MonoBehaviour
     public Sprite combatSprite;
     public Image logoState;
 
+    public GameObject termineTxt;
+
     public TP_Troop[] tps;
     
     private void Awake()
