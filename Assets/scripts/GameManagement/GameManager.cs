@@ -764,11 +764,11 @@ void CombatEnter()
         if(!isEnd)return;
 
         print("Réinitialisation du jeu...");
+        
+        isEnd = false;
 
         SceneManager.LoadScene("MainScene");
-        
-        transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);
-        
+                
         placedItemsP1.Clear();
         placedItemsP2.Clear();
         itemPlacedDataP1.Clear();
@@ -776,11 +776,12 @@ void CombatEnter()
         
         player_1_Score = -1;
         player_2_Score = -1;
-        isEnd = false;
         
         SaveSystem.instance.DeleteSave();
         
         SetAllPlacedItems(false);
+
+        uiEnd.GetComponent<UiEnd>().Reset();
         
         Debug.Log("Jeu réinitialisé");
     }
