@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -129,7 +130,7 @@ public class GameManager : MonoBehaviour
         //Combat
         stateMachine.Add(new State<GameSate>(
             GameSate.Combat,
-            onEnter: CombatEnter,
+            onEnter: () => _ = CombatEnter(),
             onUpdate: CombatUpdate,
             onExit: CombatExit
         ));
@@ -228,38 +229,6 @@ public class GameManager : MonoBehaviour
             if (!player.IsReady) return false;
         }
 
-        foreach (Item item in placedItemsP1)
-        {
-            Item t = null;
-            
-            if(item is Troop troop)
-                t = troop;
-            
-            if(item is LanceTroop tro)
-                t = tro;
-            
-            if (t == null) return false;
-
-            if(t.GetComponent<AnimFlip>().did == false)
-                return false;
-        }
-    
-        foreach (Item item in placedItemsP2)
-        {
-            Item t = null;
-            
-            if(item is Troop troop)
-                t = troop;
-            
-            if(item is LanceTroop tro)
-                t = tro;
-            
-            if (t == null) return false;
-
-            if(t.GetComponent<AnimFlip>().did == false)
-                return false;
-        }
-
         return true;
     }
     
@@ -351,49 +320,48 @@ public class GameManager : MonoBehaviour
     
     #region CombatState
 
-void CombatEnter()
-{
-    VariablesManager.instance.logoState.sprite = VariablesManager.instance.combatSprite;
-    
-    Debug.Log("Enter Combat");
-
-    // ✅ Étape 1 : Corriger TOUTES les propriétés d'équipe
-    PutCorrectPlayerOwned();
-    
-    // ✅ Étape 2 : Activer et recalculer pour P1
-    foreach (Item item in placedItemsP1)
+    async Task CombatEnter()
     {
-        if (item == null) continue;
-        
-        item.enabled = true;
-        
-        if (item is Troop troop)
-        {
-            Debug.Log($"[CombatEnter] Force recalcul pour {troop.name} (P1={troop.playerOneProperty})");
-            troop.ForceRecalculatePath(ignoreLastTarget: true);
-        }
-    }
+        await Task.Delay(500);
 
-    // ✅ Étape 3 : Activer et recalculer pour P2
-    foreach (Item item in placedItemsP2)
-    {
-        if (item == null) continue;
+        VariablesManager.instance.logoState.sprite = VariablesManager.instance.combatSprite;
         
-        item.enabled = true;
-        
-        if (item is Troop troop)
-        {
-            Debug.Log($"[CombatEnter] Force recalcul pour {troop.name} (P1={troop.playerOneProperty})");
-            troop.ForceRecalculatePath(ignoreLastTarget: true);
-        }
-    }
+        Debug.Log("Enter Combat");
 
-    foreach (PlacementSystem p in VariablesManager.instance.placementSystems)
-        p.StartCombat();
-    
-    UIManager.instance.HideCombatUI(true);
-    StartCoroutine(DecompteCombat(1));
-}
+        PutCorrectPlayerOwned();
+        
+        foreach (Item item in placedItemsP1)
+        {
+            if (item == null) continue;
+            
+            item.enabled = true;
+            
+            if (item is Troop troop)
+            {
+                Debug.Log($"[CombatEnter] Force recalcul pour {troop.name} (P1={troop.playerOneProperty})");
+                troop.ForceRecalculatePath(ignoreLastTarget: true);
+            }
+        }
+
+        foreach (Item item in placedItemsP2)
+        {
+            if (item == null) continue;
+            
+            item.enabled = true;
+            
+            if (item is Troop troop)
+            {
+                Debug.Log($"[CombatEnter] Force recalcul pour {troop.name} (P1={troop.playerOneProperty})");
+                troop.ForceRecalculatePath(ignoreLastTarget: true);
+            }
+        }
+
+        foreach (PlacementSystem p in VariablesManager.instance.placementSystems)
+            p.StartCombat();
+        
+        UIManager.instance.HideCombatUI(true);
+        StartCoroutine(DecompteCombat(1));
+    }
 
     void PutCorrectPlayerOwned()
     {
