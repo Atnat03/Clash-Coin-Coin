@@ -55,10 +55,10 @@ MonoBehaviour:
   PV: 340
   maxPV: 340
   currentHP: {fileID: 8103242198617991682}
-  Speed: 2
-  RadiusAttack: 1.5
-  Damage: 135
-  attackCooldown: 1
+  Speed: 2.5
+  RadiusAttack: 1
+  Damage: 107
+  attackCooldown: 1.25
   rotationSpeed: 10
   target: {fileID: 0}
   alreadyTakeTP: 0

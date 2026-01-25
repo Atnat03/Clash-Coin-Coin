@@ -74,10 +74,10 @@ MonoBehaviour:
   PV: 175
   maxPV: 175
   currentHP: {fileID: 8103242198617991682}
-  Speed: 2
+  Speed: 1
   RadiusAttack: 1
-  Damage: 0
-  attackCooldown: 3
+  Damage: 50
+  attackCooldown: 5
   rotationSpeed: 10
   target: {fileID: 0}
   alreadyTakeTP: 0
@@ -86,6 +86,7 @@ MonoBehaviour:
   lastPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   isMoving: 0
+  freezingDuration: 3
 --- !u!114 &-163544584828694734
 MonoBehaviour:
   m_ObjectHideFlags: 0

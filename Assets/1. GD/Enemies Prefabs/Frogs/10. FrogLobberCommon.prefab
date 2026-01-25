@@ -103,13 +103,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LanceTroop
   id: 0
   name: 
-  PV: 120
-  maxPV: 120
+  PV: 200
+  maxPV: 200
   currentHP: {fileID: 8103242198617991682}
-  Speed: 2
+  Speed: 1
   RadiusAttack: 3
-  Damage: 45
-  attackCooldown: 1
+  Damage: 110
+  attackCooldown: 3
   rotationSpeed: 10
   target: {fileID: 0}
   alreadyTakeTP: 0

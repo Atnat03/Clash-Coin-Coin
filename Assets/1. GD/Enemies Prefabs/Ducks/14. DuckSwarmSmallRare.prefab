@@ -104,15 +104,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: PV
-      value: 90
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: Speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: maxPV
-      value: 90
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: Damage
-      value: 50
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: currentHP
@@ -215,15 +219,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: PV
-      value: 90
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: Speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: maxPV
-      value: 90
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: Damage
-      value: 50
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: currentHP
@@ -334,15 +342,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: PV
-      value: 90
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: Speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: maxPV
-      value: 90
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: Damage
-      value: 50
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: currentHP

@@ -102,6 +102,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4. DuckWarriorCommon (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: PV
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: maxPV
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: Damage
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: attackCooldown
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5212321018164490567, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
@@ -182,6 +202,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4. DuckWarriorCommon
       objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: PV
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: maxPV
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: Damage
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: attackCooldown
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5212321018164490567, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
@@ -261,6 +301,26 @@ PrefabInstance:
     - target: {fileID: 2564806622089340945, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_Name
       value: 4. DuckWarriorCommon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: PV
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: maxPV
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: Damage
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: attackCooldown
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

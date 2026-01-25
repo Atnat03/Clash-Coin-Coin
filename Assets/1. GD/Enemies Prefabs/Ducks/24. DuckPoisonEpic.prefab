@@ -73,13 +73,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PoiseningTroops
   id: 0
   name: 
-  PV: 270
-  maxPV: 270
+  PV: 313
+  maxPV: 313
   currentHP: {fileID: 8103242198617991682}
-  Speed: 2
-  RadiusAttack: 3
-  Damage: 255
-  attackCooldown: 3
+  Speed: 1.5
+  RadiusAttack: 1
+  Damage: 33
+  attackCooldown: 2
   rotationSpeed: 10
   target: {fileID: 0}
   alreadyTakeTP: 0
@@ -88,8 +88,8 @@ MonoBehaviour:
   lastPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   isMoving: 0
-  poisonDamage: 40
-  poisonDuration: 7
+  poisonDamage: 152
+  poisonDuration: 10
 --- !u!114 &-1280573754695424694
 MonoBehaviour:
   m_ObjectHideFlags: 0

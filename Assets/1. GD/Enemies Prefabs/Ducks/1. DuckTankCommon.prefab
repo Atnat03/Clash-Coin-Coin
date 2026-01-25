@@ -53,8 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Troop
   id: 0
   name: Player1
-  PV: 300
-  maxPV: 300
+  PV: 400
+  maxPV: 400
   currentHP: {fileID: 8103242198617991682}
   Speed: 2
   RadiusAttack: 1

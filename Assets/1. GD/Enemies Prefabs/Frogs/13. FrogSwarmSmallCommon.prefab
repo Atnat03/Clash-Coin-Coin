@@ -104,15 +104,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: PV
-      value: 60
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
+      propertyPath: Speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: maxPV
-      value: 60
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: Damage
-      value: 30
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: currentHP
@@ -124,7 +128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: attackCooldown
-      value: 0.75
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -220,15 +224,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: PV
-      value: 60
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
+      propertyPath: Speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: maxPV
-      value: 60
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: Damage
-      value: 30
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: currentHP
@@ -240,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: attackCooldown
-      value: 0.75
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -336,15 +344,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: PV
-      value: 60
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
+      propertyPath: Speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: maxPV
-      value: 60
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: Damage
-      value: 30
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: currentHP
@@ -356,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: attackCooldown
-      value: 0.75
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
