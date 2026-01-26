@@ -155,6 +155,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enter EndGame");
         
+        AudioManager.instance.PlaySound(AudioManager.instance.winGameSound);
+        
         uiEnd.gameObject.SetActive(true);
         isEnd = true;
         uiEnd.GetComponent<UiEnd>().SetUp(winIndex);
@@ -406,7 +408,6 @@ public class GameManager : MonoBehaviour
             
             stateMachine.ChangeState(GameSate.MiniGame);
         }
-
     }
     
     void CombatUpdate()

@@ -55,6 +55,8 @@ public class CurlingGameManager : MonoBehaviour
         AudioManager.instance.PlaySound(AudioManager.instance.endSound);
         animUI.SetTrigger("Over");
         
+        yield return new WaitForSeconds(1.2f);
+        
         if (P1.played == false)
         {
             GameManager.instance.player_1_Score = 1;

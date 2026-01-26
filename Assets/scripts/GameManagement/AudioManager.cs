@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip tutoCard;
     public AudioClip buttonPressed;
     public AudioClip gongStart;
+    public AudioClip winGameSound;
+    
     void Awake()
     {
         if (instance == null) 
