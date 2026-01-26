@@ -6579,8 +6579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2b0540c74ea3446b98949738ee0754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  musicSource: {fileID: 578515774}
-  SFXSource: {fileID: 1414056102}
+  musicSource: {fileID: 0}
+  SFXSource: {fileID: 0}
   musicClip: []
   miniGame: {fileID: 8300000, guid: 7977d08956b8dbd48b85a7ce1e743149, type: 3}
   startSound: {fileID: 8300000, guid: f16ff34de42fbbb4c9336d253448215e, type: 3}
@@ -6590,8 +6590,8 @@ MonoBehaviour:
   epicCard: {fileID: 0}
   attackUnit: {fileID: 0}
   tutoCard: {fileID: 0}
-  buttonPressed: {fileID: 0}
-  gongStart: {fileID: 0}
+  buttonPressed: {fileID: 8300000, guid: 4dafb2bffae8be64ca2d8ad0980ff98f, type: 3}
+  gongStart: {fileID: 8300000, guid: ec90629d81903eb47bd9158d0863fef1, type: 3}
 --- !u!4 &1847717893
 Transform:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class Trap : Build
     public Material matExplose;
     public GameObject explosionEffect;
     
+    public new bool CanBeAttacked => false;
+    
     public Trap(int id, string name, float maxPV) : base(id, name, maxPV)
     {
     }

@@ -7421,7 +7421,7 @@ MonoBehaviour:
   SFXSource: {fileID: 1276600007}
   musicClip:
   - {fileID: 8300000, guid: b4e5f1d607e9894459986d9ee842f684, type: 3}
-  miniGame: {fileID: 0}
+  miniGame: {fileID: 8300000, guid: ced6ce3c500383c43bed4d3af26bc7d6, type: 3}
   startSound: {fileID: 8300000, guid: f16ff34de42fbbb4c9336d253448215e, type: 3}
   endSound: {fileID: 8300000, guid: ced6ce3c500383c43bed4d3af26bc7d6, type: 3}
   cardFlip: {fileID: 8300000, guid: dd251ca983f44794e8e4cbc72072e98f, type: 3}
