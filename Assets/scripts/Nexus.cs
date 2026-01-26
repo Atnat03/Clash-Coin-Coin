@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,20 +55,34 @@ public class Nexus : MonoBehaviour, ITargetable
     public bool playerOneProperty { get; set; }
     public void TakeDamage(float damage)
     {
-        PV -= damage;
-        print("take damage" + damage);
+        StartCoroutine(TakeSmoothDamage(damage));
+    }
+    
+    IEnumerator TakeSmoothDamage(float damage)
+    {
+        float finalPV = PV -= damage;
+        float duration = 0.5f;
+        float t = 0;
         
-        currentHP.fillAmount = PV / maxPV;
+        while (t < duration)
+        {
+            PV = Mathf.Lerp(PV, finalPV, t / duration);
+            currentHP.fillAmount = PV / maxPV;
         
-        if(playerOneProperty)
-            GameManager.instance.UpdateNexusP1(PV);
-        else
-            GameManager.instance.UpdateNexusP2(PV);
-        
-        if (PV <= 0)
-        { 
-            Die();
-        }    
+            if (PV <= 0)
+            { 
+                Die();
+            }
+            
+            if(playerOneProperty)
+                GameManager.instance.UpdateNexusP1(PV);
+            else
+                GameManager.instance.UpdateNexusP2(PV);
+            
+            t += Time.deltaTime;
+            
+            yield return null;
+        }
     }
 
     //public Animator animEnd;

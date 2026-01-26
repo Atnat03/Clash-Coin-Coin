@@ -60,7 +60,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -98,6 +98,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2564806622089340945, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_Name
       value: 4. FrogWarriorCommon (4)
@@ -133,6 +137,10 @@ PrefabInstance:
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: attackCooldown
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949391686786710239, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -184,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -222,6 +230,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2564806622089340945, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_Name
       value: 4. FrogWarriorCommon (5)
@@ -257,6 +269,10 @@ PrefabInstance:
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: attackCooldown
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949391686786710239, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -308,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -346,6 +362,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2564806622089340945, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: m_Name
       value: 4. FrogWarriorCommon (3)
@@ -381,6 +401,10 @@ PrefabInstance:
     - target: {fileID: 5597989690353156273, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
       propertyPath: attackCooldown
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949391686786710239, guid: cc38a77c133315b4a8ca6a02e65f6f8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

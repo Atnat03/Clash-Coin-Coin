@@ -61,15 +61,33 @@ public abstract class Item : MonoBehaviour, ITargetable
     
     public void TakeDamage(float damage)
     {
-        PV -= damage;
-        print(transform.name + "  take damage :" + damage);
-                
-        currentHP.fillAmount = PV / maxPV;
+        StartCoroutine(TakeSmoothDamage(damage));
+    }
+
+    IEnumerator TakeSmoothDamage(float damage)
+    {
+        print("Take smooth damage");
+        float finalPV = PV - damage;
+        float statedPV = PV;
+        float duration = 0.5f;
+        float t = 0;
         
-        if (PV <= 0)
-        { 
-            Die();
-        }    
+        while (t < duration)
+        {
+            PV = Mathf.Lerp(statedPV, finalPV, t / duration);
+            currentHP.fillAmount = PV / maxPV;
+            
+            print(PV + " take dmg...");
+        
+            if (PV <= 0)
+            { 
+                Die();
+            }
+            
+            t += Time.deltaTime;
+            
+            yield return null;
+        }
     }
 
     public void GetPoisoned(float duration, float damage)

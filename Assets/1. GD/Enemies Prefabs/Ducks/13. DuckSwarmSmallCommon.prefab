@@ -60,7 +60,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.024049997
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.z
@@ -98,9 +98,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.010000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.51
+      objectReference: {fileID: 0}
     - target: {fileID: 2564806622089340945, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_Name
       value: 4. DuckWarriorCommon (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513655625416822639, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: PV
@@ -130,6 +150,8 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5212321018164490567, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     - {fileID: 2198663141689115463, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+    - {fileID: 5222050149792584605, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+    - {fileID: 5531508618096743910, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
@@ -164,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.024049997
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.z
@@ -202,9 +224,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.010000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5100002
+      objectReference: {fileID: 0}
     - target: {fileID: 2564806622089340945, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_Name
       value: 4. DuckWarriorCommon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513655625416822639, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: PV
@@ -234,6 +276,8 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5212321018164490567, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     - {fileID: 2198663141689115463, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+    - {fileID: 5222050149792584605, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+    - {fileID: 5531508618096743910, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
@@ -268,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.024049997
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1253301024315926119, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_LocalPosition.z
@@ -306,9 +350,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.010000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408386028184498422, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5100002
+      objectReference: {fileID: 0}
     - target: {fileID: 2564806622089340945, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: m_Name
       value: 4. DuckWarriorCommon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513655625416822639, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5597989690353156273, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
       propertyPath: PV
@@ -338,6 +402,8 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5212321018164490567, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     - {fileID: 2198663141689115463, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+    - {fileID: 5222050149792584605, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
+    - {fileID: 5531508618096743910, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bb572f3cd58bbc41ba53f7d6a254606, type: 3}

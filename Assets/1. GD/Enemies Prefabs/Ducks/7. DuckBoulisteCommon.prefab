@@ -64,8 +64,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 598235390958297923}
-  - {fileID: 528555166668319239}
   - {fileID: 2408386028184498422}
+  - {fileID: 528555166668319239}
   - {fileID: 6399332937664223062}
   - {fileID: 4711599439052896762}
   m_Father: {fileID: 0}
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.33534348, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.8937979, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
