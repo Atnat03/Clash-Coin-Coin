@@ -473,7 +473,7 @@ public class GameManager : MonoBehaviour
 
         CURRENT_NUMBER_TOUR++;
 
-        if (CURRENT_NUMBER_TOUR >= 20)
+        if (CURRENT_NUMBER_TOUR >= MAX_NUMBER_TOUR)
         {
             GameOverByEndNbTurn();
             return;
