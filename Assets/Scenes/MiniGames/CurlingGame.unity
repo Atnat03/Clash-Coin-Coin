@@ -5043,7 +5043,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 2022024954}
   SFXSource: {fileID: 952050299}
-  musicClip: []
+  musicClip:
+  - {fileID: 8300000, guid: 7977d08956b8dbd48b85a7ce1e743149, type: 3}
   miniGame: {fileID: 8300000, guid: 7977d08956b8dbd48b85a7ce1e743149, type: 3}
   startSound: {fileID: 8300000, guid: f16ff34de42fbbb4c9336d253448215e, type: 3}
   endSound: {fileID: 8300000, guid: ced6ce3c500383c43bed4d3af26bc7d6, type: 3}

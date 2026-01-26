@@ -20,6 +20,9 @@ public class MetronomeGameManager : MonoBehaviour
 
     [SerializeField] private MetronomePlayerScript P1;
     [SerializeField] private MetronomePlayerScript P2;
+    
+    [SerializeField] private Sprite[] spritesA;
+    [SerializeField] private Image imageInputA_p1, imageInputA_p2;
 
     public int score1, score2;
 
@@ -37,6 +40,25 @@ public class MetronomeGameManager : MonoBehaviour
     {
         mainText.text = "";
         StartCoroutine(GameCoroutine());
+        
+                
+        EnableInputs inputs = GetComponent<EnableInputs>();
+
+        switch (inputs.numberManettes)
+        {
+            case 2:
+                imageInputA_p1.sprite = spritesA[0];
+                imageInputA_p2.sprite = spritesA[0];
+                break;
+            case 1:
+                imageInputA_p1.sprite = spritesA[1];
+                imageInputA_p2.sprite = spritesA[0];
+                break;
+            case 0: 
+                imageInputA_p1.sprite = spritesA[1];
+                imageInputA_p2.sprite = spritesA[2];
+                break;
+        }
     }
 
     public Animator animUI;

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 
+[DefaultExecutionOrder(-1)]
 public class EnableInputs : MonoBehaviour
 {
     [SerializeField] private GameObject player1;
@@ -10,15 +11,13 @@ public class EnableInputs : MonoBehaviour
     
     public int numberManettes;
 
-    void Start()
+    void Awake()
     {
         StartCoroutine(SetupInputs());
     }
 
     private IEnumerator SetupInputs()
     {
-        yield return new WaitForSeconds(0.3f);
-
         var input1 = player1.GetComponent<PlayerInput>();
         var input2 = player2.GetComponent<PlayerInput>();
 

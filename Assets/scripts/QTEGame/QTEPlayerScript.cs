@@ -29,8 +29,12 @@ public class QTEPlayerScript : MonoBehaviour
             rnd = Random.Range(0, 4);
             inputList.Enqueue((QTEGameManager.ButtonDirection)rnd);
         }
+        
+        if(playerID == 1)
+            imageNextInput.sprite = QTEGameManager.instance.buttonSpritesP1[inputList.Peek()];
+        else
+            imageNextInput.sprite = QTEGameManager.instance.buttonSpritesP2[inputList.Peek()];
 
-        imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
     }
     public void PlaySoundRandowPitch(AudioClip clip, float volume)
     {
@@ -44,7 +48,11 @@ public class QTEPlayerScript : MonoBehaviour
             PlaySoundRandowPitch(clickSound,volume);
             inputList.Dequeue();
             score++;
-            imageNextInput.sprite = QTEGameManager.instance.buttonSprites[inputList.Peek()];
+            
+            if(playerID == 1)
+                imageNextInput.sprite = QTEGameManager.instance.buttonSpritesP1[inputList.Peek()];
+            else
+                imageNextInput.sprite = QTEGameManager.instance.buttonSpritesP2[inputList.Peek()];        
         }
         else
         {

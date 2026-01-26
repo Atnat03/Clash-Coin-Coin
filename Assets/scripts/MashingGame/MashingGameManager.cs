@@ -24,6 +24,9 @@ public class MashingGameManager : MonoBehaviour
 
     [SerializeField] private MashIngGamePlayerScript P1;
     [SerializeField] private MashIngGamePlayerScript P2;
+    
+    [SerializeField] private Sprite[] spritesA;
+    [SerializeField] private Image imageInputA_p1, imageInputA_p2;
 
     public bool someoneWon;
 
@@ -38,6 +41,24 @@ public class MashingGameManager : MonoBehaviour
     {
         StartCoroutine(StartGameCoroutine());
         AudioManager.instance.PlayRandomMusic();
+        
+        EnableInputs inputs = GetComponent<EnableInputs>();
+
+        switch (inputs.numberManettes)
+        {
+            case 2:
+                imageInputA_p1.sprite = spritesA[0];
+                imageInputA_p2.sprite = spritesA[0];
+                break;
+            case 1:
+                imageInputA_p1.sprite = spritesA[1];
+                imageInputA_p2.sprite = spritesA[0];
+                break;
+            case 0: 
+                imageInputA_p1.sprite = spritesA[1];
+                imageInputA_p2.sprite = spritesA[2];
+                break;
+        }
     }
     
     public IEnumerator StartGameCoroutine()

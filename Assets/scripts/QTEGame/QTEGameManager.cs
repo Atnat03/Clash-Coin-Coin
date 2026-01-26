@@ -15,6 +15,9 @@ public class QTEGameManager : MonoBehaviour
     public Sprite northButtonSprite;
     public Sprite eastButtonSprite;
     public Sprite westButtonSprite;
+    
+    public Sprite[] p1keyboardSprites;
+    public Sprite[] p2keyboardSprites;
 
     [SerializeField]private QTEPlayerScript P1;
     [SerializeField]private QTEPlayerScript P2;
@@ -36,15 +39,13 @@ public class QTEGameManager : MonoBehaviour
         east
     }
     
-    public Dictionary<ButtonDirection, Sprite> buttonSprites = new Dictionary<ButtonDirection, Sprite>();
+    public Dictionary<ButtonDirection, Sprite> buttonSpritesP1 = new Dictionary<ButtonDirection, Sprite>();
+    public Dictionary<ButtonDirection, Sprite> buttonSpritesP2 = new Dictionary<ButtonDirection, Sprite>();
     public Animator animUI;
     void Awake()
     {
         if(instance == null)instance = this;
-        buttonSprites.Add(ButtonDirection.north, northButtonSprite);
-        buttonSprites.Add(ButtonDirection.south, southButtonSprite);
-        buttonSprites.Add(ButtonDirection.east, eastButtonSprite);
-        buttonSprites.Add(ButtonDirection.west, westButtonSprite);
+        SetUpInputSprite();
     }
 
     void Start()
@@ -91,6 +92,54 @@ public class QTEGameManager : MonoBehaviour
         GameManager.instance.player_2_Score = VerifyScore(P2.score);
         
         GameManager.instance.ReturnToMainScene();
+    }
+
+    private void SetUpInputSprite()
+    {
+        EnableInputs inputs = GetComponent<EnableInputs>();
+
+        if (inputs.numberManettes == 2)
+        {
+            buttonSpritesP1.Add(ButtonDirection.north, northButtonSprite);
+            buttonSpritesP1.Add(ButtonDirection.south, southButtonSprite);
+            buttonSpritesP1.Add(ButtonDirection.east, eastButtonSprite);
+            buttonSpritesP1.Add(ButtonDirection.west, westButtonSprite);
+            
+            buttonSpritesP2.Add(ButtonDirection.north, northButtonSprite);
+            buttonSpritesP2.Add(ButtonDirection.south, southButtonSprite);
+            buttonSpritesP2.Add(ButtonDirection.east, eastButtonSprite);
+            buttonSpritesP2.Add(ButtonDirection.west, westButtonSprite);
+            
+            print("2 manettes");
+        }
+        else if (inputs.numberManettes == 1)
+        {
+            print("1 manette");
+            
+            buttonSpritesP1.Add(ButtonDirection.north, p1keyboardSprites[1]);
+            buttonSpritesP1.Add(ButtonDirection.south, p1keyboardSprites[0]);
+            buttonSpritesP1.Add(ButtonDirection.east, p1keyboardSprites[2]);
+            buttonSpritesP1.Add(ButtonDirection.west, p1keyboardSprites[3]);
+            
+            buttonSpritesP2.Add(ButtonDirection.north, northButtonSprite);
+            buttonSpritesP2.Add(ButtonDirection.south, southButtonSprite);
+            buttonSpritesP2.Add(ButtonDirection.east, eastButtonSprite);
+            buttonSpritesP2.Add(ButtonDirection.west, westButtonSprite);
+        }
+        else if (inputs.numberManettes == 0)
+        {
+            print("0 manette");
+            
+            buttonSpritesP1.Add(ButtonDirection.north, p1keyboardSprites[1]);
+            buttonSpritesP1.Add(ButtonDirection.south, p1keyboardSprites[0]);
+            buttonSpritesP1.Add(ButtonDirection.east, p1keyboardSprites[2]);
+            buttonSpritesP1.Add(ButtonDirection.west, p1keyboardSprites[3]);
+            
+            buttonSpritesP2.Add(ButtonDirection.north, p2keyboardSprites[1]);
+            buttonSpritesP2.Add(ButtonDirection.south, p2keyboardSprites[0]);
+            buttonSpritesP2.Add(ButtonDirection.east, p2keyboardSprites[2]);
+            buttonSpritesP2.Add(ButtonDirection.west, p2keyboardSprites[3]);
+        }
     }
 
     int VerifyScore(int score)
