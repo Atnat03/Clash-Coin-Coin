@@ -5,7 +5,6 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 25f;
     public Transform target;
-    public float damage = 10f;
     public Collider col;
     
     private Rigidbody rb;
@@ -31,7 +30,6 @@ public class Bullet : MonoBehaviour
     {
         this.col = col;
         this.target = target;
-        this.damage = damage;
     }
     
     private void Update()
