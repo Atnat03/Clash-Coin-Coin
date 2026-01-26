@@ -1,20 +1,37 @@
 using System;
 using System.Collections;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum TypeItem
+{
+    Grenouille,
+    Canard
+}
+
 public abstract class Item : MonoBehaviour, ITargetable
 {
-    [HideInInspector]public int id;
+    public int id;
     [HideInInspector]public string name;
     public float PV;
     public float maxPV;
     public Image currentHP;
+    public float Damage = 10f;
+    
+    public TypeItem type;
     
     public bool IsMovementTarget => false;
 
     private void Start()
     {
+        ItemSO data = type == TypeItem.Grenouille
+            ? VariablesManager.instance.frogItemDatabase
+            : VariablesManager.instance.duckItemDatabase;
+
+        PV = data.itemsData[id].PV;
+        Damage = data.itemsData[id].Dmg;
+        
         maxPV = PV;
     }
 

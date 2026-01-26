@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Trap : Build
 {
-    public float damage = 50;
     public float detectionZone = 2;
     public float explosionZone = 1.5f;
     bool alreadyTriggered = false;
@@ -59,7 +58,7 @@ public class Trap : Build
                 GameObject newPart = Instantiate(explosionEffect, transform.position + Vector3.up * 0.5f, Quaternion.identity);
                 Destroy(newPart,2f);
                 
-                troop.TakeDamage(damage);
+                troop.TakeDamage(Damage);
             }
         }
         

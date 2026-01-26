@@ -313,17 +313,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c6d470e361f0a4f8eb0343b723763a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  id: 0
+  id: 27
   name: 
   PV: 200
   maxPV: 200
   currentHP: {fileID: 6410208058379497403}
+  Damage: 30
+  type: 0
   bulletPrefab: {fileID: 602646493586585482, guid: 53ec08d7c21c1b04b85205107860336a, type: 3}
   shootRange: 5
   shootPos: {fileID: 7944635898818093657}
   headTurret: {fileID: 1217321509297838307}
   shootRate: 1
-  Damage: 30
 --- !u!65 &3841258380333390513
 BoxCollider:
   m_ObjectHideFlags: 0

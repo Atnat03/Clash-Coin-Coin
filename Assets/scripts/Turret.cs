@@ -8,13 +8,10 @@ public class Turret : Build
     public Transform shootPos;
     public Transform headTurret;
     public float shootRate = 1f;
-    public float Damage = 10f;
     private float t = 0;
     
     public Turret(int id, string name, float maxPV) : base(id, name, maxPV)
-    {
-        
-    }
+    { }
 
     public new void TakeDamage(float damage)
     {

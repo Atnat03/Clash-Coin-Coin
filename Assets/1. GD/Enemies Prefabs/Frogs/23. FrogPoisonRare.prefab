@@ -69,14 +69,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afbf100729c8a9458dace2e8f5e467b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoiseningTroops
-  id: 0
+  id: 22
   name: 
   PV: 250
   maxPV: 250
   currentHP: {fileID: 8103242198617991682}
+  Damage: 30
+  type: 0
   Speed: 1.5
   RadiusAttack: 1
-  Damage: 30
   attackCooldown: 2
   rotationSpeed: 10
   target: {fileID: 0}

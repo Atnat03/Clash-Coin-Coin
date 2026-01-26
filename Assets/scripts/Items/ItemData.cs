@@ -11,6 +11,7 @@ public class ItemData
     public Vector3 size;
     public bool playerOneProperty;
     public float PV;
+    public float Damage;
     public float maxPV;
     public bool alreadyTakeTP = false;
     
@@ -23,7 +24,6 @@ public class GameSaveData
 {
     public List<ItemData> itemsP1 = new List<ItemData>();
     public List<ItemData> itemsP2 = new List<ItemData>();
-
     
     public int player1Score = -1;
     public int player2Score = -1;

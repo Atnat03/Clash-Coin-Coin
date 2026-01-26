@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 using System.Collections;
+using TMPro;
 
 public class CardChoice : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class CardChoice : MonoBehaviour
    [Serializable]
    public struct CardsPNG
    {
-      public Image face, dos;
+      public Image face, dos, icon;
+      public TextMeshProUGUI pvTxt, dmgTxt;
       public int rarete;
    }
    public CardsPNG[] cardsUI1, cardsUI2;
@@ -35,8 +37,6 @@ public class CardChoice : MonoBehaviour
    float lastAimX1;
    float lastAimX2;
    
-   
-
    private void Awake()
    {
       instance = this;
@@ -185,11 +185,14 @@ public class CardChoice : MonoBehaviour
          ItemsData chosenItem = possibleItems[UnityEngine.Random.Range(0, possibleItems.Count)];
 
          usedNames.Add(chosenItem.Name);
-
+         
          cardsID[i] = chosenItem.Id;
          cardsUI[i].face.sprite = chosenItem.carte;
          cardsUI[i].dos.sprite = chosenItem.dosCarte;
          cardsUI[i].rarete = chosenItem.rarity;
+         cardsUI[i].icon.sprite = chosenItem.iconType;
+         cardsUI[i].pvTxt.text = chosenItem.PV.ToString();
+         cardsUI[i].dmgTxt.text = chosenItem.Dmg.ToString();
       }
    }
 

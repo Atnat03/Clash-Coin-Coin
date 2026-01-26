@@ -523,7 +523,6 @@ public class GameManager : MonoBehaviour
     
     private void UpdateItemDataFromPlacedItems()
 {
-    // VIDER ET RECONSTRUIRE COMPLÈTEMENT
     itemPlacedDataP1.Clear();
     itemPlacedDataP2.Clear();
     
@@ -536,6 +535,7 @@ public class GameManager : MonoBehaviour
         data.id = item.id;
         data.name = item.name;
         data.PV = item.PV;
+        data.Damage = item.Damage;
         data.maxPV = item.maxPV;
         data.playerOneProperty = item.playerOneProperty;
         data.position = item.transform.position;
@@ -566,6 +566,7 @@ public class GameManager : MonoBehaviour
         data.id = item.id;
         data.name = item.name;
         data.PV = item.PV;
+        data.Damage = item.Damage;
         data.maxPV = item.maxPV;
         data.playerOneProperty = item.playerOneProperty;
         data.position = item.transform.position;

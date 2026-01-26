@@ -148,6 +148,8 @@ private void PlaceStructure()
             child.SetParent(null);
 
             itemPlaced.id = 3;
+            itemPlaced.PV = data.PV;
+            itemPlaced.Damage = data.Dmg;
             itemPlaced.enabled = false;
             itemPlaced.playerOneProperty = playerInputing.isPlayerOne;
 
@@ -234,6 +236,7 @@ private void PlaceStructure()
         itemPlaced.name = itemData.name;
         itemPlaced.maxPV = itemData.maxPV;
         itemPlaced.PV = itemData.PV;
+        itemPlaced.Damage = itemData.Damage;
         itemPlaced.currentHP.fillAmount = itemPlaced.PV / itemData.maxPV;
         itemPlaced.transform.localScale = itemData.size;
 

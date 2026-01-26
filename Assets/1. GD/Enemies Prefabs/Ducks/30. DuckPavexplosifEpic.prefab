@@ -239,12 +239,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e8785057333c94cab8b283d2c28ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  id: 0
+  id: 26
   name: 
-  PV: 0
+  PV: 100
   maxPV: 0
   currentHP: {fileID: 7453980253436979852}
-  damage: 450
+  Damage: 500
+  type: 1
   detectionZone: 1.5
   explosionZone: 2
   modelRenderer: {fileID: 4957528276006046352}

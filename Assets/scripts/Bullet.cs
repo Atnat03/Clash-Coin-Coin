@@ -12,16 +12,14 @@ public class Bullet : MonoBehaviour
     
     private void Awake()
     {
-        // S'assurer qu'il y a un Rigidbody
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody>();
         }
-        rb.isKinematic = true; // Kinematic car on contrôle le mouvement manuellement
+        rb.isKinematic = true;
         rb.useGravity = false;
         
-        // S'assurer qu'il y a un Collider trigger
         Collider bulletCollider = GetComponent<Collider>();
         if (bulletCollider != null)
         {
@@ -40,9 +38,15 @@ public class Bullet : MonoBehaviour
     {
         if (target != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            Vector3 targetPos = target.position + Vector3.up;
             
-            if (Vector3.Distance(transform.position, target.position) < 0.1f)
+            transform.position = Vector3.MoveTowards(transform.position,targetPos, speed * Time.deltaTime);
+            
+            transform.LookAt(target);
+
+            transform.Rotate(Vector3.right * 10000f * Time.deltaTime, Space.Self);
+            
+            if (Vector3.Distance(transform.position, targetPos) < 0.1f)
             {
                 OnReachTarget();
             }

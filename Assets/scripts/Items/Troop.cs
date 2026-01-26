@@ -8,7 +8,6 @@ public class Troop : Item
     [Header("Stats")]
     public float Speed = 3f;
     public float RadiusAttack = 1.5f;
-    public float Damage = 10f;
     public float attackCooldown = 1f;
     public float rotationSpeed = 10f;
     

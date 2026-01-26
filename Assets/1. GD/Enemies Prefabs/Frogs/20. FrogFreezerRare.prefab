@@ -69,14 +69,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b095dbd1a7488b34d8e4edaa42f4f519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FreezingTroop
-  id: 0
+  id: 19
   name: 
   PV: 250
   maxPV: 250
   currentHP: {fileID: 8103242198617991682}
+  Damage: 50
+  type: 0
   Speed: 1
   RadiusAttack: 1
-  Damage: 50
   attackCooldown: 4.5
   rotationSpeed: 10
   target: {fileID: 0}

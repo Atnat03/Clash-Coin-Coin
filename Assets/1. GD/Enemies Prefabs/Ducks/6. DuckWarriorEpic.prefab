@@ -50,14 +50,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8702eb1ec871b4da0e119e35b024ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Troop
-  id: 0
+  id: 5
   name: Player1
   PV: 313
   maxPV: 313
   currentHP: {fileID: 8103242198617991682}
+  Damage: 107
+  type: 1
   Speed: 2.5
   RadiusAttack: 1
-  Damage: 107
   attackCooldown: 1.25
   rotationSpeed: 10
   target: {fileID: 0}
