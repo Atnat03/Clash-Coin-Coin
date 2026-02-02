@@ -62,7 +62,7 @@ public class PlacementSystem : MonoBehaviour
     {
         StopPlacement();
         
-        playerInputing.OnSelectTroop += StartPlacement;
+        playerInputing.OnSelectBuild += StartPlacement;
     }
 
     public void PlaceItem()

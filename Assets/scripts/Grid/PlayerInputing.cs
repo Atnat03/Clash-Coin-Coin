@@ -32,7 +32,6 @@ public class PlayerInputing : MonoBehaviour
     {
         screenCursor = new Vector2(Screen.width / 2f, Screen.height / 2f);
         
-        // Initialiser worldAimPosition au centre de l'écran
         UpdateWorldAimPosition();
     }
     
@@ -41,24 +40,19 @@ public class PlayerInputing : MonoBehaviour
         aimBounds = bounds;
         hasBounds = true;
         
-        // Centrer le curseur sur la grid
         CenterCursorOnBounds();
     }
     
-    // Nouvelle méthode pour centrer le curseur sur les bounds
     private void CenterCursorOnBounds()
     {
         if (!hasBounds || playerCamera == null) return;
         
-        // Convertir le centre des bounds en position écran
         Vector3 screenPos = playerCamera.WorldToScreenPoint(aimBounds.center);
         
-        // Si le point est visible à l'écran
         if (screenPos.z > 0)
         {
             screenCursor = new Vector2(screenPos.x, screenPos.y);
             
-            // Mettre à jour immédiatement la position world
             UpdateWorldAimPosition();
         }
     }
@@ -66,7 +60,7 @@ public class PlayerInputing : MonoBehaviour
     public void OnAim(InputAction.CallbackContext context) => aimInput = context.ReadValue<Vector2>();
     public void OnPressedInput(InputAction.CallbackContext context) => OnClicked?.Invoke();
     public void OnExitInput(InputAction.CallbackContext context) => OnExit?.Invoke();
-    public void OnSelectInput(InputAction.CallbackContext context) => OnSelectBuild?.Invoke(1);
+    public void OnSelectInput(InputAction.CallbackContext context) => OnSelectBuild?.Invoke(10);
     
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
     
@@ -80,7 +74,6 @@ public class PlayerInputing : MonoBehaviour
         UpdateWorldAimPosition();
     }
     
-    // Méthode séparée pour mettre à jour la position world
     private void UpdateWorldAimPosition()
     {
         if (playerCamera == null) return;
