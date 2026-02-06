@@ -20,7 +20,7 @@ public class CardChoice : MonoBehaviour
    [Serializable]
    public struct CardsPNG
    {
-      public Image face, dos, icon;
+      public Image face, dos;
       public TextMeshProUGUI pvTxt, dmgTxt;
       public int rarete;
    }
@@ -190,7 +190,6 @@ public class CardChoice : MonoBehaviour
          cardsUI[i].face.sprite = chosenItem.carte;
          cardsUI[i].dos.sprite = chosenItem.dosCarte;
          cardsUI[i].rarete = chosenItem.rarity;
-         cardsUI[i].icon.sprite = chosenItem.iconType;
          cardsUI[i].pvTxt.text = chosenItem.PV.ToString();
          cardsUI[i].dmgTxt.text = chosenItem.Dmg.ToString();
       }
